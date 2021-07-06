@@ -12,7 +12,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                /* background-color: #fff; */
+                background-image: url(https://aice.cloud/img/conference2.jpg);
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -38,6 +39,8 @@
                 position: absolute;
                 right: 10px;
                 top: 18px;
+                background: rgba(255, 255, 255, 0.5);
+                border: 10px solid rgba(255, 255, 255, 0.1);
             }
 
             .content {
@@ -59,7 +62,11 @@
             }
 
             .m-b-md {
-                margin-bottom: 30px;
+                /* margin-bottom: 30px; */
+                background: #ffffff;
+                border: 50px solid #ffffff;
+                box-shadow: 0px 0px 70px #393939;
+                border-radius: 6px;
             }
         </style>
     </head>
@@ -81,9 +88,10 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    CO-Lounge
                 </div>
 
+                <!--
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -94,6 +102,7 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                -->
             </div>
         </div>
     </body>
