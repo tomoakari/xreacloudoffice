@@ -16,3 +16,21 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post("/login",function(){
+    $email = request()->get("email");
+    $password = request()->get("password");
+    $user = AppUser::where("email",$email)->first();
+    if ($user && Hash::check($password, $user->password)) {
+        $token = str_random();
+        $user->token = $token;
+        $user->save();
+        return [
+            "token" => $token,
+            "user" => $user
+        ];
+    }else{
+        abort(401);
+    }
+});
