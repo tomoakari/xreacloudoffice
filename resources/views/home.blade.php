@@ -23,14 +23,24 @@
             </div>
             <br />
             <div class="card">
-                <div class="card-header">会議室一覧</div>
+                <div class="card-header">内部会議一覧</div>
 
                 <div class="card-body">
                     <ul>
                         <li><a href="https://conftest.aice.cloud/?secret=65be2fcd5259eb27d384abdfed254054" target="_blank">営業会議001</a></li>
                         <li><a href="https://conftest.aice.cloud/?secret=65be2fcd5259eb27d384abdfed254054" target="_blank">営業会議002</a></li>
                         <li><a href="https://conftest.aice.cloud/?secret=65be2fcd5259eb27d384abdfed254054" target="_blank">経営会議</a></li>
-                        <li><a href="https://conftest.aice.cloud/?secret=65be2fcd5259eb27d384abdfed254054" target="_blank">外部会議001</a></li>
+                    </ul>
+                </div>
+            </div>
+            <br />
+            <div class="card">
+                <div class="card-header">外部会議一覧</div>
+
+                <div class="card-body">
+                    <ul>
+                        <li><a href="https://conftest.aice.cloud/?secret=ebe5e5c3fffd27f6c07a4f5f568b95d3" target="_blank">外部会議001</a></li>
+                        <li><a href="https://conftest.aice.cloud/?secret=ebe5e5c3fffd27f6c07a4f5f568b95d3" target="_blank">外部会議002</a></li>
                     </ul>
                 </div>
             </div>
