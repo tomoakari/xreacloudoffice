@@ -50,8 +50,12 @@
             }
 
             .title {
-                font-size: 84px;
+                /*font-size: 84px;*/
+                font-size: 50px;
                 color: #ffffff;
+            }
+            .subtitle{
+                font-size: 30px;
             }
 
             .links > a {
@@ -104,6 +108,7 @@
                 <div class="title m-b-md">
                     CLOUD OFFICE
                 </div>
+                <p class="subtitle">テレワーク時代の社内会議や対外打合せ、<br />直感的に操作できる社内連絡ツールとして、<br />最適な環境をご提供いたします。</p>
 
                 <!--
                 <div class="links">
@@ -118,7 +123,7 @@
                 </div>
                 -->
             </div>
-            <div class="footer">Copyright © 2020 AIFORUS,Inc.</div>
+            <div class="footer">Copyright © 2021 AIFORUS,Inc.</div>
         </div>
     </body>
 </html>
