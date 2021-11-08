@@ -16,7 +16,7 @@
                 background-image: url(https://aice.cloud/img/1.jpg);
                 background-size: cover;
                 color: #636b6f;
-                font-family: 'Nunito', sans-serif;
+                /* font-family: 'Nunito', sans-serif; */
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
@@ -51,6 +51,7 @@
 
             .title {
                 font-size: 84px;
+                color: #ffffff;
             }
 
             .links > a {
@@ -64,11 +65,13 @@
             }
 
             .m-b-md {
-                /* margin-bottom: 30px; */
+                /* margin-bottom: 30px; 
                 background: #ffffff;
-                border: 50px solid #ffffff;
+                border: 50px solid #ffffff; */
+                background: rgba(0,0,0,0.5);
                 box-shadow: 0px 0px 70px #393939;
-                border-radius: 6px;
+                border-radius: 10px;
+                padding: 60px;
             }
             .footer{
                 position: absolute;
