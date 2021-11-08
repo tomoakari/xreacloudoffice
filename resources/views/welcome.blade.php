@@ -55,7 +55,7 @@
                 color: #ffffff;
             }
             .subtitle{
-                font-size: 25px;
+                font-size: 30px;
             }
 
             .links > a {
