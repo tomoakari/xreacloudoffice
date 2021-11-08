@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>COLOUNGE</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
@@ -14,6 +14,7 @@
             html, body {
                 /* background-color: #fff; */
                 background-image: url(https://aice.cloud/img/conference2.jpg);
+                background-size: cover;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -40,7 +41,8 @@
                 right: 10px;
                 top: 18px;
                 background: rgba(255, 255, 255, 0.5);
-                border: 10px solid rgba(255, 255, 255, 0.1);
+                /* border: 10px solid rgba(255, 255, 255, 0.1); */
+                padding: 5px;
             }
 
             .content {
