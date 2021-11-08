@@ -73,9 +73,9 @@
             .footer{
                 position: absolute;
                 bottom: 0px;
-                height: 30px;
                 width: 100%;
-                background: rgba(255, 255, 255, 0.4)
+                background: rgba(255, 255, 255, 0.4);
+                padding: 2px 0px;
             }
         </style>
     </head>
