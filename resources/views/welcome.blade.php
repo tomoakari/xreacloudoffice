@@ -67,9 +67,9 @@
             .m-b-md {
                 /* margin-bottom: 30px; 
                 background: #ffffff;
-                border: 50px solid #ffffff; */
-                background: rgba(0,0,0,0.5);
-                box-shadow: 0px 0px 70px #393939;
+                border: 50px solid #ffffff;
+                box-shadow: 0px 0px 70px #393939; */
+                background: rgba(0 ,0 ,0 , 0.5);
                 border-radius: 10px;
                 padding: 60px;
             }
@@ -77,7 +77,7 @@
                 position: absolute;
                 bottom: 0px;
                 width: 100%;
-                background: rgba(255, 255, 255, 0.4);
+                background: rgba(0, 0, 0, 0.5);
                 padding: 2px 0px;
                 color: #ffffff;
                 text-align: center;
