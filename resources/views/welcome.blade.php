@@ -13,13 +13,14 @@
         <style>
             html, body {
                 /* background-color: #fff; */
-                background-image: url(https://aice.cloud/img/conference2.jpg);
+                background-image: url(https://aice.cloud/img/1.jpg);
                 background-size: cover;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                filter: blur(5px);
             }
 
             .full-height {
