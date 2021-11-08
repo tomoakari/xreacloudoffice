@@ -70,6 +70,13 @@
                 box-shadow: 0px 0px 70px #393939;
                 border-radius: 6px;
             }
+            .footer{
+                position: absolute;
+                bottom: 0px;
+                height: 30px;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.4)
+            }
         </style>
     </head>
     <body>
@@ -106,6 +113,7 @@
                 </div>
                 -->
             </div>
+            <div class="footer">Copyright © 2020 AIFORUS,Inc.</div>
         </div>
     </body>
 </html>
