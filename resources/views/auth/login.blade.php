@@ -71,7 +71,7 @@
     </div>
 </div>
 <style>
-    container {
+    .container {
                 /* background-color: #fff; */
                 background-image: url(https://aice.cloud/img/conference2.jpg);
                 background-size: cover;
