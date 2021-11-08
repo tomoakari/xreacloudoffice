@@ -76,6 +76,8 @@
                 width: 100%;
                 background: rgba(255, 255, 255, 0.4);
                 padding: 2px 0px;
+                color: #ffffff;
+                text-align: center;
             }
         </style>
     </head>
