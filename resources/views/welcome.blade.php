@@ -107,8 +107,9 @@
             <div class="content">
                 <div class="title m-b-md">
                     CLOUD OFFICE
+                    <p class="subtitle">テレワーク時代の社内会議や対外打合せ、<br />直感的に操作できる社内連絡ツールとして、<br />最適な環境をご提供いたします。</p>
                 </div>
-                <p class="subtitle">テレワーク時代の社内会議や対外打合せ、<br />直感的に操作できる社内連絡ツールとして、<br />最適な環境をご提供いたします。</p>
+                
 
                 <!--
                 <div class="links">
