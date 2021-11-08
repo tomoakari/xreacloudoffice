@@ -40,9 +40,10 @@
                 position: absolute;
                 right: 10px;
                 top: 18px;
-                background: rgba(255, 255, 255, 0.5);
+                background: rgba(0, 0, 0, 0.5);
                 /* border: 10px solid rgba(255, 255, 255, 0.1); */
                 padding: 5px;
+                border-radius: 6px;
             }
 
             .content {
@@ -59,7 +60,8 @@
             }
 
             .links > a {
-                color: #636b6f;
+                /*color: #636b6f;*/
+                color: #ffffff;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
