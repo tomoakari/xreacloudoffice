@@ -69,7 +69,7 @@
             </div>
         </div>
     </div>
-</div>
+
 <style>
     .container {
                 /* background-color: #fff; */
@@ -82,4 +82,5 @@
                 margin: 0;
             }
 </style>
+</div>
 @endsection
