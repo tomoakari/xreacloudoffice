@@ -12,11 +12,11 @@
             @endif
 
             <div class="card">
-                <div class="card-header">My Company</div>
+                <div class="card-header">会社管理画面</div>
 
                 <div class="card-body">
                     <ul>
-                        <li><a href="/company/invite">invite</a></li>
+                        <li><a href="/company/invite">従業員を作成する</a></li>
                         <li><a href="">edit</a></li>
                         <li><a href="">payment</a></li>
                     </ul>
@@ -25,7 +25,7 @@
             <br />
 
             <div class="card">
-                <div class="card-header">Create Company</div>
+                <div class="card-header">会社新規作成</div>
 
                 <div class="card-body">
                     <ul>
