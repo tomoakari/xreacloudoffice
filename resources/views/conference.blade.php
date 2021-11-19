@@ -28,7 +28,10 @@
             <br />
 
             <div class="card">
-                <div class="card-header">外部会議一覧</div>
+                <div class="card-header">
+                    外部会議一覧
+                    <span class="createbutton">＋</span>
+                </div>
 
                 <div class="card-body">
                     <ul>

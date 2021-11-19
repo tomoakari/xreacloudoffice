@@ -10,8 +10,9 @@
 
 .createbutton {
     position: absolute;
-    right: 0px;
+    right: 10px;
+    top: 10px;
     border: 1px solid #808080;
-    border-radius: 3px;
+    border-radius: 2px 10px;
     padding: 3px;
 }
