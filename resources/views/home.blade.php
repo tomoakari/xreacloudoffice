@@ -23,7 +23,7 @@
             </div>
             <br />
             <div class="card">
-                <div class="card-header">内部会議一覧</div>
+                <div class="card-header">本日の内部会議</div>
 
                 <div class="card-body">
                     <ul>
@@ -35,7 +35,7 @@
             </div>
             <br />
             <div class="card">
-                <div class="card-header">外部会議一覧</div>
+                <div class="card-header">本日の外部会議</div>
 
                 <div class="card-body">
                     <ul>
