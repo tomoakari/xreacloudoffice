@@ -23,24 +23,24 @@
             </div>
             <br />
             <div class="card">
-                <div class="card-header">内部会議一覧</div>
+                <div class="card-header">本日の内部会議</div>
 
                 <div class="card-body">
                     <ul>
-                        <li><a href="https://conftest.aice.cloud/?secret=65be2fcd5259eb27d384abdfed254054" target="_blank">営業会議001</a></li>
-                        <li><a href="https://conftest.aice.cloud/?secret=cb4801c38edf66d8f94c85d908ee8da9" target="_blank">営業会議002</a></li>
-                        <li><a href="https://conftest.aice.cloud/?secret=d8bd8709c851cddce2d9eb731ce76eb6" target="_blank">経営会議</a></li>
+                        <li><a href="https://conference.aice.cloud/?secret=cb78568ce7c60ce76d8b56f39578882e" target="_blank">営業会議001</a></li>
+                        <li><a href="https://conference.aice.cloud/?secret=2fb2e9d8df991eb104e92277c438b1d5" target="_blank">営業会議002</a></li>
+                        <li><a href="https://conference.aice.cloud/?secret=92588c4033bbad838fe6c6549362c26a" target="_blank">経営会議</a></li>
                     </ul>
                 </div>
             </div>
             <br />
             <div class="card">
-                <div class="card-header">外部会議一覧</div>
+                <div class="card-header">本日の外部会議</div>
 
                 <div class="card-body">
                     <ul>
-                        <li><a href="https://conftest.aice.cloud/?secret=ebe5e5c3fffd27f6c07a4f5f568b95d3" target="_blank">外部会議001</a></li>
-                        <li><a href="https://conftest.aice.cloud/?secret=96d7ab4f8a2a4b7d6a340ac3ac51e6d0" target="_blank">外部会議002</a></li>
+                        <li><a href="https://conference.aice.cloud/?secret=e991f94c5453936e206dabc3542c3344" target="_blank">外部会議001</a></li>
+                        <li><a href="https://conference.aice.cloud/?secret=ba39e17317ea1f80a408e04494acb5f5" target="_blank">外部会議002</a></li>
                     </ul>
                 </div>
             </div>
