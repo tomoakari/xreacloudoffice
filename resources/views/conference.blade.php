@@ -55,10 +55,25 @@
                 </div>
 
                 <div class="card-body">
-                    <ul>
-                        <li><a href="https://conference.aice.cloud/?secret=e991f94c5453936e206dabc3542c3344" target="_blank">外部会議001</a></li>
-                        <li><a href="https://conference.aice.cloud/?secret=ba39e17317ea1f80a408e04494acb5f5" target="_blank">外部会議002</a></li>
-                    </ul>
+                    <table class="meetinglist">
+                        <tr>
+                            <th>会議名</th><th>日時</th><th>ステータス</th><th>作成者</th><th></th>
+                        </tr>
+                        <tr>
+                            <td>外部会議001</td>
+                            <td>11/20 10:00</td>
+                            <td>開催済み</td>
+                            <td>松本</td>
+                            <td><a href="https://conference.aice.cloud/?secret=e991f94c5453936e206dabc3542c3344" target="_blank"><span class="roominbutton">入室する</span></a></td>
+                        </tr>
+                        <tr>
+                            <td>外部会議002</td>
+                            <td>11/20 10:00</td>
+                            <td>開催済み</td>
+                            <td>松本</td>
+                            <td><a href="https://conference.aice.cloud/?secret=ba39e17317ea1f80a408e04494acb5f5" target="_blank"><span class="roominbutton">入室する</span></a></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
