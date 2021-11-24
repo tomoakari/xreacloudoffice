@@ -7,3 +7,12 @@
     height: 100vh;
     margin: 0;
 }
+
+.createbutton {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: 1px solid #808080;
+    border-radius: 3px;
+    padding: 2px 10px;
+}

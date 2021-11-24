@@ -11,21 +11,27 @@
 |
 */
 
-
+// トップ画面
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
+// ダッシュボード
 Route::get('/home', 'HomeController@index')->name('home');
 
+// マイページ
 Route::get('/mypage', 'HomeController@mypage')->name('mypage');
 
+// 会議室管理画面
 Route::get('/conference', 'HomeController@conference')->name('conference');
+
+// 外部会議・内部会議だけど、管理画面に入れ込んじゃうかも
 Route::get('/conference/reception', 'HomeController@reception')->name('reception');
 Route::get('/conference/inhouse', 'HomeController@inhouse')->name('inhouse');
 
+// 会社管理画面
 Route::get('/company', 'HomeController@company')->name('company');
 Route::get('/company/organize', 'HomeController@organize')->name('organize');
 Route::get('/company/invite', 'HomeController@invite')->name('invite');
