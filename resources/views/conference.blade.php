@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">
                     内部会議一覧
-                    <span class="createbutton" onclick="alert('');">会議を新たに作成</span>
+                    <span class="createbutton" onclick="addConf()">会議を新たに作成</span>
                 </div>
 
                 <div class="card-body">
@@ -80,6 +80,9 @@
         </div>
     </div>
     <script>
+        function addConf(){
+            alert("addConf()");
+        }
         new Vue({
             el: '#app',
             data: {
@@ -90,7 +93,7 @@
                     alert("fff")
                 }
             }
-        })
+        });
     </script>
 </div>
 @endsection
