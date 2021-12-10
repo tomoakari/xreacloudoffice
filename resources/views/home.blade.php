@@ -67,7 +67,7 @@
                             <tr>
                                 <td>{{ $outerConf['name'] }}</td>
                                 <td>{{ $outerConf['scheduleStr'] }}</td>
-                                <td>{{ $outerConf['status'] }}</td>
+                                <td>{{ $outerConf['statusStr'] }}</td>
                                 <td>{{ $outerConf['username'] }}</td>
                                 <td><a href="{{ $outerConf['url'] }}" target="_blank"><span class="roominbutton">入室する</span></a></td>
                             </tr>
