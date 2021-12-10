@@ -70,7 +70,8 @@ class HomeController extends Controller
             'secret' => '12345678901234567890',
             'password' => '',
             'innerflg' => 0,
-            'status' => new Date(),
+            'status' => 0,
+            'schedule' => '2021-12-20 10:10:100',
         ];
         Conference::create([
             'name' => $data['name'],
@@ -78,7 +79,8 @@ class HomeController extends Controller
             'secret' => $data['secret'],
             'password' => $data['password'],
             'innerflg' => $data['innerflg'],
-            'status' => $data['schedule'],
+            'status' => $data['status'],
+            'schedule' => $data['schedule'],
         ]);
 
 
