@@ -52,7 +52,7 @@ class HomeController extends Controller
             ]
             );
         
-        return view('home', [$outerConfs => outerConfs]);
+        return view('home', ['outerConfs' => $outerConfs]);
         // return view('home');
     }
 
