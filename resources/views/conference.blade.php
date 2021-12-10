@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" id="app">
-    <div class="row justify-content-center">
+<div class="container">
+    <div class="row justify-content-center" id="app">
         <div class="col-md-8">
 
             @if (session('status'))
@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">
                     内部会議一覧
-                    <span class="createbutton" onclick="addConf()">会議を新たに作成</span>
+                    <span class="createbutton" v-click="test">会議を新たに作成</span>
                 </div>
 
                 <div class="card-body">
@@ -79,6 +79,7 @@
 
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <script>
         function addConf(){
             alert("addConf()");
