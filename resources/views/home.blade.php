@@ -63,6 +63,16 @@
                         <tr>
                             <th>会議名</th><th>日時</th><th>ステータス</th><th>作成者</th><th></th>
                         </tr>
+                        @foreach ($outerConfs as $outerConf)
+                            <tr>
+                                <td>{{ $outerConf->name }}</td>
+                                <td>{{ $outerConf->scheduleStr }}</td>
+                                <td>{{ $outerConf->status }}</td>
+                                <td>{{ $outerConf->username }}</td>
+                                <td><a href="{{ $outerConf->url }}" target="_blank"><span class="roominbutton">入室する</span></a></td>
+                            </tr>
+
+                        @endforeach
                         <tr>
                             <td>外部会議001</td>
                             <td>11/20 10:00</td>

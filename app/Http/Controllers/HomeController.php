@@ -27,7 +27,33 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $outerConfs = array(
+            [
+                'name' => 'サンプル会議',
+                'username' => '松本', 
+                'secret' => 'e991f94c5453936e206dabc3542c3344', 
+                'password' => '',
+                'innerflg' => '0',
+                'status' =>'未開催',
+                'schedule' => '',
+                'scheduleStr' => '2021/12/20 10:00',
+                'url' => 'https://conference.aice.cloud/?secret=e991f94c5453936e206dabc3542c3344'
+            ],
+            [
+                'name' => 'サンプル会議２',
+                'username' => '松本', 
+                'secret' => 'e991f94c5453936e206dabc3542c3344', 
+                'password' => '',
+                'innerflg' => '0',
+                'status' =>'未開催',
+                'schedule' => '',
+                'scheduleStr' => '2021/12/20 10:00',
+                'url' => 'https://conference.aice.cloud/?secret=e991f94c5453936e206dabc3542c3344'
+            ]
+            );
+        
+        return view('home', [$outerConfs => outerConfs]);
+        // return view('home');
     }
 
     /**
