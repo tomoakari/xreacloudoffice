@@ -18,4 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-
+// 会議室追加（あとで認証入れてputとかにする）
+Route::get('/conference', 'HomeController@addConference');

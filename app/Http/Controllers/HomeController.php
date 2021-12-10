@@ -23,6 +23,40 @@ class HomeController extends Controller
     }
 
     /**
+     * 
+     */
+    public function addConference()
+    {
+        $data = [
+            'name' => 'テスト会議',
+            'username' => 'てすと',
+            'secret' => '12345678901234567890',
+            'password' => '',
+            'innerflg' => 0,
+            'status' => 0,
+            'schedule' => '2021-12-20 10:10:10',
+        ];
+        Conference::create([
+            'name' => $data['name'],
+            'username' => $data['username'],
+            'secret' => $data['secret'],
+            'password' => $data['password'],
+            'innerflg' => $data['innerflg'],
+            'status' => $data['status'],
+            'schedule' => $data['schedule'],
+        ]);
+
+        $user = [
+            'id' => '111',
+            'name' => 'namename',
+            'mail' => 'address'
+        ];
+        return ['code' => '111', 'content' => 'ok'];
+        
+    }
+
+    
+    /**
      * Show the application dashboard.
      * @return \Illuminate\Contracts\Support\Renderable
      */
