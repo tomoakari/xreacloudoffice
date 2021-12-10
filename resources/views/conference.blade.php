@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center" id="app">
+    <div class="row justify-content-center" id="vueapp">
         <div class="col-md-8">
 
             @if (session('status'))
@@ -13,7 +13,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    内部会議一覧
+                    内部会議一覧<input v-model="message">
                     <span class="createbutton" v-click="test">会議を新たに作成</span>
                 </div>
 
@@ -85,9 +85,9 @@
             alert("addConf()");
         }
         new Vue({
-            el: '#app',
+            el: '#vueapp',
             data: {
-
+                message: "hello",
             },
             methods: {
                 test: function(){
