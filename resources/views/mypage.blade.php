@@ -15,7 +15,7 @@
                     @endif
 
                     <ul>
-                        <li>id: {{ $user.id }}</li>
+                        <li>id: {{ $user[id] }}</li>
                         <li>※{{ Auth::user()->name }}</li>
                     </ul>
 
