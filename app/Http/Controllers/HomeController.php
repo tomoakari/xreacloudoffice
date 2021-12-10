@@ -54,8 +54,10 @@ class HomeController extends Controller
                 'url' => 'https://conference.aice.cloud/?secret=e991f94c5453936e206dabc3542c3344'
             ]
             );
+
+            $tests = Conference::all();
         
-        return view('home', ['outerConfs' => $outerConfs]);
+        return view('home', ['outerConfs' => $outerConfs, 'tests' => $tests]);
         // return view('home');
     }
 
@@ -64,6 +66,7 @@ class HomeController extends Controller
      */
     public function mypage()
     {
+        /*
         $data = [
             'name' => 'テスト会議',
             'username' => 'てすと',
@@ -82,6 +85,7 @@ class HomeController extends Controller
             'status' => $data['status'],
             'schedule' => $data['schedule'],
         ]);
+        */
 
 
         /*

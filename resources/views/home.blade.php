@@ -58,6 +58,10 @@
             <div class="card">
                 <div class="card-header">本日の外部会議</div>
 
+                @foreach($tests as $test)
+                {{ $test['name'] }}<br />
+                @endforeach
+
                 <div class="card-body">
                     <table class="meetinglist">
                         <tr>
