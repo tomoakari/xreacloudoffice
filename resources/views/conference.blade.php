@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">
                     内部会議一覧
-                    <span class="createbutton" @click="test">会議を新たに作成</span>
+                    <span class="createbutton" onclick="alert('');">会議を新たに作成</span>
                 </div>
 
                 <div class="card-body">
