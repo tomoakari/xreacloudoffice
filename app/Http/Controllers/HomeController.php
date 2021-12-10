@@ -71,7 +71,7 @@ class HomeController extends Controller
             'password' => '',
             'innerflg' => 0,
             'status' => 0,
-            'schedule' => '2021-12-20 10:10:100',
+            'schedule' => '2021-12-20 10:10:10',
         ];
         Conference::create([
             'name' => $data['name'],
