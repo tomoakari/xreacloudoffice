@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header">
                     内部会議一覧
-                    <span class="createbutton">会議を新たに作成</span>
+                    <span class="createbutton" @click="test">会議を新たに作成</span>
                 </div>
 
                 <div class="card-body">
@@ -79,5 +79,18 @@
 
         </div>
     </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                test: function(){
+                    alert("fff")
+                }
+            }
+        })
+    </script>
 </div>
 @endsection

@@ -55,9 +55,9 @@ class HomeController extends Controller
             ]
             );
 
-            $tests = Conference::all();
+            $innerConfs = Conference::all();
         
-        return view('home', ['outerConfs' => $outerConfs, 'tests' => $tests]);
+        return view('home', ['outerConfs' => $outerConfs, 'innerConfs' => $innerConfs]);
         // return view('home');
     }
 

@@ -30,6 +30,15 @@
                         <tr>
                             <th>会議名</th><th>日時</th><th>ステータス</th><th>作成者</th><th></th>
                         </tr>
+                        @foreach ($innerConfs as $innerConf)
+                            <tr>
+                                <td>{{ $innerConf['name'] }}</td>
+                                <td>{{ $innerConf['scheduleStr'] }}</td>
+                                <td>{{ $innerConf['statusStr'] }}</td>
+                                <td>{{ $innerConf['username'] }}</td>
+                                <td><a href="{{ $innerConf['url'] }}" target="_blank"><span class="roominbutton">入室する</span></a></td>
+                            </tr>
+                        @endforeach
                         <tr>
                             <td>営業会議001</td>
                             <td>11/20 10:00</td>
@@ -58,10 +67,6 @@
             <div class="card">
                 <div class="card-header">本日の外部会議</div>
 
-                @foreach($tests as $test)
-                {{ $test['name'] }}<br />
-                @endforeach
-
                 <div class="card-body">
                     <table class="meetinglist">
                         <tr>
@@ -75,7 +80,6 @@
                                 <td>{{ $outerConf['username'] }}</td>
                                 <td><a href="{{ $outerConf['url'] }}" target="_blank"><span class="roominbutton">入室する</span></a></td>
                             </tr>
-
                         @endforeach
                         <tr>
                             <td>外部会議001</td>
