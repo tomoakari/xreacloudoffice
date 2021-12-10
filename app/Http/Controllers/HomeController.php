@@ -39,7 +39,14 @@ class HomeController extends Controller
         $auth = Auth::user();
         return view('mypage', [ 'auth' => $auth ]);
         */
-        return view('mypage');
+        $user = [
+            'id' => '111',
+            'name' => 'namename',
+            'mail' => 'address'
+        ];
+        return view('mypage', compact('user'));
+        
+        // return view('mypage');
     }
 
     /**
