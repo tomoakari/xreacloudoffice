@@ -25,8 +25,9 @@ class HomeController extends Controller
     /**
      * 
      */
-    public function addConference()
+    public function addConference(Request $request)
     {
+        /*
         $data = [
             'name' => 'テスト会議',
             'username' => 'てすと',
@@ -45,6 +46,8 @@ class HomeController extends Controller
             'status' => $data['status'],
             'schedule' => $data['schedule'],
         ]);
+        */
+        Conference::create($request);
 
         $user = [
             'id' => '111',
