@@ -27,28 +27,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-/*
 const app = new Vue({
     el: '#app',
-});
-*/
-
-const app = new Vue({
-    el: '#app',
-    data: {
-        message: "hello",
-    },
-    mounted: {
-        alert();
-    },
-    methods: {
-        test: function () {
-            Swal.fire({
-                title: 'Error!',
-                text: 'Do you want to continue',
-                icon: 'error',
-                confirmButtonText: 'Cool'
-            })
-        }
-    }
 });
