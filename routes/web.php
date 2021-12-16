@@ -36,6 +36,7 @@ Route::get('/company', 'HomeController@company')->name('company');
 Route::get('/company/organize', 'HomeController@organize')->name('organize');
 Route::get('/company/invite', 'HomeController@invite')->name('invite');
 
+Route::get('/addconf', 'HomeController@addConference')->name('addconf');
 
 
 
