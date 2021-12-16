@@ -65,9 +65,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
     <script>
-        function addConf(){
-            alert("addConf()");
-        }
         new Vue({
             el: '#vueapp',
             data: {
@@ -76,11 +73,11 @@
             methods: {
                 test: function(){
                     Swal.fire({
-  title: 'Error!',
-  text: 'Do you want to continue',
-  icon: 'error',
-  confirmButtonText: 'Cool'
-})
+                    title: 'Error!',
+                    text: 'Do you want to continue',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                    })
                 }
             }
         });
