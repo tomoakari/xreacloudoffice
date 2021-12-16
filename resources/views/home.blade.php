@@ -14,11 +14,11 @@
                         </div>
                     @endif
 
-                    
+                    <div class="button-area">
                         <span class="button"><a href="/mypage">マイページ</a></span>
                         <span class="button"><a href="/conference">会議管理</a></span>
                         <span class="button"><a href="/company">会社管理</a></span>
-                    
+                    </div>
                 </div>
             </div>
             <br />
