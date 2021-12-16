@@ -93,8 +93,8 @@ class HomeController extends Controller
         $innerConfs = Conference::all();
         */
 
-            $outerConfs = Conference::where('innerflg', 0);
-            $innerConfs = Conference::where('innerflg', 1);
+            $outerConfs = Conference::where('innerflg', 0)->get();
+            $innerConfs = Conference::where('innerflg', 1)->get();
         
         return view('home', ['outerConfs' => $outerConfs, 'innerConfs' => $innerConfs]);
         // return view('home');
