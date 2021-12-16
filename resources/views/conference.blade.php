@@ -11,7 +11,6 @@
                 </div>
             @endif
 
-            <input v-model="message">@{{ message }}
             <div class="card">
                 <div class="card-header">
                     内部会議一覧
