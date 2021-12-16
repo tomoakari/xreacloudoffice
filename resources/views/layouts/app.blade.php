@@ -24,6 +24,9 @@
 </head>
 <body>
     <div id="app">
+        <!-- vueコンポーネント -->
+        <example-component></example-component>
+        
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
@@ -78,6 +81,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        
     </div>
 </body>
 </html>
