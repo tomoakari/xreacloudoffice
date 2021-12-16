@@ -62,6 +62,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        /*
         $outerConfs = array(
             [
                 'name' => 'サンプル会議',
@@ -87,9 +89,12 @@ class HomeController extends Controller
                 'scheduleStr' => '2021/12/20 10:00',
                 'url' => 'https://conference.aice.cloud/?secret=e991f94c5453936e206dabc3542c3344'
             ]
-            );
+        );
+        $innerConfs = Conference::all();
+        */
 
-            $innerConfs = Conference::all();
+            $outerConfs = Conference::where('innerflg', 0);
+            $innerConfs = Conference::where('innerflg', 1);
         
         return view('home', ['outerConfs' => $outerConfs, 'innerConfs' => $innerConfs]);
         // return view('home');

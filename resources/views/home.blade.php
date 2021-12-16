@@ -14,6 +14,9 @@
                         </div>
                     @endif
 
+                    <div class="button">マイページ</div>
+                    <div class="button">会議管理</div>
+                    <div class="button">会社管理</div>
                     <ul>
                         <li><a href="/mypage">マイページ</a></li>
                         <li><a href="/conference">会議管理</a></li>
@@ -28,17 +31,18 @@
                 <div class="card-body">
                     <table class="meetinglist">
                         <tr>
-                            <th>会議名</th><th>日時</th><th>ステータス</th><th>作成者</th><th></th>
+                            <th>ステータス</th><th>日時</th><th>会議名</th><th>作成者</th><th></th>
                         </tr>
                         @foreach ($innerConfs as $innerConf)
                             <tr>
-                                <td>{{ $innerConf['name'] }}</td>
-                                <td>{{ $innerConf['scheduleStr'] }}</td>
                                 <td>{{ $innerConf['statusStr'] }}</td>
+                                <td>{{ $innerConf['scheduleStr'] }}</td>
+                                <td>{{ $innerConf['name'] }}</td>
                                 <td>{{ $innerConf['username'] }}</td>
                                 <td><a href="{{ $innerConf['url'] }}" target="_blank"><span class="roominbutton">入室する</span></a></td>
                             </tr>
                         @endforeach
+                        <!--
                         <tr>
                             <td>営業会議001</td>
                             <td>11/20 10:00</td>
@@ -60,6 +64,7 @@
                             <td>三瓶</td>
                             <td><a href="https://conference.aice.cloud/?secret=92588c4033bbad838fe6c6549362c26a" target="_blank"><span class="roominbutton">入室する</span></a></td>
                         </tr>
+                        -->
                     </table>
                 </div>
             </div>
@@ -70,17 +75,18 @@
                 <div class="card-body">
                     <table class="meetinglist">
                         <tr>
-                            <th>会議名</th><th>日時</th><th>ステータス</th><th>作成者</th><th></th>
+                            <th>ステータス</th><th>日時</th><th>会議名</th><th>作成者</th><th></th>
                         </tr>
                         @foreach ($outerConfs as $outerConf)
                             <tr>
-                                <td>{{ $outerConf['name'] }}</td>
-                                <td>{{ $outerConf['scheduleStr'] }}</td>
                                 <td>{{ $outerConf['statusStr'] }}</td>
+                                <td>{{ $outerConf['scheduleStr'] }}</td>
+                                <td>{{ $outerConf['name'] }}</td>
                                 <td>{{ $outerConf['username'] }}</td>
                                 <td><a href="{{ $outerConf['url'] }}" target="_blank"><span class="roominbutton">入室する</span></a></td>
                             </tr>
                         @endforeach
+                        <!--
                         <tr>
                             <td>外部会議001</td>
                             <td>11/20 10:00</td>
@@ -95,6 +101,7 @@
                             <td>松本</td>
                             <td><a href="https://conference.aice.cloud/?secret=ba39e17317ea1f80a408e04494acb5f5" target="_blank"><span class="roominbutton">入室する</span></a></td>
                         </tr>
+                        -->
                     </table>
                 </div>
             </div>
