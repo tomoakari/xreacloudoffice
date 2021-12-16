@@ -47,7 +47,16 @@ class HomeController extends Controller
             'schedule' => $data['schedule'],
         ]);
         */
-        Conference::create($request);
+        $data = [
+            'name' => $request['name'],
+            'username' => $request['username'],
+            'secret' => $request['secret'],
+            'password' => $request['password'],
+            'innerflg' => $request['innerflg'],
+            'status' => $request['status'],
+            'schedule' => $request['schedule'],
+        ];
+        Conference::create($data);
 
         $user = [
             'id' => '111',
