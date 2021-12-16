@@ -27,6 +27,10 @@ class HomeController extends Controller
      */
     public function addConference(Request $request)
     {
+
+        // https://kaigishitsu.aice.cloud/addconf?name=%E7%A7%8B%E8%91%89%E5%8E%9F%E9%8A%80%E8%A1%8C%E6%A7%98%E6%89%93%E3%81%A1%E5%90%88%E3%82%8F%E3%81%9B&username=%E5%A4%A7%E7%9F%A2%E9%83%A8&secret=2345678901234567890&password=%20&innerflg=0&status=1&schedule=2021-12-20%2010:10:10
+        // など
+        
         /*
         $data = [
             'name' => 'テスト会議',

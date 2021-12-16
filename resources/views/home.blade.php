@@ -39,7 +39,7 @@
                                 <td>{{ $innerConf['scheduleStr'] }}</td>
                                 <td>{{ $innerConf['name'] }}</td>
                                 <td>{{ $innerConf['username'] }}</td>
-                                <td><a href="https://conference.aice.cloud/?secret={{ $outerConf['secret'] }}" target="_blank"><span class="roominbutton">入室する</span></a></td>
+                                <td><a href="https://conference.aice.cloud/?secret={{ $innerConf['secret'] }}" target="_blank"><span class="roominbutton">入室する</span></a></td>
                             </tr>
                         @endforeach
                         <!--
