@@ -10,6 +10,7 @@
     <title>クラウドオフィス会議室</title>
     <!--{{ config('app.name', 'CLOUD OFFICE') }}-->
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->

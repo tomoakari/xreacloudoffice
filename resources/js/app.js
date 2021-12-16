@@ -29,17 +29,23 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-    data: {
-        message: "hello",
+    data: function () {
+        return {
+            message: "hello",
+        }
+
     },
     methods: {
-        test: function () {
+        test() {
+            alert("tyrt");
+            /*
             Swal.fire({
                 title: 'Error!',
                 text: 'Do you want to continue',
                 icon: 'error',
                 confirmButtonText: 'Cool'
             })
+            */
         }
     }
 });
