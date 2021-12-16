@@ -13,7 +13,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    内部会議一覧<input v-model="message">
+                    内部会議一覧
                     <span class="createbutton" v-click="test">会議を新たに作成</span>
                 </div>
 

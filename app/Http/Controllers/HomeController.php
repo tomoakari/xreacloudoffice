@@ -27,30 +27,9 @@ class HomeController extends Controller
      */
     public function addConference(Request $request)
     {
-
         // https://kaigishitsu.aice.cloud/addconf?name=%E7%A7%8B%E8%91%89%E5%8E%9F%E9%8A%80%E8%A1%8C%E6%A7%98%E6%89%93%E3%81%A1%E5%90%88%E3%82%8F%E3%81%9B&username=%E5%A4%A7%E7%9F%A2%E9%83%A8&secret=2345678901234567890&password=%20&innerflg=0&status=1&schedule=2021-12-20%2010:10:10
         // など
-        
-        /*
-        $data = [
-            'name' => 'テスト会議',
-            'username' => 'てすと',
-            'secret' => '12345678901234567890',
-            'password' => '',
-            'innerflg' => 0,
-            'status' => 0,
-            'schedule' => '2021-12-20 10:10:10',
-        ];
-        Conference::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
-            'secret' => $data['secret'],
-            'password' => $data['password'],
-            'innerflg' => $data['innerflg'],
-            'status' => $data['status'],
-            'schedule' => $data['schedule'],
-        ]);
-        */
+
         $data = [
             'name' => $request['name'],
             'username' => $request['username'],
@@ -78,39 +57,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        /*
-        $outerConfs = array(
-            [
-                'name' => 'サンプル会議',
-                'username' => '松本', 
-                'secret' => 'e991f94c5453936e206dabc3542c3344', 
-                'password' => '',
-                'innerflg' => '0',
-                'status' =>'0',
-                'schedule' => '',
-                'statusStr' =>'未開催',
-                'scheduleStr' => '2021/12/20 10:00',
-                'url' => 'https://conference.aice.cloud/?secret=e991f94c5453936e206dabc3542c3344'
-            ],
-            [
-                'name' => 'サンプル会議２',
-                'username' => '松本', 
-                'secret' => 'e991f94c5453936e206dabc3542c3344', 
-                'password' => '',
-                'innerflg' => '0',
-                'status' =>'0',
-                'schedule' => '',
-                'statusStr' =>'未開催',
-                'scheduleStr' => '2021/12/20 10:00',
-                'url' => 'https://conference.aice.cloud/?secret=e991f94c5453936e206dabc3542c3344'
-            ]
-        );
-        $innerConfs = Conference::all();
-        */
-
-            $outerConfs = Conference::where('innerflg', 0)->get();
-            $innerConfs = Conference::where('innerflg', 1)->get();
+            // 本日の日付で絞る
+            $outerConfs = Conference::where('innerflg', 0)->limit(3)->get();
+            $innerConfs = Conference::where('innerflg', 1)->limit(3)->get();
         
         return view('home', ['outerConfs' => $outerConfs, 'innerConfs' => $innerConfs]);
         // return view('home');
@@ -121,28 +70,6 @@ class HomeController extends Controller
      */
     public function mypage()
     {
-        /*
-        $data = [
-            'name' => 'テスト会議',
-            'username' => 'てすと',
-            'secret' => '12345678901234567890',
-            'password' => '',
-            'innerflg' => 0,
-            'status' => 0,
-            'schedule' => '2021-12-20 10:10:10',
-        ];
-        Conference::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
-            'secret' => $data['secret'],
-            'password' => $data['password'],
-            'innerflg' => $data['innerflg'],
-            'status' => $data['status'],
-            'schedule' => $data['schedule'],
-        ]);
-        */
-
-
         /*
         $auth = Auth::user();
         return view('mypage', [ 'auth' => $auth ]);
