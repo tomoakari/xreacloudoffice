@@ -15,9 +15,10 @@
                     @endif
 
                     <div class="button-area">
-                        <span class="button"><a href="/mypage">マイページ</a></span>
-                        <span class="button"><a href="/conference">会議管理</a></span>
-                        <span class="button"><a href="/company">会社管理</a></span>
+                        <a href="/mypage"><span class="button">マイページ</span></a>
+                        <a href="/conference"><span class="button">会議管理</span></a>
+                        <a href="/company"><span class="button">会社管理</span></a>
+
                     </div>
                 </div>
             </div>

@@ -37,3 +37,7 @@
     cursor: pointer;
     margin: 5px;
 }
+.button-area > a {
+    color: #ffffff;
+    text-decoration: underline;
+}
