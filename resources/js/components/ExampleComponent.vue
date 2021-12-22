@@ -5,8 +5,9 @@
         <div class="card">
           <div class="card-header">Example Component</div>
 
-          <div class="card-body">I'm an example component.</div>
-          ghjkl
+          <div class="card-body">
+            <p>{{ message }}<input v-model="message" /></p>
+          </div>
         </div>
       </div>
     </div>
