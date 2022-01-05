@@ -60,6 +60,10 @@
                 </div>
             </div>
 
+            
+        <!-- vueコンポーネント -->
+        <conference-component></conference-component>
+
         </div>
     </div>
 </div>
