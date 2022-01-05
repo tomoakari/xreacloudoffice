@@ -62,7 +62,7 @@
 
             
         <!-- vueコンポーネント -->
-        <conference-component></conference-component>
+        <example-component></example-component>
 
         </div>
     </div>
