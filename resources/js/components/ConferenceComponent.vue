@@ -16,12 +16,18 @@
             <th>会議名</th>
             <th>作成者</th>
             <th></th>
+            <th></th>
           </tr>
-          <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.schedule">
+          <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.id">
             <td>{{ innerConf.status }}</td>
             <td>{{ innerConf.schedule }}</td>
             <td>{{ innerConf.name }}</td>
             <td>{{ innerConf.username }}</td>
+            <td>
+              <span class="roominbutton" @click="showDetail(outerConf.id)"
+                >詳細</span
+              >
+            </td>
             <td>
               <a
                 v-bind:href="
@@ -52,12 +58,18 @@
             <th>会議名</th>
             <th>作成者</th>
             <th></th>
+            <th></th>
           </tr>
-          <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.schedule">
-            <td>{{ outerConf.status }}</td>
-            <td>{{ outerConf.schedule }}</td>
+          <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
+            <td>{{ outerConf.status == "0" ? "未開催" : "開催済" }}</td>
+            <td>{{ outerConf.schedule.substr(0, 10) }}</td>
             <td>{{ outerConf.name }}</td>
             <td>{{ outerConf.username }}</td>
+            <td>
+              <span class="roominbutton" @click="showDetail(outerConf.id)"
+                >詳細</span
+              >
+            </td>
             <td>
               <a
                 v-bind:href="
@@ -87,6 +99,7 @@ export default {
   props: {},
   mounted() {
     console.log("Component mounted.");
+    this.getInnerConfs();
     this.getOuterConfs();
   },
   methods: {
@@ -96,6 +109,14 @@ export default {
         text: "Do you want to continue",
         icon: "error",
         confirmButtonText: "Cool",
+      });
+    },
+    showDetail: function (id) {
+      Swal.fire({
+        title: "id: " + id,
+        text: "詳細情報",
+        icon: "info",
+        confirmButtonText: "とじる",
       });
     },
     getOuterConfs: function () {

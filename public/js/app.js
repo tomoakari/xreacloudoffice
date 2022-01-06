@@ -1984,6 +1984,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //import Swal from "sweetalert2/dist/sweetalert2.js";
 //import "sweetalert2/src/sweetalert2.scss";
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1996,6 +2008,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {},
   mounted: function mounted() {
     console.log("Component mounted.");
+    this.getInnerConfs();
     this.getOuterConfs();
   },
   methods: {
@@ -2005,6 +2018,14 @@ __webpack_require__.r(__webpack_exports__);
         text: "Do you want to continue",
         icon: "error",
         confirmButtonText: "Cool"
+      });
+    },
+    showDetail: function showDetail(id) {
+      Swal.fire({
+        title: "id: " + id,
+        text: "詳細情報",
+        icon: "info",
+        confirmButtonText: "とじる"
       });
     },
     getOuterConfs: function getOuterConfs() {
@@ -37766,7 +37787,7 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _vm._l(_vm.innerConfs, function(innerConf) {
-              return _c("tr", { key: innerConf.schedule }, [
+              return _c("tr", { key: innerConf.id }, [
                 _c("td", [_vm._v(_vm._s(innerConf.status))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(innerConf.schedule))]),
@@ -37774,6 +37795,21 @@ var render = function() {
                 _c("td", [_vm._v(_vm._s(innerConf.name))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(innerConf.username))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "roominbutton",
+                      on: {
+                        click: function($event) {
+                          return _vm.showDetail(_vm.outerConf.id)
+                        }
+                      }
+                    },
+                    [_vm._v("詳細")]
+                  )
+                ]),
                 _vm._v(" "),
                 _c("td", [
                   _c(
@@ -37826,14 +37862,31 @@ var render = function() {
             _vm._m(1),
             _vm._v(" "),
             _vm._l(_vm.outerConfs, function(outerConf) {
-              return _c("tr", { key: outerConf.schedule }, [
-                _c("td", [_vm._v(_vm._s(outerConf.status))]),
+              return _c("tr", { key: outerConf.id }, [
+                _c("td", [
+                  _vm._v(_vm._s(outerConf.status == "0" ? "未開催" : "開催済"))
+                ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(outerConf.schedule))]),
+                _c("td", [_vm._v(_vm._s(outerConf.schedule.substr(0, 10)))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(outerConf.name))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(outerConf.username))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "roominbutton",
+                      on: {
+                        click: function($event) {
+                          return _vm.showDetail(outerConf.id)
+                        }
+                      }
+                    },
+                    [_vm._v("詳細")]
+                  )
+                ]),
                 _vm._v(" "),
                 _c("td", [
                   _c(
@@ -37876,6 +37929,8 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("th", [_vm._v("作成者")]),
       _vm._v(" "),
+      _c("th"),
+      _vm._v(" "),
       _c("th")
     ])
   },
@@ -37891,6 +37946,8 @@ var staticRenderFns = [
       _c("th", [_vm._v("会議名")]),
       _vm._v(" "),
       _c("th", [_vm._v("作成者")]),
+      _vm._v(" "),
+      _c("th"),
       _vm._v(" "),
       _c("th")
     ])
