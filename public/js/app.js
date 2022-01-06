@@ -2001,7 +2001,7 @@ __webpack_require__.r(__webpack_exports__);
     getOuterConfs: function getOuterConfs() {
       var _this = this;
 
-      axios.get("/api/getOuterConfs", {
+      axios.get("/getOuterConfs", {
         params: {
           userId: "1"
         }
@@ -37724,21 +37724,9 @@ var render = function() {
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-header" }, [
         _vm._v("\n      外部会議一覧\n      "),
-        _c(
-          "span",
-          {
-            directives: [
-              {
-                name: "click",
-                rawName: "v-click",
-                value: _vm.test,
-                expression: "test"
-              }
-            ],
-            staticClass: "createbutton"
-          },
-          [_vm._v("会議を新たに作成")]
-        )
+        _c("span", { staticClass: "createbutton", on: { click: _vm.test } }, [
+          _vm._v("会議を新たに作成")
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [

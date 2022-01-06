@@ -4,7 +4,7 @@
     <div class="card">
       <div class="card-header">
         内部会議一覧
-        <span class="createbutton" v-click="test">会議を新たに作成</span>
+        <span class="createbutton" @click="test">会議を新たに作成</span>
       </div>
 
       <div class="card-body">
@@ -40,7 +40,7 @@
     <div class="card">
       <div class="card-header">
         外部会議一覧
-        <span class="createbutton" v-click="test">会議を新たに作成</span>
+        <span class="createbutton" @click="test">会議を新たに作成</span>
       </div>
 
       <div class="card-body">
@@ -91,7 +91,7 @@ export default {
     },
     getOuterConfs: function () {
       axios
-        .get("/api/getOuterConfs", {
+        .get("/getOuterConfs", {
           params: {
             userId: "1",
           },
