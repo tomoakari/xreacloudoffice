@@ -1,10 +1,11 @@
 <template>
   <div>
-    <!--
     <div class="card">
       <div class="card-header">
         内部会議一覧
-        <span class="createbutton" @click="test">会議を新たに作成</span>
+        <span class="createbutton" @click="createConf('inner')"
+          >会議を新たに作成</span
+        >
       </div>
 
       <div class="card-body">
@@ -16,31 +17,31 @@
             <th>作成者</th>
             <th></th>
           </tr>
-          @foreach ($innerConfs as $innerConf)
-          <tr>
-            <td>{{ $innerConf["status"] }}</td>
-            <td>{{ $innerConf["schedule"] }}</td>
-            <td>{{ $innerConf["name"] }}</td>
-            <td>{{ $innerConf["username"] }}</td>
+          <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.schedule">
+            <td>{{ innerConf.status }}</td>
+            <td>{{ innerConf.schedule }}</td>
+            <td>{{ innerConf.name }}</td>
+            <td>{{ innerConf.username }}</td>
             <td>
               <a
-                href="https://conference.aice.cloud/?secret={{ $innerConf['secret'] }}"
+                v-bind:href="
+                  'https://conference.aice.cloud/?secret=' + innerConf.secret
+                "
                 target="_blank"
                 ><span class="roominbutton">入室する</span></a
               >
             </td>
           </tr>
-          @endforeach
         </table>
       </div>
     </div>
-    <br />
-    -->
 
     <div class="card">
       <div class="card-header">
         外部会議一覧
-        <span class="createbutton" @click="test">会議を新たに作成</span>
+        <span class="createbutton" @click="createConf('outer')"
+          >会議を新たに作成</span
+        >
       </div>
 
       <div class="card-body">
@@ -74,10 +75,14 @@
 </template>
 
 <script>
+import Swal from "sweetalert2/dist/sweetalert2.js";
+
+import "sweetalert2/src/sweetalert2.scss";
 export default {
   data: function () {
     return {
       outerConfs: [],
+      innerConfs: [],
     };
   },
   props: {},
@@ -86,8 +91,13 @@ export default {
     this.getOuterConfs();
   },
   methods: {
-    test: function () {
-      alert("test!!!");
+    createConf: function (param) {
+      Swal.fire({
+        title: param,
+        text: "Do you want to continue",
+        icon: "error",
+        confirmButtonText: "Cool",
+      });
     },
     getOuterConfs: function () {
       axios
@@ -101,6 +111,21 @@ export default {
         })
         .catch((err) => {
           this.outerConfs = {};
+        })
+        .finally();
+    },
+    getInnerConfs: function () {
+      axios
+        .get("/getInnerConfs", {
+          params: {
+            //userId: "1",
+          },
+        })
+        .then((response) => {
+          this.innerConfs = response.data;
+        })
+        .catch((err) => {
+          this.innerConfs = {};
         })
         .finally();
     },

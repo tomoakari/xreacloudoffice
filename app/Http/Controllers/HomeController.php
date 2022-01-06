@@ -50,12 +50,13 @@ class HomeController extends Controller
         
     }
 
-    /**
-     * 
-     */
     public function getOuterConfs(Request $request)
     {
         return $outerConfs = Conference::where('innerflg', 0)->get();
+    }
+    public function getInnerConfs(Request $request)
+    {
+        return $innerConfs = Conference::where('innerflg', 1)->get();
     }
 
     
