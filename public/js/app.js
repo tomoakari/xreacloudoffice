@@ -1924,11 +1924,74 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
-      message: "hey!!!!!!"
-    };
+    return {};
+  },
+  props: {
+    outerConfs: {
+      type: String
+    }
   },
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -37646,44 +37709,82 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Conference Component")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("p", [
-              _vm._v(_vm._s(_vm.message)),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.message,
-                    expression: "message"
-                  }
-                ],
-                domProps: { value: _vm.message },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.message = $event.target.value
-                  }
-                }
-              })
-            ])
-          ])
-        ])
+  return _c("div", [
+    _c("div", { staticClass: "card" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "table",
+          { staticClass: "meetinglist" },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._l(_vm.outerConfs, function(outerConf) {
+              return _c("tr", { key: outerConf.schedule }, [
+                _c("td", [_vm._v(_vm._s(outerConf.status))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(outerConf.schedule))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(outerConf.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(outerConf.username))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          "https://conference.aice.cloud/?secret=" +
+                          outerConf.secret,
+                        target: "_blank"
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "roominbutton" }, [
+                        _vm._v("入室する")
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            }),
+            _vm._v("\n        @endforeach\n      ")
+          ],
+          2
+        )
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _vm._v("\n      外部会議一覧\n      "),
+      _c("span", { staticClass: "createbutton" }, [_vm._v("会議を新たに作成")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("ステータス")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("日時")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("会議名")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("作成者")]),
+      _vm._v(" "),
+      _c("th")
+    ])
+  }
+]
 render._withStripped = true
 
 

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center" id="vueapp">
+    <div class="row justify-content-center">
         <div class="col-md-8">
 
             @if (session('status'))
@@ -11,6 +11,7 @@
                 </div>
             @endif
 
+            <!--
             <div class="card">
                 <div class="card-header">
                     内部会議一覧
@@ -59,11 +60,11 @@
                     </table>
                 </div>
             </div>
+            -->
 
             
         <!-- vueコンポーネント -->
-        <example-component></example-component>
-        <conference-component></conference-component>
+        <conference-component v-bind:outerConfs='$outerConfs'></conference-component>
 
         </div>
     </div>
