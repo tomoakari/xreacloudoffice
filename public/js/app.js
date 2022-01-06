@@ -1983,7 +1983,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -37711,14 +37710,31 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "card" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "card-header" }, [
+        _vm._v("\n      外部会議一覧\n      "),
+        _c(
+          "span",
+          {
+            directives: [
+              {
+                name: "click",
+                rawName: "v-click",
+                value: _vm.test,
+                expression: "test"
+              }
+            ],
+            staticClass: "createbutton"
+          },
+          [_vm._v("会議を新たに作成")]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c(
           "table",
           { staticClass: "meetinglist" },
           [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _vm._l(_vm.outerConfs, function(outerConf) {
               return _c("tr", { key: outerConf.schedule }, [
@@ -37749,8 +37765,7 @@ var render = function() {
                   )
                 ])
               ])
-            }),
-            _vm._v("\n        @endforeach\n      ")
+            })
           ],
           2
         )
@@ -37759,15 +37774,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n      外部会議一覧\n      "),
-      _c("span", { staticClass: "createbutton" }, [_vm._v("会議を新たに作成")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
