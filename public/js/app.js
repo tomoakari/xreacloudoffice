@@ -2022,23 +2022,24 @@ __webpack_require__.r(__webpack_exports__);
           _this.createParams[1] = document.getElementById("input_schedule").value;
         }
       }).then(function (formValues) {
-        console.log(formValues);
-        axios.get("/createConf", {
-          params: {
-            name: _this.createParams[0],
-            username: "test",
-            secret: "12345678901234567890",
-            password: "",
-            innerflg: param,
-            status: 0,
-            schedule: _this.createParams[1]
-          }
-        }).then(function (response) {
-          //this.outerConfs = response.data;
-          Swal.fire(JSON.stringify(response.data));
-        })["catch"](function (err) {
-          Swal.fire(JSON.stringify(err));
-        })["finally"]();
+        if (formValues) {
+          axios.get("/createConf", {
+            params: {
+              name: _this.createParams[0],
+              username: "test",
+              secret: "12345678901234567890",
+              password: "pw",
+              innerflg: param,
+              status: 0,
+              schedule: _this.createParams[1]
+            }
+          }).then(function (response) {
+            //this.outerConfs = response.data;
+            Swal.fire(JSON.stringify(response.data));
+          })["catch"](function (err) {
+            Swal.fire(JSON.stringify(err));
+          })["finally"]();
+        }
       });
     },
     showDetail: function showDetail(id) {

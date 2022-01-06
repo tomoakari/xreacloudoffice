@@ -114,27 +114,28 @@ export default {
             document.getElementById("input_schedule").value;
         },
       }).then((formValues) => {
-        console.log(formValues);
-        axios
-          .get("/createConf", {
-            params: {
-              name: this.createParams[0],
-              username: "test",
-              secret: "12345678901234567890",
-              password: "",
-              innerflg: param,
-              status: 0,
-              schedule: this.createParams[1],
-            },
-          })
-          .then((response) => {
-            //this.outerConfs = response.data;
-            Swal.fire(JSON.stringify(response.data));
-          })
-          .catch((err) => {
-            Swal.fire(JSON.stringify(err));
-          })
-          .finally();
+        if (formValues) {
+          axios
+            .get("/createConf", {
+              params: {
+                name: this.createParams[0],
+                username: "test",
+                secret: "12345678901234567890",
+                password: "pw",
+                innerflg: param,
+                status: 0,
+                schedule: this.createParams[1],
+              },
+            })
+            .then((response) => {
+              //this.outerConfs = response.data;
+              Swal.fire(JSON.stringify(response.data));
+            })
+            .catch((err) => {
+              Swal.fire(JSON.stringify(err));
+            })
+            .finally();
+        }
       });
     },
     showDetail: function (id) {
