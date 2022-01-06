@@ -100,7 +100,7 @@ export default {
   },
   methods: {
     createConf: function (param) {
-      const { value: formValues } = Swal.fire({
+      Swal.fire({
         title: param == 1 ? "内部" : "外部" + "会議を作成する",
         html:
           `<input id="input_name" class="swal2-input" placeholder="会議名">` +
@@ -115,7 +115,8 @@ export default {
             document.getElementById("input_schedule").value,
           ];
         },
-      }).then(() => {
+      }).then((formValues) => {
+        console.log(formValues);
         if (formValues) {
           axios
             .get("/createConf", {

@@ -2009,7 +2009,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createConf: function createConf(param) {
-      var _Swal$fire$then = Swal.fire({
+      Swal.fire({
         title: param == 1 ? "内部" : "外部" + "会議を作成する",
         html: "<input id=\"input_name\" class=\"swal2-input\" placeholder=\"\u4F1A\u8B70\u540D\">" + "<input id=\"input_schedule\" class=\"swal2-input\" placeholder=\"\u958B\u50AC\u65E5\uFF082021-04-20 09:30:00\uFF09\">",
         confirmButtonText: "送信",
@@ -2019,7 +2019,9 @@ __webpack_require__.r(__webpack_exports__);
           //var input_schedule = document.getElementById("input_schedule").value;
           return [document.getElementById("input_name").value, document.getElementById("input_schedule").value];
         }
-      }).then(function () {
+      }).then(function (formValues) {
+        console.log(formValues);
+
         if (formValues) {
           axios.get("/createConf", {
             params: {
@@ -2038,8 +2040,7 @@ __webpack_require__.r(__webpack_exports__);
             Swal.fire(JSON.stringify(err));
           })["finally"]();
         }
-      }),
-          formValues = _Swal$fire$then.value;
+      });
     },
     showDetail: function showDetail(id) {
       Swal.fire({
