@@ -93,7 +93,7 @@ export default {
       axios
         .get("/getOuterConfs", {
           params: {
-            userId: "1",
+            //userId: "1",
           },
         })
         .then((response) => {
