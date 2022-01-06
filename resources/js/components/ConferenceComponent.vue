@@ -90,6 +90,7 @@ export default {
     return {
       outerConfs: [],
       innerConfs: [],
+      createParams: [],
     };
   },
   props: {},
@@ -101,44 +102,39 @@ export default {
   methods: {
     createConf: function (param) {
       Swal.fire({
-        title: param == 1 ? "内部" : "外部" + "会議を作成する",
+        title: (param == 1 ? "内部" : "外部") + "会議を作成する",
         html:
           `<input id="input_name" class="swal2-input" placeholder="会議名">` +
           `<input id="input_schedule" class="swal2-input" placeholder="開催日（2021-04-20 09:30:00）">`,
         confirmButtonText: "送信",
         focusConfirm: false,
         preConfirm: () => {
-          //var input_name = document.getElementById("input_name").value;
-          //var input_schedule = document.getElementById("input_schedule").value;
-          return [
-            document.getElementById("input_name").value,
-            document.getElementById("input_schedule").value,
-          ];
+          this.createParams[0] = document.getElementById("input_name").value;
+          this.createParams[1] =
+            document.getElementById("input_schedule").value;
         },
       }).then((formValues) => {
         console.log(formValues);
-        if (formValues) {
-          axios
-            .get("/createConf", {
-              params: {
-                name: formValues[0],
-                username: "",
-                secret: "",
-                password: "",
-                innerflg: param,
-                status: 0,
-                schedule: formValues[1],
-              },
-            })
-            .then((response) => {
-              //this.outerConfs = response.data;
-              Swal.fire(JSON.stringify(response.data));
-            })
-            .catch((err) => {
-              Swal.fire(JSON.stringify(err));
-            })
-            .finally();
-        }
+        axios
+          .get("/createConf", {
+            params: {
+              name: this.createParams[0],
+              username: "test",
+              secret: "12345678901234567890",
+              password: "",
+              innerflg: param,
+              status: 0,
+              schedule: this.createParams[1],
+            },
+          })
+          .then((response) => {
+            //this.outerConfs = response.data;
+            Swal.fire(JSON.stringify(response.data));
+          })
+          .catch((err) => {
+            Swal.fire(JSON.stringify(err));
+          })
+          .finally();
       });
     },
     showDetail: function (id) {

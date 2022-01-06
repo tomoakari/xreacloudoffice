@@ -1998,7 +1998,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       outerConfs: [],
-      innerConfs: []
+      innerConfs: [],
+      createParams: []
     };
   },
   props: {},
@@ -2009,37 +2010,35 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createConf: function createConf(param) {
+      var _this = this;
+
       Swal.fire({
-        title: param == 1 ? "内部" : "外部" + "会議を作成する",
+        title: (param == 1 ? "内部" : "外部") + "会議を作成する",
         html: "<input id=\"input_name\" class=\"swal2-input\" placeholder=\"\u4F1A\u8B70\u540D\">" + "<input id=\"input_schedule\" class=\"swal2-input\" placeholder=\"\u958B\u50AC\u65E5\uFF082021-04-20 09:30:00\uFF09\">",
         confirmButtonText: "送信",
         focusConfirm: false,
         preConfirm: function preConfirm() {
-          //var input_name = document.getElementById("input_name").value;
-          //var input_schedule = document.getElementById("input_schedule").value;
-          return [document.getElementById("input_name").value, document.getElementById("input_schedule").value];
+          _this.createParams[0] = document.getElementById("input_name").value;
+          _this.createParams[1] = document.getElementById("input_schedule").value;
         }
       }).then(function (formValues) {
         console.log(formValues);
-
-        if (formValues) {
-          axios.get("/createConf", {
-            params: {
-              name: formValues[0],
-              username: "",
-              secret: "",
-              password: "",
-              innerflg: param,
-              status: 0,
-              schedule: formValues[1]
-            }
-          }).then(function (response) {
-            //this.outerConfs = response.data;
-            Swal.fire(JSON.stringify(response.data));
-          })["catch"](function (err) {
-            Swal.fire(JSON.stringify(err));
-          })["finally"]();
-        }
+        axios.get("/createConf", {
+          params: {
+            name: _this.createParams[0],
+            username: "test",
+            secret: "12345678901234567890",
+            password: "",
+            innerflg: param,
+            status: 0,
+            schedule: _this.createParams[1]
+          }
+        }).then(function (response) {
+          //this.outerConfs = response.data;
+          Swal.fire(JSON.stringify(response.data));
+        })["catch"](function (err) {
+          Swal.fire(JSON.stringify(err));
+        })["finally"]();
       });
     },
     showDetail: function showDetail(id) {
@@ -2051,27 +2050,27 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     getOuterConfs: function getOuterConfs() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("/getOuterConfs", {
         params: {//userId: "1",
         }
       }).then(function (response) {
-        _this.outerConfs = response.data;
+        _this2.outerConfs = response.data;
       })["catch"](function (err) {
-        _this.outerConfs = {};
+        _this2.outerConfs = {};
       })["finally"]();
     },
     getInnerConfs: function getInnerConfs() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/getInnerConfs", {
         params: {//userId: "1",
         }
       }).then(function (response) {
-        _this2.innerConfs = response.data;
+        _this3.innerConfs = response.data;
       })["catch"](function (err) {
-        _this2.innerConfs = {};
+        _this3.innerConfs = {};
       })["finally"]();
     }
   }
