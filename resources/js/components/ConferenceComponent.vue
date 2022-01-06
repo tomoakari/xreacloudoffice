@@ -115,29 +115,30 @@ export default {
             document.getElementById("swal-input2").value,
           ];
         },
+      }).then(() => {
+        if (formValues) {
+          axios
+            .get("/createConf", {
+              params: {
+                name: formValues[0],
+                username: "",
+                secret: "",
+                password: "",
+                innerflg: param,
+                status: 0,
+                schedule: formValues[1],
+              },
+            })
+            .then((response) => {
+              //this.outerConfs = response.data;
+              Swal.fire(JSON.stringify(response.data));
+            })
+            .catch((err) => {
+              Swal.fire(JSON.stringify(err));
+            })
+            .finally();
+        }
       });
-      if (formValues) {
-        axios
-          .get("/createConf", {
-            params: {
-              name: formValues[0],
-              username: "",
-              secret: "",
-              password: "",
-              innerflg: param,
-              status: 0,
-              schedule: formValues[1],
-            },
-          })
-          .then((response) => {
-            //this.outerConfs = response.data;
-            Swal.fire(JSON.stringify(response.data));
-          })
-          .catch((err) => {
-            Swal.fire(JSON.stringify(err));
-          })
-          .finally();
-      }
     },
     showDetail: function (id) {
       Swal.fire({
