@@ -1983,10 +1983,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//import Swal from "sweetalert2/dist/sweetalert2.js";
+//import "sweetalert2/src/sweetalert2.scss";
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      outerConfs: []
+      outerConfs: [],
+      innerConfs: []
     };
   },
   props: {},
@@ -1995,20 +1999,36 @@ __webpack_require__.r(__webpack_exports__);
     this.getOuterConfs();
   },
   methods: {
-    test: function test() {
-      alert("test!!!");
+    createConf: function createConf(param) {
+      Swal.fire({
+        title: param,
+        text: "Do you want to continue",
+        icon: "error",
+        confirmButtonText: "Cool"
+      });
     },
     getOuterConfs: function getOuterConfs() {
       var _this = this;
 
       axios.get("/getOuterConfs", {
-        params: {
-          userId: "1"
+        params: {//userId: "1",
         }
       }).then(function (response) {
         _this.outerConfs = response.data;
       })["catch"](function (err) {
         _this.outerConfs = {};
+      })["finally"]();
+    },
+    getInnerConfs: function getInnerConfs() {
+      var _this2 = this;
+
+      axios.get("/getInnerConfs", {
+        params: {//userId: "1",
+        }
+      }).then(function (response) {
+        _this2.innerConfs = response.data;
+      })["catch"](function (err) {
+        _this2.innerConfs = {};
       })["finally"]();
     }
   }
@@ -37723,10 +37743,19 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-header" }, [
-        _vm._v("\n      外部会議一覧\n      "),
-        _c("span", { staticClass: "createbutton", on: { click: _vm.test } }, [
-          _vm._v("会議を新たに作成")
-        ])
+        _vm._v("\n      内部会議一覧\n      "),
+        _c(
+          "span",
+          {
+            staticClass: "createbutton",
+            on: {
+              click: function($event) {
+                return _vm.createConf("inner")
+              }
+            }
+          },
+          [_vm._v("会議を新たに作成")]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
@@ -37735,6 +37764,66 @@ var render = function() {
           { staticClass: "meetinglist" },
           [
             _vm._m(0),
+            _vm._v(" "),
+            _vm._l(_vm.innerConfs, function(innerConf) {
+              return _c("tr", { key: innerConf.schedule }, [
+                _c("td", [_vm._v(_vm._s(innerConf.status))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(innerConf.schedule))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(innerConf.name))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(innerConf.username))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href:
+                          "https://conference.aice.cloud/?secret=" +
+                          innerConf.secret,
+                        target: "_blank"
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "roominbutton" }, [
+                        _vm._v("入室する")
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            })
+          ],
+          2
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _vm._v("\n      外部会議一覧\n      "),
+        _c(
+          "span",
+          {
+            staticClass: "createbutton",
+            on: {
+              click: function($event) {
+                return _vm.createConf("outer")
+              }
+            }
+          },
+          [_vm._v("会議を新たに作成")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "table",
+          { staticClass: "meetinglist" },
+          [
+            _vm._m(1),
             _vm._v(" "),
             _vm._l(_vm.outerConfs, function(outerConf) {
               return _c("tr", { key: outerConf.schedule }, [
@@ -37774,6 +37863,22 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("ステータス")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("日時")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("会議名")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("作成者")]),
+      _vm._v(" "),
+      _c("th")
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
