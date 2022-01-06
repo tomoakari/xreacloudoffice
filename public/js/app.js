@@ -1985,19 +1985,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      outerConfs: []
+    };
   },
-  props: {
-    outerConfs: {
-      type: String
-    }
-  },
+  props: {},
   mounted: function mounted() {
     console.log("Component mounted.");
+    this.getOuterConfs();
   },
   methods: {
     test: function test() {
       alert("test!!!");
+    },
+    getOuterConfs: function getOuterConfs() {
+      var _this = this;
+
+      axios.get("/api/getOuterConfs", {
+        params: {
+          userId: "1"
+        }
+      }).then(function (response) {
+        _this.outerConfs = response.data;
+      })["catch"](function (err) {
+        _this.outerConfs = {};
+      })["finally"]();
     }
   }
 });

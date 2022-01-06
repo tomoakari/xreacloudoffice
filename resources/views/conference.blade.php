@@ -64,7 +64,7 @@
 
             
         <!-- vueコンポーネント -->
-        <conference-component v-bind:outerConfs='$outerConfs'></conference-component>
+        <conference-component></conference-component>
 
         </div>
     </div>

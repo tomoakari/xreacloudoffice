@@ -50,6 +50,15 @@ class HomeController extends Controller
         
     }
 
+    /**
+     * 
+     */
+    public function getOuterConfs(Request $request)
+    {
+        return $outerConfs = Conference::where('innerflg', 0)->get();
+    }
+
+    
     
     /**
      * Show the application dashboard.

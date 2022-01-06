@@ -76,19 +76,33 @@
 <script>
 export default {
   data: function () {
-    return {};
+    return {
+      outerConfs: [],
+    };
   },
-  props: {
-    outerConfs: {
-      type: String,
-    },
-  },
+  props: {},
   mounted() {
     console.log("Component mounted.");
+    this.getOuterConfs();
   },
   methods: {
     test: function () {
       alert("test!!!");
+    },
+    getOuterConfs: function () {
+      axios
+        .get("/api/getOuterConfs", {
+          params: {
+            userId: "1",
+          },
+        })
+        .then((response) => {
+          this.outerConfs = response.data;
+        })
+        .catch((err) => {
+          this.outerConfs = {};
+        })
+        .finally();
     },
   },
 };

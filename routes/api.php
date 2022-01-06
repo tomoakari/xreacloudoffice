@@ -20,3 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // 会議室追加（あとで認証入れてputとかにする）
 Route::get('/addconf', 'HomeController@addConference');
+
+// 外部会議室取得（あとで認証入れてputとかにする）
+Route::get('/getOuterConfs', 'HomeController@getOuterConfs');
