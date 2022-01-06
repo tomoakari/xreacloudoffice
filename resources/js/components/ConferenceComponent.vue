@@ -111,8 +111,8 @@ export default {
           //var input_name = document.getElementById("input_name").value;
           //var input_schedule = document.getElementById("input_schedule").value;
           return [
-            document.getElementById("swal-input1").value,
-            document.getElementById("swal-input2").value,
+            document.getElementById("input_name").value,
+            document.getElementById("input_schedule").value,
           ];
         },
       }).then(() => {
