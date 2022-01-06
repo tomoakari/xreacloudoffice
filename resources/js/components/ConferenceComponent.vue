@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header">
         内部会議一覧
-        <span class="createbutton" @click="createConf('inner')"
+        <span class="createbutton" @click="createConf(1)"
           >会議を新たに作成</span
         >
       </div>
@@ -18,15 +18,13 @@
             <th></th>
             <th></th>
           </tr>
-          <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.id">
-            <td>{{ innerConf.status }}</td>
-            <td>{{ innerConf.schedule }}</td>
+          <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.status">
+            <td>{{ innerConf.status == "0" ? "未開催" : "開催済" }}</td>
+            <td>{{ innerConf.schedule.substr(0, 16) }}</td>
             <td>{{ innerConf.name }}</td>
             <td>{{ innerConf.username }}</td>
             <td>
-              <span class="roominbutton" @click="showDetail(outerConf.id)"
-                >詳細</span
-              >
+              <span class="roominbutton" @click="showDetail('id')">詳細</span>
             </td>
             <td>
               <a
@@ -45,7 +43,7 @@
     <div class="card">
       <div class="card-header">
         外部会議一覧
-        <span class="createbutton" @click="createConf('outer')"
+        <span class="createbutton" @click="createConf(0)"
           >会議を新たに作成</span
         >
       </div>
@@ -60,15 +58,13 @@
             <th></th>
             <th></th>
           </tr>
-          <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
+          <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.status">
             <td>{{ outerConf.status == "0" ? "未開催" : "開催済" }}</td>
-            <td>{{ outerConf.schedule.substr(0, 10) }}</td>
+            <td>{{ outerConf.schedule.substr(0, 16) }}</td>
             <td>{{ outerConf.name }}</td>
             <td>{{ outerConf.username }}</td>
             <td>
-              <span class="roominbutton" @click="showDetail(outerConf.id)"
-                >詳細</span
-              >
+              <span class="roominbutton" @click="showDetail('id')">詳細</span>
             </td>
             <td>
               <a
@@ -104,12 +100,44 @@ export default {
   },
   methods: {
     createConf: function (param) {
-      Swal.fire({
-        title: param,
-        text: "Do you want to continue",
-        icon: "error",
-        confirmButtonText: "Cool",
+      const { value: formValues } = Swal.fire({
+        title: param == 1 ? "内部" : "外部" + "会議を作成する",
+        html:
+          `<input id="input_name" class="swal2-input" placeholder="会議名">` +
+          `<input id="input_schedule" class="swal2-input" placeholder="開催日（2021-04-20 09:30:00）">`,
+        confirmButtonText: "送信",
+        focusConfirm: false,
+        preConfirm: () => {
+          //var input_name = document.getElementById("input_name").value;
+          //var input_schedule = document.getElementById("input_schedule").value;
+          return [
+            document.getElementById("swal-input1").value,
+            document.getElementById("swal-input2").value,
+          ];
+        },
       });
+      if (formValues) {
+        axios
+          .get("/createConf", {
+            params: {
+              name: formValues[0],
+              username: "",
+              secret: "",
+              password: "",
+              innerflg: param,
+              status: 0,
+              schedule: formValues[1],
+            },
+          })
+          .then((response) => {
+            //this.outerConfs = response.data;
+            Swal.fire(JSON.stringify(response.data));
+          })
+          .catch((err) => {
+            Swal.fire(JSON.stringify(err));
+          })
+          .finally();
+      }
     },
     showDetail: function (id) {
       Swal.fire({

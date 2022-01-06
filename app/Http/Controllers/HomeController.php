@@ -58,6 +58,22 @@ class HomeController extends Controller
     {
         return $innerConfs = Conference::where('innerflg', 1)->get();
     }
+    public function createConf(Request $request)
+    {
+        $data = [
+            'name' => $request['name'],
+            'username' => $request['username'],
+            'secret' => $request['secret'],
+            'password' => $request['password'],
+            'innerflg' => $request['innerflg'],
+            'status' => $request['status'],
+            'schedule' => $request['schedule'],
+        ];
+        $result = Conference::create($data);
+
+        return $result;
+        
+    }
 
     
     

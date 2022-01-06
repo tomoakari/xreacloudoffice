@@ -1992,10 +1992,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 //import Swal from "sweetalert2/dist/sweetalert2.js";
 //import "sweetalert2/src/sweetalert2.scss";
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2013,12 +2009,37 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createConf: function createConf(param) {
-      Swal.fire({
-        title: param,
-        text: "Do you want to continue",
-        icon: "error",
-        confirmButtonText: "Cool"
-      });
+      var _Swal$fire = Swal.fire({
+        title: param == 1 ? "内部" : "外部" + "会議を作成する",
+        html: "<input id=\"input_name\" class=\"swal2-input\" placeholder=\"\u4F1A\u8B70\u540D\">" + "<input id=\"input_schedule\" class=\"swal2-input\" placeholder=\"\u958B\u50AC\u65E5\uFF082021-04-20 09:30:00\uFF09\">",
+        confirmButtonText: "送信",
+        focusConfirm: false,
+        preConfirm: function preConfirm() {
+          //var input_name = document.getElementById("input_name").value;
+          //var input_schedule = document.getElementById("input_schedule").value;
+          return [document.getElementById("swal-input1").value, document.getElementById("swal-input2").value];
+        }
+      }),
+          formValues = _Swal$fire.value;
+
+      if (formValues) {
+        axios.get("/createConf", {
+          params: {
+            name: formValues[0],
+            username: "",
+            secret: "",
+            password: "",
+            innerflg: param,
+            status: 0,
+            schedule: formValues[1]
+          }
+        }).then(function (response) {
+          //this.outerConfs = response.data;
+          Swal.fire(JSON.stringify(response.data));
+        })["catch"](function (err) {
+          Swal.fire(JSON.stringify(err));
+        })["finally"]();
+      }
     },
     showDetail: function showDetail(id) {
       Swal.fire({
@@ -37771,7 +37792,7 @@ var render = function() {
             staticClass: "createbutton",
             on: {
               click: function($event) {
-                return _vm.createConf("inner")
+                return _vm.createConf(1)
               }
             }
           },
@@ -37787,10 +37808,12 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _vm._l(_vm.innerConfs, function(innerConf) {
-              return _c("tr", { key: innerConf.id }, [
-                _c("td", [_vm._v(_vm._s(innerConf.status))]),
+              return _c("tr", { key: innerConf.status }, [
+                _c("td", [
+                  _vm._v(_vm._s(innerConf.status == "0" ? "未開催" : "開催済"))
+                ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(innerConf.schedule))]),
+                _c("td", [_vm._v(_vm._s(innerConf.schedule.substr(0, 16)))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(innerConf.name))]),
                 _vm._v(" "),
@@ -37803,7 +37826,7 @@ var render = function() {
                       staticClass: "roominbutton",
                       on: {
                         click: function($event) {
-                          return _vm.showDetail(_vm.outerConf.id)
+                          return _vm.showDetail("id")
                         }
                       }
                     },
@@ -37846,7 +37869,7 @@ var render = function() {
             staticClass: "createbutton",
             on: {
               click: function($event) {
-                return _vm.createConf("outer")
+                return _vm.createConf(0)
               }
             }
           },
@@ -37862,12 +37885,12 @@ var render = function() {
             _vm._m(1),
             _vm._v(" "),
             _vm._l(_vm.outerConfs, function(outerConf) {
-              return _c("tr", { key: outerConf.id }, [
+              return _c("tr", { key: outerConf.status }, [
                 _c("td", [
                   _vm._v(_vm._s(outerConf.status == "0" ? "未開催" : "開催済"))
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(outerConf.schedule.substr(0, 10)))]),
+                _c("td", [_vm._v(_vm._s(outerConf.schedule.substr(0, 16)))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(outerConf.name))]),
                 _vm._v(" "),
@@ -37880,7 +37903,7 @@ var render = function() {
                       staticClass: "roominbutton",
                       on: {
                         click: function($event) {
-                          return _vm.showDetail(outerConf.id)
+                          return _vm.showDetail("id")
                         }
                       }
                     },
