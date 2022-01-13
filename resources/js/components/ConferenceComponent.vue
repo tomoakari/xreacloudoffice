@@ -124,12 +124,12 @@ export default {
             `<style>
             select{padding: 10px;}
             </style>
-            <select name="input_year">
+            <select id="input_year">
               <option value="2021">2021</option>
               <option value="2022">2022</option>
               <option value="2022">2023</option>
             </select>年　` +
-            `<select name="input_month">
+            `<select id="input_month">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -143,7 +143,7 @@ export default {
               <option value="11">11</option>
               <option value="12">12</option>
             </select>月　` +
-            `<select name="input_date">
+            `<select id="input_date">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
