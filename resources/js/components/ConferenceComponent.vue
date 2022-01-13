@@ -20,12 +20,9 @@
           </tr>
           <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.status">
             <td>{{ innerConf.status == "0" ? "未開催" : "開催済" }}</td>
-            <td>{{ innerConf.schedule.substr(0, 16) }}</td>
+            <td>{{ getJPcalendar(innerConf.schedule) }}</td>
             <td>{{ innerConf.name }}</td>
             <td>{{ innerConf.username }}</td>
-            <td>
-              <span class="roominbutton" @click="showDetail('id')">詳細</span>
-            </td>
             <td>
               <a
                 v-bind:href="
@@ -34,6 +31,11 @@
                 target="_blank"
                 ><span class="roominbutton">入室する</span></a
               >
+            </td>
+            <td>
+              <span class="" @click="showDetail('id')"
+                ><i class="fas fa-info-circle"></i
+              ></span>
             </td>
           </tr>
         </table>
@@ -64,9 +66,6 @@
             <td>{{ outerConf.name }}</td>
             <td>{{ outerConf.username }}</td>
             <td>
-              <span class="roominbutton" @click="showDetail('id')">詳細</span>
-            </td>
-            <td>
               <a
                 v-bind:href="
                   'https://conference.aice.cloud/?secret=' + outerConf.secret
@@ -74,6 +73,11 @@
                 target="_blank"
                 ><span class="roominbutton">入室する</span></a
               >
+            </td>
+            <td>
+              <span class="" @click="showDetail('id')"
+                ><i class="fas fa-info-circle"></i
+              ></span>
             </td>
           </tr>
         </table>
@@ -102,18 +106,32 @@ export default {
   methods: {
     createConf: function (param) {
       Swal.fire({
-        title: (param == 1 ? "内部" : "外部") + "会議を作成する",
-        html:
-          `<input id="input_name" class="swal2-input" placeholder="会議名">` +
-          `<input id="input_schedule" class="swal2-input" placeholder="開催日（2021-04-20 09:30:00）">`,
-        confirmButtonText: "送信",
+        title: "会議情報の登録",
+        html: `<input id="input_name" class="swal2-input" placeholder="会議名">`,
+        confirmButtonText: "次へ",
         focusConfirm: false,
         preConfirm: () => {
           this.createParams[0] = document.getElementById("input_name").value;
-          this.createParams[1] =
-            document.getElementById("input_schedule").value;
         },
       }).then(() => {
+        var nd = this.getNowDates();
+
+        Swal.fire({
+          title: "会議情報の登録",
+          html:
+            `<select>
+            
+            </select> ` +
+            `<input id="input_schedule" class="swal2-input" placeholder="開催日（2021-04-20 09:30:00）">`,
+          confirmButtonText: "作成",
+          focusConfirm: false,
+          preConfirm: () => {
+            this.createParams[0] = document.getElementById("input_name").value;
+            this.createParams[1] =
+              document.getElementById("input_schedule").value;
+          },
+        });
+
         if (this.createParams[0] == "" || this.createParams[1] == "") {
           axios
             .get("/createConf", {
@@ -183,7 +201,17 @@ export default {
       var dd = dt.getDate();
       var hh = dt.getHours();
       var mm = dt.getMinutes();
-      return yy + "年" + MM + "月" + dd + "日" + hh + "時" + mm + "分";
+      return /*yy + "年" +*/ MM + "月" + dd + "日" + hh + "時" + mm + "分";
+    },
+    getNowDates() {
+      var dt = new Date();
+      return {
+        yy: dt.getFullYear(),
+        MM: dt.getMonth() + 1,
+        dd: dt.getDate(),
+        hh: dt.getHours(),
+        mm: dt.getMinutes(),
+      };
     },
   },
 };

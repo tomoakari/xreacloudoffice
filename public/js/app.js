@@ -1992,6 +1992,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 //import Swal from "sweetalert2/dist/sweetalert2.js";
 //import "sweetalert2/src/sweetalert2.scss";
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2013,15 +2017,27 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       Swal.fire({
-        title: (param == 1 ? "内部" : "外部") + "会議を作成する",
-        html: "<input id=\"input_name\" class=\"swal2-input\" placeholder=\"\u4F1A\u8B70\u540D\">" + "<input id=\"input_schedule\" class=\"swal2-input\" placeholder=\"\u958B\u50AC\u65E5\uFF082021-04-20 09:30:00\uFF09\">",
-        confirmButtonText: "送信",
+        title: "会議情報の登録",
+        html: "<input id=\"input_name\" class=\"swal2-input\" placeholder=\"\u4F1A\u8B70\u540D\">",
+        confirmButtonText: "次へ",
         focusConfirm: false,
         preConfirm: function preConfirm() {
           _this.createParams[0] = document.getElementById("input_name").value;
-          _this.createParams[1] = document.getElementById("input_schedule").value;
         }
       }).then(function () {
+        var nd = _this.getNowDates();
+
+        Swal.fire({
+          title: "会議情報の登録",
+          html: "<select>\n            \n            </select> " + "<input id=\"input_schedule\" class=\"swal2-input\" placeholder=\"\u958B\u50AC\u65E5\uFF082021-04-20 09:30:00\uFF09\">",
+          confirmButtonText: "作成",
+          focusConfirm: false,
+          preConfirm: function preConfirm() {
+            _this.createParams[0] = document.getElementById("input_name").value;
+            _this.createParams[1] = document.getElementById("input_schedule").value;
+          }
+        });
+
         if (_this.createParams[0] == "" || _this.createParams[1] == "") {
           axios.get("/createConf", {
             params: {
@@ -2081,7 +2097,20 @@ __webpack_require__.r(__webpack_exports__);
       var dd = dt.getDate();
       var hh = dt.getHours();
       var mm = dt.getMinutes();
-      return yy + "年" + MM + "月" + dd + "日" + hh + "時" + mm + "分";
+      return (
+        /*yy + "年" +*/
+        MM + "月" + dd + "日" + hh + "時" + mm + "分"
+      );
+    },
+    getNowDates: function getNowDates() {
+      var dt = new Date();
+      return {
+        yy: dt.getFullYear(),
+        MM: dt.getMonth() + 1,
+        dd: dt.getDate(),
+        hh: dt.getHours(),
+        mm: dt.getMinutes()
+      };
     }
   }
 });
@@ -37823,26 +37852,13 @@ var render = function() {
                   _vm._v(_vm._s(innerConf.status == "0" ? "未開催" : "開催済"))
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(innerConf.schedule.substr(0, 16)))]),
+                _c("td", [
+                  _vm._v(_vm._s(_vm.getJPcalendar(innerConf.schedule)))
+                ]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(innerConf.name))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(innerConf.username))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "span",
-                    {
-                      staticClass: "roominbutton",
-                      on: {
-                        click: function($event) {
-                          return _vm.showDetail("id")
-                        }
-                      }
-                    },
-                    [_vm._v("詳細")]
-                  )
-                ]),
                 _vm._v(" "),
                 _c("td", [
                   _c(
@@ -37860,6 +37876,20 @@ var render = function() {
                         _vm._v("入室する")
                       ])
                     ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "span",
+                    {
+                      on: {
+                        click: function($event) {
+                          return _vm.showDetail("id")
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fas fa-info-circle" })]
                   )
                 ])
               ])
@@ -37910,21 +37940,6 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [
                   _c(
-                    "span",
-                    {
-                      staticClass: "roominbutton",
-                      on: {
-                        click: function($event) {
-                          return _vm.showDetail("id")
-                        }
-                      }
-                    },
-                    [_vm._v("詳細")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
                     "a",
                     {
                       attrs: {
@@ -37939,6 +37954,20 @@ var render = function() {
                         _vm._v("入室する")
                       ])
                     ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "span",
+                    {
+                      on: {
+                        click: function($event) {
+                          return _vm.showDetail("id")
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fas fa-info-circle" })]
                   )
                 ])
               ])
