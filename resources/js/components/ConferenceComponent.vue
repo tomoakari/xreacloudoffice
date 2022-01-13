@@ -119,10 +119,10 @@ export default {
         },
       }).then(() => {
         Swal.fire({
-          title: "開催日の登録",
+          title: "開催日時の登録",
           html:
             `<style>
-            select{padding: 10px;}
+            select{padding: 10px; with: 90px;}
             </style>
             <select id="input_year">
               <option value="2021">2021</option>
@@ -175,7 +175,11 @@ export default {
               <option value="29">29</option>
               <option value="30">30</option>
               <option value="31">31</option>
-            </select>日<br>` +
+            </select>日<br><br>` +
+            `<select id="input_noon">
+              <option value="AM">AM</option>
+              <option value="PM">PM</option>
+            </select>　　` +
             `<select id="input_hour">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -189,18 +193,6 @@ export default {
               <option value="10">10</option>
               <option value="11">11</option>
               <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
             </select>時　` +
             `<select id="input_date">
               <option value="00">00</option>
