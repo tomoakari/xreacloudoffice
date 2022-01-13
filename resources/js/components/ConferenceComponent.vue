@@ -33,7 +33,7 @@
               >
             </td>
             <td>
-              <span class="" @click="showDetail('id')"
+              <span class="infobutton" @click="showDetail('id')"
                 ><i class="fas fa-info-circle"></i
               ></span>
             </td>
@@ -75,7 +75,7 @@
               >
             </td>
             <td>
-              <span class="" @click="showDetail('id')"
+              <span class="infobutton" @click="showDetail('id')"
                 ><i class="fas fa-info-circle"></i
               ></span>
             </td>
