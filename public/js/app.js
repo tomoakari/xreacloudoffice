@@ -2021,8 +2021,8 @@ __webpack_require__.r(__webpack_exports__);
           _this.createParams[0] = document.getElementById("input_name").value;
           _this.createParams[1] = document.getElementById("input_schedule").value;
         }
-      }).then(function (formValues) {
-        if (formValues) {
+      }).then(function () {
+        if (_this.createParams[0] == "" || _this.createParams[1] == "") {
           axios.get("/createConf", {
             params: {
               name: _this.createParams[0],
@@ -2073,6 +2073,15 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         _this3.innerConfs = {};
       })["finally"]();
+    },
+    getJPcalendar: function getJPcalendar(timestamp) {
+      var dt = new Date(timestamp);
+      var yy = dt.getFullYear();
+      var MM = dt.getMonth() + 1;
+      var dd = dt.getDate();
+      var hh = dt.getHours();
+      var mm = dt.getMinutes();
+      return yy + "年" + MM + "月" + dd + "日" + hh + "時" + mm + "分";
     }
   }
 });
@@ -37891,7 +37900,9 @@ var render = function() {
                   _vm._v(_vm._s(outerConf.status == "0" ? "未開催" : "開催済"))
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(outerConf.schedule.substr(0, 16)))]),
+                _c("td", [
+                  _vm._v(_vm._s(_vm.getJPcalendar(outerConf.schedule)))
+                ]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(outerConf.name))]),
                 _vm._v(" "),

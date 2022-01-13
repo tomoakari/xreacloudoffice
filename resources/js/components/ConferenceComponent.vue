@@ -60,7 +60,7 @@
           </tr>
           <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.status">
             <td>{{ outerConf.status == "0" ? "未開催" : "開催済" }}</td>
-            <td>{{ outerConf.schedule.substr(0, 16) }}</td>
+            <td>{{ getJPcalendar(outerConf.schedule) }}</td>
             <td>{{ outerConf.name }}</td>
             <td>{{ outerConf.username }}</td>
             <td>
@@ -113,8 +113,8 @@ export default {
           this.createParams[1] =
             document.getElementById("input_schedule").value;
         },
-      }).then((formValues) => {
-        if (formValues) {
+      }).then(() => {
+        if (this.createParams[0] == "" || this.createParams[1] == "") {
           axios
             .get("/createConf", {
               params: {
@@ -175,6 +175,15 @@ export default {
           this.innerConfs = {};
         })
         .finally();
+    },
+    getJPcalendar(timestamp) {
+      var dt = new Date(timestamp);
+      var yy = dt.getFullYear();
+      var MM = dt.getMonth() + 1;
+      var dd = dt.getDate();
+      var hh = dt.getHours();
+      var mm = dt.getMinutes();
+      return yy + "年" + MM + "月" + dd + "日" + hh + "時" + mm + "分";
     },
   },
 };
