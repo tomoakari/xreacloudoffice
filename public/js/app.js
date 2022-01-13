@@ -2022,41 +2022,51 @@ __webpack_require__.r(__webpack_exports__);
         confirmButtonText: "次へ",
         focusConfirm: false,
         preConfirm: function preConfirm() {
-          _this.createParams[0] = document.getElementById("input_name").value;
+          if (document.getElementById("input_name").value == "") {
+            Swal.showValidationMessage("\u4F1A\u8B70\u540D\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044");
+          } else {
+            _this.createParams[0] = document.getElementById("input_name").value;
+          }
         }
       }).then(function () {
-        var nd = _this.getNowDates();
-
         Swal.fire({
-          title: "会議情報の登録",
-          html: "<select name=\"input_year\">\n              <option value=\"2021\">2021</option>\n              <option value=\"2022\">2022</option>\n              <option value=\"2022\">2023</option>\n            </select>\u5E74" + "<select name=\"input_month\">\n              <option value=\"1\">1</option>\n              <option value=\"2\">2</option>\n              <option value=\"3\">3</option>\n              <option value=\"4\">4</option>\n              <option value=\"5\">5</option>\n              <option value=\"6\">6</option>\n              <option value=\"7\">7</option>\n              <option value=\"8\">8</option>\n              <option value=\"9\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n            </select>\u6708" + "<select name=\"input_date\">\n              <option value=\"1\">1</option>\n              <option value=\"2\">2</option>\n              <option value=\"3\">3</option>\n              <option value=\"4\">4</option>\n              <option value=\"5\">5</option>\n              <option value=\"6\">6</option>\n              <option value=\"7\">7</option>\n              <option value=\"8\">8</option>\n              <option value=\"9\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n              <option value=\"13\">13</option>\n              <option value=\"14\">14</option>\n              <option value=\"15\">15</option>\n              <option value=\"16\">16</option>\n              <option value=\"17\">17</option>\n              <option value=\"18\">18</option>\n              <option value=\"19\">19</option>\n              <option value=\"20\">20</option>\n              <option value=\"21\">21</option>\n              <option value=\"22\">22</option>\n              <option value=\"23\">23</option>\n              <option value=\"24\">24</option>\n              <option value=\"25\">25</option>\n              <option value=\"26\">26</option>\n              <option value=\"27\">27</option>\n              <option value=\"28\">28</option>\n              <option value=\"29\">29</option>\n              <option value=\"30\">30</option>\n              <option value=\"31\">31</option>\n            </select>\u65E5",
-          //`<input id="input_schedule" class="swal2-input" placeholder="開催日（2021-04-20 09:30:00）">`,
-          confirmButtonText: "作成",
+          title: "開催日の登録",
+          html: "<style>\n            select{padding: 10px;}\n            </style>\n            <select name=\"input_year\">\n              <option value=\"2021\">2021</option>\n              <option value=\"2022\">2022</option>\n              <option value=\"2022\">2023</option>\n            </select>\u5E74\u3000" + "<select name=\"input_month\">\n              <option value=\"1\">1</option>\n              <option value=\"2\">2</option>\n              <option value=\"3\">3</option>\n              <option value=\"4\">4</option>\n              <option value=\"5\">5</option>\n              <option value=\"6\">6</option>\n              <option value=\"7\">7</option>\n              <option value=\"8\">8</option>\n              <option value=\"9\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n            </select>\u6708\u3000" + "<select name=\"input_date\">\n              <option value=\"1\">1</option>\n              <option value=\"2\">2</option>\n              <option value=\"3\">3</option>\n              <option value=\"4\">4</option>\n              <option value=\"5\">5</option>\n              <option value=\"6\">6</option>\n              <option value=\"7\">7</option>\n              <option value=\"8\">8</option>\n              <option value=\"9\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n              <option value=\"13\">13</option>\n              <option value=\"14\">14</option>\n              <option value=\"15\">15</option>\n              <option value=\"16\">16</option>\n              <option value=\"17\">17</option>\n              <option value=\"18\">18</option>\n              <option value=\"19\">19</option>\n              <option value=\"20\">20</option>\n              <option value=\"21\">21</option>\n              <option value=\"22\">22</option>\n              <option value=\"23\">23</option>\n              <option value=\"24\">24</option>\n              <option value=\"25\">25</option>\n              <option value=\"26\">26</option>\n              <option value=\"27\">27</option>\n              <option value=\"28\">28</option>\n              <option value=\"29\">29</option>\n              <option value=\"30\">30</option>\n              <option value=\"31\">31</option>\n            </select>\u65E5<br>" + "<input id=\"input_hour\" class=\"swal2-input\" placeholder=\"00\">\u6642\u3000\n            <input id=\"input_minut\" class=\"swal2-input\" placeholder=\"00\">\u5206",
+          confirmButtonText: "次へ",
           focusConfirm: false,
           preConfirm: function preConfirm() {
-            _this.createParams[0] = document.getElementById("input_name").value;
-            _this.createParams[1] = document.getElementById("input_schedule").value;
+            var yy = document.getElementById("input_year").value;
+            var MM = document.getElementById("input_month").value;
+            var dd = document.getElementById("input_date").value;
+            var hh = document.getElementById("input_hour").value;
+            var mm = document.getElementById("input_minut").value;
+
+            if (yy == "" || MM == "" || dd == "" || hh == "" || mm == "") {
+              Swal.showValidationMessage("\u65E5\u7A0B\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044");
+            } else {
+              _this.createParams[1] = yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00";
+            }
+          }
+        }).then(function () {
+          if (_this.createParams[0] == "" || _this.createParams[1] == "") {
+            axios.get("/createConf", {
+              params: {
+                name: _this.createParams[0],
+                username: "test",
+                secret: "12345678901234567890",
+                password: "pw",
+                innerflg: param,
+                status: 0,
+                schedule: _this.createParams[1]
+              }
+            }).then(function (response) {
+              //this.outerConfs = response.data;
+              Swal.fire(JSON.stringify(response.data));
+            })["catch"](function (err) {
+              Swal.fire(JSON.stringify(err));
+            })["finally"]();
           }
         });
-
-        if (_this.createParams[0] == "" || _this.createParams[1] == "") {
-          axios.get("/createConf", {
-            params: {
-              name: _this.createParams[0],
-              username: "test",
-              secret: "12345678901234567890",
-              password: "pw",
-              innerflg: param,
-              status: 0,
-              schedule: _this.createParams[1]
-            }
-          }).then(function (response) {
-            //this.outerConfs = response.data;
-            Swal.fire(JSON.stringify(response.data));
-          })["catch"](function (err) {
-            Swal.fire(JSON.stringify(err));
-          })["finally"]();
-        }
       });
     },
     showDetail: function showDetail(id) {
@@ -37891,7 +37901,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_c("i", { staticClass: "fas fa-info-circle" })]
+                    [_c("i", { staticClass: "far fa-edit" })]
                   )
                 ])
               ])
@@ -37970,7 +37980,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_c("i", { staticClass: "fas fa-info-circle" })]
+                    [_c("i", { staticClass: "far fa-edit" })]
                   )
                 ])
               ])

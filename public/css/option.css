@@ -26,10 +26,8 @@
     padding: 2px;
 }
 .infobutton {
-    background-color: royalblue;
-    border-radius: 3px;
     padding: 2px;
-    color: #ffffff;
+    color: #393939;
 }
 .button-area {
     display: flex;

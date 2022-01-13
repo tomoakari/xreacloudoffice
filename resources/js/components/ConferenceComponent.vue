@@ -34,7 +34,7 @@
             </td>
             <td>
               <span class="infobutton" @click="showDetail('id')"
-                ><i class="fas fa-info-circle"></i
+                ><i class="far fa-edit"></i
               ></span>
             </td>
           </tr>
@@ -76,7 +76,7 @@
             </td>
             <td>
               <span class="infobutton" @click="showDetail('id')"
-                ><i class="fas fa-info-circle"></i
+                ><i class="far fa-edit"></i
               ></span>
             </td>
           </tr>
@@ -111,19 +111,24 @@ export default {
         confirmButtonText: "次へ",
         focusConfirm: false,
         preConfirm: () => {
-          this.createParams[0] = document.getElementById("input_name").value;
+          if (document.getElementById("input_name").value == "") {
+            Swal.showValidationMessage(`会議名を入力してください`);
+          } else {
+            this.createParams[0] = document.getElementById("input_name").value;
+          }
         },
       }).then(() => {
-        var nd = this.getNowDates();
-
         Swal.fire({
-          title: "会議情報の登録",
+          title: "開催日の登録",
           html:
-            `<select name="input_year">
+            `<style>
+            select{padding: 10px;}
+            </style>
+            <select name="input_year">
               <option value="2021">2021</option>
               <option value="2022">2022</option>
               <option value="2022">2023</option>
-            </select>年` +
+            </select>年　` +
             `<select name="input_month">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -137,7 +142,7 @@ export default {
               <option value="10">10</option>
               <option value="11">11</option>
               <option value="12">12</option>
-            </select>月` +
+            </select>月　` +
             `<select name="input_date">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -170,39 +175,48 @@ export default {
               <option value="29">29</option>
               <option value="30">30</option>
               <option value="31">31</option>
-            </select>日`,
-          //`<input id="input_schedule" class="swal2-input" placeholder="開催日（2021-04-20 09:30:00）">`,
-          confirmButtonText: "作成",
+            </select>日<br>` +
+            `<input id="input_hour" class="swal2-input" placeholder="00">時　
+            <input id="input_minut" class="swal2-input" placeholder="00">分`,
+          confirmButtonText: "次へ",
           focusConfirm: false,
           preConfirm: () => {
-            this.createParams[0] = document.getElementById("input_name").value;
-            this.createParams[1] =
-              document.getElementById("input_schedule").value;
+            var yy = document.getElementById("input_year").value;
+            var MM = document.getElementById("input_month").value;
+            var dd = document.getElementById("input_date").value;
+            var hh = document.getElementById("input_hour").value;
+            var mm = document.getElementById("input_minut").value;
+            if (yy == "" || MM == "" || dd == "" || hh == "" || mm == "") {
+              Swal.showValidationMessage(`日程を入力してください`);
+            } else {
+              this.createParams[1] =
+                yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00";
+            }
           },
+        }).then(() => {
+          if (this.createParams[0] == "" || this.createParams[1] == "") {
+            axios
+              .get("/createConf", {
+                params: {
+                  name: this.createParams[0],
+                  username: "test",
+                  secret: "12345678901234567890",
+                  password: "pw",
+                  innerflg: param,
+                  status: 0,
+                  schedule: this.createParams[1],
+                },
+              })
+              .then((response) => {
+                //this.outerConfs = response.data;
+                Swal.fire(JSON.stringify(response.data));
+              })
+              .catch((err) => {
+                Swal.fire(JSON.stringify(err));
+              })
+              .finally();
+          }
         });
-
-        if (this.createParams[0] == "" || this.createParams[1] == "") {
-          axios
-            .get("/createConf", {
-              params: {
-                name: this.createParams[0],
-                username: "test",
-                secret: "12345678901234567890",
-                password: "pw",
-                innerflg: param,
-                status: 0,
-                schedule: this.createParams[1],
-              },
-            })
-            .then((response) => {
-              //this.outerConfs = response.data;
-              Swal.fire(JSON.stringify(response.data));
-            })
-            .catch((err) => {
-              Swal.fire(JSON.stringify(err));
-            })
-            .finally();
-        }
       });
     },
     showDetail: function (id) {
