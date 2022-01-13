@@ -122,7 +122,7 @@ export default {
           title: "開催日時の登録",
           html:
             `<style>
-            select{padding: 10px; with: 90px;}
+            select{padding: 10px; width: 90px;}
             </style>
             <select id="input_year">
               <option value="2021">2021</option>
