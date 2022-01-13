@@ -37883,6 +37883,7 @@ var render = function() {
                   _c(
                     "span",
                     {
+                      staticClass: "infobutton",
                       on: {
                         click: function($event) {
                           return _vm.showDetail("id")
@@ -37961,6 +37962,7 @@ var render = function() {
                   _c(
                     "span",
                     {
+                      staticClass: "infobutton",
                       on: {
                         click: function($event) {
                           return _vm.showDetail("id")
