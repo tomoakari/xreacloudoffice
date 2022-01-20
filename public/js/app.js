@@ -37898,7 +37898,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card mb-20" }, [
       _c("div", { staticClass: "card-header" }, [
         _vm._v("\n      内部会議一覧\n      "),
         _c(

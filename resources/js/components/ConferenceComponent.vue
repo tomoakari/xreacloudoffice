@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card">
+    <div class="card mb-20">
       <div class="card-header">
         内部会議一覧
         <span class="createbutton" @click="createConf(1)"
