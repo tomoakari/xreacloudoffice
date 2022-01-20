@@ -92,6 +92,7 @@
 export default {
   data: function () {
     return {
+      user_name: "temp_user_name",
       outerConfs: [],
       innerConfs: [],
       createParams: [],
@@ -110,6 +111,8 @@ export default {
         html: `<input id="input_name" class="swal2-input" placeholder="会議名">`,
         confirmButtonText: "次へ",
         focusConfirm: false,
+        showCancelButton: true,
+        allowOutsideClick: false,
         preConfirm: () => {
           if (document.getElementById("input_name").value == "") {
             Swal.showValidationMessage(`会議名を入力してください`);
@@ -203,6 +206,8 @@ export default {
               <option value="50">50</option>
             </select>分`,
           confirmButtonText: "次へ",
+          showCancelButton: true,
+          allowOutsideClick: false,
           focusConfirm: false,
           preConfirm: () => {
             var yy = document.getElementById("input_year").value;
@@ -218,27 +223,37 @@ export default {
             }
           },
         }).then(() => {
-          if (this.createParams[0] == "" || this.createParams[1] == "") {
+          if (this.createParams[0] !== "" || this.createParams[1] !== "") {
+            var scrt = "defaultsecret";
             axios
-              .get("/createConf", {
-                params: {
-                  name: this.createParams[0],
-                  username: "test",
-                  secret: "12345678901234567890",
-                  password: "pw",
-                  innerflg: param,
-                  status: 0,
-                  schedule: this.createParams[1],
-                },
+              .post("https://conference.aice.cloud/apicreate", {
+                user_name: this.user_name,
+                room_name: this.createParams[0],
               })
-              .then((response) => {
-                //this.outerConfs = response.data;
-                Swal.fire(JSON.stringify(response.data));
-              })
-              .catch((err) => {
-                Swal.fire(JSON.stringify(err));
-              })
-              .finally();
+              .then((res) => {
+                scrt = res.data.secret;
+
+                axios
+                  .get("/createConf", {
+                    params: {
+                      name: this.createParams[0],
+                      username: this.user_name,
+                      secret: scrt,
+                      password: "pw",
+                      innerflg: param,
+                      status: 0,
+                      schedule: this.createParams[1],
+                    },
+                  })
+                  .then((response) => {
+                    //this.outerConfs = response.data;
+                    Swal.fire(JSON.stringify(response.data));
+                  })
+                  .catch((err) => {
+                    Swal.fire(JSON.stringify(err));
+                  })
+                  .finally();
+              });
           }
         });
       });
