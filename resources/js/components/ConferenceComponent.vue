@@ -251,12 +251,19 @@ export default {
                       "https://conference.aice.cloud/?secret=" +
                       response.data.secret;
                     Swal.fire({
+                      title: "会議室のURLはこちら",
                       html:
-                        `<p>参加者へURLをお知らせください。</p>` +
                         `<input id="copyTarget" class="linkinputtext" value="` +
                         url +
                         `"/>` +
-                        `<style>h2, p{color: #ffffff; font-size: 14px;}</style>`,
+                        `<style>
+                          h2, p{color: #ffffff; font-size: 14px;}
+                          .linkinputtext {
+                            width: 90%;
+                            font-size: 16px;
+                            padding: 10px 10px;
+                          }
+                        </style>`,
                       focusConfirm: false,
                       confirmButtonText: "コピー",
                       confirmButtonAriaLabel: "Close",

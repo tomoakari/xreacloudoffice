@@ -2074,7 +2074,8 @@ __webpack_require__.r(__webpack_exports__);
               }).then(function (response) {
                 var url = "https://conference.aice.cloud/?secret=" + response.data.secret;
                 Swal.fire({
-                  html: "<p>\u53C2\u52A0\u8005\u3078URL\u3092\u304A\u77E5\u3089\u305B\u304F\u3060\u3055\u3044\u3002</p>" + "<input id=\"copyTarget\" class=\"linkinputtext\" value=\"" + url + "\"/>" + "<style>h2, p{color: #ffffff; font-size: 14px;}</style>",
+                  title: "会議室のURLはこちら",
+                  html: "<input id=\"copyTarget\" class=\"linkinputtext\" value=\"" + url + "\"/>" + "<style>\n                          h2, p{color: #ffffff; font-size: 14px;}\n                          .linkinputtext {\n                            width: 90%;\n                            font-size: 16px;\n                            padding: 10px 10px;\n                          }\n                        </style>",
                   focusConfirm: false,
                   confirmButtonText: "コピー",
                   confirmButtonAriaLabel: "Close",
