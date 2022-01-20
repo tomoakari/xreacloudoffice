@@ -2072,8 +2072,59 @@ __webpack_require__.r(__webpack_exports__);
                   schedule: _this.createParams[1]
                 }
               }).then(function (response) {
-                //this.outerConfs = response.data;
-                Swal.fire(JSON.stringify(response.data));
+                var url = "https://conference.aice.cloud/?secret=" + response.data.secret;
+                Swal.fire({
+                  html: "<p>\u53C2\u52A0\u8005\u3078URL\u3092\u304A\u77E5\u3089\u305B\u304F\u3060\u3055\u3044\u3002</p>" + "<input id=\"copyTarget\" class=\"linkinputtext\" value=\"" + url + "\"/>" + "<style>h2, p{color: #ffffff; font-size: 14px;}</style>",
+                  focusConfirm: false,
+                  confirmButtonText: "コピー",
+                  confirmButtonAriaLabel: "Close",
+                  allowOutsideClick: true
+                }).then(function (result) {
+                  if (result.value) {
+                    copyToClipboard();
+                  }
+                });
+                /*
+                Swal.fire({
+                  title: "参加者を招待する",
+                  html: `
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    `,
+                  confirmButtonText: "送信する",
+                  focusConfirm: false,
+                  showCancelButton: true,
+                  cancelButtonText: "今は招待しない",
+                  allowOutsideClick: false,
+                  preConfirm: () => {
+                    var invites = document.getElementsByName("input_invite");
+                    var isInvited = false;
+                    invites.forEach(iu => {
+                      if(iu !== ""){
+                        isInvited = true;
+                        break;
+                      }
+                    });
+                    if(isInvited){
+                      return false;
+                    }
+                    if (document.getElementsByName("input_invite") == "") {
+                      Swal.showValidationMessage(
+                        `会議名を入力してください`
+                      );
+                    } else {
+                      this.createParams[0] =
+                        document.getElementById("input_name").value;
+                    }
+                  },
+                });
+                */
               })["catch"](function (err) {
                 Swal.fire(JSON.stringify(err));
               })["finally"]();
