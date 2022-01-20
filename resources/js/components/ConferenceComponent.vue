@@ -214,6 +214,7 @@ export default {
             var MM = document.getElementById("input_month").value;
             var dd = document.getElementById("input_date").value;
             var hh = document.getElementById("input_hour").value;
+            console.log(document.getElementById("input_minut").value);
             var mm = document.getElementById("input_minut").value;
             if (yy == "" || MM == "" || dd == "" || hh == "" || mm == "") {
               Swal.showValidationMessage(`日程を入力してください`);
