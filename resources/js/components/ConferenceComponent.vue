@@ -120,7 +120,10 @@ export default {
             this.createParams[0] = document.getElementById("input_name").value;
           }
         },
-      }).then(() => {
+      }).then((result) => {
+        if (!result.isConfirmed) {
+          return false;
+        }
         Swal.fire({
           title: "開催日時の登録",
           html:
@@ -223,7 +226,10 @@ export default {
                 yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00";
             }
           },
-        }).then(() => {
+        }).then((result) => {
+          if (!result.isConfirmed) {
+            return false;
+          }
           if (this.createParams[0] !== "" || this.createParams[1] !== "") {
             var scrt = "defaultsecret";
             axios
