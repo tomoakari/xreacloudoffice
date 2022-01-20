@@ -2001,6 +2001,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      user_name: "temp_user_name",
       outerConfs: [],
       innerConfs: [],
       createParams: []
@@ -2021,6 +2022,8 @@ __webpack_require__.r(__webpack_exports__);
         html: "<input id=\"input_name\" class=\"swal2-input\" placeholder=\"\u4F1A\u8B70\u540D\">",
         confirmButtonText: "次へ",
         focusConfirm: false,
+        showCancelButton: true,
+        allowOutsideClick: false,
         preConfirm: function preConfirm() {
           if (document.getElementById("input_name").value == "") {
             Swal.showValidationMessage("\u4F1A\u8B70\u540D\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044");
@@ -2031,8 +2034,10 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function () {
         Swal.fire({
           title: "開催日時の登録",
-          html: "<style>\n            select{padding: 10px; width: 90px;}\n            </style>\n            <select id=\"input_year\">\n              <option value=\"2021\">2021</option>\n              <option value=\"2022\">2022</option>\n              <option value=\"2022\">2023</option>\n            </select>\u5E74\u3000" + "<select id=\"input_month\">\n              <option value=\"1\">1</option>\n              <option value=\"2\">2</option>\n              <option value=\"3\">3</option>\n              <option value=\"4\">4</option>\n              <option value=\"5\">5</option>\n              <option value=\"6\">6</option>\n              <option value=\"7\">7</option>\n              <option value=\"8\">8</option>\n              <option value=\"9\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n            </select>\u6708\u3000" + "<select id=\"input_date\">\n              <option value=\"1\">1</option>\n              <option value=\"2\">2</option>\n              <option value=\"3\">3</option>\n              <option value=\"4\">4</option>\n              <option value=\"5\">5</option>\n              <option value=\"6\">6</option>\n              <option value=\"7\">7</option>\n              <option value=\"8\">8</option>\n              <option value=\"9\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n              <option value=\"13\">13</option>\n              <option value=\"14\">14</option>\n              <option value=\"15\">15</option>\n              <option value=\"16\">16</option>\n              <option value=\"17\">17</option>\n              <option value=\"18\">18</option>\n              <option value=\"19\">19</option>\n              <option value=\"20\">20</option>\n              <option value=\"21\">21</option>\n              <option value=\"22\">22</option>\n              <option value=\"23\">23</option>\n              <option value=\"24\">24</option>\n              <option value=\"25\">25</option>\n              <option value=\"26\">26</option>\n              <option value=\"27\">27</option>\n              <option value=\"28\">28</option>\n              <option value=\"29\">29</option>\n              <option value=\"30\">30</option>\n              <option value=\"31\">31</option>\n            </select>\u65E5<br><br>" + "<select id=\"input_noon\">\n              <option value=\"AM\">AM</option>\n              <option value=\"PM\">PM</option>\n            </select>\u3000\u3000" + "<select id=\"input_hour\">\n              <option value=\"1\">1</option>\n              <option value=\"2\">2</option>\n              <option value=\"3\">3</option>\n              <option value=\"4\">4</option>\n              <option value=\"5\">5</option>\n              <option value=\"6\">6</option>\n              <option value=\"7\">7</option>\n              <option value=\"8\">8</option>\n              <option value=\"9\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n            </select>\u6642\u3000" + "<select id=\"input_date\">\n              <option value=\"00\">00</option>\n              <option value=\"10\">10</option>\n              <option value=\"20\">20</option>\n              <option value=\"30\">30</option>\n              <option value=\"40\">40</option>\n              <option value=\"50\">50</option>\n            </select>\u5206",
+          html: "<style>\n            select{padding: 10px; width: 90px;}\n            </style>\n            <select id=\"input_year\">\n              <option value=\"2021\">2021</option>\n              <option value=\"2022\">2022</option>\n              <option value=\"2022\">2023</option>\n            </select>\u5E74\u3000" + "<select id=\"input_month\">\n              <option value=\"1\">1</option>\n              <option value=\"2\">2</option>\n              <option value=\"3\">3</option>\n              <option value=\"4\">4</option>\n              <option value=\"5\">5</option>\n              <option value=\"6\">6</option>\n              <option value=\"7\">7</option>\n              <option value=\"8\">8</option>\n              <option value=\"9\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n            </select>\u6708\u3000" + "<select id=\"input_date\">\n              <option value=\"1\">1</option>\n              <option value=\"2\">2</option>\n              <option value=\"3\">3</option>\n              <option value=\"4\">4</option>\n              <option value=\"5\">5</option>\n              <option value=\"6\">6</option>\n              <option value=\"7\">7</option>\n              <option value=\"8\">8</option>\n              <option value=\"9\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n              <option value=\"13\">13</option>\n              <option value=\"14\">14</option>\n              <option value=\"15\">15</option>\n              <option value=\"16\">16</option>\n              <option value=\"17\">17</option>\n              <option value=\"18\">18</option>\n              <option value=\"19\">19</option>\n              <option value=\"20\">20</option>\n              <option value=\"21\">21</option>\n              <option value=\"22\">22</option>\n              <option value=\"23\">23</option>\n              <option value=\"24\">24</option>\n              <option value=\"25\">25</option>\n              <option value=\"26\">26</option>\n              <option value=\"27\">27</option>\n              <option value=\"28\">28</option>\n              <option value=\"29\">29</option>\n              <option value=\"30\">30</option>\n              <option value=\"31\">31</option>\n            </select>\u65E5<br><br>" + "<select id=\"input_noon\">\n              <option value=\"AM\">AM</option>\n              <option value=\"PM\">PM</option>\n            </select>\u3000\u3000" + "<select id=\"input_hour\">\n              <option value=\"1\">1</option>\n              <option value=\"2\">2</option>\n              <option value=\"3\">3</option>\n              <option value=\"4\">4</option>\n              <option value=\"5\">5</option>\n              <option value=\"6\">6</option>\n              <option value=\"7\">7</option>\n              <option value=\"8\">8</option>\n              <option value=\"9\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n            </select>\u6642\u3000" + "<select id=\"input_minut\">\n              <option value=\"00\">00</option>\n              <option value=\"10\">10</option>\n              <option value=\"20\">20</option>\n              <option value=\"30\">30</option>\n              <option value=\"40\">40</option>\n              <option value=\"50\">50</option>\n            </select>\u5206",
           confirmButtonText: "次へ",
+          showCancelButton: true,
+          allowOutsideClick: false,
           focusConfirm: false,
           preConfirm: function preConfirm() {
             var yy = document.getElementById("input_year").value;
@@ -2048,23 +2053,30 @@ __webpack_require__.r(__webpack_exports__);
             }
           }
         }).then(function () {
-          if (_this.createParams[0] == "" || _this.createParams[1] == "") {
-            axios.get("/createConf", {
-              params: {
-                name: _this.createParams[0],
-                username: "test",
-                secret: "12345678901234567890",
-                password: "pw",
-                innerflg: param,
-                status: 0,
-                schedule: _this.createParams[1]
-              }
-            }).then(function (response) {
-              //this.outerConfs = response.data;
-              Swal.fire(JSON.stringify(response.data));
-            })["catch"](function (err) {
-              Swal.fire(JSON.stringify(err));
-            })["finally"]();
+          if (_this.createParams[0] !== "" || _this.createParams[1] !== "") {
+            var scrt = "defaultsecret";
+            axios.post("https://conference.aice.cloud/apicreate", {
+              user_name: _this.user_name,
+              room_name: _this.createParams[0]
+            }).then(function (res) {
+              scrt = res.data.secret;
+              axios.get("/createConf", {
+                params: {
+                  name: _this.createParams[0],
+                  username: _this.user_name,
+                  secret: scrt,
+                  password: "pw",
+                  innerflg: param,
+                  status: 0,
+                  schedule: _this.createParams[1]
+                }
+              }).then(function (response) {
+                //this.outerConfs = response.data;
+                Swal.fire(JSON.stringify(response.data));
+              })["catch"](function (err) {
+                Swal.fire(JSON.stringify(err));
+              })["finally"]();
+            });
           }
         });
       });
