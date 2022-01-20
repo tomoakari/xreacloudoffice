@@ -15,7 +15,6 @@
                     @endif
 
                     <div class="button-area">
-                        <a href="/mypage"><span class="button">マイページ</span></a>
                         <a href="/conference"><span class="button">会議管理</span></a>
                         <a href="/company"><span class="button">会社管理</span></a>
 
