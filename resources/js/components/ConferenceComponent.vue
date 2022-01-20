@@ -2,7 +2,7 @@
   <div>
     <div class="card mb-20">
       <div class="card-header">
-        内部会議一覧<span @click="getInnerConfs"
+        内部会議一覧　<span @click="getInnerConfs"
           ><i class="fas fa-sync-alt"></i
         ></span>
         <span class="createbutton" @click="createConf(1)"
@@ -46,7 +46,7 @@
 
     <div class="card">
       <div class="card-header">
-        外部会議一覧<span @click="getOuterConfs"
+        外部会議一覧　<span @click="getOuterConfs"
           ><i class="fas fa-sync-alt"></i
         ></span>
         <span class="createbutton" @click="createConf(0)"
