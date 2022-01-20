@@ -197,7 +197,7 @@ export default {
               <option value="11">11</option>
               <option value="12">12</option>
             </select>時　` +
-            `<select id="input_date">
+            `<select id="input_minut">
               <option value="00">00</option>
               <option value="10">10</option>
               <option value="20">20</option>
