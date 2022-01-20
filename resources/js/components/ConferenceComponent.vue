@@ -117,6 +117,7 @@ export default {
         confirmButtonText: "次へ",
         focusConfirm: false,
         showCancelButton: true,
+        canselButtonText: "とじる",
         allowOutsideClick: false,
         preConfirm: () => {
           if (document.getElementById("input_name").value == "") {
@@ -215,6 +216,7 @@ export default {
             </select>分`,
           confirmButtonText: "次へ",
           showCancelButton: true,
+          canselButtonText: "とじる",
           allowOutsideClick: false,
           focusConfirm: false,
           preConfirm: () => {
