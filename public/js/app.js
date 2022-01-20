@@ -2012,6 +2012,7 @@ __webpack_require__.r(__webpack_exports__);
     console.log("Component mounted.");
     this.getInnerConfs();
     this.getOuterConfs();
+    this.user_name = document.getElementById("login_user_name");
   },
   methods: {
     createConf: function createConf(param) {

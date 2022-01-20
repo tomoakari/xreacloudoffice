@@ -62,7 +62,6 @@
             </div>
             -->
 
-            
         <!-- vueコンポーネント -->
         <conference-component></conference-component>
 

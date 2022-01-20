@@ -14,6 +14,25 @@
                         </div>
                     @endif
 
+                    <table>
+                        <tr>
+                            <td>
+                                <a href="/conference">会議管理</a>
+                            </td>
+                            <td>
+                                会議を作成したり、参加したりできます
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="/company">会社管理</a>
+                            </td>
+                            <td>
+                                会社のメンバー管理などを行います
+                            </td>
+                        </tr>
+                    </table>
+
                     <div class="button-area">
                         <a href="/conference"><span class="button">会議管理</span></a>
                         <a href="/company"><span class="button">会社管理</span></a>
