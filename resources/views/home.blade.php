@@ -22,7 +22,7 @@
                         </div>
                     @endif
 
-                    <table>
+                    <table class="menu_table">
                         <tr>
                             <td>
                                 <a href="/conference">会議管理</a>
