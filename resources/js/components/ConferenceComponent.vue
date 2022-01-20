@@ -217,8 +217,8 @@ export default {
             var MM = document.getElementById("input_month").value;
             var dd = document.getElementById("input_date").value;
             var hh = document.getElementById("input_hour").value;
-            console.log(document.getElementById("input_minut").value);
             var mm = document.getElementById("input_minut").value;
+            console.log(yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00");
             if (yy == "" || MM == "" || dd == "" || hh == "" || mm == "") {
               Swal.showValidationMessage(`日程を入力してください`);
             } else {
@@ -253,6 +253,8 @@ export default {
                     },
                   })
                   .then((response) => {
+                    this.getInnerConfs();
+                    this.getOuterConfs();
                     const url =
                       "https://conference.aice.cloud/?secret=" +
                       response.data.secret;

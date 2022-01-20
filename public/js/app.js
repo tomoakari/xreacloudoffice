@@ -2048,8 +2048,8 @@ __webpack_require__.r(__webpack_exports__);
             var MM = document.getElementById("input_month").value;
             var dd = document.getElementById("input_date").value;
             var hh = document.getElementById("input_hour").value;
-            console.log(document.getElementById("input_minut").value);
             var mm = document.getElementById("input_minut").value;
+            console.log(yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00");
 
             if (yy == "" || MM == "" || dd == "" || hh == "" || mm == "") {
               Swal.showValidationMessage("\u65E5\u7A0B\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044");
@@ -2080,6 +2080,10 @@ __webpack_require__.r(__webpack_exports__);
                   schedule: _this.createParams[1]
                 }
               }).then(function (response) {
+                _this.getInnerConfs();
+
+                _this.getOuterConfs();
+
                 var url = "https://conference.aice.cloud/?secret=" + response.data.secret;
                 Swal.fire({
                   title: "会議室のURLはこちら",
