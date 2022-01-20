@@ -1996,6 +1996,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 //import Swal from "sweetalert2/dist/sweetalert2.js";
 //import "sweetalert2/src/sweetalert2.scss";
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -37919,7 +37923,11 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "card mb-20" }, [
       _c("div", { staticClass: "card-header" }, [
-        _vm._v("\n      内部会議一覧\n      "),
+        _vm._v("\n      内部会議一覧"),
+        _c("span", { on: { click: _vm.getInnerConfs } }, [
+          _c("i", { staticClass: "fas fa-sync-alt" })
+        ]),
+        _vm._v(" "),
         _c(
           "span",
           {
@@ -37998,7 +38006,11 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-header" }, [
-        _vm._v("\n      外部会議一覧\n      "),
+        _vm._v("\n      外部会議一覧"),
+        _c("span", { on: { click: _vm.getOuterConfs } }, [
+          _c("i", { staticClass: "fas fa-sync-alt" })
+        ]),
+        _vm._v(" "),
         _c(
           "span",
           {
