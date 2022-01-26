@@ -38616,7 +38616,7 @@ var render = function() {
                       staticClass: "infobutton",
                       on: {
                         click: function($event) {
-                          return _vm.showDetail("id")
+                          return _vm.showDetail(innerConf.id)
                         }
                       }
                     },
@@ -38701,7 +38701,7 @@ var render = function() {
                       staticClass: "infobutton",
                       on: {
                         click: function($event) {
-                          return _vm.showDetail("id")
+                          return _vm.showDetail(outerConf.id)
                         }
                       }
                     },
@@ -38849,9 +38849,11 @@ var render = function() {
     _c("div", { staticClass: "card mb-20" }, [
       _c("div", { staticClass: "card-header" }, [
         _vm._v("\n      本日の内部会議　"),
-        _c("span", { on: { click: _vm.getInnerConfs } }, [
-          _c("i", { staticClass: "fas fa-sync-alt" })
-        ])
+        _c(
+          "span",
+          { staticClass: "syncbutton", on: { click: _vm.getInnerConfs } },
+          [_c("i", { staticClass: "fas fa-sync-alt" })]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
@@ -38919,9 +38921,11 @@ var render = function() {
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-header" }, [
         _vm._v("\n      本日の外部会議　"),
-        _c("span", { on: { click: _vm.getOuterConfs } }, [
-          _c("i", { staticClass: "fas fa-sync-alt" })
-        ])
+        _c(
+          "span",
+          { staticClass: "syncbutton", on: { click: _vm.getOuterConfs } },
+          [_c("i", { staticClass: "fas fa-sync-alt" })]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
