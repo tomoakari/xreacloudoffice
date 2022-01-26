@@ -4,25 +4,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">mypage</div>
-
-                <div class="card-body">
-                    @if (session('status'))
+            @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <ul>
-                        <li>id: {{ $user['id'] }}</li>
-                        <li>name: {{ $user['name'] }}</li>
-                        <li>mail: {{ $user['mail'] }}</li>
-                        <!-- <li>※{{ Auth::user()->name }}</li> -->
-                    </ul>
-
-                </div>
-            </div>
+            <!-- vueコンポーネント -->
+        <user-component></user-component>
+            
         </div>
     </div>
 </div>
