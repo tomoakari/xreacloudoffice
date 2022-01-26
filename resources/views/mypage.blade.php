@@ -10,7 +10,7 @@
                         </div>
                     @endif
             <!-- vueコンポーネント -->
-        <user-component></user-component>
+        <mypage-component></mypage-component>
             
         </div>
     </div>
