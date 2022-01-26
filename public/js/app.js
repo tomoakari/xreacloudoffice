@@ -38885,7 +38885,7 @@ var render = function() {
             _vm._m(1),
             _vm._v(" "),
             _vm._l(_vm.innerConfs, function(innerConf) {
-              return _c("tr", { key: innerConf.status }, [
+              return _c("tr", { key: innerConf.id }, [
                 _c("td", [
                   _vm._v(_vm._s(innerConf.status == "0" ? "未開催" : "開催済"))
                 ]),
@@ -38957,7 +38957,7 @@ var render = function() {
             _vm._m(2),
             _vm._v(" "),
             _vm._l(_vm.outerConfs, function(outerConf) {
-              return _c("tr", { key: outerConf.status }, [
+              return _c("tr", { key: outerConf.id }, [
                 _c("td", [
                   _vm._v(_vm._s(outerConf.status == "0" ? "未開催" : "開催済"))
                 ]),
