@@ -29,6 +29,11 @@
     padding: 2px;
     color: #393939;
 }
+.infobutton:hover,
+.syncbutton:hover {
+    color: cadetblue;
+    cursor: pointer;
+}
 .button-area {
     display: flex;
     justify-content: center;
@@ -50,8 +55,4 @@
 }
 .menu_table {
     width: 100%;
-}
-.syncbutton:hover {
-    color: cadetblue;
-    cursor: pointer;
 }
