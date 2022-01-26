@@ -51,3 +51,7 @@
 .menu_table {
     width: 100%;
 }
+.syncbutton:hover {
+    color: cadetblue;
+    cursor: pointer;
+}
