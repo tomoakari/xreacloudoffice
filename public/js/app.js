@@ -2159,11 +2159,18 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    showDetail: function showDetail(id) {
+    showDetail: function showDetail(innerflg, id) {
+      var targetConf;
+
+      if (innerflg) {
+        targetConf = this.innerConfs[id];
+      } else {
+        targetConf = this.outerConfs[id];
+      }
+
       Swal.fire({
-        title: "id: " + id,
-        text: "詳細情報",
-        icon: "info",
+        title: "詳細情報",
+        text: JSON.stringify(targetConf),
         confirmButtonText: "とじる"
       });
     },

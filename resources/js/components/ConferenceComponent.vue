@@ -343,11 +343,16 @@ export default {
         });
       });
     },
-    showDetail: function (id) {
+    showDetail: function (innerflg, id) {
+      var targetConf;
+      if (innerflg) {
+        targetConf = this.innerConfs[id];
+      } else {
+        targetConf = this.outerConfs[id];
+      }
       Swal.fire({
-        title: "id: " + id,
-        text: "詳細情報",
-        icon: "info",
+        title: "詳細情報",
+        text: JSON.stringify(targetConf),
         confirmButtonText: "とじる",
       });
     },
