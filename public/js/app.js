@@ -38630,7 +38630,7 @@ var render = function() {
                       staticClass: "infobutton",
                       on: {
                         click: function($event) {
-                          return _vm.showDetail(innerConf.id)
+                          return _vm.showDetail(1, innerConf.id)
                         }
                       }
                     },
@@ -38715,7 +38715,7 @@ var render = function() {
                       staticClass: "infobutton",
                       on: {
                         click: function($event) {
-                          return _vm.showDetail(outerConf.id)
+                          return _vm.showDetail(0, outerConf.id)
                         }
                       }
                     },

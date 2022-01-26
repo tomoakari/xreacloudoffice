@@ -35,7 +35,7 @@
               >
             </td>
             <td>
-              <span class="infobutton" @click="showDetail(innerConf.id)"
+              <span class="infobutton" @click="showDetail(1, innerConf.id)"
                 ><i class="far fa-edit"></i
               ></span>
             </td>
@@ -79,7 +79,7 @@
               >
             </td>
             <td>
-              <span class="infobutton" @click="showDetail(outerConf.id)"
+              <span class="infobutton" @click="showDetail(0, outerConf.id)"
                 ><i class="far fa-edit"></i
               ></span>
             </td>
