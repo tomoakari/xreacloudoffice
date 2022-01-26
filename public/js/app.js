@@ -2161,13 +2161,20 @@ __webpack_require__.r(__webpack_exports__);
     },
     showDetail: function showDetail(innerflg, id) {
       var targetConf;
+      var confarr;
 
       if (innerflg) {
-        targetConf = this.innerConfs[id];
+        confarr = this.innerConfs;
       } else {
-        targetConf = this.outerConfs[id];
+        confarr = this.outerConfs;
       }
 
+      confarr.forEach(function (elm) {
+        if (elm.id == id) {
+          targetConf = elm;
+        }
+      });
+      console.log("mmm" + targetConf);
       Swal.fire({
         title: "詳細情報",
         text: JSON.stringify(targetConf),

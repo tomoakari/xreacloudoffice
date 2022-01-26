@@ -345,11 +345,18 @@ export default {
     },
     showDetail: function (innerflg, id) {
       var targetConf;
+      var confarr;
       if (innerflg) {
-        targetConf = this.innerConfs[id];
+        confarr = this.innerConfs;
       } else {
-        targetConf = this.outerConfs[id];
+        confarr = this.outerConfs;
       }
+      confarr.forEach((elm) => {
+        if (elm.id == id) {
+          targetConf = elm;
+        }
+      });
+      console.log("mmm" + targetConf);
       Swal.fire({
         title: "詳細情報",
         text: JSON.stringify(targetConf),
