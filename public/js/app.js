@@ -2600,6 +2600,290 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UserComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/UserComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//import Swal from "sweetalert2/dist/sweetalert2.js";
+//import "sweetalert2/src/sweetalert2.scss";
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      user_name: "temp_user_name",
+      outerConfs: [],
+      innerConfs: [],
+      createParams: []
+    };
+  },
+  props: {},
+  mounted: function mounted() {
+    console.log("Component mounted.");
+    this.getInnerConfs();
+    this.getOuterConfs();
+    this.user_name = document.getElementById("login_user_name").value;
+  },
+  methods: {
+    createConf: function createConf(param) {
+      var _this = this;
+
+      Swal.fire({
+        title: "会議情報の登録",
+        html: "<input id=\"input_name\" class=\"swal2-input\" placeholder=\"\u4F1A\u8B70\u540D\">",
+        confirmButtonText: "次へ",
+        focusConfirm: false,
+        showCancelButton: true,
+        canselButtonText: "とじる",
+        allowOutsideClick: false,
+        preConfirm: function preConfirm() {
+          if (document.getElementById("input_name").value == "") {
+            Swal.showValidationMessage("\u4F1A\u8B70\u540D\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044");
+          } else {
+            _this.createParams[0] = document.getElementById("input_name").value;
+          }
+        }
+      }).then(function (result) {
+        if (!result.isConfirmed) {
+          return false;
+        }
+
+        Swal.fire({
+          title: "開催日時の登録",
+          html: "<style>\n            select{padding: 10px; width: 90px;}\n            </style>\n            <select id=\"input_year\">\n              <option value=\"2021\">2021</option>\n              <option value=\"2022\">2022</option>\n              <option value=\"2022\">2023</option>\n            </select>\u5E74\u3000" + "<select id=\"input_month\">\n              <option value=\"01\">1</option>\n              <option value=\"02\">2</option>\n              <option value=\"03\">3</option>\n              <option value=\"04\">4</option>\n              <option value=\"05\">5</option>\n              <option value=\"06\">6</option>\n              <option value=\"07\">7</option>\n              <option value=\"08\">8</option>\n              <option value=\"09\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n            </select>\u6708\u3000" + "<select id=\"input_date\">\n              <option value=\"01\">1</option>\n              <option value=\"02\">2</option>\n              <option value=\"03\">3</option>\n              <option value=\"04\">4</option>\n              <option value=\"05\">5</option>\n              <option value=\"06\">6</option>\n              <option value=\"07\">7</option>\n              <option value=\"08\">8</option>\n              <option value=\"09\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n              <option value=\"13\">13</option>\n              <option value=\"14\">14</option>\n              <option value=\"15\">15</option>\n              <option value=\"16\">16</option>\n              <option value=\"17\">17</option>\n              <option value=\"18\">18</option>\n              <option value=\"19\">19</option>\n              <option value=\"20\">20</option>\n              <option value=\"21\">21</option>\n              <option value=\"22\">22</option>\n              <option value=\"23\">23</option>\n              <option value=\"24\">24</option>\n              <option value=\"25\">25</option>\n              <option value=\"26\">26</option>\n              <option value=\"27\">27</option>\n              <option value=\"28\">28</option>\n              <option value=\"29\">29</option>\n              <option value=\"30\">30</option>\n              <option value=\"31\">31</option>\n            </select>\u65E5<br><br>" + "<select id=\"input_noon\">\n              <option value=\"AM\">AM</option>\n              <option value=\"PM\">PM</option>\n            </select>\u3000\u3000" + "<select id=\"input_hour\">\n              <option value=\"01\">1</option>\n              <option value=\"02\">2</option>\n              <option value=\"03\">3</option>\n              <option value=\"04\">4</option>\n              <option value=\"05\">5</option>\n              <option value=\"06\">6</option>\n              <option value=\"07\">7</option>\n              <option value=\"08\">8</option>\n              <option value=\"09\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n            </select>\u6642\u3000" + "<select id=\"input_minut\">\n              <option value=\"00\">00</option>\n              <option value=\"10\">10</option>\n              <option value=\"20\">20</option>\n              <option value=\"30\">30</option>\n              <option value=\"40\">40</option>\n              <option value=\"50\">50</option>\n            </select>\u5206",
+          confirmButtonText: "次へ",
+          showCancelButton: true,
+          canselButtonText: "とじる",
+          allowOutsideClick: false,
+          focusConfirm: false,
+          preConfirm: function preConfirm() {
+            var yy = document.getElementById("input_year").value;
+            var MM = document.getElementById("input_month").value;
+            var dd = document.getElementById("input_date").value;
+            var hh = document.getElementById("input_hour").value;
+            var nn = document.getElementById("input_noon").value;
+
+            if (nn == "PM") {
+              hh = hh + 12;
+            }
+
+            var mm = document.getElementById("input_minut").value;
+            console.log(yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00");
+
+            if (yy == "" || MM == "" || dd == "" || hh == "" || mm == "") {
+              Swal.showValidationMessage("\u65E5\u7A0B\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044");
+            } else {
+              _this.createParams[1] = yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00";
+            }
+          }
+        }).then(function (result) {
+          if (!result.isConfirmed) {
+            return false;
+          }
+
+          if (_this.createParams[0] !== "" || _this.createParams[1] !== "") {
+            var scrt = "defaultsecret";
+            axios.post("https://conference.aice.cloud/apicreate", {
+              user_name: _this.user_name,
+              room_name: _this.createParams[0]
+            }).then(function (res) {
+              scrt = res.data.secret;
+              axios.get("/createConf", {
+                params: {
+                  name: _this.createParams[0],
+                  username: _this.user_name,
+                  secret: scrt,
+                  password: "pw",
+                  innerflg: param,
+                  status: 0,
+                  schedule: _this.createParams[1]
+                }
+              }).then(function (response) {
+                _this.getInnerConfs();
+
+                _this.getOuterConfs();
+
+                var url = "https://conference.aice.cloud/?secret=" + response.data.secret;
+                Swal.fire({
+                  title: "会議室のURLはこちら",
+                  html: "<input id=\"copyTarget\" class=\"linkinputtext\" value=\"" + url + "\"/>" + "<style>\n                          h2, p{color: #ffffff; font-size: 14px;}\n                          .linkinputtext {\n                            width: 90%;\n                            font-size: 16px;\n                            padding: 10px 10px;\n                          }\n                        </style>",
+                  focusConfirm: false,
+                  confirmButtonText: "コピー",
+                  confirmButtonAriaLabel: "Close",
+                  allowOutsideClick: true
+                }).then(function (result) {
+                  if (result.value) {
+                    copyToClipboard();
+                  }
+                });
+                /*
+                Swal.fire({
+                  title: "参加者を招待する",
+                  html: `
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
+                    `,
+                  confirmButtonText: "送信する",
+                  focusConfirm: false,
+                  showCancelButton: true,
+                  cancelButtonText: "今は招待しない",
+                  allowOutsideClick: false,
+                  preConfirm: () => {
+                    var invites = document.getElementsByName("input_invite");
+                    var isInvited = false;
+                    invites.forEach(iu => {
+                      if(iu !== ""){
+                        isInvited = true;
+                        break;
+                      }
+                    });
+                    if(isInvited){
+                      return false;
+                    }
+                    if (document.getElementsByName("input_invite") == "") {
+                      Swal.showValidationMessage(
+                        `会議名を入力してください`
+                      );
+                    } else {
+                      this.createParams[0] =
+                        document.getElementById("input_name").value;
+                    }
+                  },
+                });
+                */
+              })["catch"](function (err) {
+                Swal.fire(JSON.stringify(err));
+              })["finally"]();
+            });
+          }
+        });
+      });
+    },
+    showDetail: function showDetail(id) {
+      Swal.fire({
+        title: "id: " + id,
+        text: "詳細情報",
+        icon: "info",
+        confirmButtonText: "とじる"
+      });
+    },
+    getOuterConfs: function getOuterConfs() {
+      var _this2 = this;
+
+      axios.get("/getOuterConfs", {
+        params: {//userId: "1",
+        }
+      }).then(function (response) {
+        _this2.outerConfs = response.data;
+      })["catch"](function (err) {
+        _this2.outerConfs = {};
+      })["finally"]();
+    },
+    getInnerConfs: function getInnerConfs() {
+      var _this3 = this;
+
+      axios.get("/getInnerConfs", {
+        params: {//userId: "1",
+        }
+      }).then(function (response) {
+        _this3.innerConfs = response.data;
+      })["catch"](function (err) {
+        _this3.innerConfs = {};
+      })["finally"]();
+    },
+    getJPcalendar: function getJPcalendar(timestamp) {
+      var dt = new Date(timestamp);
+      var yy = dt.getFullYear();
+      var MM = dt.getMonth() + 1;
+      var dd = dt.getDate();
+      var hh = dt.getHours();
+      var mm = dt.getMinutes();
+      return (
+        /*yy + "年" +*/
+        MM + "月" + dd + "日" + hh + "時" + mm + "分"
+      );
+    },
+    getNowDates: function getNowDates() {
+      var dt = new Date();
+      return {
+        yy: dt.getFullYear(),
+        MM: dt.getMonth() + 1,
+        dd: dt.getDate(),
+        hh: dt.getHours(),
+        mm: dt.getMinutes()
+      };
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -38771,6 +39055,137 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UserComponent.vue?vue&type=template&id=7f050fd2&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/UserComponent.vue?vue&type=template&id=7f050fd2& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "card mb-20" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _vm._v("\n      基本情報\n      "),
+        _c(
+          "span",
+          {
+            staticClass: "createbutton",
+            on: {
+              click: function($event) {
+                return _vm.createConf(0)
+              }
+            }
+          },
+          [_vm._v("編集する")]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card mb-20" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _vm._v("\n      詳細情報\n      "),
+        _c(
+          "span",
+          {
+            staticClass: "createbutton",
+            on: {
+              click: function($event) {
+                return _vm.createConf(0)
+              }
+            }
+          },
+          [_vm._v("編集する")]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(2)
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card mb-20" }, [
+      _c("div", { staticClass: "card-header" }, [_vm._v("ユーザ管理")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _vm._v("自分の登録情報を確認・編集できます")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("table", { staticClass: "menu_table" }, [
+        _c("tr", [
+          _c("td", [_vm._v("ユーザID")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("xxxxxxxxxxx")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("メールアドレス")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("xxxxxxxxxxx")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("名前")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("xxxxxxxxxxx")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-body" }, [
+      _c("table", { staticClass: "menu_table" }, [
+        _c("tr", [
+          _c("td", [_vm._v("企業名")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("xxxxxxxxxxx")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("所属部署")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("xxxxxxxxxxx")])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("システム権限")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("xxxxxxxxxxx")])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -50961,6 +51376,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 Vue.component('conference-component', __webpack_require__(/*! ./components/ConferenceComponent.vue */ "./resources/js/components/ConferenceComponent.vue")["default"]);
 Vue.component('home-component', __webpack_require__(/*! ./components/HomeComponent.vue */ "./resources/js/components/HomeComponent.vue")["default"]);
+Vue.component('user-component', __webpack_require__(/*! ./components/UserComponent.vue */ "./resources/js/components/UserComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -51220,6 +51636,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HomeComponent_vue_vue_type_template_id_782dcf83___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_HomeComponent_vue_vue_type_template_id_782dcf83___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/UserComponent.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/UserComponent.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _UserComponent_vue_vue_type_template_id_7f050fd2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserComponent.vue?vue&type=template&id=7f050fd2& */ "./resources/js/components/UserComponent.vue?vue&type=template&id=7f050fd2&");
+/* harmony import */ var _UserComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/UserComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _UserComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UserComponent_vue_vue_type_template_id_7f050fd2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _UserComponent_vue_vue_type_template_id_7f050fd2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/UserComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/UserComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/UserComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./UserComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UserComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/UserComponent.vue?vue&type=template&id=7f050fd2&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/UserComponent.vue?vue&type=template&id=7f050fd2& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserComponent_vue_vue_type_template_id_7f050fd2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./UserComponent.vue?vue&type=template&id=7f050fd2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UserComponent.vue?vue&type=template&id=7f050fd2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserComponent_vue_vue_type_template_id_7f050fd2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserComponent_vue_vue_type_template_id_7f050fd2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
