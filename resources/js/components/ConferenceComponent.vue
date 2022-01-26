@@ -359,8 +359,25 @@ export default {
       console.log("mmm" + targetConf);
       Swal.fire({
         title: "詳細情報",
+        html:
+          `
+        <table>
+          <tr><td>会議名</td><td>` +
+          targetConf.name +
+          `</td></tr>
+          <tr><td>参加者</td><td>` +
+          "xxxx, xxxx, xxxx" +
+          `</td></tr>
+        </table>
+        `,
         text: JSON.stringify(targetConf),
         confirmButtonText: "とじる",
+        showCancelButton: true,
+        canselButtonText: "とじる",
+      }).then((res) => {
+        if (res.isConfirmed) {
+          alert("削除処理");
+        }
       });
     },
     getOuterConfs: function () {

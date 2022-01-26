@@ -2177,8 +2177,15 @@ __webpack_require__.r(__webpack_exports__);
       console.log("mmm" + targetConf);
       Swal.fire({
         title: "詳細情報",
+        html: "\n        <table>\n          <tr><td>\u4F1A\u8B70\u540D</td><td>" + targetConf.name + "</td></tr>\n          <tr><td>\u53C2\u52A0\u8005</td><td>" + "xxxx, xxxx, xxxx" + "</td></tr>\n        </table>\n        ",
         text: JSON.stringify(targetConf),
-        confirmButtonText: "とじる"
+        confirmButtonText: "とじる",
+        showCancelButton: true,
+        canselButtonText: "とじる"
+      }).then(function (res) {
+        if (res.isConfirmed) {
+          alert("削除処理");
+        }
       });
     },
     getOuterConfs: function getOuterConfs() {
