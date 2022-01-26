@@ -20,7 +20,7 @@
             <th></th>
             <th></th>
           </tr>
-          <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.status">
+          <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.id">
             <td>{{ innerConf.status == "0" ? "未開催" : "開催済" }}</td>
             <td>{{ getJPcalendar(innerConf.schedule) }}</td>
             <td>{{ innerConf.name }}</td>
@@ -64,7 +64,7 @@
             <th></th>
             <th></th>
           </tr>
-          <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.status">
+          <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
             <td>{{ outerConf.status == "0" ? "未開催" : "開催済" }}</td>
             <td>{{ getJPcalendar(outerConf.schedule) }}</td>
             <td>{{ outerConf.name }}</td>
