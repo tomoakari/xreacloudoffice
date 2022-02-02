@@ -1,3 +1,11 @@
+footer {
+    height: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    position: fixed;
+    bottom: 0px;
+    box-shadow: 0 0 10px 5px #808080;
+}
 .bg_login {
     background-image: url(https://aice.cloud/img/conference2.jpg);
     background-size: cover;

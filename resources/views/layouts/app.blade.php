@@ -90,6 +90,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer>
+            Copyright © 2022 アイフォーラス株式会社
+        </footer>
         
     </div>
 </body>
