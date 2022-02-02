@@ -5,7 +5,7 @@
         内部会議一覧　<span class="syncbutton" @click="getInnerConfs"
           ><i class="fas fa-sync-alt"></i
         ></span>
-        <span class="createbutton" @click="createConf(1)">会議作成</span>
+        <span class="createbutton" @click="createConf(1)">新規登録</span>
       </div>
 
       <div class="card-body">
@@ -47,7 +47,7 @@
         外部会議一覧　<span class="syncbutton" @click="getOuterConfs"
           ><i class="fas fa-sync-alt"></i
         ></span>
-        <span class="createbutton" @click="createConf(0)">会議作成</span>
+        <span class="createbutton" @click="createConf(0)">新規登録</span>
       </div>
 
       <div class="card-body">
