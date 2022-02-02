@@ -2056,12 +2056,12 @@ __webpack_require__.r(__webpack_exports__);
             var dd = document.getElementById("input_date").value;
             var hh = document.getElementById("input_hour").value;
             var mm = document.getElementById("input_minut").value;
-            console.log(yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00");
+            console.log(yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":00");
 
             if (yy == "" || MM == "" || dd == "" || hh == "" || mm == "") {
               Swal.showValidationMessage("\u65E5\u7A0B\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044");
             } else {
-              _this.createParams[1] = yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00";
+              _this.createParams[1] = yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":00";
             }
           }
         }).then(function (result) {
@@ -2173,9 +2173,9 @@ __webpack_require__.r(__webpack_exports__);
         title: "詳細情報",
         html: "\n        <table>\n          <tr><td>\u4F1A\u8B70\u540D</td><td>" + targetConf.name + "</td></tr>\n          <tr><td>\u53C2\u52A0\u8005</td><td>" + "xxxx, xxxx, xxxx" + "</td></tr>\n        </table>\n        ",
         text: JSON.stringify(targetConf),
-        confirmButtonText: "とじる",
+        confirmButtonText: "削除する",
         showCancelButton: true,
-        canselButtonText: "とじる"
+        cancelButtonText: "とじる"
       }).then(function (res) {
         if (res.isConfirmed) {
           alert("削除処理");

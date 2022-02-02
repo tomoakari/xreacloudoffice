@@ -233,12 +233,12 @@ export default {
             var dd = document.getElementById("input_date").value;
             var hh = document.getElementById("input_hour").value;
             var mm = document.getElementById("input_minut").value;
-            console.log(yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00");
+            console.log(yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":00");
             if (yy == "" || MM == "" || dd == "" || hh == "" || mm == "") {
               Swal.showValidationMessage(`日程を入力してください`);
             } else {
               this.createParams[1] =
-                yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00";
+                yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":00";
             }
           },
         }).then((result) => {
@@ -375,9 +375,9 @@ export default {
         </table>
         `,
         text: JSON.stringify(targetConf),
-        confirmButtonText: "とじる",
+        confirmButtonText: "削除する",
         showCancelButton: true,
-        canselButtonText: "とじる",
+        cancelButtonText: "とじる",
       }).then((res) => {
         if (res.isConfirmed) {
           alert("削除処理");
