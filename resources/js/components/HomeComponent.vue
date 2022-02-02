@@ -36,7 +36,7 @@
       <div class="card-body">
         <table class="meetinglist">
           <tr>
-            <th>ステータス</th>
+            <th>状況</th>
             <th>日時</th>
             <th>会議名</th>
             <th>作成者</th>
@@ -77,7 +77,7 @@
       <div class="card-body">
         <table class="meetinglist">
           <tr>
-            <th>ステータス</th>
+            <th>状況</th>
             <th>日時</th>
             <th>会議名</th>
             <th>作成者</th>

@@ -1996,10 +1996,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 //import Swal from "sweetalert2/dist/sweetalert2.js";
 //import "sweetalert2/src/sweetalert2.scss";
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -38580,7 +38576,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("会議を新たに作成")]
+          [_vm._v("会議作成")]
         )
       ]),
       _vm._v(" "),
@@ -38665,7 +38661,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("会議を新たに作成")]
+          [_vm._v("会議作成")]
         )
       ]),
       _vm._v(" "),
@@ -38738,7 +38734,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
-      _c("th", [_vm._v("ステータス")]),
+      _c("th", [_vm._v("状況")]),
       _vm._v(" "),
       _c("th", [_vm._v("日時")]),
       _vm._v(" "),
@@ -38756,7 +38752,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
-      _c("th", [_vm._v("ステータス")]),
+      _c("th", [_vm._v("状況")]),
       _vm._v(" "),
       _c("th", [_vm._v("日時")]),
       _vm._v(" "),
@@ -39040,7 +39036,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
-      _c("th", [_vm._v("ステータス")]),
+      _c("th", [_vm._v("状況")]),
       _vm._v(" "),
       _c("th", [_vm._v("日時")]),
       _vm._v(" "),
@@ -39058,7 +39054,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
-      _c("th", [_vm._v("ステータス")]),
+      _c("th", [_vm._v("状況")]),
       _vm._v(" "),
       _c("th", [_vm._v("日時")]),
       _vm._v(" "),

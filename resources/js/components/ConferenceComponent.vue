@@ -5,15 +5,13 @@
         内部会議一覧　<span class="syncbutton" @click="getInnerConfs"
           ><i class="fas fa-sync-alt"></i
         ></span>
-        <span class="createbutton" @click="createConf(1)"
-          >会議を新たに作成</span
-        >
+        <span class="createbutton" @click="createConf(1)">会議作成</span>
       </div>
 
       <div class="card-body">
         <table class="meetinglist">
           <tr>
-            <th>ステータス</th>
+            <th>状況</th>
             <th>日時</th>
             <th>会議名</th>
             <th>作成者</th>
@@ -49,15 +47,13 @@
         外部会議一覧　<span class="syncbutton" @click="getOuterConfs"
           ><i class="fas fa-sync-alt"></i
         ></span>
-        <span class="createbutton" @click="createConf(0)"
-          >会議を新たに作成</span
-        >
+        <span class="createbutton" @click="createConf(0)">会議作成</span>
       </div>
 
       <div class="card-body">
         <table class="meetinglist">
           <tr>
-            <th>ステータス</th>
+            <th>状況</th>
             <th>日時</th>
             <th>会議名</th>
             <th>作成者</th>
