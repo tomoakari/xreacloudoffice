@@ -1935,218 +1935,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //import Swal from "sweetalert2/dist/sweetalert2.js";
 //import "sweetalert2/src/sweetalert2.scss";
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      user_name: "temp_user_name",
-      outerConfs: [],
-      innerConfs: [],
+      user_id: "temp_user_id",
+      company_name: "",
+      max_member: 10,
       createParams: []
     };
   },
   props: {},
   mounted: function mounted() {
-    console.log("Component mounted.");
-    this.getInnerConfs();
-    this.getOuterConfs();
-    this.user_name = document.getElementById("login_user_name").value;
+    this.user_id = document.getElementById("login_user_id").value;
   },
   methods: {
-    createConf: function createConf(param) {
-      var _this = this;
-
-      Swal.fire({
-        title: "会議情報の登録",
-        html: "<input id=\"input_name\" class=\"swal2-input\" placeholder=\"\u4F1A\u8B70\u540D\">",
-        confirmButtonText: "次へ",
-        focusConfirm: false,
-        showCancelButton: true,
-        canselButtonText: "とじる",
-        allowOutsideClick: false,
-        preConfirm: function preConfirm() {
-          if (document.getElementById("input_name").value == "") {
-            Swal.showValidationMessage("\u4F1A\u8B70\u540D\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044");
-          } else {
-            _this.createParams[0] = document.getElementById("input_name").value;
-          }
-        }
-      }).then(function (result) {
-        if (!result.isConfirmed) {
-          return false;
-        }
-
-        Swal.fire({
-          title: "開催日時の登録",
-          html: "<style>\n            select{padding: 10px; width: 90px;}\n            </style>\n            <select id=\"input_year\">\n              <option value=\"2021\">2021</option>\n              <option value=\"2022\">2022</option>\n              <option value=\"2022\">2023</option>\n            </select>\u5E74\u3000" + "<select id=\"input_month\">\n              <option value=\"01\">1</option>\n              <option value=\"02\">2</option>\n              <option value=\"03\">3</option>\n              <option value=\"04\">4</option>\n              <option value=\"05\">5</option>\n              <option value=\"06\">6</option>\n              <option value=\"07\">7</option>\n              <option value=\"08\">8</option>\n              <option value=\"09\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n            </select>\u6708\u3000" + "<select id=\"input_date\">\n              <option value=\"01\">1</option>\n              <option value=\"02\">2</option>\n              <option value=\"03\">3</option>\n              <option value=\"04\">4</option>\n              <option value=\"05\">5</option>\n              <option value=\"06\">6</option>\n              <option value=\"07\">7</option>\n              <option value=\"08\">8</option>\n              <option value=\"09\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n              <option value=\"13\">13</option>\n              <option value=\"14\">14</option>\n              <option value=\"15\">15</option>\n              <option value=\"16\">16</option>\n              <option value=\"17\">17</option>\n              <option value=\"18\">18</option>\n              <option value=\"19\">19</option>\n              <option value=\"20\">20</option>\n              <option value=\"21\">21</option>\n              <option value=\"22\">22</option>\n              <option value=\"23\">23</option>\n              <option value=\"24\">24</option>\n              <option value=\"25\">25</option>\n              <option value=\"26\">26</option>\n              <option value=\"27\">27</option>\n              <option value=\"28\">28</option>\n              <option value=\"29\">29</option>\n              <option value=\"30\">30</option>\n              <option value=\"31\">31</option>\n            </select>\u65E5<br><br>" + "<select id=\"input_noon\">\n              <option value=\"AM\">AM</option>\n              <option value=\"PM\">PM</option>\n            </select>\u3000\u3000" + "<select id=\"input_hour\">\n              <option value=\"01\">1</option>\n              <option value=\"02\">2</option>\n              <option value=\"03\">3</option>\n              <option value=\"04\">4</option>\n              <option value=\"05\">5</option>\n              <option value=\"06\">6</option>\n              <option value=\"07\">7</option>\n              <option value=\"08\">8</option>\n              <option value=\"09\">9</option>\n              <option value=\"10\">10</option>\n              <option value=\"11\">11</option>\n              <option value=\"12\">12</option>\n            </select>\u6642\u3000" + "<select id=\"input_minut\">\n              <option value=\"00\">00</option>\n              <option value=\"10\">10</option>\n              <option value=\"20\">20</option>\n              <option value=\"30\">30</option>\n              <option value=\"40\">40</option>\n              <option value=\"50\">50</option>\n            </select>\u5206",
-          confirmButtonText: "次へ",
-          showCancelButton: true,
-          canselButtonText: "とじる",
-          allowOutsideClick: false,
-          focusConfirm: false,
-          preConfirm: function preConfirm() {
-            var yy = document.getElementById("input_year").value;
-            var MM = document.getElementById("input_month").value;
-            var dd = document.getElementById("input_date").value;
-            var hh = document.getElementById("input_hour").value;
-            var nn = document.getElementById("input_noon").value;
-
-            if (nn == "PM") {
-              hh = hh + 12;
-            }
-
-            var mm = document.getElementById("input_minut").value;
-            console.log(yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00");
-
-            if (yy == "" || MM == "" || dd == "" || hh == "" || mm == "") {
-              Swal.showValidationMessage("\u65E5\u7A0B\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044");
-            } else {
-              _this.createParams[1] = yy + "-" + MM + "-" + dd + " " + hh + ":" + dd + ":00";
-            }
-          }
-        }).then(function (result) {
-          if (!result.isConfirmed) {
-            return false;
-          }
-
-          if (_this.createParams[0] !== "" || _this.createParams[1] !== "") {
-            var scrt = "defaultsecret";
-            axios.post("https://conference.aice.cloud/apicreate", {
-              user_name: _this.user_name,
-              room_name: _this.createParams[0]
-            }).then(function (res) {
-              scrt = res.data.secret;
-              axios.get("/createConf", {
-                params: {
-                  name: _this.createParams[0],
-                  username: _this.user_name,
-                  secret: scrt,
-                  password: "pw",
-                  innerflg: param,
-                  status: 0,
-                  schedule: _this.createParams[1]
-                }
-              }).then(function (response) {
-                _this.getInnerConfs();
-
-                _this.getOuterConfs();
-
-                var url = "https://conference.aice.cloud/?secret=" + response.data.secret;
-                Swal.fire({
-                  title: "会議室のURLはこちら",
-                  html: "<input id=\"copyTarget\" class=\"linkinputtext\" value=\"" + url + "\"/>" + "<style>\n                          h2, p{color: #ffffff; font-size: 14px;}\n                          .linkinputtext {\n                            width: 90%;\n                            font-size: 16px;\n                            padding: 10px 10px;\n                          }\n                        </style>",
-                  focusConfirm: false,
-                  confirmButtonText: "コピー",
-                  confirmButtonAriaLabel: "Close",
-                  allowOutsideClick: true
-                }).then(function (result) {
-                  if (result.value) {
-                    copyToClipboard();
-                  }
-                });
-                /*
-                Swal.fire({
-                  title: "参加者を招待する",
-                  html: `
-                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                    <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                    `,
-                  confirmButtonText: "送信する",
-                  focusConfirm: false,
-                  showCancelButton: true,
-                  cancelButtonText: "今は招待しない",
-                  allowOutsideClick: false,
-                  preConfirm: () => {
-                    var invites = document.getElementsByName("input_invite");
-                    var isInvited = false;
-                    invites.forEach(iu => {
-                      if(iu !== ""){
-                        isInvited = true;
-                        break;
-                      }
-                    });
-                    if(isInvited){
-                      return false;
-                    }
-                    if (document.getElementsByName("input_invite") == "") {
-                      Swal.showValidationMessage(
-                        `会議名を入力してください`
-                      );
-                    } else {
-                      this.createParams[0] =
-                        document.getElementById("input_name").value;
-                    }
-                  },
-                });
-                */
-              })["catch"](function (err) {
-                Swal.fire(JSON.stringify(err));
-              })["finally"]();
-            });
-          }
-        });
-      });
-    },
-    showDetail: function showDetail(id) {
-      Swal.fire({
-        title: "id: " + id,
-        text: "詳細情報",
-        icon: "info",
-        confirmButtonText: "とじる"
-      });
-    },
-    getOuterConfs: function getOuterConfs() {
-      var _this2 = this;
-
-      axios.get("/getOuterConfs", {
-        params: {//userId: "1",
-        }
-      }).then(function (response) {
-        _this2.outerConfs = response.data;
-      })["catch"](function (err) {
-        _this2.outerConfs = {};
-      })["finally"]();
-    },
-    getInnerConfs: function getInnerConfs() {
-      var _this3 = this;
-
-      axios.get("/getInnerConfs", {
-        params: {//userId: "1",
-        }
-      }).then(function (response) {
-        _this3.innerConfs = response.data;
-      })["catch"](function (err) {
-        _this3.innerConfs = {};
-      })["finally"]();
-    },
-    getJPcalendar: function getJPcalendar(timestamp) {
-      var dt = new Date(timestamp);
-      var yy = dt.getFullYear();
-      var MM = dt.getMonth() + 1;
-      var dd = dt.getDate();
-      var hh = dt.getHours();
-      var mm = dt.getMinutes();
-      return (
-        /*yy + "年" +*/
-        MM + "月" + dd + "日" + hh + "時" + mm + "分"
-      );
-    },
-    getNowDates: function getNowDates() {
-      var dt = new Date();
-      return {
-        yy: dt.getFullYear(),
-        MM: dt.getMonth() + 1,
-        dd: dt.getDate(),
-        hh: dt.getHours(),
-        mm: dt.getMinutes()
-      };
+    createCompany: function createCompany() {
+      alert(this.company_name);
     }
   }
 });
@@ -38810,49 +38636,159 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _vm._v("会社新規作成（会社未作成時にのみ表示）")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("h3", [_vm._v("会社名を登録しましょう")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.company_name,
+              expression: "company_name"
+            }
+          ],
+          domProps: { value: _vm.company_name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.company_name = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("h3", [_vm._v("ご利用の人数は何人ですか？")]),
+        _vm._v(" "),
+        _c("p", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.max_member,
+                expression: "max_member"
+              }
+            ],
+            attrs: { type: "radio", id: "1_5", value: "5" },
+            domProps: { checked: _vm._q(_vm.max_member, "5") },
+            on: {
+              change: function($event) {
+                _vm.max_member = "5"
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "1-5" } }, [_vm._v("1~5人")])
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.max_member,
+                expression: "max_member"
+              }
+            ],
+            attrs: { type: "radio", id: "6-10", value: "10" },
+            domProps: { checked: _vm._q(_vm.max_member, "10") },
+            on: {
+              change: function($event) {
+                _vm.max_member = "10"
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "6-10" } }, [_vm._v("6~10人")])
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.max_member,
+                expression: "max_member"
+              }
+            ],
+            attrs: { type: "radio", id: "11-20", value: "20" },
+            domProps: { checked: _vm._q(_vm.max_member, "20") },
+            on: {
+              change: function($event) {
+                _vm.max_member = "20"
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "11-20" } }, [_vm._v("11~20人")])
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.max_member,
+                expression: "max_member"
+              }
+            ],
+            attrs: { type: "radio", id: "21-50", value: "50" },
+            domProps: { checked: _vm._q(_vm.max_member, "50") },
+            on: {
+              change: function($event) {
+                _vm.max_member = "50"
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("label", { attrs: { for: "21-50" } }, [_vm._v("21~50人")])
+        ]),
+        _vm._v(" "),
+        _c("h3", [_vm._v("決済方法の登録（飛ばして新規登録します）")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "button", on: { click: _vm.createCompany } }, [
+          _vm._v("企業を作成する")
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _vm._v("会社管理画面（会社作成済み時にのみ表示）")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("ul", [
-            _c("li", [
-              _c("a", { attrs: { href: "/company/invite" } }, [
-                _vm._v("従業員を作成する")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("edit")])]),
-            _vm._v(" "),
-            _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("payment")])])
-          ])
-        ])
+    return _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header" }, [
+        _vm._v("会社管理画面（会社作成済み時にのみ表示）")
       ]),
       _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-header" }, [
-          _vm._v("会社新規作成（会社未作成時にのみ表示）")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("ul", [
-            _c("li", [
-              _c("a", { attrs: { href: "/company/organize" } }, [
-                _vm._v("organize")
-              ])
+      _c("div", { staticClass: "card-body" }, [
+        _c("ul", [
+          _c("li", [
+            _c("a", { attrs: { href: "/company/invite" } }, [
+              _vm._v("従業員を作成する")
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("edit")])]),
+          _vm._v(" "),
+          _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("payment")])])
         ])
       ])
     ])
