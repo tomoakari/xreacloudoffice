@@ -34,6 +34,7 @@
             <div class="container">
                 <input type="hidden" value="{{ Auth::user() ? Auth::user()->name : '' }}" id="login_user_name">
                 <input type="hidden" value="{{ Auth::user() ? Auth::user()->email : '' }}" id="login_user_email">
+                <input type="hidden" value="{{ Auth::user() ? Auth::user()->id : '' }}" id="login_user_id">
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     <!--{{ config('app.name', 'CLOUD OFFICE') }}-->クラウドオフィス会議室
                 </a>

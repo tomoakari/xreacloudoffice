@@ -11,28 +11,9 @@
                 </div>
             @endif
 
-            <div class="card">
-                <div class="card-header">会社管理画面</div>
+        <!-- vueコンポーネント -->
+        <company-component></company-component>
 
-                <div class="card-body">
-                    <ul>
-                        <li><a href="/company/invite">従業員を作成する</a></li>
-                        <li><a href="">edit</a></li>
-                        <li><a href="">payment</a></li>
-                    </ul>
-                </div>
-            </div>
-            <br />
-
-            <div class="card">
-                <div class="card-header">会社新規作成</div>
-
-                <div class="card-body">
-                    <ul>
-                        <li><a href="/company/organize">organize</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
 </div>

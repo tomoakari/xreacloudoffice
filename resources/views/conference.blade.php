@@ -11,7 +11,6 @@
                 </div>
             @endif
 
-
         <!-- vueコンポーネント -->
         <conference-component></conference-component>
 

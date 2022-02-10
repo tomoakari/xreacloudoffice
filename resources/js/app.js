@@ -24,6 +24,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('conference-component', require('./components/ConferenceComponent.vue').default);
 Vue.component('home-component', require('./components/HomeComponent.vue').default);
 Vue.component('mypage-component', require('./components/MypageComponent.vue').default);
+Vue.component('company-component', require('./components/CompanyComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
