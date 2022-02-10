@@ -15,6 +15,12 @@ class CreateEnrolledsTable extends Migration
     {
         Schema::create('enrolleds', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('userid');
+            $table->string('companyid');
+            $table->string('departmentid');
+            $table->string('countadminflg');
+            $table->string('depadminflg');
+            $table->string('compadminflg');
             $table->timestamps();
         });
     }

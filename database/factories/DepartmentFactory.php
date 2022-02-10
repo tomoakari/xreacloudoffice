@@ -20,11 +20,12 @@ use Illuminate\Support\Str;
 $factory->define(Department::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'username' => $faker->username,
-        'secret' => $faker->secret,
-        'password' => $faker->password,
-        'innerflg' => $faker->innerflg,
-        'status' => $faker->status,
-        'schedule' => $faker->schedule,
+        'companyid' => $faker->companyid,
+        'depid1' => $faker->depid1,
+        'depname1' => $faker->depname1,
+        'depid2' => $faker->depid2,
+        'depname2' => $faker->depname2,
+        'depid3' => $faker->depid3,
+        'depname3' => $faker->depname3,
     ];
 });

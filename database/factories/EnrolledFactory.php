@@ -19,12 +19,11 @@ use Illuminate\Support\Str;
 
 $factory->define(Enrolled::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'username' => $faker->username,
-        'secret' => $faker->secret,
-        'password' => $faker->password,
-        'innerflg' => $faker->innerflg,
-        'status' => $faker->status,
-        'schedule' => $faker->schedule,
+        'userid' => $faker->userid,
+        'companyid' => $faker->companyid,
+        'departmentid' => $faker->departmentid,
+        'countadminflg' => $faker->countadminflg,
+        'depadminflg' => $faker->depadminflg,
+        'compadminflg' => $faker->compadminflg,
     ];
 });
