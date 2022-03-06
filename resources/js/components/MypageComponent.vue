@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="card mb-20">
-      <div class="card-header">ユーザ管理</div>
+      <div class="card-header">
+        ユーザ管理
+        <span class="createbutton" @click="logout()">ログアウト</span>
+      </div>
 
       <div class="card-body">自分の登録情報を確認・編集できます</div>
     </div>
@@ -75,6 +78,11 @@ export default {
     this.user_name = document.getElementById("login_user_name").value;
   },
   methods: {
+    logout() {
+      event.preventDefault();
+      document.getElementById("logout-form").submit();
+      window.location.href = "/logout";
+    },
     createConf: function (param) {
       Swal.fire({
         title: "会議情報の登録",

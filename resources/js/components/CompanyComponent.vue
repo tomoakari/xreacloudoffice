@@ -4,6 +4,7 @@
       <div class="card-header">会社管理画面（会社作成済み時にのみ表示）</div>
 
       <div class="card-body">
+        <h4>{{ admin_company_name }}</h4>
         <ul>
           <li><a href="/company/invite">従業員を作成する</a></li>
           <li><a href="">edit</a></li>
@@ -17,7 +18,7 @@
       <div class="card-header">会社新規作成（会社未作成時にのみ表示）</div>
 
       <div class="card-body">
-        <h3>会社名を登録しましょう</h3>
+        <h3>組織名を登録しましょう</h3>
         <input v-model="company_name" />
 
         <h3>ご利用の人数は何人ですか？</h3>
@@ -51,19 +52,34 @@
 export default {
   data: function () {
     return {
+      show_mode: "create",
       user_id: "temp_user_id",
       company_name: "",
       max_member: 10,
+      admin_company_name: "",
       createParams: [],
     };
   },
   props: {},
   mounted() {
     this.user_id = document.getElementById("login_user_id").value;
+    this.getCompanyInfo();
   },
   methods: {
+    setShowMode: function () {},
     createCompany: function () {
       alert(this.company_name);
+    },
+    getCompanyInfo: function () {
+      axios
+        .get("/getCompanyInfo", {
+          params: {
+            user_id: this.createParams[0],
+          },
+        })
+        .then((response) => {
+          alert(response.data);
+        });
     },
   },
 };
