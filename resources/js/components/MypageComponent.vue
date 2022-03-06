@@ -81,7 +81,10 @@ export default {
     logout() {
       event.preventDefault();
       document.getElementById("logout-form").submit();
-      window.location.href = "/logout";
+      axios.post("https://conference.aice.cloud/logout", {
+        user_name: this.user_name,
+        room_name: this.createParams[0],
+      });
     },
     createConf: function (param) {
       Swal.fire({
