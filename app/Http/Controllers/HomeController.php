@@ -93,9 +93,9 @@ class HomeController extends Controller
             'depid1' => 1,
             'depname1' => "デフォルト部署",
             'depid2' => 0,
-            'depname2' => null,
+            'depname2' => '',
             'depid3' => 0,
-            'depname3' => null,
+            'depname3' => '',
         ];
         $depResult = Department::create($depData);
 
