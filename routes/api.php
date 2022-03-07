@@ -25,4 +25,4 @@ Route::get('/addconf', 'HomeController@addConference');
 //Route::get('/getOuterConfs', 'HomeController@getOuterConfs');
 
 
-Route::post('/createcompany', 'HomeController@createCompany');
+Route::get('/createcompany', 'HomeController@createCompany');
