@@ -16,7 +16,8 @@ class CreateDepartmentsTable extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('companyid');
+            $table->string('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->string('depid1');
             $table->string('depname1');
             $table->string('depid2');

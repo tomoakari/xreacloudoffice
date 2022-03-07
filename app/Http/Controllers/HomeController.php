@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Conference;
+use App\Company;
+use App\Department;
+use App\Enrolled;
 
 /**
  * ログイン認証付きのルーティングのコントローラクラス
@@ -70,12 +74,49 @@ class HomeController extends Controller
             'schedule' => $request['schedule'],
         ];
         $result = Conference::create($data);
-
-        return $result;
-        
+        return $result;   
     }
 
     
+    public function createCompany(Request $request)
+    {
+        $compData = [
+            'name' => $request['name'],
+            'plan' => $request['plan'],
+            'createuserid' => Auth::id(),
+        ];
+        $compResult = Company::create($compData);
+
+        $depData = [
+            'name' => "いらないかも",
+            'company_id' => $compResult['id'],
+            'depid1' => 1,
+            'depname1' => "デフォルト部署",
+            'depid2' => 0,
+            'depname2' => null,
+            'depid3' => 0,
+            'depname3' => null,
+        ];
+        $depResult = Department::create($depData);
+
+        $enrData = [
+            'userid' => Auth::id(),
+            'companyid' => $compResult['id'],
+            'departmentid' => $depResult['id'],
+            'countadminflg' => 1,
+            'depadminflg' => 1,
+            'compadminflg' => 1,
+        ];
+        $enrResult = Enrolled::create($enrData);
+
+        $result = [
+            'company' => $compResult,
+            'department' => $depResult,
+            'enrolled' => $enrResult
+        ]
+
+        return $result;   
+    }
     
     /**
      * Show the application dashboard.

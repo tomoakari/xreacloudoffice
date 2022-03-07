@@ -68,7 +68,22 @@ export default {
   methods: {
     setShowMode: function () {},
     createCompany: function () {
-      alert(this.company_name);
+      axios
+        .post("https://conference.aice.cloud/createcompany", {
+          name: this.user_name,
+          plan: this.createParams[0],
+        })
+        .then((res) => {
+          if (!res.result) {
+            console.log(JSON.stringify(res.data));
+          } else {
+            Swal.fire({
+              icon: `success`,
+              html: `会社を作成しました`,
+              confirmButtonText: "とじる",
+            });
+          }
+        });
     },
     getCompanyInfo: function () {
       axios

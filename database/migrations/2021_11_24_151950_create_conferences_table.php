@@ -15,6 +15,8 @@ class CreateConferencesTable extends Migration
     {
         Schema::create('conferences', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('company_id');
+            $table->foreign('company_id')->references('id')->on('companies')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->string('name');
             $table->string('username');
             $table->string('secret');

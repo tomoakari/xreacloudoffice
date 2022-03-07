@@ -16,6 +16,7 @@ class CreateEnrolledsTable extends Migration
         Schema::create('enrolleds', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('userid');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->string('companyid');
             $table->string('departmentid');
             $table->string('countadminflg');
