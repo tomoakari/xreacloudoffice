@@ -113,7 +113,7 @@ class HomeController extends Controller
             'company' => $compResult,
             'department' => $depResult,
             'enrolled' => $enrResult
-        ]
+        ];
 
         return $result;   
     }
