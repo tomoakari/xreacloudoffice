@@ -72,7 +72,7 @@ export default {
         .get("/createCompany", {
           params: {
             name: this.company_name,
-            plan: this.createParams[0],
+            plan: this.max_member,
           },
         })
         .then((res) => {
