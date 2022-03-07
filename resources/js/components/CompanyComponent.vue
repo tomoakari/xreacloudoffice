@@ -70,7 +70,7 @@ export default {
     createCompany: function () {
       axios
         .get("/createCompany", {
-          name: this.user_name,
+          name: this.company_name,
           plan: this.createParams[0],
         })
         .then((res) => {
