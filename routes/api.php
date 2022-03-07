@@ -24,5 +24,3 @@ Route::get('/addconf', 'HomeController@addConference');
 // 外部会議室取得（あとで認証入れてputとかにする）
 //Route::get('/getOuterConfs', 'HomeController@getOuterConfs');
 
-
-Route::get('/createcompany', 'HomeController@createCompany');

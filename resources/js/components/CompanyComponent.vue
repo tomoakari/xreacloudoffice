@@ -69,7 +69,7 @@ export default {
     setShowMode: function () {},
     createCompany: function () {
       axios
-        .get("/createcompany", {
+        .get("/createCompany", {
           name: this.user_name,
           plan: this.createParams[0],
         })
