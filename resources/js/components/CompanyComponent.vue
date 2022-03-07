@@ -69,7 +69,7 @@ export default {
     setShowMode: function () {},
     createCompany: function () {
       axios
-        .post("https://conference.aice.cloud/createcompany", {
+        .post("/createcompany", {
           name: this.user_name,
           plan: this.createParams[0],
         })
