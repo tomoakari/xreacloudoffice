@@ -89,7 +89,7 @@ class HomeController extends Controller
 
         $depData = [
             'name' => "いらないかも",
-            'company_id' => $compResult['id'],
+            'company_id' => $compResult->id,
             'depid1' => 1,
             'depname1' => "デフォルト部署",
             'depid2' => 0,
@@ -101,8 +101,8 @@ class HomeController extends Controller
 
         $enrData = [
             'userid' => Auth::id(),
-            'companyid' => $compResult['id'],
-            'departmentid' => $depResult['id'],
+            'companyid' => $compResult->id,
+            'departmentid' => $depResult->id,
             'countadminflg' => 1,
             'depadminflg' => 1,
             'compadminflg' => 1,
