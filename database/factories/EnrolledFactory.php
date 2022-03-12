@@ -19,9 +19,9 @@ use Illuminate\Support\Str;
 
 $factory->define(Enrolled::class, function (Faker $faker) {
     return [
-        'userid' => $faker->userid,
-        'companyid' => $faker->companyid,
-        'departmentid' => $faker->departmentid,
+        'user_id' => $faker->user_id,
+        'company_id' => $faker->company_id,
+        'department_id' => $faker->department_id,
         'countadminflg' => $faker->countadminflg,
         'depadminflg' => $faker->depadminflg,
         'compadminflg' => $faker->compadminflg,
