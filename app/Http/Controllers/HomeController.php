@@ -80,42 +80,50 @@ class HomeController extends Controller
     
     public function createCompany(Request $request)
     {
-        $compData = [
-            'name' => $request['name'],
-            'plan' => $request['plan'],
-            'createuserid' => Auth::id(),
-        ];
-        $compResult = Company::create($compData);
+        try{
+            DB::beginTransaction();
 
-        $depData = [
-            'name' => "いらないかも",
-            'company_id' => $compResult->id,
-            'depid1' => 1,
-            'depname1' => "デフォルト部署",
-            'depid2' => 0,
-            'depname2' => '',
-            'depid3' => 0,
-            'depname3' => '',
-        ];
-        $depResult = Department::create($depData);
+            $comp = new Company();
+            $comp->name = $request['name'];
+            $comp->plan = $request['plan'],
+            $comp->createuserid = Auth::id();
+            $comp->save();
 
-        $enrData = [
-            'userid' => Auth::id(),
-            'companyid' => $compResult->id,
-            'departmentid' => $depResult->id,
-            'countadminflg' => 1,
-            'depadminflg' => 1,
-            'compadminflg' => 1,
-        ];
-        $enrResult = Enrolled::create($enrData);
+            $dept = new Department();
+            $dept->name = 'いらないかも';
+            $dept->company_id = $comp->id;
+            $dept->depid1 = 0;
+            $dept->depname1 = デフォルト部署;
+            $dept->depid2 = 0;
+            $dept->depname2 = '';
+            $dept->depid3 = 0;
+            $dept->depname3 = '';
+            $dept->save();
 
-        $result = [
-            'company' => $compResult,
-            'department' => $depResult,
-            'enrolled' => $enrResult
-        ];
+            $enr = new Enrolled();
+            $enr->userid = Auth::id();
+            $enr->companyid = $comp->id;
+            $enr->departmentid = $dept->id;
+            $enr->countadminflg = 1;
+            $enr->depadminflg = 1;
+            $enr->compadminflg = 1;
+            $enr->save();
 
-        return $result;   
+            DB::commit();
+
+            $result = [
+                'company' => $comp,
+                'department' => $dept,
+                'enrolled' => $enr
+            ];
+            return $result; 
+
+        }catch{
+            DB::rollBack();
+            return 'error'; 
+        }
+
+         
     }
     
     /**
