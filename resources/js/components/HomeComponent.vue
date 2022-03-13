@@ -125,8 +125,8 @@ export default {
   props: {},
   mounted() {
     console.log("Component mounted.");
-    this.getInnerConfs();
-    this.getOuterConfs();
+    //this.getInnerConfs();
+    //this.getOuterConfs();
     this.user_name = document.getElementById("login_user_name").value;
   },
   methods: {
