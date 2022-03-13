@@ -128,6 +128,7 @@ export default {
         });
     },
     showSecret: function () {
+      /* なんか誤動作するので一旦スルー
       Swal.fire({
         icon: `success`,
         html:
@@ -139,6 +140,10 @@ export default {
           `,
         confirmButtonText: "とじる",
       });
+      */
+      alert(
+        "こちらの８文字のコードを共有してください ： " + this.company.secret
+      );
     },
     joinCompany: function () {
       if (this.company_secret == "") return;
