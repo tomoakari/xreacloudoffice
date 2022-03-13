@@ -102,9 +102,9 @@ class HomeController extends Controller
             $dept->save();
 
             $enr = new Enrolled();
-            $enr->userid = Auth::id();
-            $enr->companyid = $comp->id;
-            $enr->departmentid = $dept->id;
+            $enr->user_id = Auth::id();
+            $enr->company_id = $comp->id;
+            $enr->department_id = $dept->id;
             $enr->countadminflg = 1;
             $enr->depadminflg = 1;
             $enr->compadminflg = 1;
