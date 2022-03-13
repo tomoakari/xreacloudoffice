@@ -15,11 +15,11 @@ class CreateEnrolledsTable extends Migration
     {
         Schema::create('enrolleds', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->unsignedBigInteger('company_id');
+            $table->bigInteger('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->unsignedBigInteger('department_id');
+            $table->bigInteger('department_id')->unsigned();
             $table->foreign('department_id')->references('id')->on('departments')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->string('countadminflg');
             $table->string('depadminflg');
