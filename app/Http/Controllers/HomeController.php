@@ -67,8 +67,8 @@ class HomeController extends Controller
         $today = date("Y-m-d");
         return $outerConfs = Conference::
             where('innerflg', 0)->
-            where('company_id', $company_id)->
-            //where('schedule', '>=', $today . " 00:00:00")->
+            where('company_id', $company_id[0]->company_id)->
+            where('schedule', '>=', $today . " 00:00:00")->
             get();
     }
     public function getInnerConfs(Request $request)
@@ -78,7 +78,7 @@ class HomeController extends Controller
         $today = date("Y-m-d");
         return $outerConfs = Conference::
             where('innerflg', 1)->
-            where('company_id', $company_id)->
+            where('company_id', $company_id[0]->company_id)->
             where('schedule', '>=', $today . " 00:00:00")->
             get();
     }
