@@ -232,7 +232,7 @@ class HomeController extends Controller
             }
             return [
                 'result' => 'true',
-                'data' => $comp
+                'data' => $comp[0]
             ];
         }catch(Exception $err){
             return [

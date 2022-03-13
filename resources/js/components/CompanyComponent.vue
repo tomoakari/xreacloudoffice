@@ -99,7 +99,6 @@ export default {
           },
         })
         .then((res) => {
-          alert(res.data);
           if (res.data.result) {
             Swal.fire({
               icon: `success`,
@@ -118,10 +117,10 @@ export default {
           params: {},
         })
         .then((response) => {
-          if (response.result) {
+          if (response.data.result) {
             // 会社登録済み
             this.show_mode = "detail";
-            this.company = response.data.company;
+            this.company = response.data.data;
           } else {
             // 会社未登録
             this.show_mode = "create";
