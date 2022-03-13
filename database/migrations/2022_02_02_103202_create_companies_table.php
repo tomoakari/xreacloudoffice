@@ -20,7 +20,7 @@ class CreateCompaniesTable extends Migration
             $table->integer('createuserid');
             $table->timestamps();
 
-            $table->primary(['id']);
+            //$table->primary(['id']);
         });
     }
 
