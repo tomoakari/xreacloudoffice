@@ -25,6 +25,8 @@ class CreateEnrolledsTable extends Migration
             $table->string('depadminflg');
             $table->string('compadminflg');
             $table->timestamps();
+
+            $table->primary(['id']);
         });
     }
 

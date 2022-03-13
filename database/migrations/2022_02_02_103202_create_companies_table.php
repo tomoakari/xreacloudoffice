@@ -19,6 +19,8 @@ class CreateCompaniesTable extends Migration
             $table->string('plan');
             $table->integer('createuserid');
             $table->timestamps();
+
+            $table->primary(['id']);
         });
     }
 

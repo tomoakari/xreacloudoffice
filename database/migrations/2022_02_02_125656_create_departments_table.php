@@ -25,6 +25,8 @@ class CreateDepartmentsTable extends Migration
             $table->integer('depid3');
             $table->string('depname3');
             $table->timestamps();
+
+            $table->primary(['id']);
         });
     }
 
