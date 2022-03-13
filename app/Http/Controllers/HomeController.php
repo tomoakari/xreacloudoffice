@@ -152,7 +152,7 @@ class HomeController extends Controller
             return [
                 'result' => 'false',
                 'data' => []
-            ]
+            ];
         }
     }
     
