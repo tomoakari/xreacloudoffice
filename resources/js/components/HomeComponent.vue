@@ -28,7 +28,7 @@
 
     <div class="card mb-20">
       <div class="card-header">
-        本日の内部会議　<span class="syncbutton" @click="getInnerConfs"
+        本日の内部会議　<span class="syncbutton" @click="getTodayInnerConfs"
           ><i class="fas fa-sync-alt"></i
         ></span>
       </div>
@@ -69,7 +69,7 @@
 
     <div class="card">
       <div class="card-header">
-        本日の外部会議　<span class="syncbutton" @click="getOuterConfs"
+        本日の外部会議　<span class="syncbutton" @click="getTodayOuterConfs"
           ><i class="fas fa-sync-alt"></i
         ></span>
       </div>
@@ -139,6 +139,7 @@ export default {
       });
     },
     getTodayOuterConfs: function () {
+      console.log(this.outerConfs);
       axios
         .get("/getTodayOuterConfs", {
           params: {
