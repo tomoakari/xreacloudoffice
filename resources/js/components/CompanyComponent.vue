@@ -4,10 +4,10 @@
       <div class="card-header">会社管理画面</div>
 
       <div class="card-body">
-        <h4>{{ admin_company_name }}</h4>
+        <h4>{{ company.name }}</h4>
         <ul>
-          <li><a href="/company/invite">従業員を招待する</a></li>
-          <li><a href="">従業員を作成する</a></li>
+          <li><a href="" @click="showSecret">従業員を招待する</a></li>
+          <li><a href="/company/invite">従業員を作成する</a></li>
           <li><a href="">会社情報を編集する</a></li>
           <li><a href="">支払い情報を管理する</a></li>
         </ul>
@@ -56,6 +56,16 @@
         <div class="button" @click="createCompany">企業を作成する</div>
       </div>
     </div>
+
+    <div class="card" v-show="show_mode == 'create'">
+      <div class="card-header">招待コードで企業に参加する</div>
+
+      <div class="card-body">
+        <h3>企業招待ID</h3>
+        <input v-model="company_secret" />
+        <div class="button" @click="joinCompany">企業に参加する</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -66,10 +76,11 @@ export default {
   data: function () {
     return {
       show_mode: "create",
+      company_secret: "",
       user_id: "temp_user_id",
       company_name: "",
       max_member: 10,
-      admin_company_name: "",
+      company: "",
       createParams: [],
     };
   },
@@ -79,7 +90,6 @@ export default {
     this.getCompanyInfo();
   },
   methods: {
-    setShowMode: function () {},
     createCompany: function () {
       axios
         .get("/createCompany", {
@@ -110,10 +120,48 @@ export default {
           if (response.data.result) {
             // 会社登録済み
             this.show_mode = "detail";
-            this.admin_company_name = response.data.data.name;
+            this.company = response.data.data;
           } else {
             // 会社未登録
             this.show_mode = "create";
+          }
+        });
+    },
+    showSecret: function () {
+      Swal.fire({
+        icon: `success`,
+        html:
+          `
+          <p>以下のコードを共有してください。</p>
+          <p>` +
+          this.company.secret +
+          `</p>
+          `,
+        confirmButtonText: "とじる",
+      });
+    },
+    joinCompany: function () {
+      if (this.company_secret == "") return;
+      axios
+        .get("/joinCompany", {
+          params: {
+            secret: this.company_secret,
+          },
+        })
+        .then((response) => {
+          if (response.data.result) {
+            Swal.fire({
+              icon: `success`,
+              html: `会社に参加しました`,
+              confirmButtonText: "とじる",
+            });
+            this.getCompanyInfo();
+          } else {
+            Swal.fire({
+              icon: `error`,
+              html: `企業への参加に失敗しました`,
+              confirmButtonText: "とじる",
+            });
           }
         });
     },

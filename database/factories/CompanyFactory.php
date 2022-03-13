@@ -21,6 +21,7 @@ $factory->define(Company::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'plan' => $faker->plan,
+        'secret' => $faker->secret,
         'createuserid' => $faker->createuserid,
     ];
 });

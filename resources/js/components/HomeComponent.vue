@@ -139,7 +139,6 @@ export default {
       });
     },
     getTodayOuterConfs: function () {
-      console.log(this.outerConfs);
       axios
         .get("/getTodayOuterConfs", {
           params: {
@@ -148,7 +147,6 @@ export default {
         })
         .then((response) => {
           this.outerConfs = response.data;
-          console.log(this.outerConfs);
         })
         .catch((err) => {
           this.outerConfs = {};

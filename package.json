@@ -39,5 +39,8 @@
   "bugs": {
     "url": "https://github.com/tomoakari/kaigishitsu.aice.cloud/issues"
   },
-  "homepage": "https://github.com/tomoakari/kaigishitsu.aice.cloud#readme"
+  "homepage": "https://github.com/tomoakari/kaigishitsu.aice.cloud#readme",
+  "dependencies": {
+    "colorette": "^2.0.16"
+  }
 }

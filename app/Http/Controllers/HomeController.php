@@ -127,9 +127,12 @@ class HomeController extends Controller
         try{
             DB::beginTransaction();
 
+            $secret = substr(str_shuffle("ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz"), 0, 8);
+
             $comp = new Company();
             $comp->name = $request['name'];
             $comp->plan = $request['plan'];
+            $comp->secret = $secret;
             $comp->createuserid = Auth::id();
             $comp->save();
 
@@ -151,6 +154,46 @@ class HomeController extends Controller
             $enr->countadminflg = 1;
             $enr->depadminflg = 1;
             $enr->compadminflg = 1;
+            $enr->save();
+
+            DB::commit();
+
+            $result = [
+                'result' => 'true',
+                'data' => [
+                    'company' => $comp,
+                    'department' => $dept,
+                    'enrolled' => $enr
+                ]
+            ];
+            return $result; 
+
+        }catch(Exception $err){
+            DB::rollBack();
+            return [
+                'result' => 'false',
+                'data' => $err
+            ];
+        } 
+    }
+    public function joinCompany(Request $request)
+    {
+        try{
+            DB::beginTransaction();
+
+            $comp = Company::first('secret', $request['secret'])->select('id')->get();
+            $dept = Department::
+                where('company_id', $comp[0]->id)->
+                where('depid1', 0)
+                ->get();
+
+            $enr = new Enrolled();
+            $enr->user_id = Auth::id();
+            $enr->company_id = $comp[0]->id;
+            $enr->department_id = $dept[0]->id;
+            $enr->countadminflg = 0;
+            $enr->depadminflg = 0;
+            $enr->compadminflg = 0;
             $enr->save();
 
             DB::commit();

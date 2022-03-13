@@ -17,6 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('plan');
+            $table->string('secret');
             $table->integer('createuserid');
             $table->timestamps();
 
