@@ -20,6 +20,7 @@ use Illuminate\Support\Str;
 $factory->define(Conference::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
+        'company_id' => $faker->company_id,
         'username' => $faker->username,
         'secret' => $faker->secret,
         'password' => $faker->password,

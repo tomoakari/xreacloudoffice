@@ -12,7 +12,7 @@ class Conference extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'secret', 'password',
+        'name', 'company_id', 'username', 'secret', 'password',
         'innerflg','status','schedule'
     ];
 

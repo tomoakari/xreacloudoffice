@@ -84,8 +84,10 @@ class HomeController extends Controller
     }
     public function createConf(Request $request)
     {
+        $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
         $data = [
             'name' => $request['name'],
+            'company_id' => $company_id,
             'username' => $request['username'],
             'secret' => $request['secret'],
             'password' => $request['password'],
