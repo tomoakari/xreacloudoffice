@@ -95,7 +95,7 @@ export default {
           params: {},
         })
         .then((response) => {
-          if (response.result) {
+          if (response.data.result) {
             // 会社登録済み
             this.show_mode = "detail";
           } else {
