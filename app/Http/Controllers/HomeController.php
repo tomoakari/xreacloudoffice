@@ -233,7 +233,7 @@ class HomeController extends Controller
                 if(count($enr)==0){
                     return [
                         'result' => 'false',
-                        'data' => $err
+                        'data' => ''
                     ];
                 }
                 $comp = Company::find($enr[0]->company_id);
