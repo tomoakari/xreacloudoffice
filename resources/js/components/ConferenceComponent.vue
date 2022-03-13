@@ -133,7 +133,6 @@ export default {
             select{padding: 10px; width: 90px;}
             </style>
             <select id="input_year">
-              <option value="2021">2021</option>
               <option value="2022">2022</option>
               <option value="2022">2023</option>
             </select>年　` +
@@ -143,7 +142,7 @@ export default {
               <option value="03">3</option>
               <option value="04">4</option>
               <option value="05">5</option>
-              <option value="06">6</option>
+              <option value="06" selected>6</option>
               <option value="07">7</option>
               <option value="08">8</option>
               <option value="09">9</option>
@@ -166,7 +165,7 @@ export default {
               <option value="12">12</option>
               <option value="13">13</option>
               <option value="14">14</option>
-              <option value="15">15</option>
+              <option value="15" selected>15</option>
               <option value="16">16</option>
               <option value="17">17</option>
               <option value="18">18</option>
@@ -197,7 +196,7 @@ export default {
               <option value="09">9</option>
               <option value="10">10</option>
               <option value="11">11</option>
-              <option value="12">12</option>
+              <option value="12" selected>12</option>
               <option value="13">13</option>
               <option value="14">14</option>
               <option value="15">15</option>
@@ -211,7 +210,7 @@ export default {
               <option value="23">23</option>
             </select>時　` +
             `<select id="input_minut">
-              <option value="00">00</option>
+              <option value="00" selected>00</option>
               <option value="10">10</option>
               <option value="20">20</option>
               <option value="30">30</option>
@@ -356,6 +355,22 @@ export default {
           targetConf = elm;
         }
       });
+
+      axios
+        .get("/getConferenceInfo", {
+          params: {
+            id: targetConf,
+          },
+        })
+        .then((response) => {
+          if (response.data.result) {
+            this.company = response.data.data;
+          } else {
+            // 会社未登録
+            this.show_mode = "create";
+          }
+        });
+
       console.log("mmm" + targetConf);
       Swal.fire({
         title: "詳細情報",

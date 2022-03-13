@@ -91,7 +91,8 @@ class HomeController extends Controller
             where('innerflg', 0)->
             where('company_id', $company_id[0]->company_id)->
             whereDate('schedule', $today)->
-            limit(3)->get();
+            //limit(3)->get();
+            ->get();
     }
     public function getTodayInnerConfs(Request $request)
     {
@@ -102,7 +103,8 @@ class HomeController extends Controller
             where('innerflg', 1)->
             where('company_id', $company_id[0]->company_id)->
             whereDate('schedule', $today)->
-            limit(3)->get();
+            //limit(3)->get();
+            ->get();
     }
     public function createConf(Request $request)
     {
@@ -228,7 +230,7 @@ class HomeController extends Controller
                 $comp = Company::find($request['company_id']);
             }else{
                 $comp_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
-                $comp = Company::find($comp_id);
+                $comp = Company::find($comp_id[0]->company_id);
             }
             return [
                 'result' => 'true',
