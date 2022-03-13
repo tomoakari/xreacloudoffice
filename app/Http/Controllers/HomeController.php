@@ -118,9 +118,9 @@ class HomeController extends Controller
             ];
             return $result; 
 
-        }catch{
+        }catch(err){
             DB::rollBack();
-            return 'error'; 
+            return err; 
         }
 
          
