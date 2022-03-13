@@ -82,6 +82,28 @@ class HomeController extends Controller
             where('schedule', '>=', $today . " 00:00:00")->
             get();
     }
+    public function getTodayOuterConfs(Request $request)
+    {
+        $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
+
+        $today = date("Y-m-d");
+        return $outerConfs = Conference::
+            where('innerflg', 0)->
+            where('company_id', $company_id[0]->company_id)->
+            whereDate('schedule', $today)->
+            limit(3)->get();
+    }
+    public function getTodayInnerConfs(Request $request)
+    {
+        $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
+
+        $today = date("Y-m-d");
+        return $outerConfs = Conference::
+            where('innerflg', 1)->
+            where('company_id', $company_id[0]->company_id)->
+            whereDate('schedule', $today)->
+            limit(3)->get();
+    }
     public function createConf(Request $request)
     {
         $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
@@ -182,24 +204,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
-        // 本日の日付で絞る
-        $today = date("Y-m-d");
-        $outerConfs = Conference::
-            where('innerflg', 0)->
-            where('company_id', $company_id)->
-            whereDate('schedule', $today)->
-            limit(3)->get();
-
-        $innerConfs = Conference::
-            where('innerflg', 1)->
-            where('company_id', $company_id)->
-            whereDate('schedule', $today)->
-            limit(3)->get();
-        
-        return view('home', ['outerConfs' => $outerConfs, 'innerConfs' => $innerConfs]);
-        // return view('home');
+    {   
+        return view('home', );
     }
 
     /**

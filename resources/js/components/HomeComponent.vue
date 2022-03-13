@@ -125,8 +125,8 @@ export default {
   props: {},
   mounted() {
     console.log("Component mounted.");
-    //this.getInnerConfs();
-    //this.getOuterConfs();
+    this.getTodayInnerConfs();
+    this.getTodayOuterConfs();
     this.user_name = document.getElementById("login_user_name").value;
   },
   methods: {
@@ -371,9 +371,9 @@ export default {
         confirmButtonText: "とじる",
       });
     },
-    getOuterConfs: function () {
+    getTodayOuterConfs: function () {
       axios
-        .get("/getOuterConfs", {
+        .get("/getTodayOuterConfs", {
           params: {
             //userId: "1",
           },
@@ -386,9 +386,9 @@ export default {
         })
         .finally();
     },
-    getInnerConfs: function () {
+    getTodayInnerConfs: function () {
       axios
-        .get("/getInnerConfs", {
+        .get("/getTodayInnerConfs", {
           params: {
             //userId: "1",
           },

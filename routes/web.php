@@ -40,9 +40,11 @@ Route::get('/getCompanyInfo', 'HomeController@getCompanyInfo')->name('getCompany
 
 
 Route::get('/addconf', 'HomeController@addConference')->name('addconf');
-Route::get('/getOuterConfs', 'HomeController@getOuterConfs')->name('getOuterConfs');;
-Route::get('/getInnerConfs', 'HomeController@getInnerConfs')->name('getInnerConfs');;
-Route::get('/createConf', 'HomeController@createConf')->name('createConf');;
+Route::get('/getOuterConfs', 'HomeController@getOuterConfs')->name('getOuterConfs');
+Route::get('/getInnerConfs', 'HomeController@getInnerConfs')->name('getInnerConfs');
+Route::get('/getTodayOuterConfs', 'HomeController@getTodayOuterConfs')->name('getTodayOuterConfs');
+Route::get('/getTodayInnerConfs', 'HomeController@getTodayInnerConfs')->name('getTodayInnerConfs');
+Route::get('/createConf', 'HomeController@createConf')->name('createConf');
 
 
 
