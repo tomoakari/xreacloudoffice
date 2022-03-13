@@ -92,7 +92,7 @@ class HomeController extends Controller
             where('company_id', $company_id[0]->company_id)->
             whereDate('schedule', $today)->
             //limit(3)->get();
-            ->get();
+            get();
     }
     public function getTodayInnerConfs(Request $request)
     {
@@ -104,7 +104,7 @@ class HomeController extends Controller
             where('company_id', $company_id[0]->company_id)->
             whereDate('schedule', $today)->
             //limit(3)->get();
-            ->get();
+            get();
     }
     public function createConf(Request $request)
     {
