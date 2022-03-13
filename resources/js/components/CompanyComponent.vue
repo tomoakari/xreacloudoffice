@@ -117,7 +117,7 @@ export default {
           params: {},
         })
         .then((response) => {
-          console.log("mmmmmmmm" + response.data);
+          console.log("mmmmmmmm:" + JSON.stringify(response.data));
           if (response.data.result) {
             // 会社登録済み
             this.show_mode = "detail";
