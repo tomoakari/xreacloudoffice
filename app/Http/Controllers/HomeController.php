@@ -85,7 +85,7 @@ class HomeController extends Controller
 
             $comp = new Company();
             $comp->name = $request['name'];
-            $comp->plan = $request['plan'],
+            $comp->plan = $request['plan'];
             $comp->createuserid = Auth::id();
             $comp->save();
 
