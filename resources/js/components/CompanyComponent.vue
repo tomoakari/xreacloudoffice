@@ -1,21 +1,22 @@
 <template>
   <div>
-    <div class="card">
-      <div class="card-header">会社管理画面（会社作成済み時にのみ表示）</div>
+    <div class="card" v-show="show_mode == 'detail'">
+      <div class="card-header">会社管理画面</div>
 
       <div class="card-body">
         <h4>{{ admin_company_name }}</h4>
         <ul>
-          <li><a href="/company/invite">従業員を作成する</a></li>
-          <li><a href="">edit</a></li>
-          <li><a href="">payment</a></li>
+          <li><a href="/company/invite">従業員を招待する</a></li>
+          <li><a href="">従業員を作成する</a></li>
+          <li><a href="">会社情報を編集する</a></li>
+          <li><a href="">支払い情報を管理する</a></li>
         </ul>
       </div>
     </div>
     <br />
 
-    <div class="card">
-      <div class="card-header">会社新規作成（会社未作成時にのみ表示）</div>
+    <div class="card" v-show="show_mode == 'create'">
+      <div class="card-header">会社新規作成</div>
 
       <div class="card-body">
         <h3>組織名を登録しましょう</h3>
@@ -76,14 +77,15 @@ export default {
           },
         })
         .then((res) => {
-          if (!res.result) {
-            console.log(JSON.stringify(res.data));
-          } else {
+          if (res.result) {
             Swal.fire({
               icon: `success`,
               html: `会社を作成しました`,
               confirmButtonText: "とじる",
             });
+            this.show_mode = "detail";
+          } else {
+            console.log(JSON.stringify(res.data));
           }
         });
     },
@@ -93,7 +95,13 @@ export default {
           params: {},
         })
         .then((response) => {
-          alert(response.data);
+          if (response.result) {
+            // 会社登録済み
+            this.show_mode = "detail";
+          } else {
+            // 会社未登録
+            this.show_mode = "create";
+          }
         });
     },
   },
