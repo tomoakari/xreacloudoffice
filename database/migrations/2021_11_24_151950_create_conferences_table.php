@@ -26,7 +26,7 @@ class CreateConferencesTable extends Migration
             $table->timestamp('schedule');
             $table->timestamps();
 
-            $table->primary(['id']);
+            //$table->primary(['id']);
         });
     }
 
