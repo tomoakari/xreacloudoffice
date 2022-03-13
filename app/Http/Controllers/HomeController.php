@@ -141,13 +141,12 @@ class HomeController extends Controller
             if($request->has('company_id')){
                 $comp = Company::where('id', $request['company_id'])->get();
             }else{
-                $target_enr = Enrolled::where('user_id', Auth::id())->get();
-                //$comp = Company::where('id', $target_enr->company_id)->get();
+                $target_enr = Enrolled::first('user_id', Auth::id())->get();
+                $comp = Company::where('id', $target_enr->company_id)->get();
             }
             return [
                 'result' => 'true',
-                //'data' => $comp
-                'data' => $target_enr
+                'data' => $comp
             ];
         }catch(Exception $err){
             return [
