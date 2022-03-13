@@ -139,10 +139,10 @@ class HomeController extends Controller
         try{
             $comp;
             if($request->has('company_id')){
-                $comp = Company::find($request['company_id'])->get();
+                $comp = Company::find($request['company_id']);
             }else{
                 $comp_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
-                $comp = Company::find($comp_id)->get();
+                $comp = Company::find($comp_id);
             }
             return [
                 'result' => 'true',
