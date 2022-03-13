@@ -147,7 +147,7 @@ class HomeController extends Controller
             return [
                 'result' => 'true',
                 'data' => $comp
-            ]
+            ];
         }catch(Exception $err){
             return [
                 'result' => 'false',
