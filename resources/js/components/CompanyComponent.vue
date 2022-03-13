@@ -90,9 +90,7 @@ export default {
     getCompanyInfo: function () {
       axios
         .get("/getCompanyInfo", {
-          params: {
-            user_id: this.createParams[0],
-          },
+          params: {},
         })
         .then((response) => {
           alert(response.data);
