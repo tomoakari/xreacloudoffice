@@ -229,21 +229,21 @@ class HomeController extends Controller
             if($request->has('company_id')){
                 $comp = Company::find($request['company_id']);
                 return [
-                    'result' => 'true',
+                    'result' => true,
                     'data' => $comp,
                 ];
             }else{
                 $enr = Enrolled::where('user_id', Auth::id())->get();
                 if(count($enr) == 0){
                     return [
-                        'result' => 'false',
+                        'result' => false,
                         'data' => '',
                         'enr' => $enr
                     ];
                 }else{
                     $comp = Company::find($enr[0]->company_id);
                     return [
-                        'result' => 'true',
+                        'result' => true,
                         'data' => $comp,
                         'enr' => $enr
                     ];
