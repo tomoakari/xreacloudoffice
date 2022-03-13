@@ -14,6 +14,18 @@
       </div>
     </div>
     <br />
+    <div class="card" v-show="show_mode == 'detail'">
+      <div class="card-header">従業員一覧</div>
+
+      <div class="card-body">
+        <ul>
+          <li>＊＊＊＊＊</li>
+          <li>＊＊＊＊＊</li>
+          <li>＊＊＊＊＊</li>
+        </ul>
+      </div>
+    </div>
+    <br />
 
     <div class="card" v-show="show_mode == 'create'">
       <div class="card-header">会社新規作成</div>
@@ -83,7 +95,7 @@ export default {
               html: `会社を作成しました`,
               confirmButtonText: "とじる",
             });
-            this.show_mode = "detail";
+            this.getCompanyInfo();
           } else {
             console.log(JSON.stringify(res.data));
           }
@@ -98,6 +110,7 @@ export default {
           if (response.data.result) {
             // 会社登録済み
             this.show_mode = "detail";
+            this.admin_company_name = response.data.data.name;
           } else {
             // 会社未登録
             this.show_mode = "create";
