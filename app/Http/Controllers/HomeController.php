@@ -230,7 +230,7 @@ class HomeController extends Controller
                 $comp = Company::find($request['company_id']);
             }else{
                 $comp_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
-                $comp = Company::find($comp_id[0]->company_id);
+                $comp = Company::find($comp_id);
             }
             return [
                 'result' => 'true',
