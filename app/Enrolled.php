@@ -12,7 +12,7 @@ class Enrolled extends Model
      * @var array
      */
     protected $fillable = [
-        'userid', 'companyid', 'departmentid', 'countadminflg', 'depadminflg', 'compadminflg' 
+        'user_id', 'company_id', 'department_id', 'countadminflg', 'depadminflg', 'compadminflg' 
     ];
 
     /**

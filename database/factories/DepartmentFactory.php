@@ -20,7 +20,7 @@ use Illuminate\Support\Str;
 $factory->define(Department::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'companyid' => $faker->companyid,
+        'company_id' => $faker->company_id,
         'depid1' => $faker->depid1,
         'depname1' => $faker->depname1,
         'depid2' => $faker->depid2,
