@@ -116,9 +116,8 @@ export default {
         .get("/getCompanyInfo", {
           params: {},
         })
-        .then((response) => {
-          console.log("mmmmmmmm:" + JSON.stringify(response.data));
-          if (response.data.result) {
+        .then((res) => {
+          if (res.data.result) {
             // 会社登録済み
             this.show_mode = "detail";
             this.company = response.data.data;
