@@ -80,7 +80,7 @@ export default {
       user_id: "temp_user_id",
       company_name: "",
       max_member: 10,
-      company: "",
+      company: {},
       createParams: [],
     };
   },
@@ -117,7 +117,7 @@ export default {
           params: {},
         })
         .then((response) => {
-          if (response.data.result) {
+          if (response.result) {
             // 会社登録済み
             this.show_mode = "detail";
             this.company = response.data.data;
