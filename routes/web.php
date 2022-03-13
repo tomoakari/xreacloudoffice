@@ -36,6 +36,8 @@ Route::get('/company', 'HomeController@company')->name('company');
 Route::get('/company/organize', 'HomeController@organize')->name('organize');
 Route::get('/company/invite', 'HomeController@invite')->name('invite');
 Route::get('/createCompany', 'HomeController@createCompany')->name('createCompany');
+Route::get('/getCompanyInfo', 'HomeController@getCompanyInfo')->name('getCompanyInfo');
+
 
 Route::get('/addconf', 'HomeController@addConference')->name('addconf');
 Route::get('/getOuterConfs', 'HomeController@getOuterConfs')->name('getOuterConfs');;

@@ -113,18 +113,47 @@ class HomeController extends Controller
             DB::commit();
 
             $result = [
-                'company' => $comp,
-                'department' => $dept,
-                'enrolled' => $enr
+                'result' => 'true',
+                'data' => [
+                    'company' => $comp,
+                    'department' => $dept,
+                    'enrolled' => $enr
+                ]
             ];
             return $result; 
 
         }catch(Exception $err){
             DB::rollBack();
-            return $err; 
-        }
+            return [
+                'result' => 'false',
+                'data' => []
+            ]
+        } 
+    }
 
-         
+    /**
+     * 
+     */
+    public function getCompanyInfo(Request $request)
+    {
+        try{
+            $comp;
+            if($request['company_id']){
+                $comp = Company::where('id', $request['company_id'])->get();
+            }else{
+                $target_enr = Enrolled::where('user_id', $request['company_id'])->get();
+                $comp = Company::where('id', $target_enr->company_id)->get();
+            }
+            return [
+                'result' => 'true',
+                'data' => $comp
+            ]
+        }catch(Exception $err){
+            return [
+                'result' => 'false',
+                'data' => []
+            ]
+        }
     }
     
     /**
