@@ -64,22 +64,22 @@ class HomeController extends Controller
     {
         $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
 
-        $today = date("Y-m-d 0:0:0");
+        $today = date("Y-m-d");
         return $outerConfs = Conference::
             where('innerflg', 0)->
             where('company_id', $company_id)->
-            where('schedule', '>=', $today)->
+            where('schedule', '>=', $today + " 00:00:00")->
             get();
     }
     public function getInnerConfs(Request $request)
     {
         $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
 
-        $today = date("Y-m-d 0:0:0");
+        $today = date("Y-m-d");
         return $outerConfs = Conference::
             where('innerflg', 1)->
             where('company_id', $company_id)->
-            where('schedule', '>=', $today)->
+            where('schedule', '>=', $today + " 00:00:00")->
             get();
     }
     public function createConf(Request $request)
