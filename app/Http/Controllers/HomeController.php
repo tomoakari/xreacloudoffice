@@ -231,14 +231,14 @@ class HomeController extends Controller
                 return [
                     'result' => 'true',
                     'data' => $comp,
-                    'enr' => $enr
                 ];
             }else{
                 $enr = Enrolled::where('user_id', Auth::id())->get();
                 if(count($enr) == 0){
                     return [
                         'result' => 'false',
-                        'data' => ''
+                        'data' => '',
+                        'enr' => $enr
                     ];
                 }else{
                     $comp = Company::find($enr[0]->company_id);
