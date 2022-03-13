@@ -126,7 +126,7 @@ class HomeController extends Controller
             DB::rollBack();
             return [
                 'result' => 'false',
-                'data' => []
+                'data' => $err
             ];
         } 
     }
@@ -151,7 +151,7 @@ class HomeController extends Controller
         }catch(Exception $err){
             return [
                 'result' => 'false',
-                'data' => []
+                'data' => $err
             ];
         }
     }
