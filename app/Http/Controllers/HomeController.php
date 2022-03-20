@@ -9,6 +9,7 @@ use App\Conference;
 use App\Company;
 use App\Department;
 use App\Enrolled;
+use Mail;
 
 /**
  * ログイン認証付きのルーティングのコントローラクラス
@@ -161,7 +162,7 @@ class HomeController extends Controller
             DB::commit();
 
             $result = [
-                'result' => 'true',
+                'result' => true,
                 'data' => [
                     'company' => $comp,
                     'department' => $dept,
@@ -173,7 +174,7 @@ class HomeController extends Controller
         }catch(Exception $err){
             DB::rollBack();
             return [
-                'result' => 'false',
+                'result' => false,
                 'data' => $err
             ];
         } 
@@ -201,7 +202,7 @@ class HomeController extends Controller
             DB::commit();
 
             $result = [
-                'result' => 'true',
+                'result' => true,
                 'data' => [
                     'company' => $comp,
                     'department' => $dept,
@@ -213,7 +214,7 @@ class HomeController extends Controller
         }catch(Exception $err){
             DB::rollBack();
             return [
-                'result' => 'false',
+                'result' => false,
                 'data' => $err
             ];
         } 
@@ -252,11 +253,44 @@ class HomeController extends Controller
             
         }catch(Exception $err){
             return [
-                'result' => 'false',
+                'result' => false,
                 'data' => $err
             ];
         }
     }
+
+    /**
+     * メンバー招待メールを送信する
+     */
+    public function inviteMember(Request $request){
+        const $mailList = $request['mails'];
+        const $BASE_URL = "https://kaigishitsu.aice.cloud/register/?secret=";
+        const $SUBJECT = "さんから会議室に招待されています";
+
+        foreach($mailList as $mail){
+            // シークレットコードを生成、保存する
+            $secret = substr(md5(mt_rand()), 0, 16);
+
+            $scr = new Secretcode();
+            $enr->mail = $mail;
+            $enr->secret = $secret;
+            $enr->save();
+
+            $data = [
+                'name' => Auth::name(),
+                'url' => $BASE_URL . $secret
+            ];
+            
+            // メールを送信する
+            Mail::send('emails.invite', $data, function($message){
+                $message
+                    ->to($mail)
+                    ->from("register@kaigishitsu.aice.cloud","aiforusサポート")
+                    ->subject(Auth::name(). $SUBJECT);
+            });
+        }
+    }
+
     
     /**
      * Show the application dashboard.

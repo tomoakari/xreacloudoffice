@@ -8,7 +8,6 @@
                 <div class="card-header">{{ __('新規登録') }}</div>
 
                 <div class="card-body">
-                    <h3>会社の登録・管理を行う方向けの新規登録です</h3>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

@@ -13,7 +13,8 @@
 
 // トップ画面
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return view('outertop');
 });
 
 Auth::routes();
@@ -48,6 +49,8 @@ Route::get('/getTodayOuterConfs', 'HomeController@getTodayOuterConfs')->name('ge
 Route::get('/getTodayInnerConfs', 'HomeController@getTodayInnerConfs')->name('getTodayInnerConfs');
 Route::get('/createConf', 'HomeController@createConf')->name('createConf');
 
+
+Route::get('/inviteMember', 'HomeController@inviteMember')->name('inviteMember');
 
 
 

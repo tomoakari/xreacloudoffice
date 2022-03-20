@@ -7,7 +7,7 @@
         <h4>{{ company.name }}</h4>
         <ul>
           <li><a href="" @click="showSecret">従業員を招待する</a></li>
-          <li><a href="/company/invite">従業員を作成する</a></li>
+          <li><a href="" @click="inviteMember">従業員を作成する</a></li>
           <li><a href="">会社情報を編集する</a></li>
           <li><a href="">支払い情報を管理する</a></li>
         </ul>
@@ -117,11 +117,10 @@ export default {
           params: {},
         })
         .then((res) => {
-          alert(JSON.stringify(res.data.result));
           if (res.data.result) {
             // 会社登録済み
             this.show_mode = "detail";
-            this.company = response.data.data;
+            this.company = res.data.data;
           } else {
             // 会社未登録
             this.show_mode = "create";
@@ -170,6 +169,70 @@ export default {
             });
           }
         });
+    },
+    inviteMember: function () {
+      Swal.fire({
+        html: `
+        <p>
+          招待したいメールアドレスを入力してください。<br />
+          複数入力したいときは、改行して1行に1アドレス入力してください。
+        </p>
+        <textarea id="mails"></textarea>
+        <style>
+          #mails{width:100%; height:100px; overflow: scroll;}
+        </style>
+        `,
+        confirmButtonText: "送信する",
+        focusConfirm: false,
+        showCancelButton: true,
+        canselButtonText: "とじる",
+        allowOutsideClick: false,
+        inputValidator: () => {
+          return new Promise((resolve) => {
+            var value = document.getElementById("mails").value;
+            if (value) {
+              var mailArr = value.split(/\n/);
+              mailArr.forEach((elm) => {
+                if (!this.isEmail(elm)) {
+                  resolve("メールアドレスの形式で入力してください");
+                }
+              });
+              resolve();
+            } else {
+              resolve("メールアドレスを入力してください");
+            }
+          });
+        },
+      }).then(() => {
+        var mailstr = document.getElementById("mailinput").value;
+        var mailArr = mailstr.split(/\n/);
+        axios
+          .get("/inviteMember", {
+            params: {
+              mails: mailArr,
+            },
+          })
+          .then((response) => {
+            if (response.data.result) {
+              Swal.fire({
+                icon: `success`,
+                html: `招待メールを送信しました`,
+                confirmButtonText: "とじる",
+              });
+            } else {
+              Swal.fire({
+                icon: `error`,
+                html: `招待メールの送信に失敗しました`,
+                confirmButtonText: "とじる",
+              });
+            }
+          });
+      });
+    },
+    isEmail(email) {
+      var re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
     },
   },
 };
