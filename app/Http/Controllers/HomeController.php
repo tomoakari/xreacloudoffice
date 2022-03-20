@@ -263,9 +263,9 @@ class HomeController extends Controller
      * メンバー招待メールを送信する
      */
     public function inviteMember(Request $request){
-        const $mailList = $request['mails'];
-        const $BASE_URL = "https://kaigishitsu.aice.cloud/register/?secret=";
-        const $SUBJECT = "さんから会議室に招待されています";
+        $mailList = $request['mails'];
+        $BASE_URL = "https://kaigishitsu.aice.cloud/register/?secret=";
+        $SUBJECT = "さんから会議室に招待されています";
 
         foreach($mailList as $mail){
             // シークレットコードを生成、保存する
