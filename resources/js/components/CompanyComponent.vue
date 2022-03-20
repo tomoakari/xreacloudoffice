@@ -188,9 +188,9 @@ export default {
         allowOutsideClick: false,
         inputValidator: () => {
           return new Promise((resolve) => {
-            var value = document.getElementById("mails").value;
-            if (value) {
-              var mailArr = value.split(/\n/);
+            var mailstr = document.getElementById("mails").value;
+            if (mailstr) {
+              var mailArr = mailstr.split(/\n/);
               mailArr.forEach((elm) => {
                 if (!this.isEmail(elm)) {
                   resolve("メールアドレスの形式で入力してください");
