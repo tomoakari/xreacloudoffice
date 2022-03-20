@@ -208,7 +208,7 @@ export default {
           }
         },
       }).then(() => {
-        var mailstr = document.getElementById("mailinput").value;
+        var mailstr = document.getElementById("mails").value;
         var mailArr = mailstr.split(/\n/);
         axios
           .get("/inviteMember", {
