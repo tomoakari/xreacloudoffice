@@ -6,8 +6,8 @@
       <div class="card-body">
         <h4>{{ company.name }}</h4>
         <ul>
-          <li><a href="" @click="showSecret">従業員を招待する</a></li>
-          <li><a href="" @click="inviteMember">従業員を作成する</a></li>
+          <li><span @click="showSecret">従業員を招待する</span></li>
+          <li><span @click="inviteMember">従業員を作成する</span></li>
           <li><a href="">会社情報を編集する</a></li>
           <li><a href="">支払い情報を管理する</a></li>
         </ul>
@@ -128,7 +128,6 @@ export default {
         });
     },
     showSecret: function () {
-      /* なんか誤動作するので一旦スルー
       Swal.fire({
         icon: `success`,
         html:
@@ -140,10 +139,10 @@ export default {
           `,
         confirmButtonText: "とじる",
       });
-      */
-      alert(
-        "こちらの８文字のコードを共有してください ： " + this.company.secret
-      );
+
+      // alert(
+      //   "こちらの８文字のコードを共有してください ： " + this.company.secret
+      // );
     },
     joinCompany: function () {
       if (this.company_secret == "") return;
