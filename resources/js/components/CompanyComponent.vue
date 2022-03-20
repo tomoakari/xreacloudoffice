@@ -176,7 +176,7 @@ export default {
           招待したいメールアドレスを入力してください。<br />
           複数入力したいときは、改行して1行に1アドレス入力してください。
         </p>
-        <textarea id="mails"></textarea>
+        <textarea id="mails" placeholder="example@aiforus.jp"></textarea>
         <style>
           #mails{width:100%; height:100px; overflow: scroll;}
         </style>
@@ -186,21 +186,26 @@ export default {
         showCancelButton: true,
         canselButtonText: "とじる",
         allowOutsideClick: false,
-        inputValidator: () => {
-          return new Promise((resolve) => {
-            var mailstr = document.getElementById("mails").value;
-            if (mailstr) {
-              var mailArr = mailstr.split(/\n/);
-              mailArr.forEach((elm) => {
-                if (!this.isEmail(elm)) {
-                  resolve("メールアドレスの形式で入力してください");
-                }
-              });
-              resolve();
-            } else {
-              resolve("メールアドレスを入力してください");
-            }
-          });
+        preConfirm: () => {
+          const mailstr = document.getElementById("mails").value;
+          if (mailstr) {
+            var mailArr = mailstr.split(/\n/);
+            mailArr.forEach((elm) => {
+              if (!this.isEmail(elm)) {
+                return Swal.fire({
+                  icon: `error`,
+                  html: `メールアドレスの形式で入力してください`,
+                  confirmButtonText: "とじる",
+                });
+              }
+            });
+          } else {
+            return Swal.fire({
+              icon: `error`,
+              html: `メールアドレスを入力してください`,
+              confirmButtonText: "とじる",
+            });
+          }
         },
       }).then(() => {
         var mailstr = document.getElementById("mailinput").value;
