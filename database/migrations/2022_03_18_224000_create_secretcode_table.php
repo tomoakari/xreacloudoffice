@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSecretcodesTable extends Migration
+class CreateSecretcodeTable extends Migration
 {
     /**
      * Run the migrations.

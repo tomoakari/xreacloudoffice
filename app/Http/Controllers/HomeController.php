@@ -9,6 +9,7 @@ use App\Conference;
 use App\Company;
 use App\Department;
 use App\Enrolled;
+use App\Secretcode;
 use Mail;
 
 /**
