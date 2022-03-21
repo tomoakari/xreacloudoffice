@@ -273,9 +273,9 @@ class HomeController extends Controller
             $secret = substr(md5(mt_rand()), 0, 16);
 
             $scr = new Secretcode();
-            $enr->mail = $mail;
-            $enr->secret = $secret;
-            $enr->save();
+            $scr->mail = $mail;
+            $scr->secret = $secret;
+            $scr->save();
 
             $data = [
                 'name' => Auth::name(),
