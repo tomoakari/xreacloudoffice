@@ -278,7 +278,7 @@ class HomeController extends Controller
             $scr->save();
 
             $data = [
-                'name' => Auth::name(),
+                'name' => Auth::user()->name,
                 'url' => $BASE_URL . $secret
             ];
             
@@ -287,7 +287,7 @@ class HomeController extends Controller
                 $message
                     ->to($mail)
                     ->from("register@kaigishitsu.aice.cloud","aiforusサポート")
-                    ->subject(Auth::name(). $SUBJECT);
+                    ->subject(Auth::user()->name. $SUBJECT);
             });
         }
     }
