@@ -271,26 +271,24 @@ class HomeController extends Controller
         foreach($mailList as $mail){
             // シークレットコードを生成、保存する
             $secret = substr(md5(mt_rand()), 0, 16);
-            $tomail = $mail;
-            $dbmail = $mail;
-
-            $scr = new Secretcode();
-            $scr->mail = $dbmail;
-            $scr->secret = $secret;
-            $scr->save();
 
             $data = [
                 'name' => Auth::user()->name,
                 'url' => $BASE_URL . $secret
             ];
-            
+
             // メールを送信する
             Mail::send('emails.invite', $data, function($message){
                 $message
-                    ->to($tomail)
+                    ->to($mail)
                     ->from("register@kaigishitsu.aice.cloud","aiforusサポート")
                     ->subject(Auth::user()->name. $SUBJECT);
             });
+
+            $scr = new Secretcode();
+            $scr->mail = $mail;
+            $scr->secret = $secret;
+            $scr->save();
         }
     }
 
