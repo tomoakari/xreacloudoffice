@@ -272,6 +272,11 @@ class HomeController extends Controller
             // シークレットコードを生成、保存する
             $secret = substr(md5(mt_rand()), 0, 16);
 
+            $scr = new Secretcode();
+            $scr->mail = $mail;
+            $scr->secret = $secret;
+            $scr->save();
+
             $data = [
                 'name' => Auth::user()->name,
                 'url' => $BASE_URL . $secret
@@ -285,10 +290,7 @@ class HomeController extends Controller
                     ->subject(Auth::user()->name. $SUBJECT);
             });
 
-            $scr = new Secretcode();
-            $scr->mail = $mail;
-            $scr->secret = $secret;
-            $scr->save();
+            
         }
     }
 
