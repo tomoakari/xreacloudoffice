@@ -283,7 +283,7 @@ class HomeController extends Controller
             ];
 
             // メールを送信する
-            Mail::send('emails.invite', $data, function($message){
+            Mail::send('emails.invite', $data, function($message)use($SUBJECT){
                 $message
                     ->to('realize.arts@gmail.com')
                     ->from("register@kaigishitsu.aice.cloud","aiforusサポート")
