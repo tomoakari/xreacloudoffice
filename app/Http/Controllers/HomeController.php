@@ -265,7 +265,7 @@ class HomeController extends Controller
      */
     public function inviteMember(Request $request){
         $mailList = $request['mails'];
-        $BASE_URL = "https://kaigishitsu.aice.cloud/register/?secret=";
+        $BASE_URL = "https://kaigishitsu.aice.cloud/register_inv/?secret=";
         $SUBJECT = "さんから会議室に招待されています";
 
         foreach($mailList as $mail){
@@ -283,9 +283,9 @@ class HomeController extends Controller
             ];
 
             // メールを送信する
-            Mail::send('emails.invite', $data, function($message)use($SUBJECT){
+            Mail::send('emails.invite', $data, function($message)use($SUBJECT, $mail){
                 $message
-                    ->to('realize.arts@gmail.com')
+                    ->to($mail)
                     ->from("register@kaigishitsu.aice.cloud","aiforusサポート")
                     ->subject(Auth::user()->name. $SUBJECT);
             });
