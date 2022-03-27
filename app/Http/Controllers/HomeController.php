@@ -298,7 +298,7 @@ class HomeController extends Controller
             ];
         }catch(Exception $err){
             return [
-                'result' => true,
+                'result' => false,
                 'data' => $err
             ];
         }
