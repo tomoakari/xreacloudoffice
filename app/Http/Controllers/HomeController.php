@@ -268,29 +268,39 @@ class HomeController extends Controller
         $BASE_URL = "https://kaigishitsu.aice.cloud/register_inv/?secret=";
         $SUBJECT = "さんから会議室に招待されています";
 
-        foreach($mailList as $mail){
-            // シークレットコードを生成、保存する
-            $secret = substr(md5(mt_rand()), 0, 16);
+        try{
+            foreach($mailList as $mail){
+                // シークレットコードを生成、保存する
+                $secret = substr(md5(mt_rand()), 0, 16);
 
-            $scr = new Secretcode();
-            $scr->mail = $mail;
-            $scr->secret = $secret;
-            $scr->save();
+                $scr = new Secretcode();
+                $scr->mail = $mail;
+                $scr->secret = $secret;
+                $scr->save();
 
-            $data = [
-                'name' => Auth::user()->name,
-                'url' => $BASE_URL . $secret
+                $data = [
+                    'name' => Auth::user()->name,
+                    'url' => $BASE_URL . $secret
+                ];
+
+                // メールを送信する
+                Mail::send('emails.invite', $data, function($message)use($SUBJECT, $mail){
+                    $message
+                        ->to($mail)
+                        ->from("register@kaigishitsu.aice.cloud","aiforusサポート")
+                        ->subject(Auth::user()->name. $SUBJECT);
+                });
+            }
+
+            return [
+                'result' => true,
+                'data' => ''
             ];
-
-            // メールを送信する
-            Mail::send('emails.invite', $data, function($message)use($SUBJECT, $mail){
-                $message
-                    ->to($mail)
-                    ->from("register@kaigishitsu.aice.cloud","aiforusサポート")
-                    ->subject(Auth::user()->name. $SUBJECT);
-            });
-
-            
+        }catch(Exception $err){
+            return [
+                'result' => true,
+                'data' => $err
+            ];
         }
     }
 
