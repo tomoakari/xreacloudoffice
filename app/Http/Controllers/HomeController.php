@@ -277,7 +277,7 @@ class HomeController extends Controller
                 $scr = new Secretcode();
                 $scr->mail = $mail;
                 $scr->secret = $secret;
-                $scr->company_id = $company_id;
+                $scr->company_id = $company_id[0]->company_id;
                 $scr->save();
 
                 $data = [
