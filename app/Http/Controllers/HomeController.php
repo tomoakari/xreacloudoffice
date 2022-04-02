@@ -272,10 +272,12 @@ class HomeController extends Controller
             foreach($mailList as $mail){
                 // シークレットコードを生成、保存する
                 $secret = substr(md5(mt_rand()), 0, 16);
+                $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
 
                 $scr = new Secretcode();
                 $scr->mail = $mail;
                 $scr->secret = $secret;
+                $scr->company_id = $company_id;
                 $scr->save();
 
                 $data = [

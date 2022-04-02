@@ -17,6 +17,7 @@ class CreateSecretcodesTable extends Migration
             $table->bigIncrements('id');
             $table->string('secret');
             $table->string('mail');
+            $table->bigInteger('company_id')->unsigned();
             $table->timestamps();
         });
     }

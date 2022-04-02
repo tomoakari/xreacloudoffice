@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+
 use App\User;
+use App\Secretcode;
+use App\Department;
+use App\Enrolled;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -65,12 +70,42 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $newUser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             //'api_token' => Str::random('alnum', 60),
             'api_token' => Hash::make($data['password']. $data['email']),
         ]);
+
+
+        if(strlen($data['secret']) == 0){
+            return $newUser;
+        }
+
+        try{
+            // 招待された会社の部署を取得
+
+            $secret = Secretcode::first('secret', $request['secret'])->get();
+            $dept = Department::
+                where('company_id', $comp[0]->id)->
+                where('depid1', 0)
+                ->get();
+            
+            // その部署に配属する
+            $enr = new Enrolled();
+            $enr->user_id = $newUser->id;
+            $enr->company_id = $secret->company_id;
+            $enr->department_id = $dept[0]->id;
+            $enr->countadminflg = 0;
+            $enr->depadminflg = 0;
+            $enr->compadminflg = 0;
+            $enr->save();
+
+            return $newUser;
+
+        }catch(Exception $err){
+            return $newUser;
+        } 
     }
 }

@@ -12,7 +12,7 @@ class Secretcode extends Model
      * @var array
      */
     protected $fillable = [
-        'secret', 'mail'
+        'secret', 'mail', 'company_id'
     ];
 
     /**

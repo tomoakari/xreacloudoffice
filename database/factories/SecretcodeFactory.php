@@ -21,5 +21,6 @@ $factory->define(Secretcode::class, function (Faker $faker) {
     return [
         'secret' => $faker->secret,
         'mail' => $faker->mail,
+        'company_id' => $faker->company_id,
     ];
 });
