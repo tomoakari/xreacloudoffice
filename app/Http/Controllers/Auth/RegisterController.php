@@ -86,9 +86,10 @@ class RegisterController extends Controller
         try{
             // 招待された会社の部署を取得
 
+
             $secret = Secretcode::first('secret', $data['secret'])->get();
             $dept = Department::
-                where('company_id', $comp[0]->id)->
+                where('company_id', $secret->company_id)->
                 where('depid1', 0)
                 ->get();
             
