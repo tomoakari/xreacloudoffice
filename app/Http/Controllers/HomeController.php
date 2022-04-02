@@ -265,7 +265,7 @@ class HomeController extends Controller
      */
     public function inviteMember(Request $request){
         $mailList = $request['mails'];
-        $BASE_URL = "https://kaigishitsu.aice.cloud/register_inv/?secret=";
+        $BASE_URL = "https://kaigishitsu.aice.cloud/register/?secret=";
         $SUBJECT = "さんから会議室に招待されています";
 
         try{
