@@ -84,14 +84,21 @@ class RegisterController extends Controller
         }
 
         try{
+            // 使われていないsecretcodeがあるか確認
+            $secret = Secretcode::
+                where('secret', $data['secret'])->
+                where('mail', $data['email'])->
+                whereColumn('created_at', 'updated_at')->
+                get();
+            if(count($secret) == 0){
+                return $newUser;
+            }
+
             // 招待された会社の部署を取得
-
-
-            $secret = Secretcode::first('secret', $data['secret'])->get();
             $dept = Department::
                 where('company_id', $secret[0]->company_id)->
-                where('depid1', 0)
-                ->get();
+                where('depid1', 0)->
+                get();
             
             // その部署に配属する
             $enr = new Enrolled();
@@ -102,6 +109,13 @@ class RegisterController extends Controller
             $enr->depadminflg = 0;
             $enr->compadminflg = 0;
             $enr->save();
+
+            // secretcodeを使えなくする
+            $secret->update([
+                'mail' => $data['email'],
+                'secret' => $data['secret'],
+                'company_id' => $secret->company_id
+            ]);
 
             return $newUser;
 
