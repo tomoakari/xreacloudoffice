@@ -96,7 +96,7 @@ class RegisterController extends Controller
             // その部署に配属する
             $enr = new Enrolled();
             $enr->user_id = $newUser->id;
-            $enr->company_id = $secret->company_id;
+            $enr->company_id = $secret[0]->company_id;
             $enr->department_id = $dept[0]->id;
             $enr->countadminflg = 0;
             $enr->depadminflg = 0;
