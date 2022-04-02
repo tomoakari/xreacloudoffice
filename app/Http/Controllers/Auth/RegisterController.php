@@ -111,11 +111,15 @@ class RegisterController extends Controller
             $enr->save();
 
             // secretcodeを使えなくする
-            $secret->update([
-                'mail' => $secret[0]->mail,
-                'secret' => $secret[0]->secret,
-                'company_id' => $secret[0]->company_id
-            ]);
+            Secretcode::
+                where('secret', $data['secret'])->
+                where('mail', $data['email'])->
+                whereColumn('created_at', 'updated_at')->
+                update([
+                    'mail' => $secret[0]->mail,
+                    'secret' => $secret[0]->secret,
+                    'company_id' => $secret[0]->company_id
+                ]);
 
             return $newUser;
 
