@@ -89,7 +89,7 @@ class RegisterController extends Controller
 
             $secret = Secretcode::first('secret', $data['secret'])->get();
             $dept = Department::
-                where('company_id', $secret->company_id)->
+                where('company_id', $secret[0]->company_id)->
                 where('depid1', 0)
                 ->get();
             
