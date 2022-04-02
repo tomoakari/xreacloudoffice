@@ -112,9 +112,9 @@ class RegisterController extends Controller
 
             // secretcodeを使えなくする
             $secret->update([
-                'mail' => $data['email'],
-                'secret' => $data['secret'],
-                'company_id' => $secret->company_id
+                'mail' => $secret[0]->mail,
+                'secret' => $secret[0]->secret,
+                'company_id' => $secret[0]->company_id
             ]);
 
             return $newUser;
