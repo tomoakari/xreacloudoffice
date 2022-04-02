@@ -79,7 +79,7 @@
         window.onload = function () {
             var param = location.search;
             if(param){
-                param = substr(param, 8, 16)
+                param = param.substr(8, 16)
                 document.getElementById("secret").value = param;
             }
         }
