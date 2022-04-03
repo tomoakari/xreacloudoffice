@@ -237,8 +237,8 @@ class HomeController extends Controller
                 array_push($uidList, $item->user_id);
             }
 
-            // $uidList = array_column($enrList, 'user_id');
-            $userList = User::whereIn('id', $uidList)->get();
+            $userList = User::whereIn('id', $uidList)->
+                select('id','name','email')->get();
             
             if(count($enr) == 0){
                 return [

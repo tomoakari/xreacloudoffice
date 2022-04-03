@@ -26,10 +26,12 @@
       <div class="card-header">従業員一覧</div>
 
       <div class="card-body">
-        <ul>
-          <li>＊＊＊＊＊</li>
-          <li>＊＊＊＊＊</li>
-          <li>＊＊＊＊＊</li>
+        <ul v-for="user in userList" v-bind:key="user.id" class="userlist">
+          <li>
+            <span>{{ user.id }}</span>
+            <span>{{ user.name }}</span>
+            <span>{{ user.email }}</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -93,6 +95,13 @@ export default {
       max_member: 10,
       company: {},
       createParams: [],
+      userList: [
+        {
+          id: 0,
+          name: "loading...",
+          email: "loading...",
+        },
+      ],
     };
   },
   props: {},
@@ -132,7 +141,8 @@ export default {
           if (res.data.result) {
             // 会社登録済み
             this.show_mode = "detail";
-            this.company = res.data.data;
+            this.company = res.data.data.company_info;
+            this.userList = res.data.data.company_member;
           } else {
             // 会社未登録
             this.show_mode = "create";
