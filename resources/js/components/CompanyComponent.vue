@@ -6,8 +6,16 @@
       <div class="card-body">
         <h4>{{ company.name }}</h4>
         <ul>
-          <li><span @click="showSecret">従業員を招待する</span></li>
-          <li><span @click="inviteMember">従業員を作成する</span></li>
+          <li>
+            <span class="createbutton" @click="inviteMember"
+              >従業員を招待する</span
+            >
+          </li>
+          <li>
+            <span class="createbutton" @click="showSecret"
+              >ジョインコードを表示</span
+            >
+          </li>
           <li><a href="">会社情報を編集する</a></li>
           <li><a href="">支払い情報を管理する</a></li>
         </ul>
@@ -31,10 +39,10 @@
       <div class="card-header">会社新規作成</div>
 
       <div class="card-body">
-        <h3>組織名を登録しましょう</h3>
+        <p>組織名を登録しましょう</p>
         <input v-model="company_name" />
 
-        <h3>ご利用の人数は何人ですか？</h3>
+        <p>ご利用の人数は何人ですか？</p>
         <p>
           <input type="radio" id="1_5" value="5" v-model="max_member" />
           <label for="1-5">1~5人</label>
@@ -52,16 +60,19 @@
           <label for="21-50">21~50人</label>
         </p>
 
-        <h3>決済方法の登録（飛ばして新規登録します）</h3>
+        <p>決済方法の登録</p>
+        <select>
+          <option>現在は選択不要です</option>
+        </select>
         <div class="button" @click="createCompany">企業を作成する</div>
       </div>
     </div>
 
     <div class="card" v-show="show_mode == 'create'">
-      <div class="card-header">招待コードで企業に参加する</div>
+      <div class="card-header">ジョインコードで企業に参加する</div>
 
       <div class="card-body">
-        <h3>企業招待ID</h3>
+        <h3>ジョインコード</h3>
         <input v-model="company_secret" />
         <div class="button" @click="joinCompany">企業に参加する</div>
       </div>
@@ -117,6 +128,7 @@ export default {
           params: {},
         })
         .then((res) => {
+          console.log("getCompanyInfo..." + res.data.result);
           if (res.data.result) {
             // 会社登録済み
             this.show_mode = "detail";

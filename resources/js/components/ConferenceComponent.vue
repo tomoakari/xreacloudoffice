@@ -294,7 +294,9 @@ export default {
                         icon: "success",
                         title: "クリップボードにコピーしました",
                         toast: true,
-                        timer: 2000,
+                        timer: 2500,
+                        timerProgressBar: true,
+                        showConfirmButton: false,
                       });
                     });
                   })
