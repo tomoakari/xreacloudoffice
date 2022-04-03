@@ -238,7 +238,7 @@ class HomeController extends Controller
             }
 
             // $uidList = array_column($enrList, 'user_id');
-            $userList = User::whereIn('user_id', $uidList)->get();
+            $userList = User::whereIn('id', $uidList)->get();
             
             if(count($enr) == 0){
                 return [
