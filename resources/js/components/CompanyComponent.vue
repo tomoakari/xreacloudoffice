@@ -33,6 +33,22 @@
             <span>{{ user.email }}</span>
           </li>
         </ul>
+        <table class="userlistTable">
+          <thead>
+            <tr>
+              <td>id</td>
+              <td>名前</td>
+              <td>メールアドレス</td>
+            </tr>
+          </thead>
+          <tbody v-for="user in userList" v-bind:key="user.id">
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <br />
