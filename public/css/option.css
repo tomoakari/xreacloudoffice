@@ -71,9 +71,9 @@ footer {
 #input_hour {
     margin-left: 126px;
 }
-ul.userlist > li:nth-child(1) {
+.userlist > span:nth-child(1) {
     width: 30px;
 }
-ul.userlist > li:nth-child(2) {
+.userlist > span:nth-child(2) {
     width: 150px;
 }

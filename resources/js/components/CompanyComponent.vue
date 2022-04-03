@@ -26,8 +26,8 @@
       <div class="card-header">従業員一覧</div>
 
       <div class="card-body">
-        <ul v-for="user in userList" v-bind:key="user.id" class="userlist">
-          <li>
+        <ul v-for="user in userList" v-bind:key="user.id">
+          <li class="userlist">
             <span>{{ user.id }}</span>
             <span>{{ user.name }}</span>
             <span>{{ user.email }}</span>
