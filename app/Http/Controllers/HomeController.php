@@ -232,7 +232,7 @@ class HomeController extends Controller
             $comp = Company::find($enr[0]->company_id);
             $enrList = Enrolled::where('company_id', $enr[0]->company_id)->get();
             $uidList = array_column($enrList, 'user_id');
-            $userList = User::whereIn('user_id', $uidList)->get()
+            $userList = User::whereIn('user_id', $uidList)->get();
             
             if(count($enr) == 0){
                 return [
