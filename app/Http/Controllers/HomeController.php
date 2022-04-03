@@ -235,19 +235,19 @@ class HomeController extends Controller
             if(count($enr) == 0){
                 return [
                     'result' => true,
-                    'data' => {
+                    'data' => [
                         'company_info' => $comp,
                         'company_member' => $enrList
-                    }
+                    ]
                 ];
             }else{
                 $comp = Company::find($enr[0]->company_id);
                 return [
                     'result' => true,
-                    'data' => {
+                    'data' => [
                         'company_info' => $comp,
                         'company_member' => $enrList
-                    }
+                    ]
                 ];
             }
             
