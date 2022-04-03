@@ -29,6 +29,17 @@ footer {
     padding: 2px 10px;
     cursor: pointer;
 }
+
+.linkbutton {
+    color: #3490dc;
+    cursor: pointer;
+}
+.linkbutton:hover {
+    text-decoration: underline;
+}
+.disabletext {
+    color: #808080;
+}
 .meetinglist {
     width: 100%;
 }

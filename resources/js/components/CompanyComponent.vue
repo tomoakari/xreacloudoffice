@@ -7,17 +7,17 @@
         <h4>{{ company.name }}</h4>
         <ul>
           <li>
-            <span class="createbutton" @click="inviteMember"
+            <span class="linkbutton" @click="inviteMember"
               >従業員を招待する</span
             >
           </li>
           <li>
-            <span class="createbutton" @click="showSecret"
+            <span class="linkbutton" @click="showSecret"
               >ジョインコードを表示</span
             >
           </li>
-          <li><a href="">会社情報を編集する</a></li>
-          <li><a href="">支払い情報を管理する</a></li>
+          <li class="disabletext">会社情報を編集する</li>
+          <li class="disabletext">支払い情報を管理する</li>
         </ul>
       </div>
     </div>
