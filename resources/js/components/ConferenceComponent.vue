@@ -286,52 +286,17 @@ export default {
                       confirmButtonText: "コピー",
                       confirmButtonAriaLabel: "Close",
                       allowOutsideClick: true,
-                    }).then((result) => {
-                      if (result.value) {
-                        copyToClipboard();
-                      }
-                    });
-                    /*
-                    Swal.fire({
-                      title: "参加者を招待する",
-                      html: `
-                        <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                        <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                        <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                        <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                        <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                        <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                        <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                        <input name="input_invite" class="swal2-input" placeholder="メールアドレス">
-                        `,
-                      confirmButtonText: "送信する",
-                      focusConfirm: false,
-                      showCancelButton: true,
-                      cancelButtonText: "今は招待しない",
-                      allowOutsideClick: false,
                       preConfirm: () => {
-                        var invites = document.getElementsByName("input_invite");
-                        var isInvited = false;
-                        invites.forEach(iu => {
-                          if(iu !== ""){
-                            isInvited = true;
-                            break;
-                          }
-                        });
-                        if(isInvited){
-                          return false;
-                        }
-                        if (document.getElementsByName("input_invite") == "") {
-                          Swal.showValidationMessage(
-                            `会議名を入力してください`
-                          );
-                        } else {
-                          this.createParams[0] =
-                            document.getElementById("input_name").value;
-                        }
+                        navigator.clipboard.writeText(url);
                       },
+                    }).then((result) => {
+                      Swal.fire({
+                        icon: "success",
+                        title: "クリップボードにコピーしました",
+                        toast: true,
+                        timer: 2000,
+                      });
                     });
-                    */
                   })
                   .catch((err) => {
                     Swal.fire(JSON.stringify(err));
