@@ -45,6 +45,29 @@
       </div>
     </div>
     <br />
+    <div class="card" v-show="show_mode == 'detail'">
+      <div class="card-header">招待済み一覧</div>
+
+      <div class="card-body">
+        <table class="">
+          <thead>
+            <tr>
+              <td>メールアドレス</td>
+              <td>招待日</td>
+              <td>招待URL</td>
+            </tr>
+          </thead>
+          <tbody v-for="secret in inviteList" v-bind:key="secret.id">
+            <tr>
+              <td>{{ secret.email }}</td>
+              <td>{{ secret.creted_at }}</td>
+              <td @click="showInviteUrl(secret.secret)">URLを表示</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br />
 
     <div class="card" v-show="show_mode == 'create'">
       <div class="card-header">会社新規作成</div>
@@ -111,6 +134,13 @@ export default {
           email: "loading...",
         },
       ],
+      inviteList: [
+        {
+          secret: "",
+          mail: "loading...",
+          created_at: "loading...",
+        },
+      ],
     };
   },
   props: {},
@@ -152,6 +182,7 @@ export default {
             this.show_mode = "detail";
             this.company = res.data.data.company_info;
             this.userList = res.data.data.company_member;
+            this.inviteList = res.data.data.invited_member;
           } else {
             // 会社未登録
             this.show_mode = "create";
@@ -263,6 +294,9 @@ export default {
             }
           });
       });
+    },
+    showInviteUrl(secret) {
+      alert("ここでURLリンクを表示します。secret=" + secret);
     },
     isEmail(email) {
       var re =

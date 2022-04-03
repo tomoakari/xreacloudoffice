@@ -225,7 +225,7 @@ class HomeController extends Controller
     /**
      * 
      */
-    public function getCompanyInfo(Request $request)
+    public function getCompanyInfo()
     {
         try{
             $comp;
@@ -239,26 +239,20 @@ class HomeController extends Controller
 
             $userList = User::whereIn('id', $uidList)->
                 select('id','name','email')->get();
+
+            $invitedList = Secretcode::
+                where('company_id', $enr[0]->company_id)->
+                whereColumn('created_at', 'updated_at')->
+                get();
             
-            if(count($enr) == 0){
-                return [
-                    'result' => true,
-                    'data' => [
-                        'company_info' => $comp,
-                        'company_member' => $userList
-                    ]
-                ];
-            }else{
-                $comp = Company::find($enr[0]->company_id);
-                return [
-                    'result' => true,
-                    'data' => [
-                        'company_info' => $comp,
-                        'company_member' => $userList
-                    ]
-                ];
-            }
-            
+            return [
+                'result' => true,
+                'data' => [
+                    'company_info' => $comp,
+                    'company_member' => $userList,
+                    'invited_member' => $invitedList
+                ]
+            ];
             
         }catch(Exception $err){
             return [
