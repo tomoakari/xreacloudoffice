@@ -231,7 +231,12 @@ class HomeController extends Controller
             $enr = Enrolled::where('user_id', Auth::id())->get();
             $comp = Company::find($enr[0]->company_id);
             $enrList = Enrolled::where('company_id', $enr[0]->company_id)->get();
-            $uidList = array_column($enrList, 'user_id');
+            $uidList = array();
+            foreach($enrList as $item){
+                array_push($uidList, $item->user_id);
+            }
+
+            // $uidList = array_column($enrList, 'user_id');
             $userList = User::whereIn('user_id', $uidList)->get();
             
             if(count($enr) == 0){
