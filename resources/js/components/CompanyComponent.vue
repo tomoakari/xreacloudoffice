@@ -59,9 +59,11 @@
           </thead>
           <tbody v-for="secret in inviteList" v-bind:key="secret.id">
             <tr>
-              <td>{{ secret.email }}</td>
-              <td>{{ secret.creted_at }}</td>
-              <td @click="showInviteUrl(secret.secret)">URLを表示</td>
+              <td>{{ secret.mail }}</td>
+              <td>{{ secret.created_at }}</td>
+              <td @click="showInviteUrl(secret.secret)" class="linkbutton">
+                URLを表示
+              </td>
             </tr>
           </tbody>
         </table>
@@ -296,7 +298,17 @@ export default {
       });
     },
     showInviteUrl(secret) {
-      alert("ここでURLリンクを表示します。secret=" + secret);
+      const url = "https://kaigishitsu.aice.cloud/register/?secret=" + secret;
+      Swal.fire({
+        html:
+          `
+          <a href="` +
+          url +
+          `" target="_blank">` +
+          url +
+          `</a>
+        `,
+      });
     },
     isEmail(email) {
       var re =
