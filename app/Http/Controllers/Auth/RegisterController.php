@@ -98,7 +98,7 @@ class RegisterController extends Controller
         ]);
         */
 
-        $hashMail =  base64_encode($data['email'])
+        $hashMail =  base64_encode($data['email']);
         // メール認証ありの時点の処理
         $newUser = User::create([
             'email' => $data['email'],
