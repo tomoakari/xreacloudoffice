@@ -56,10 +56,25 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            //'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+    }
+
+    /**
+     * 
+     */
+    public function pre_check(Request $request){
+        $this->validator($request->all())->validate();
+        //flash data
+        $request->flashOnly( 'email');
+
+        $bridge_request = $request->all();
+        // password マスキング
+        $bridge_request['password_mask'] = '******';
+
+        return view('auth.register_check')->with($bridge_request);
     }
 
     /**
@@ -70,6 +85,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        /*
+        // メール認証なしの時点での処理
         $newUser = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -77,12 +94,26 @@ class RegisterController extends Controller
             //'api_token' => Str::random('alnum', 60),
             'api_token' => Hash::make($data['password']. $data['email']),
         ]);
+        */
+
+        // メール認証ありの時点の処理
+        $newUser = User::create([
++            'email' => $data['email'],
++            'password' => Hash::make($data['password']),
++            'email_verify_token' => base64_encode($data['email']),
++        ]);
+
++        $email = new EmailVerification($newUser);
++        Mail::to($user->email)->send($email);
+
++        return $newUser;
 
 
+        // 以下、招待コードがある場合の処理（別のクラスかも）
         if(strlen($data['secret']) == 0){
             return $newUser;
         }
-
+s
         try{
             // 使われていないsecretcodeがあるか確認
             $secret = Secretcode::
@@ -127,4 +158,83 @@ class RegisterController extends Controller
             return $newUser;
         } 
     }
+
+    /**
+     * Auth::routes()ルーティングのデフォルトメソッドにオーバーライドして
+     * 生成時に上記createが呼ばれるようにする
+     */
+    public function register(Request $request)
+    {
+        event(new Registered($user = $this->create( $request->all() )));
+
+        return view('auth.registered');
+    }
+
+    /**
+     * トークンをチェックして本会員フォームに飛ばす処理
+     */
+    public function showForm($email_token){
+        // 使用可能なトークンか
+        if ( !User::where('email_verify_token',$email_token)->exists() )
+        {
+            return view('auth.main.register')->with('message', '無効なトークンです。');
+        } else {
+            $user = User::where('email_verify_token', $email_token)->first();
+            // 本登録済みユーザーか
+            if ($user->status == config('const.USER_STATUS.REGISTER')) //REGISTER=1
+            {
+                logger("status". $user->status );
+                return view('auth.main.register')->with('message', 'すでに本登録されています。ログインして利用してください。');
+            }
+            // ユーザーステータス更新
+            $user->status = config('const.USER_STATUS.MAIL_AUTHED');
+            $user->verify_at = Carbon::now();
+            if($user->save()) {
+                return view('auth.main.register', compact('email_token'));
+            } else{
+                return view('auth.main.register')->with('message', 'メール認証に失敗しました。再度、メールからリンクをクリックしてください。');
+            }
+        }
+    }
+
+    /**
+     * 確認画面のViewを返すメソッド
+     */
+    public function mainCheck(Request $request){
+    $request->validate([
+      'name' => 'required|string',
+      'name_pronunciation' => 'required|string',
+      'birth_year' => 'required|numeric',
+      'birth_month' => 'required|numeric',
+      'birth_day' => 'required|numeric',
+    ]);
+
+    //データ保持用
+    $email_token = $request->email_token;
+
+    $user = new User();
+    $user->name = $request->name;
+    $user->name_pronunciation = $request->name_pronunciation;
+    $user->birth_year = $request->birth_year;
+    $user->birth_month = $request->birth_month;
+    $user->birth_day = $request->birth_day;
+
+    return view('auth.main.register_check', compact('user','email_token'));
+  }
+
+  /**
+   * 本登録して完了画面へ
+   */
+  public function mainRegister(Request $request){
+    $user = User::where('email_verify_token',$request->email_token)->first();
+    $user->status = config('const.USER_STATUS.REGISTER');
+    $user->name = $request->name;
+    $user->name_pronunciation = $request->name_pronunciation;
+    $user->birth_year = $request->birth_year;
+    $user->birth_month = $request->birth_month;
+    $user->birth_day = $request->birth_day;
+    $user->save();
+
+    return view('auth.main.registered');
+  }
 }
