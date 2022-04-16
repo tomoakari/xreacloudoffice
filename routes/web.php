@@ -24,10 +24,10 @@ Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
 Route::post('register/main_check', 'Auth\RegisterController@mainCheck')->name('register.main.check');
 Route::post('register/main_register', 'Auth\RegisterController@mainRegister')->name('register.main.registered');
 */
-Route::post('register/pre_check', 'Auth/RegisterController@pre_check')->name('register.pre_check');
-Route::get('register/verify/{token}', 'Auth/RegisterController@showForm');
-Route::post('register/main_check', 'Auth/RegisterController@mainCheck')->name('register.main.check');
-Route::post('register/main_register', 'Auth/RegisterController@mainRegister')->name('register.main.registered');
+Route::post('register/pre_check', 'Auth\RegisterController@pre_check')->name('pre_check');
+Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
+Route::post('register/main_check', 'Auth\RegisterController@mainCheck')->name('main.check');
+Route::post('register/main_register', 'Auth\RegisterController@mainRegister')->name('registered');
 
 Auth::routes();
 
