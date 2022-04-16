@@ -9,7 +9,6 @@ use App\User;
 use App\Secretcode;
 use App\Department;
 use App\Enrolled;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -166,7 +165,7 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        event(new Register($user = $this->create( $request->all() )));
+        event(new Registered($user = $this->create( $request->all() )));
 
         return view('auth.registered');
     }
