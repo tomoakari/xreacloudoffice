@@ -100,7 +100,7 @@ class RegisterController extends Controller
         $newUser = User::create([
 +            'email' => $data['email'],
 +            'password' => Hash::make($data['password']),
-+            'email_verify_token' => base64_encode($data['email']),
++            'email_verify_token' => base64_encode($data['email'])
 +        ]);
 
 +        $email = new EmailVerification($newUser);
