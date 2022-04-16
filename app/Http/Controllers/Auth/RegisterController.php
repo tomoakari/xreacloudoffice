@@ -98,22 +98,22 @@ class RegisterController extends Controller
 
         // メール認証ありの時点の処理
         $newUser = User::create([
-+            'email' => $data['email'],
-+            'password' => Hash::make($data['password']),
-+            'email_verify_token' => base64_encode($data['email'])
-+        ]);
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'email_verify_token' => base64_encode($data['email'])
+        ]);
 
-+        $email = new EmailVerification($newUser);
-+        Mail::to($user->email)->send($email);
+        $email = new EmailVerification($newUser);
+        Mail::to($user->email)->send($email);
 
-+        return $newUser;
+        return $newUser;
 
 
         // 以下、招待コードがある場合の処理（別のクラスかも）
         if(strlen($data['secret']) == 0){
             return $newUser;
         }
-s
+
         try{
             // 使われていないsecretcodeがあるか確認
             $secret = Secretcode::
