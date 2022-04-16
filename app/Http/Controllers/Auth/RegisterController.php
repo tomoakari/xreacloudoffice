@@ -9,6 +9,7 @@ use App\User;
 use App\Secretcode;
 use App\Department;
 use App\Enrolled;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
