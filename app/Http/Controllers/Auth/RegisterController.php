@@ -215,7 +215,7 @@ class RegisterController extends Controller
     /**
      * 確認画面のViewを返すメソッド
      */
-    public function mainCheck(Request $request){
+    public function main_check(Request $request){
     $request->validate([
       'name' => 'required|string',
       'name_pronunciation' => 'required|string',
