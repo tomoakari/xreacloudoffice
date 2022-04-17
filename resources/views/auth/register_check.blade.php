@@ -17,6 +17,7 @@
                             <div class="col-md-6">
                                 <span class="">{{$email}}</span>
                                 <input type="hidden" name="email" value="{{$email}}">
+                                <input type="hidden" name="secret" value="{{$secret}}">
                             </div>
                         </div>
 

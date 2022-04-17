@@ -83,7 +83,7 @@ class RegisterController extends Controller
     public function pre_check(Request $request){
         $this->validator($request->all())->validate();
         //flash data
-        $request->flashOnly( 'email');
+        $request->flashOnly('email');
 
         $bridge_request = $request->all();
         // password マスキング
@@ -100,17 +100,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        /*
-        // メール認証なしの時点での処理
-        $newUser = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            //'api_token' => Str::random('alnum', 60),
-            'api_token' => Hash::make($data['password']. $data['email']),
-        ]);
-        */
-
         // メール認証ありの時点の処理
         $newUser = User::create([
             'email' => $data['email'],
@@ -121,8 +110,6 @@ class RegisterController extends Controller
 
         $email = new EmailVerification($newUser);
         Mail::to($newUser->email)->send($email);
-
-        return $newUser;
 
 
         // 以下、招待コードがある場合の処理（別のクラスかも）
