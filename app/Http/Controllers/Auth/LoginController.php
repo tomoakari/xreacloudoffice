@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Validation\ValidationException;
 use App\User;
 
 class LoginController extends Controller
@@ -29,17 +28,25 @@ class LoginController extends Controller
      * ログイン時のデフォルト処理にオーバーライドして割り込む
      * ここでは、メール認証が完了していないとエラーになる
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
-     * @return mixed
      */
-    protected function authenticated(Request $request, $user)
+   
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
     {
-        if($user->status !== 2){
-            throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
-        ]);
-        }
+        //return $request->only($this->username(), 'password');
+
+        $conditions = $request->only($this->username(), 'password');
+        $conditions_custom = array_merge(
+            $conditions,
+            ['status' => '2']
+        );
+        return $conditions_custom;
     }
 
     /**
