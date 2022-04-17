@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">本会員登録</div>
 
@@ -17,12 +17,13 @@
                             <form method="POST" action="{{ route('register.main_check') }}">
                                 @csrf
                                 <div class="form-group row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">名前</label>
+                                    <label for="name" class="col-md-4 col-form-label text-md-right">氏名</label>
                                     <div class="col-md-6">
                                         <input
                                             id="name" type="text"
                                             class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                            name="name" value="{{ old('name') }}" required>
+                                            name="name" value="{{ old('name') }}" required
+                                            placeholder="フルネームで入力してください">
 
                                         @if ($errors->has('name'))
                                             <span class="invalid-feedback">

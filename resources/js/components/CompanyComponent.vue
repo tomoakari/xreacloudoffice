@@ -236,11 +236,12 @@ export default {
     inviteMember: function () {
       Swal.fire({
         html: `
+        <p>招待を送る</p>
         <p>
-          招待したいメールアドレスを入力してください。<br />
-          複数入力したいときは、改行して1行に1アドレス入力してください。
+          招待する社員のメールアドレスを入力してください。<br />
+          改行することで複数への招待も可能です。
         </p>
-        <textarea id="mails" placeholder="example@aiforus.jp"></textarea>
+        <textarea id="mails" placeholder="example@〇〇〇〇〇.co.jp"></textarea>
         <style>
           #mails{width:100%; height:100px; overflow: scroll;}
         </style>

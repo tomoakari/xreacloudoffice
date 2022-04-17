@@ -2,6 +2,9 @@
   <div>
     <div class="card mb-20">
       <div class="card-header">お知らせ</div>
+      <div class="heroImageArea">
+        <img src="{{ asset('image/company_lobby.jpg') }}" />
+      </div>
 
       <div class="card-body">ようこそ、{{ user_name }}さん</div>
     </div>
@@ -12,15 +15,24 @@
         <table class="menu_table">
           <tr>
             <td>
-              <a href="/conference">会議管理</a>
+              <a href="/conference">会議情報</a>
             </td>
-            <td>会議を作成したり、参加したりできます</td>
+            <td>参加する会議の確認や、新たな会議の作成が出来ます。</td>
           </tr>
           <tr>
             <td>
-              <a href="/company">会社管理</a>
+              <a href="/company">管理ルーム</a>
             </td>
-            <td>会社のメンバー管理などを行います</td>
+            <td>
+              新たな社員の登録や、ご利用プランの変更等、管理者用の設定が出来ます。
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <a href="/help">ヘルプ</a>
+            </td>
+            <td>進め方や活用方法のチュートリアルや、各項目の説明はこちら。</td>
           </tr>
         </table>
       </div>

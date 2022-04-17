@@ -3,11 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('新規登録') }}</div>
 
                 <div class="card-body">
+                    <p>AICE CLOUD会議室にようこそ！ はじめにメールアドレスを認証して、アカウントを作成しましょう。</p>
                     <form method="POST" action="{{ route('register.pre_check') }}">
                         @csrf
 
@@ -31,7 +32,9 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('パスワード') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    name="password" required autocomplete="英数字8文字以上">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -45,14 +48,16 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('パスワード（確認）') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password"
+                                    class="form-control" name="password_confirmation"
+                                    required autocomplete="英数字8文字以上">
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('新規登録') }}
+                                    {{ __('認証メールを送信する') }}
                                 </button>
                             </div>
                         </div>
