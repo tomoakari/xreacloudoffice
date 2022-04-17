@@ -109,7 +109,7 @@ class RegisterController extends Controller
         ]);
 
         $email = new EmailVerification($newUser);
-        Mail::to($user->email)->send($email);
+        Mail::to($newUser->email)->send($email);
 
         return $newUser;
 
