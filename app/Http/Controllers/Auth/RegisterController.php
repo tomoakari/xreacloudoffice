@@ -229,7 +229,7 @@ class RegisterController extends Controller
    */
   public function mainRegister(Request $request){
     $user = User::where('email_verify_token',$request->email_token)->first();
-    $user->status = $this->USER_STATUS["REGISTER"];
+    $user->status = $this->USER_STATUS["MAIL_AUTHED"];
     $user->name = $request->name;
     $user->name_pronunciation = $request->name_pronunciation;
     $user->birth_year = $request->birth_year;
