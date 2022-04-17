@@ -195,13 +195,13 @@ class RegisterController extends Controller
         } else {
             $user = User::where('email_verify_token', $email_token)->first();
             // 本登録済みユーザーか
-            if ($user->status == $USER_STATUS->REGISTER) //REGISTER=1
+            if ($user->status == $this->USER_STATUS->REGISTER) //REGISTER=1
             {
                 logger("status". $user->status );
                 return view('auth.main.register')->with('message', 'すでに本登録されています。ログインして利用してください。');
             }
             // ユーザーステータス更新
-            $user->status = $USER_STATUS->MAIL_AUTHED;
+            $user->status = $this->USER_STATUS->MAIL_AUTHED;
             $user->verify_at = Carbon::now();
             if($user->save()) {
                 return view('auth.main.register', compact('email_token'));
@@ -241,7 +241,7 @@ class RegisterController extends Controller
    */
   public function mainRegister(Request $request){
     $user = User::where('email_verify_token',$request->email_token)->first();
-    $user->status = $USER_STATUS->REGISTER;
+    $user->status = $this->USER_STATUS->REGISTER;
     $user->name = $request->name;
     $user->name_pronunciation = $request->name_pronunciation;
     $user->birth_year = $request->birth_year;
