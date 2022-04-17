@@ -203,7 +203,7 @@ class RegisterController extends Controller
             }
             // ユーザーステータス更新
             $user->status = $this->USER_STATUS["MAIL_AUTHED"];
-            $user->verify_at = Carbon::now();
+            $user->email_verified_at = Carbon::now();
             if($user->save()) {
                 return view('auth.main.register', compact('email_token'));
             } else{
