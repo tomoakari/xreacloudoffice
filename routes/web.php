@@ -28,10 +28,11 @@ Route::post('register/pre_check', 'Auth\RegisterController@pre_check')->name('re
 Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
 
 // 名前の確認画面を開く
-Route::post('register/main_check', 'Auth\RegisterController@main_check');
+Route::post('main_check', 'Auth\RegisterController@main_check');
 
 // 登録完了画面を開く
 Route::post('register/main_register', 'Auth\RegisterController@mainRegister');
+
 
 
 Auth::routes();
