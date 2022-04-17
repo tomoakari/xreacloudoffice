@@ -21,18 +21,17 @@ Route::get('/', function () {
 Route::post('register/pre_check', 'Auth\RegisterController@pre_check')->name('register.pre_check');
 
 // 仮登録してメース送信しました画面を開く
-// Route::post('register', 'Auth\RegisterController@register');
+//Route::post('register', 'Auth\RegisterController@register');
 // registerで暗黙的に使えるのでここでは記述なし
 
 // メール記載のURLから認証して名前入力画面とかを開く
 Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
 
 // 名前の確認画面を開く
-Route::post('register/main_check', 'Auth\RegisterController@main_check');
+Route::post('register/main_check', 'Auth\RegisterController@main_check')->name('register.main_check');
 
 // 登録完了画面を開く
-Route::post('register/main_register', 'Auth\RegisterController@mainRegister');
-
+Route::post('register/main_register', 'Auth\RegisterController@mainRegister')->name('register.main.registered');
 
 
 Auth::routes();
