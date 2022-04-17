@@ -11,9 +11,12 @@
 |
 */
 
+use Illuminate\Support\Facades\Log;
 // トップ画面
 Route::get('/', function () {
     //return view('welcome');
+
+    Log::error("あうたーとっぷ");
     return view('outertop');
 });
 
