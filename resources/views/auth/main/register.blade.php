@@ -41,6 +41,8 @@
                                                class="form-control{{ $errors->has('name_pronunciation') ? ' is-invalid' : '' }}"
                                                name="name_pronunciation" value="{{ old('name_pronunciation') }}"
                                                required>
+                                        
+                                        <input type="hidden" name="email_token" value="{{$email_token}}">
 
                                         @if ($errors->has('name_pronunciation'))
                                             <span class="invalid-feedback">
