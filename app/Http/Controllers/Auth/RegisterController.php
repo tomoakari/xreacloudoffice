@@ -31,6 +31,13 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+    // 0:仮登録 1:本登録 2:メール認証済 9:退会済
+    $USER_STATUS => [
+        'PRE_REGISTER' => '0',
+        'REGISTER' => '1',
+        'MAIL_AUTHED' => '2',
+        'DEACTIVE' => '9',
+    ];
 
     use RegistersUsers;
 
@@ -180,19 +187,18 @@ class RegisterController extends Controller
      */
     public function showForm($email_token){
         // 使用可能なトークンか
-        if ( !User::where('email_verify_token',$email_token)->exists() )
-        {
+        if ( !User::where('email_verify_token',$email_token)->exists() ){
             return view('auth.main.register')->with('message', '無効なトークンです。');
         } else {
             $user = User::where('email_verify_token', $email_token)->first();
             // 本登録済みユーザーか
-            if ($user->status == config('const.USER_STATUS.REGISTER')) //REGISTER=1
+            if ($user->status == $USER_STATUS->REGISTER) //REGISTER=1
             {
                 logger("status". $user->status );
                 return view('auth.main.register')->with('message', 'すでに本登録されています。ログインして利用してください。');
             }
             // ユーザーステータス更新
-            $user->status = config('const.USER_STATUS.MAIL_AUTHED');
+            $user->status = $USER_STATUS->MAIL_AUTHED;
             $user->verify_at = Carbon::now();
             if($user->save()) {
                 return view('auth.main.register', compact('email_token'));
@@ -232,7 +238,7 @@ class RegisterController extends Controller
    */
   public function mainRegister(Request $request){
     $user = User::where('email_verify_token',$request->email_token)->first();
-    $user->status = config('const.USER_STATUS.REGISTER');
+    $user->status = $USER_STATUS->REGISTER;
     $user->name = $request->name;
     $user->name_pronunciation = $request->name_pronunciation;
     $user->birth_year = $request->birth_year;
