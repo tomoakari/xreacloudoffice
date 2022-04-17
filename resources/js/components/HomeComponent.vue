@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="card mb-20">
-      <div class="card-header">お知らせ</div>
       <div class="heroImageArea">
         <img src="/image/company_lobby.jpg" />
       </div>
@@ -202,3 +201,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.heroImageArea > img {
+  width: 100%;
+}
+</style>
