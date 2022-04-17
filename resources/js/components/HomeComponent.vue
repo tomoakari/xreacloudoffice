@@ -3,7 +3,7 @@
     <div class="card mb-20">
       <div class="card-header">お知らせ</div>
       <div class="heroImageArea">
-        <img src="{{ asset('image/company_lobby.jpg') }}" />
+        <img src="/image/company_lobby.jpg" />
       </div>
 
       <div class="card-body">ようこそ、{{ user_name }}さん</div>
