@@ -98,13 +98,13 @@ class RegisterController extends Controller
         ]);
         */
 
-        $hashMail =  base64_encode($data['email']);
         // メール認証ありの時点の処理
         $newUser = User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'email_verify_token' => $hashMail
-        ]);
+            'api_token' => Hash::make($data['password']. $data['email']),
+            'email_verify_token' => base64_encode($data['email'])
+        ])
 
         $email = new EmailVerification($newUser);
         Mail::to($user->email)->send($email);
