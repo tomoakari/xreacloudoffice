@@ -31,13 +31,6 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-    // 0:仮登録 1:本登録 2:メール認証済 9:退会済
-    $USER_STATUS => [
-        'PRE_REGISTER' => '0',
-        'REGISTER' => '1',
-        'MAIL_AUTHED' => '2',
-        'DEACTIVE' => '9',
-    ];
 
     use RegistersUsers;
 
@@ -72,6 +65,16 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
+    /**
+     * 定数
+     */
+    // 0:仮登録 1:本登録 2:メール認証済 9:退会済
+    protected $USER_STATUS => [
+        'PRE_REGISTER' => '0',
+        'REGISTER' => '1',
+        'MAIL_AUTHED' => '2',
+        'DEACTIVE' => '9',
+    ];
 
     /**
      * 
