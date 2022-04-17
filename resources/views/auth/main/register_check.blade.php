@@ -16,7 +16,8 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">名前</label>
                             <div class="col-md-6">
                                 <span class="">{{$user->name}}</span>
-                                <input type="hidden" name="email" value="{{$user->name}}">
+                                <input type="hidden" name="name" value="{{$user->name}}">
+                                <input type="hidden" name="email_token" value="{{$email_token}}">
                             </div>
                         </div>
 
