@@ -206,9 +206,11 @@ class RegisterController extends Controller
     $request->validate([
       'name' => 'required|string',
       'name_pronunciation' => 'required|string',
+      /*
       'birth_year' => 'required|numeric',
       'birth_month' => 'required|numeric',
       'birth_day' => 'required|numeric',
+      */
     ]);
 
     //データ保持用
@@ -217,9 +219,11 @@ class RegisterController extends Controller
     $user = new User();
     $user->name = $request->name;
     $user->name_pronunciation = $request->name_pronunciation;
+    /*
     $user->birth_year = $request->birth_year;
     $user->birth_month = $request->birth_month;
     $user->birth_day = $request->birth_day;
+    */
 
     return view('auth.main.register_check', compact('user','email_token'));
   }
@@ -232,9 +236,14 @@ class RegisterController extends Controller
     $user->status = $this->USER_STATUS["MAIL_AUTHED"];
     $user->name = $request->name;
     $user->name_pronunciation = $request->name_pronunciation;
+    /*
     $user->birth_year = $request->birth_year;
     $user->birth_month = $request->birth_month;
     $user->birth_day = $request->birth_day;
+    */
+    $user->birth_year = 2000;
+    $user->birth_month = 1;
+    $user->birth_day = 1;
     $user->save();
 
     return view('auth.main.registered');

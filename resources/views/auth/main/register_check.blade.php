@@ -29,6 +29,7 @@
                             </div>
                         </div>
 
+                        <!--
                         <div class="form-group row">
                             <label for="birth" class="col-md-4 col-form-label text-md-right">生年月日</label>
                             <div class="col-md-6">
@@ -40,6 +41,7 @@
                                 <input type="hidden" name="birth_day" value="{{$user->birth_day}}">
                             </div>
                         </div>
+                        -->
 
 
                         <div class="form-group row mb-0">
