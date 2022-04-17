@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\ValidationException;
 use App\User;
 
 class LoginController extends Controller
@@ -35,7 +36,9 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if($user->status !== 2){
-            return $this->sendFailedLoginResponse($request);
+            throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+        ]);
         }
     }
 
