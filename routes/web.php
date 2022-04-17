@@ -11,12 +11,9 @@
 |
 */
 
-use Illuminate\Support\Facades\Log;
 // トップ画面
 Route::get('/', function () {
     //return view('welcome');
-
-    Log::error("あうたーとっぷ");
     return view('outertop');
 });
 
@@ -24,7 +21,7 @@ Route::get('/', function () {
 
 Route::post('register/pre_check', 'Auth\RegisterController@pre_check')->name('register.pre_check');
 Route::get('register/verify/{token}', 'Auth\RegisterController@showForm');
-Route::post('register/main_check', 'Auth\RegisterController@mainCheck')->name('register.main.register_check');
+Route::post('register/main_check', 'Auth\RegisterController@mainCheck')->name('register.main.check');
 Route::post('register/main_register', 'Auth\RegisterController@mainRegister')->name('register.main.registered');
 /*
 Route::post('register/pre_check', 'Auth\RegisterController@pre_check')->name('pre_check');
