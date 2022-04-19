@@ -263,7 +263,14 @@ export default {
                     },
                   })
                   .then((response) => {
-                    //if(response.data)
+                    if (response.data.length == 0) {
+                      return Swal.fire({
+                        html: `<p>会社に入っていない状態では、会議を作成することはできません。</p>`,
+                        confirmButtonText: "とじる",
+                        confirmButtonAriaLabel: "とじる",
+                        allowOutsideClick: true,
+                      });
+                    }
                     this.getInnerConfs();
                     this.getOuterConfs();
                     const url =
