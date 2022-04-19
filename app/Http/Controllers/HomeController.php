@@ -67,7 +67,7 @@ class HomeController extends Controller
     {
         $enr = Enrolled::where('user_id', Auth::id())->get();
 
-        return $outerConfs = $enr;
+        return count($enr);
 
         if(count($enr) == 0){
             return [];
