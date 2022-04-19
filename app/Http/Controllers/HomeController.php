@@ -66,7 +66,10 @@ class HomeController extends Controller
     public function getOuterConfs(Request $request)
     {
         $enr = Enrolled::where('user_id', Auth::id())->get();
-        if($enr == []){
+
+        return $outerConfs = $enr;
+
+        if(count($enr) == 0){
             return [];
         }
         $company_id = $enr[0]->company_id;
@@ -80,62 +83,45 @@ class HomeController extends Controller
     }
     public function getInnerConfs(Request $request)
     {
-        $enr = Enrolled::where('user_id', Auth::id())->get();
-        if($enr == []){
-            return [];
-        }
-        $company_id = $enr[0]->company_id;
+        $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
 
         $today = date("Y-m-d");
         return $outerConfs = Conference::
             where('innerflg', 1)->
-            where('company_id', $company_id)->
+            where('company_id', $company_id[0]->company_id)->
             where('schedule', '>=', $today . " 00:00:00")->
             get();
     }
     public function getTodayOuterConfs(Request $request)
     {
-        $enr = Enrolled::where('user_id', Auth::id())->get();
-        if($enr == []){
-            return [];
-        }
-        $company_id = $enr[0]->company_id;
+        $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
 
         $today = date("Y-m-d");
         return $outerConfs = Conference::
             where('innerflg', 0)->
-            where('company_id', $company_id)->
+            where('company_id', $company_id[0]->company_id)->
             whereDate('schedule', $today)->
             //limit(3)->get();
             get();
     }
     public function getTodayInnerConfs(Request $request)
     {
-        $enr = Enrolled::where('user_id', Auth::id())->get();
-        if($enr == []){
-            return [];
-        }
-        $company_id = $enr[0]->company_id;
+        $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
 
         $today = date("Y-m-d");
         return $outerConfs = Conference::
             where('innerflg', 1)->
-            where('company_id', $company_id)->
+            where('company_id', $company_id[0]->company_id)->
             whereDate('schedule', $today)->
             //limit(3)->get();
             get();
     }
     public function createConf(Request $request)
     {
-        $enr = Enrolled::where('user_id', Auth::id())->get();
-        if($enr == []){
-            return [];
-        }
-        $company_id = $enr[0]->company_id;
-        
+        $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
         $data = [
             'name' => $request['name'],
-            'company_id' => $company_id,
+            'company_id' => $company_id[0]->company_id,
             'username' => $request['username'],
             'secret' => $request['secret'],
             'password' => $request['password'],
