@@ -66,9 +66,6 @@ class HomeController extends Controller
     public function getOuterConfs(Request $request)
     {
         $enr = Enrolled::where('user_id', Auth::id())->get();
-
-        return count($enr);
-
         if(count($enr) == 0){
             return [];
         }
