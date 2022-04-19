@@ -66,8 +66,11 @@ class HomeController extends Controller
     public function getOuterConfs(Request $request)
     {
         $enr = Enrolled::where('user_id', Auth::id())->get();
+
+        return $outerConfs = $enr;
+        /*
         if(count($enr) == 0){
-            return $enr;
+            return [];
         }
         $company_id = $enr[0]->company_id;
 
@@ -77,6 +80,7 @@ class HomeController extends Controller
             where('company_id', $company_id)->
             where('schedule', '>=', $today . " 00:00:00")->
             get();
+        */
     }
     public function getInnerConfs(Request $request)
     {
