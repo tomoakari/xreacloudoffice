@@ -263,6 +263,7 @@ export default {
                     },
                   })
                   .then((response) => {
+                    //if(response.data)
                     this.getInnerConfs();
                     this.getOuterConfs();
                     const url =
@@ -290,14 +291,16 @@ export default {
                         navigator.clipboard.writeText(url);
                       },
                     }).then((result) => {
-                      Swal.fire({
-                        icon: "success",
-                        title: "クリップボードにコピーしました",
-                        toast: true,
-                        timer: 2500,
-                        timerProgressBar: true,
-                        showConfirmButton: false,
-                      });
+                      if (result.isConfirmed) {
+                        Swal.fire({
+                          icon: "success",
+                          title: "クリップボードにコピーしました",
+                          toast: true,
+                          timer: 2500,
+                          timerProgressBar: true,
+                          showConfirmButton: false,
+                        });
+                      }
                     });
                   })
                   .catch((err) => {
