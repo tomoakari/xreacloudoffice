@@ -67,10 +67,7 @@ class HomeController extends Controller
     {
         $enr = Enrolled::where('user_id', Auth::id())->get();
         if(count($enr) == 0){
-            return [
-                'result' => false,
-                'data' => ''
-            ];
+            return [];
         }
         $company_id = $enr[0]->company_id;
 
