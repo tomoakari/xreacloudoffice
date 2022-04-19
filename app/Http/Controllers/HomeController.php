@@ -65,12 +65,19 @@ class HomeController extends Controller
 
     public function getOuterConfs(Request $request)
     {
-        $company_id = Enrolled::first('user_id', Auth::id())->select('company_id')->get();
+        $enr = Enrolled::where('user_id', Auth::id())->get()
+        if(count($enr) == 0){
+            return [
+                'result' => false,
+                'data' => ''
+            ];
+        }
+        $company_id = $enr[0]->company_id;
 
         $today = date("Y-m-d");
         return $outerConfs = Conference::
             where('innerflg', 0)->
-            where('company_id', $company_id[0]->company_id)->
+            where('company_id', $company_id)->
             where('schedule', '>=', $today . " 00:00:00")->
             get();
     }
