@@ -1,6 +1,14 @@
 <template>
   <div>
     <div class="card mb-20">
+      <div class="heroImageArea">
+        <img src="/image/conferenceroom.jpg" />
+      </div>
+      <div class="card-body">
+        会議情報　参加する会議の日時確認や、新たな会議の作成が行えます。
+      </div>
+    </div>
+    <div class="card mb-20">
       <div class="card-header">
         内部会議一覧　<span class="syncbutton" @click="getInnerConfs"
           ><i class="fas fa-sync-alt"></i

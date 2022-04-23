@@ -1,8 +1,14 @@
 <template>
   <div>
+    <div class="card mb-20">
+      <div class="heroImageArea">
+        <img src="/image/kanri.jpg" />
+      </div>
+      <div class="card-body">
+        管理ルーム　こちらでは、新たな社員の登録、ご利用プランの変更等が行えます。
+      </div>
+    </div>
     <div class="card" v-show="show_mode == 'detail'">
-      <div class="card-header">会社管理画面</div>
-
       <div class="card-body">
         <h4>{{ company.name }}</h4>
         <ul>

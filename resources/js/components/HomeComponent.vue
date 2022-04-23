@@ -202,7 +202,4 @@ export default {
 };
 </script>
 <style scoped>
-.heroImageArea > img {
-  width: 100%;
-}
 </style>
