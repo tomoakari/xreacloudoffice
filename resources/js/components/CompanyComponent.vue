@@ -17,11 +17,13 @@
               >従業員を招待する</span
             >
           </li>
+          <!--
           <li>
             <span class="linkbutton" @click="showSecret"
               >ジョインコードを表示</span
             >
           </li>
+          -->
           <li class="disabletext">会社情報を編集する</li>
           <li class="disabletext">支払い情報を管理する</li>
         </ul>
@@ -63,7 +65,11 @@
               <td>招待URL</td>
             </tr>
           </thead>
-          <tbody v-for="secret in inviteList" v-bind:key="secret.id">
+          <tbody
+            v-for="secret in inviteList"
+            v-bind:key="secret.id"
+            class="invitedTable"
+          >
             <tr>
               <td>{{ secret.mail }}</td>
               <td>{{ secret.created_at }}</td>
@@ -110,6 +116,7 @@
       </div>
     </div>
 
+    <!--
     <div class="card" v-show="show_mode == 'create'">
       <div class="card-header">ジョインコードで企業に参加する</div>
 
@@ -119,6 +126,7 @@
         <div class="button" @click="joinCompany">企業に参加する</div>
       </div>
     </div>
+    -->
   </div>
 </template>
 
