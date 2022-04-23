@@ -248,28 +248,30 @@ class HomeController extends Controller
     public function getCompanyInfo()
     {
         try{
-            $comp;
             $enr = Enrolled::where('user_id', Auth::id())->get();
-
             if(count($enr) == 0){
                 return [
                     'result' => false,
                     'data' => ''
                 ];
             }
+            $company_id = $enr[0]->company_id;
 
-            $comp = Company::where('id', $enr[0]->company_id);
-            $enrList = Enrolled::where('company_id', $enr[0]->company_id)->get();
+            // 会社
+            $comp = Company::where('id', $company_id);
+
+            // 所属メンバー
+            $enrList = Enrolled::where('company_id', $company_id)->get();
             $uidList = array();
             foreach($enrList as $item){
                 array_push($uidList, $item->user_id);
             }
-
             $userList = User::whereIn('id', $uidList)->
                 select('id','name','email')->get();
 
+            // 招待済みメンバー
             $invitedList = Secretcode::
-                where('company_id', $enr[0]->company_id)->
+                where('company_id', $company_id)->
                 whereColumn('created_at', 'updated_at')->
                 get();
             
