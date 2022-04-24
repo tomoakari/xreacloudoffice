@@ -9,6 +9,8 @@ use App\User;
 use App\Secretcode;
 use App\Department;
 use App\Enrolled;
+use App\Conference;
+use App\Company;
 use Mail;
 use Carbon\Carbon;
 use App\Mail\EmailVerification;
