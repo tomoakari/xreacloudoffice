@@ -65,7 +65,7 @@ class HomeController extends Controller
 
     public function getOuterConfs(Request $request)
     {
-        $company_id = getMyCompanyId();
+        $company_id = $this->getMyCompanyId();
         if($company_id == 0){
             return [];
         }
@@ -79,7 +79,7 @@ class HomeController extends Controller
     }
     public function getInnerConfs(Request $request)
     {
-        $company_id = getMyCompanyId();
+        $company_id = $this->getMyCompanyId();
         if($company_id == 0){
             return [];
         }
@@ -93,7 +93,7 @@ class HomeController extends Controller
     }
     public function getTodayOuterConfs(Request $request)
     {
-        $company_id = getMyCompanyId();
+        $company_id = $this->getMyCompanyId();
         if($company_id == 0){
             return [];
         }
@@ -108,7 +108,7 @@ class HomeController extends Controller
     }
     public function getTodayInnerConfs(Request $request)
     {
-        $company_id = getMyCompanyId();
+        $company_id = $this->getMyCompanyId();
         if($company_id == 0){
             return [];
         }
@@ -123,7 +123,7 @@ class HomeController extends Controller
     }
     public function createConf(Request $request)
     {
-        $company_id = getMyCompanyId();
+        $company_id = $this->getMyCompanyId();
         if($company_id == 0){
             return [];
         }
@@ -243,7 +243,7 @@ class HomeController extends Controller
     public function getCompanyInfo()
     {
         try{
-            $company_id = getMyCompanyId();
+            $company_id = $this->getMyCompanyId();
             if($company_id == 0){
                 return [
                     'result' => false,
@@ -337,12 +337,16 @@ class HomeController extends Controller
     }
 
     public function getEnrollInfo(){
-        $company_id = getMyCompanyId();
+        $company_id = $this->getMyCompanyId();
         if($company_id == 0){
             return [
-                'result' => false,
-                'data' => ''
-            ];
+                'company_id' => 0,
+                'company_name' => '未登録',
+                'dept_name_1' => '未登録',
+                'dept_id_1' => 0,
+                'depadminflg' => 0,
+                'compadminflg' => 0
+            ]
         }
 
         // 会社
