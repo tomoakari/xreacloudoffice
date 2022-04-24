@@ -199,7 +199,6 @@ class RegisterController extends Controller
                 $company_name = "";
                 $secret = Secretcode::
                     where('mail', $user->email)->
-                    whereColumn('created_at', 'updated_at')->
                     get();
                 if(count($secret) > 0){
                     $comp = Company::where('id', $secret->company_id)->get()[0];
