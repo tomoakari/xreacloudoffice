@@ -273,7 +273,7 @@ class RegisterController extends Controller
             $secret = substr(str_shuffle("ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz"), 0, 8);
 
             $comp = new Company();
-            $comp->name = $request['conpany_name'];
+            $comp->name = $request->conpany_name;
             $comp->plan = 10;
             $comp->secret = $secret;
             $comp->createuserid = $user->id;
