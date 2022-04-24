@@ -346,7 +346,7 @@ class HomeController extends Controller
                 'dept_id_1' => 0,
                 'depadminflg' => 0,
                 'compadminflg' => 0
-            ]
+            ];
         }
 
         // 会社
