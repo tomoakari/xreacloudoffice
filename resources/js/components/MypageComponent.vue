@@ -11,7 +11,7 @@
     <div class="card mb-20">
       <div class="card-header">
         基本情報
-        <span class="createbutton">編集する</span>
+        <span class="createbutton disabletext">編集する</span>
       </div>
 
       <div class="card-body">
@@ -35,7 +35,7 @@
     <div class="card mb-20">
       <div class="card-header">
         詳細情報
-        <span class="createbutton">編集する</span>
+        <span class="createbutton disabletext">編集する</span>
       </div>
 
       <div class="card-body">
