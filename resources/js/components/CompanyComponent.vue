@@ -57,7 +57,7 @@
       <div class="card-header">招待済み一覧</div>
 
       <div class="card-body">
-        <table class="">
+        <table class="invitedTable">
           <thead>
             <tr>
               <td>メールアドレス</td>
