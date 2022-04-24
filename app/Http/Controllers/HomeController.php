@@ -450,7 +450,7 @@ class HomeController extends Controller
     public function getMyCompanyId(){
         $enr = Enrolled::where('user_id', Auth::id())->get();
         if(count($enr) == 0){
-            return = 0;
+            return 0;
         }
         return = $enr[0]->company_id;
     }
