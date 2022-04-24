@@ -62,7 +62,10 @@
             <td>
               <a
                 v-bind:href="
-                  'https://conference.aice.cloud/?secret=' + innerConf.secret
+                  'https://conference.aice.cloud/?secret=' +
+                  innerConf.secret +
+                  '&user_name=' +
+                  user_name
                 "
                 target="_blank"
                 ><span class="roominbutton">入室する</span></a
@@ -103,7 +106,10 @@
             <td>
               <a
                 v-bind:href="
-                  'https://conference.aice.cloud/?secret=' + outerConf.secret
+                  'https://conference.aice.cloud/?secret=' +
+                  outerConf.secret +
+                  '&user_name=' +
+                  user_name
                 "
                 target="_blank"
                 ><span class="roominbutton">入室する</span></a
