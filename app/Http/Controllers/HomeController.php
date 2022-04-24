@@ -447,10 +447,10 @@ class HomeController extends Controller
      * ログインユーザの所属する会社を取得する
      * @return String company_id
      */
-    public getMyCompanyId(){
+    public function getMyCompanyId(){
         $enr = Enrolled::where('user_id', Auth::id())->get();
         if(count($enr) == 0){
-            return = 0
+            return = 0;
         }
         return = $enr[0]->company_id;
     }
