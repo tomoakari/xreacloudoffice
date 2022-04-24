@@ -355,11 +355,11 @@ class HomeController extends Controller
         $dept = Department::where('id', $enr->department_id)->get()[0];
 
         return [
-            'company_id' => $comp->id
-            'company_name' => $comp->name
-            'dept_name_1' => $dept->depname1
-            'dept_id_1' => $dept->depid1
-            'depadminflg' => $enr->depadminflg
+            'company_id' => $comp->id,
+            'company_name' => $comp->name,
+            'dept_name_1' => $dept->depname1,
+            'dept_id_1' => $dept->depid1,
+            'depadminflg' => $enr->depadminflg,
             'compadminflg' => $enr->compadminflg
         ];
     }
