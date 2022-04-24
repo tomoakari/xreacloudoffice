@@ -452,6 +452,6 @@ class HomeController extends Controller
         if(count($enr) == 0){
             return 0;
         }
-        return = $enr[0]->company_id;
+        return $enr[0]->company_id;
     }
 }
