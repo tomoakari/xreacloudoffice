@@ -201,7 +201,7 @@ class RegisterController extends Controller
                     where('mail', $user->email)->
                     whereColumn('created_at', 'updated_at')->
                     get();
-                if(count($secret) == 0){
+                if(count($secret) > 0){
                     $comp = Company::where('id', $secret->company_id)->get()[0];
                     $company_name = $comp->name;
                 }
