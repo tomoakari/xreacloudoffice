@@ -18,15 +18,15 @@
         <table class="menu_table">
           <tr>
             <td>ユーザID</td>
-            <td>xxxxxxxxxxx</td>
+            <td>{{ userInfo.id }}</td>
           </tr>
           <tr>
             <td>メールアドレス</td>
-            <td>xxxxxxxxxxx</td>
+            <td>{{ userInfo.email }}</td>
           </tr>
           <tr>
             <td>名前</td>
-            <td>xxxxxxxxxxx</td>
+            <td>{{ userInfo.name }}</td>
           </tr>
         </table>
       </div>
@@ -42,15 +42,19 @@
         <table class="menu_table">
           <tr>
             <td>企業名</td>
-            <td>xxxxxxxxxxx</td>
+            <td>{{ enrollInfo.company_name }}</td>
           </tr>
           <tr>
             <td>所属部署</td>
-            <td>xxxxxxxxxxx</td>
+            <td>{{ enrollInfo.dept_name_1 }}</td>
           </tr>
           <tr>
-            <td>システム権限</td>
-            <td>xxxxxxxxxxx</td>
+            <td>会社権限</td>
+            <td>{{ enrollInfo.compadminflg == 1 ? "管理者" : "一般" }}</td>
+          </tr>
+          <tr>
+            <td>部署権限</td>
+            <td>{{ enrollInfo.depadminflg == 1 ? "管理者" : "一般" }}</td>
           </tr>
         </table>
       </div>
@@ -64,14 +68,25 @@
 export default {
   data: function () {
     return {
-      userInfo: [],
-      companyInfo: [],
+      userInfo: {
+        id: 0,
+        name: "",
+        email: "",
+      },
+      enrollInfo: {
+        company_id: 0,
+        company_name: "",
+        dept_name_1: "",
+        dept_id_1: 0,
+        depadminflg: 0,
+        compadminflg: 0,
+      },
     };
   },
   props: {},
   mounted() {
-    //this.getUserInfo();
-    //this.getCompanyInfo();
+    this.getUserInfo();
+    this.getEnrallInfo();
   },
   methods: {
     logout() {
@@ -84,16 +99,23 @@ export default {
     },
     getUserInfo() {
       axios
-        .get("/getOuterConfs", {
-          params: {
-            //userId: "1",
-          },
-        })
+        .get("/getUserInfo")
         .then((response) => {
-          this.outerConfs = response.data;
+          this.userInfo = response.data;
         })
         .catch((err) => {
-          this.outerConfs = {};
+          this.userInfo = {};
+        })
+        .finally();
+    },
+    getEnrallInfo() {
+      axios
+        .get("/getEnrollInfo")
+        .then((response) => {
+          this.enrollInfo = response.data;
+        })
+        .catch((err) => {
+          this.enrollInfo = {};
         })
         .finally();
     },

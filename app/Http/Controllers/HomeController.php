@@ -65,11 +65,10 @@ class HomeController extends Controller
 
     public function getOuterConfs(Request $request)
     {
-        $enr = Enrolled::where('user_id', Auth::id())->get();
-        if(count($enr) == 0){
+        $company_id = getMyCompanyId();
+        if($company_id == 0){
             return [];
         }
-        $company_id = $enr[0]->company_id;
 
         $today = date("Y-m-d");
         return $outerConfs = Conference::
@@ -80,11 +79,10 @@ class HomeController extends Controller
     }
     public function getInnerConfs(Request $request)
     {
-        $enr = Enrolled::where('user_id', Auth::id())->get();
-        if(count($enr) == 0){
+        $company_id = getMyCompanyId();
+        if($company_id == 0){
             return [];
         }
-        $company_id = $enr[0]->company_id;
 
         $today = date("Y-m-d");
         return $outerConfs = Conference::
@@ -95,11 +93,10 @@ class HomeController extends Controller
     }
     public function getTodayOuterConfs(Request $request)
     {
-        $enr = Enrolled::where('user_id', Auth::id())->get();
-        if(count($enr) == 0){
+        $company_id = getMyCompanyId();
+        if($company_id == 0){
             return [];
         }
-        $company_id = $enr[0]->company_id;
 
         $today = date("Y-m-d");
         return $outerConfs = Conference::
@@ -111,11 +108,10 @@ class HomeController extends Controller
     }
     public function getTodayInnerConfs(Request $request)
     {
-        $enr = Enrolled::where('user_id', Auth::id())->get();
-        if(count($enr) == 0){
+        $company_id = getMyCompanyId();
+        if($company_id == 0){
             return [];
         }
-        $company_id = $enr[0]->company_id;
 
         $today = date("Y-m-d");
         return $outerConfs = Conference::
@@ -127,11 +123,10 @@ class HomeController extends Controller
     }
     public function createConf(Request $request)
     {
-        $enr = Enrolled::where('user_id', Auth::id())->get();
-        if(count($enr) == 0){
+        $company_id = getMyCompanyId();
+        if($company_id == 0){
             return [];
         }
-        $company_id = $enr[0]->company_id;
         $data = [
             'name' => $request['name'],
             'company_id' => $company_id,
@@ -248,14 +243,13 @@ class HomeController extends Controller
     public function getCompanyInfo()
     {
         try{
-            $enr = Enrolled::where('user_id', Auth::id())->get();
-            if(count($enr) == 0){
+            $company_id = getMyCompanyId();
+            if($company_id == 0){
                 return [
                     'result' => false,
                     'data' => ''
                 ];
             }
-            $company_id = $enr[0]->company_id;
 
             // 会社
             $comp = Company::where('id', $company_id);
@@ -338,6 +332,38 @@ class HomeController extends Controller
         }
     }
 
+    public getUserInfo(){
+        return User::where('id',  Auth::id())->select('id','name','email')->get()[0];
+    }
+
+    public getEnrollInfo(){
+        $company_id = getMyCompanyId();
+        if($company_id == 0){
+            return [
+                'result' => false,
+                'data' => ''
+            ];
+        }
+
+        // 会社
+        $comp = Company::where('id', $company_id)->get()[0];
+
+        // 所属
+        $enr = Enrolled::where('user_id', Auth::id())->get()[0];
+
+        // 部署
+        $dept = Department::where('id', $enr->department_id)->get()[0];
+
+        return [
+            'company_id' => $comp->id
+            'company_name' => $comp->name
+            'dept_name_1' => $dept->depname1
+            'dept_id_1' => $dept->depid1
+            'depadminflg' => $enr->depadminflg
+            'compadminflg' => $enr->compadminflg
+        ];
+    }
+
     
     /**
      * Show the application dashboard.
@@ -415,5 +441,17 @@ class HomeController extends Controller
     public function invite()
     {
         return view('invite');
+    }
+
+    /**
+     * ログインユーザの所属する会社を取得する
+     * @return String company_id
+     */
+    public getMyCompanyId(){
+        $enr = Enrolled::where('user_id', Auth::id())->get();
+        if(count($enr) == 0){
+            return = 0
+        }
+        return = $enr[0]->company_id;
     }
 }

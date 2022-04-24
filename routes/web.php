@@ -56,9 +56,10 @@ Route::get('/company/invite', 'HomeController@invite')->name('invite');
 Route::get('/createCompany', 'HomeController@createCompany')->name('createCompany');
 Route::get('/getCompanyInfo', 'HomeController@getCompanyInfo')->name('getCompanyInfo');
 Route::get('/joinCompany', 'HomeController@joinCompany')->name('joinCompany');
+Route::get('/inviteMember', 'HomeController@inviteMember')->name('inviteMember');
 
 
-
+// 会議管理画面
 Route::get('/addconf', 'HomeController@addConference')->name('addconf');
 Route::get('/getOuterConfs', 'HomeController@getOuterConfs')->name('getOuterConfs');
 Route::get('/getInnerConfs', 'HomeController@getInnerConfs')->name('getInnerConfs');
@@ -66,8 +67,9 @@ Route::get('/getTodayOuterConfs', 'HomeController@getTodayOuterConfs')->name('ge
 Route::get('/getTodayInnerConfs', 'HomeController@getTodayInnerConfs')->name('getTodayInnerConfs');
 Route::get('/createConf', 'HomeController@createConf')->name('createConf');
 
-
-Route::get('/inviteMember', 'HomeController@inviteMember')->name('inviteMember');
+// マイページ
+Route::get('/getUserInfo', 'HomeController@getUserInfo')->name('getUserInfo');
+Route::get('/getEnrollInfo', 'HomeController@getEnrollInfo')->name('getEnrollInfo');
 
 
 
