@@ -60,7 +60,7 @@
 
                                     <div class="col-md-6">
                                         <input id="company_name" type="text"
-                                               class=""
+                                               class="form-control"
                                                name="company_name" value=""
                                                required>
                                     </div>
