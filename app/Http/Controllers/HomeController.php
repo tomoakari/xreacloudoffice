@@ -332,11 +332,11 @@ class HomeController extends Controller
         }
     }
 
-    public getUserInfo(){
+    public function getUserInfo(){
         return User::where('id',  Auth::id())->select('id','name','email')->get()[0];
     }
 
-    public getEnrollInfo(){
+    public function getEnrollInfo(){
         $company_id = getMyCompanyId();
         if($company_id == 0){
             return [
