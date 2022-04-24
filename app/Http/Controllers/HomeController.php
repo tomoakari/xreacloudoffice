@@ -160,7 +160,7 @@ class HomeController extends Controller
             $dept->name = 'いらないかも';
             $dept->company_id = $comp->id;
             $dept->depid1 = 0;
-            $dept->depname1 = 'デフォルト部署';
+            $dept->depname1 = '設定なし';
             $dept->depid2 = 0;
             $dept->depname2 = '';
             $dept->depid3 = 0;
