@@ -53,6 +53,29 @@
                                     </div>
                                 </div>
 
+                                @if ($company_name == "")
+                                <div class="form-group row">
+                                    <label for="company_name"
+                                           class="col-md-4 col-form-label text-md-right">会社名</label>
+
+                                    <div class="col-md-6">
+                                        <input id="company_name" type="text"
+                                               class=""
+                                               name="company_name" value=""
+                                               required>
+                                    </div>
+                                </div>
+                                @else
+                                <div class="form-group row">
+                                    <label for="company_name"
+                                           class="col-md-4 col-form-label text-md-right">会社名</label>
+                                    <div class="col-md-6">
+                                        <span class="">{{$company_name}}</span>
+                                        <input type="hidden" name="company_name" value="{{$company_name}}">
+                                    </div>
+                                </div>
+                                @endif
+
                                 <!--
                                 <div class="form-group row">
                                     <label for="name_pronunciation"

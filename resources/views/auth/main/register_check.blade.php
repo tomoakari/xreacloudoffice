@@ -29,6 +29,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="company_name" class="col-md-4 col-form-label text-md-right">会社名</label>
+                            <div class="col-md-6">
+                                <span class="">{{$company_name}}</span>
+                                <input type="hidden" name="company_name" value="{{$company_name}}">
+                            </div>
+                        </div>
+
                         <!--
                         <div class="form-group row">
                             <label for="birth" class="col-md-4 col-form-label text-md-right">生年月日</label>

@@ -188,11 +188,32 @@ class RegisterController extends Controller
                 logger("status". $user->status );
                 return view('auth.main.register')->with('message', 'すでに本登録されています。ログインして利用してください。');
             }
+
+            $secret = Secretcode::
+                where('mail', $data['email'])->
+                whereColumn('created_at', 'updated_at')->
+                get();
+            if(count($secret) == 0){
+                return $newUser;
+            }
+
             // ユーザーステータス更新
             $user->status = $this->USER_STATUS["MAIL_AUTHED"];
             $user->email_verified_at = Carbon::now();
             if($user->save()) {
-                return view('auth.main.register', compact('email_token'));
+                
+                $company_name = "";
+                $secret = Secretcode::
+                    where('mail', $data['email'])->
+                    whereColumn('created_at', 'updated_at')->
+                    get();
+                if(count($secret) == 0){
+                    $comp = Company::where('id', $secret->company_id)->get()[0];
+                    $company_name = $comp->name;
+                }
+                return view('auth.main.register', compact('email_token', 'company_name'));
+                
+                
             } else{
                 return view('auth.main.register')->with('message', 'メール認証に失敗しました。再度、メールからリンクをクリックしてください。');
             }
@@ -224,14 +245,17 @@ class RegisterController extends Controller
     $user->birth_month = $request->birth_month;
     $user->birth_day = $request->birth_day;
     */
+    $company_name = $request->company_name;
 
-    return view('auth.main.register_check', compact('user','email_token'));
+    return view('auth.main.register_check', compact('user','email_token', 'company_name'));
   }
 
   /**
    * 本登録して完了画面へ
    */
   public function mainRegister(Request $request){
+
+    // ユーザを有効化する処理
     $user = User::where('email_verify_token',$request->email_token)->first();
     $user->status = $this->USER_STATUS["MAIL_AUTHED"];
     $user->name = $request->name;
@@ -245,6 +269,48 @@ class RegisterController extends Controller
     $user->birth_month = 1;
     $user->birth_day = 1;
     $user->save();
+
+    // 会社新規登録処理
+    $enr = Enrolled::where('user_id', $user->id)->get();
+    if(count($enr) == 0){
+        try{
+            DB::beginTransaction();
+
+            $secret = substr(str_shuffle("ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz"), 0, 8);
+
+            $comp = new Company();
+            $comp->name = $request['conpany_name'];
+            $comp->plan = 10;
+            $comp->secret = $secret;
+            $comp->createuserid = $user->id;
+            $comp->save();
+
+            $dept = new Department();
+            $dept->name = 'いらないかも';
+            $dept->company_id = $comp->id;
+            $dept->depid1 = 0;
+            $dept->depname1 = 'デフォルト部署';
+            $dept->depid2 = 0;
+            $dept->depname2 = '';
+            $dept->depid3 = 0;
+            $dept->depname3 = '';
+            $dept->save();
+
+            $enr = new Enrolled();
+            $enr->user_id = $user->id;
+            $enr->company_id = $comp->id;
+            $enr->department_id = $dept->id;
+            $enr->countadminflg = 1;
+            $enr->depadminflg = 1;
+            $enr->compadminflg = 1;
+            $enr->save();
+
+            DB::commit();
+
+        }catch(Exception $err){
+            DB::rollBack();
+        } 
+    }
 
     return view('auth.main.registered');
   }
