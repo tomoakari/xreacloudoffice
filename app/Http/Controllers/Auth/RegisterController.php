@@ -189,14 +189,6 @@ class RegisterController extends Controller
                 return view('auth.main.register')->with('message', 'すでに本登録されています。ログインして利用してください。');
             }
 
-            $secret = Secretcode::
-                where('mail', $data['email'])->
-                whereColumn('created_at', 'updated_at')->
-                get();
-            if(count($secret) == 0){
-                return $newUser;
-            }
-
             // ユーザーステータス更新
             $user->status = $this->USER_STATUS["MAIL_AUTHED"];
             $user->email_verified_at = Carbon::now();
@@ -204,7 +196,7 @@ class RegisterController extends Controller
                 
                 $company_name = "";
                 $secret = Secretcode::
-                    where('mail', $data['email'])->
+                    where('mail', $user->email)->
                     whereColumn('created_at', 'updated_at')->
                     get();
                 if(count($secret) == 0){
