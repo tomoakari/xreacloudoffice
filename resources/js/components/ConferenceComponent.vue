@@ -104,6 +104,7 @@
 <script>
 //import Swal from "sweetalert2/dist/sweetalert2.js";
 //import "sweetalert2/src/sweetalert2.scss";
+import "vue-datetime/dist/vue-datetime.css";
 export default {
   data: function () {
     return {
