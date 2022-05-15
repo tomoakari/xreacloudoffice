@@ -6,6 +6,7 @@
       </div>
       <div class="card-body">
         会議情報　参加する会議の日時確認や、新たな会議の作成が行えます。
+        <datetime v-model="date"></datetime>
       </div>
     </div>
     <div class="card mb-20">

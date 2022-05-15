@@ -19,12 +19,17 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+// 各画面のコンポーネント
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 Vue.component('conference-component', require('./components/ConferenceComponent.vue').default);
 Vue.component('home-component', require('./components/HomeComponent.vue').default);
 Vue.component('mypage-component', require('./components/MypageComponent.vue').default);
 Vue.component('company-component', require('./components/CompanyComponent.vue').default);
+
+// カレンダー
+import { Datetime } from 'vue-datetime';
+Vue.component('datetime', Datetime);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
