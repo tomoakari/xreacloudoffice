@@ -247,7 +247,7 @@ export default {
       axios
         .post("https://conference.aice.cloud/apicreate", {
           user_name: this.user_name,
-          room_name: this.createParams[0],
+          room_name: this.newConfName,
         })
         .then((res) => {
           this.createNewConf(res.data.secret);
@@ -269,7 +269,7 @@ export default {
             username: this.user_name,
             secret: secret,
             password: "pw",
-            innerflg: param,
+            innerflg: isCreateInner,
             status: 0,
             schedule: this.newConfDate,
           },
