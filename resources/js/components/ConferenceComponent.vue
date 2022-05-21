@@ -4,7 +4,7 @@
     <div
       class="modal_background"
       v-show="isShowCreateModal"
-      @click="closeCreateWindow()"
+      @click.self="closeCreateWindow()"
     >
       <div class="modal_window card">
         <div class="card-header">会議の新規作成</div>
@@ -49,7 +49,7 @@
     <div
       class="modal_background"
       v-show="isShowDetailModal"
-      @click="closeDetailWindow()"
+      @click.self="closeDetailWindow()"
     >
       <div class="modal_window card">
         <div class="card-header">会議の詳細</div>
@@ -219,7 +219,7 @@ export default {
       this.newConfDate = "";
       this.newConfName = "";
     },
-    showDetailWindow: function (innerflg, index) {
+    showDetailWindow: function (innerflg, id) {
       this.isShowDetailWindow = true;
       var confarr;
       if (innerflg) {
@@ -613,10 +613,14 @@ export default {
   width: 100vw;
   height: 100vh;
   position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
 }
 .modal_window {
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
+  width: 80%;
 }
 </style>
