@@ -1,12 +1,83 @@
 <template>
   <div>
+    <!-- 新規作成ウィンドウ -->
+    <div
+      class="modal_background"
+      v-show="isShowCreateModal"
+      @click="closeCreateWindow()"
+    >
+      <div class="modal_window card">
+        <div class="card-header">会議の新規作成</div>
+        <div class="card-body">
+          <p>会議名</p>
+          <input type="text" v-model="newConfName" />
+          <p>開催日時</p>
+          <datetime v-model="newConfDate"></datetime>
+          <span v-show="isCreateInner">
+            <p>招待メンバー</p>
+            <table class="newConfInvitelist">
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>名前（仮）</td>
+                <td>メールアドレス（仮）</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>名前（仮）</td>
+                <td>メールアドレス（仮）</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>名前（仮）</td>
+                <td>メールアドレス（仮）</td>
+              </tr>
+            </table>
+          </span>
+          <span class="centerbutton" @click="sendCreateConf()">送信</span>
+          <span v-show="newURL !== ''">
+            <p>会議室のURLはこちら</p>
+            <input type="text" v-model="newURL" />
+            <a v-bind:href="newURL" target="_blank">
+              <span class="centerbutton">いますぐ入室</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 会議詳細ウィンドウ -->
+    <div
+      class="modal_background"
+      v-show="isShowDetailModal"
+      @click="closeDetailWindow()"
+    >
+      <div class="modal_window card">
+        <div class="card-header">会議の詳細</div>
+        <div class="card-body">
+          <p>会議名</p>
+          {{ detailInfo.name }}
+          <p>開催日時</p>
+          {{ getJPcalendar(detailInfo.schedule) }}
+          <span v-show="isCreateInner">
+            <p>招待メンバー</p>
+            <table class="newConfInvitelist">
+              <tr v-for="name in detailInfo.invitelist" v-bind:key="name.index">
+                <td>{{ name }}</td>
+              </tr>
+            </table>
+          </span>
+          <span class="createbutton" @click="deleteConf()">削除する</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- カード部 -->
     <div class="card mb-20">
       <div class="heroImageArea">
         <img src="/image/conferenceroom.jpg" />
       </div>
       <div class="card-body">
         会議情報　参加する会議の日時確認や、新たな会議の作成が行えます。
-        <datetime v-model="date"></datetime>
       </div>
     </div>
     <div class="card mb-20">
@@ -14,7 +85,7 @@
         内部会議一覧　<span class="syncbutton" @click="getInnerConfs"
           ><i class="fas fa-sync-alt"></i
         ></span>
-        <span class="createbutton" @click="createConf(1)">新規登録</span>
+        <span class="createbutton" @click="showCreateWindow(1)">新規登録</span>
       </div>
 
       <div class="card-body">
@@ -41,11 +112,13 @@
                   user_name
                 "
                 target="_blank"
-                ><span class="roominbutton">入室する</span></a
+                ><span class="centerbutton">入室する</span></a
               >
             </td>
             <td>
-              <span class="infobutton" @click="showDetail(1, innerConf.id)"
+              <span
+                class="infobutton"
+                @click="showDetailWindow(1, innerConf.id)"
                 ><i class="far fa-edit"></i
               ></span>
             </td>
@@ -59,7 +132,7 @@
         外部会議一覧　<span class="syncbutton" @click="getOuterConfs"
           ><i class="fas fa-sync-alt"></i
         ></span>
-        <span class="createbutton" @click="createConf(0)">新規登録</span>
+        <span class="createbutton" @click="showCreateWindow(0)">新規登録</span>
       </div>
 
       <div class="card-body">
@@ -90,7 +163,9 @@
               >
             </td>
             <td>
-              <span class="infobutton" @click="showDetail(0, outerConf.id)"
+              <span
+                class="infobutton"
+                @click="showDetailWindow(0, outerConf.id)"
                 ><i class="far fa-edit"></i
               ></span>
             </td>
@@ -108,7 +183,19 @@ import "vue-datetime/dist/vue-datetime.css";
 export default {
   data: function () {
     return {
+      isShowCreateModal: false,
+      newConfName: "",
+      newConfDate: "",
+      isCreateInner: "",
+      newURL: "",
       user_name: "temp_user_name",
+      detailInfo: {
+        name: "",
+        username: "",
+        schedule: "",
+        status: "0",
+        invitelist: [""],
+      },
       outerConfs: [],
       innerConfs: [],
       createParams: [],
@@ -122,7 +209,87 @@ export default {
     this.user_name = document.getElementById("login_user_name").value;
   },
   methods: {
-    createConf: function (param) {
+    showCreateWindow: function (innerflg) {
+      this.isCreateInner = innerflg;
+      this.isShowCreateModal = true;
+    },
+    closeCreateWindow: function () {
+      this.isShowCreateModal = false;
+      this.newURL = "";
+      this.newConfDate = "";
+      this.newConfName = "";
+    },
+    showDetailWindow: function (innerflg, index) {
+      this.isShowDetailWindow = true;
+      var confarr;
+      if (innerflg) {
+        confarr = this.innerConfs;
+      } else {
+        confarr = this.outerConfs;
+      }
+      confarr.forEach((elm) => {
+        if (elm.id == id) {
+          this.detailInfo = elm;
+        }
+      });
+    },
+    closeDetailWindow: function () {
+      this.isShowDetailWindow = false;
+    },
+    deleteConf: function () {
+      alert("さくじょ");
+    },
+    sendCreateConf: function () {
+      this.generateNewConf();
+    },
+    generateNewConf: function () {
+      axios
+        .post("https://conference.aice.cloud/apicreate", {
+          user_name: this.user_name,
+          room_name: this.createParams[0],
+        })
+        .then((res) => {
+          this.createNewConf(res.data.secret);
+        })
+        .catch((err) => {
+          Swal.fire({
+            html: `<p>会議を作成することができませんでした。： ` + err + `</p>`,
+            confirmButtonText: "とじる",
+            confirmButtonAriaLabel: "とじる",
+            allowOutsideClick: true,
+          });
+        });
+    },
+    createNewConf: function (secret) {
+      axios
+        .get("/createConf", {
+          params: {
+            name: this.newConfName,
+            username: this.user_name,
+            secret: secret,
+            password: "pw",
+            innerflg: param,
+            status: 0,
+            schedule: this.newConfDate,
+          },
+        })
+        .then((response) => {
+          if (response.data.length == 0) {
+            return Swal.fire({
+              html: `<p>会社に入っていない状態では、会議を作成することはできません。</p>`,
+              confirmButtonText: "とじる",
+              confirmButtonAriaLabel: "とじる",
+              allowOutsideClick: true,
+            });
+          }
+          this.newURL =
+            "https://conference.aice.cloud/?secret=" + response.data.secret;
+          this.getInnerConfs();
+          this.getOuterConfs();
+        });
+    },
+
+    createConf_old: function (param) {
       Swal.fire({
         title: "会議情報の登録",
         html: `<input id="input_name" class="swal2-input" placeholder="会議名">`,
@@ -440,3 +607,16 @@ export default {
   },
 };
 </script>
+<style scoped>
+.modal_background {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
+.modal_window {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+</style>
