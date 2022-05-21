@@ -269,7 +269,7 @@ export default {
             username: this.user_name,
             secret: secret,
             password: "pw",
-            innerflg: isCreateInner,
+            innerflg: this.isCreateInner,
             status: 0,
             schedule: this.newConfDate,
           },
