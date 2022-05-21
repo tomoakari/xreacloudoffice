@@ -3,7 +3,7 @@
     <!-- 新規作成ウィンドウ -->
     <div
       class="modal_background"
-      v-show="isShowCreateModal"
+      v-show="isShowCreateWindow"
       @click.self="closeCreateWindow()"
     >
       <div class="modal_window card">
@@ -48,7 +48,7 @@
     <!-- 会議詳細ウィンドウ -->
     <div
       class="modal_background"
-      v-show="isShowDetailModal"
+      v-show="isShowDetailWindow"
       @click.self="closeDetailWindow()"
     >
       <div class="modal_window card">
@@ -112,7 +112,7 @@
                   user_name
                 "
                 target="_blank"
-                ><span class="centerbutton">入室する</span></a
+                ><span class="roominbutton">入室する</span></a
               >
             </td>
             <td>
@@ -183,7 +183,8 @@ import "vue-datetime/dist/vue-datetime.css";
 export default {
   data: function () {
     return {
-      isShowCreateModal: false,
+      isShowCreateWindow: false,
+      isShowDetailWindow: false,
       newConfName: "",
       newConfDate: "",
       isCreateInner: "",
@@ -211,10 +212,10 @@ export default {
   methods: {
     showCreateWindow: function (innerflg) {
       this.isCreateInner = innerflg;
-      this.isShowCreateModal = true;
+      this.isShowCreateWindow = true;
     },
     closeCreateWindow: function () {
-      this.isShowCreateModal = false;
+      this.isShowCreateWindow = false;
       this.newURL = "";
       this.newConfDate = "";
       this.newConfName = "";
