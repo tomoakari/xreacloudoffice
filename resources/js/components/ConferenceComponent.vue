@@ -12,7 +12,11 @@
           <p>会議名</p>
           <input type="text" v-model="newConfName" />
           <p>開催日時</p>
-          <datetime v-model="newConfDate"></datetime>
+          <datetime
+            v-model="newConfDate"
+            type="datetime"
+            format="DateTime.DATE_MED"
+          ></datetime>
           <span v-show="isCreateInner">
             <p>招待メンバー</p>
             <table class="newConfInvitelist">
