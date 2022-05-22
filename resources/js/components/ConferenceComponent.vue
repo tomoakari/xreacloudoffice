@@ -15,7 +15,10 @@
           <datetime
             v-model="newConfDate"
             type="datetime"
-            format="DateTime.DATE_MED"
+            format="yyyy-MM-dd HH:mm:ss"
+            :minute-step="15"
+            value-zone="Asia/Tokyo"
+            zone="Asia/Tokyo"
           ></datetime>
           <span v-show="isCreateInner">
             <p>招待メンバー</p>
@@ -275,7 +278,9 @@ export default {
             password: "pw",
             innerflg: this.isCreateInner,
             status: 0,
-            schedule: this.newConfDate,
+            schedule: this.$moment(this.newConfDate).format(
+              "yyyy-MM-dd HH:mm:ss"
+            ),
           },
         })
         .then((response) => {

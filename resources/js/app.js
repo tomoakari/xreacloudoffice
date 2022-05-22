@@ -31,6 +31,8 @@ Vue.component('company-component', require('./components/CompanyComponent.vue').
 import { Datetime } from 'vue-datetime';
 Vue.component('datetime', Datetime);
 
+Vue.use(require('vue-moment'));
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

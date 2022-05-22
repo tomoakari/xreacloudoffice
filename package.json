@@ -44,6 +44,7 @@
     "colorette": "^2.0.16",
     "luxon": "^1.28.0",
     "vue-datetime": "^1.0.0-beta.14",
+    "vue-moment": "^4.1.0",
     "weekstart": "^1.1.0"
   }
 }
