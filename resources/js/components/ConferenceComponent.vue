@@ -15,8 +15,8 @@
           <datetime
             v-model="newConfDate"
             type="datetime"
-            format="yyyy-MM-dd HH:mm:ss"
-            :minute-step="15"
+            format="yyyy-MM-dd HH:mm"
+            :minute-step="5"
             value-zone="Asia/Tokyo"
             zone="Asia/Tokyo"
           ></datetime>
@@ -279,7 +279,7 @@ export default {
             innerflg: this.isCreateInner,
             status: 0,
             schedule: this.$moment(this.newConfDate).format(
-              "yyyy-MM-dd HH:mm:ss"
+              "YYYY-MM-DD hh:mm:ss"
             ),
           },
         })
