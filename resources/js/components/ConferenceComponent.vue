@@ -23,20 +23,11 @@
           <span v-show="isCreateInner">
             <p>招待メンバー</p>
             <table class="newConfInvitelist">
-              <tr>
-                <td><input type="checkbox" /></td>
-                <td>名前（仮）</td>
-                <td>メールアドレス（仮）</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" /></td>
-                <td>名前（仮）</td>
-                <td>メールアドレス（仮）</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" /></td>
-                <td>名前（仮）</td>
-                <td>メールアドレス（仮）</td>
+              <tr v-for="dm in domesticMembers" v-bind:key="dm.deptId">
+                <td><input type="checkbox" v-model="dm.isInvite" /></td>
+                <td>{{ dm.deptName }}</td>
+                <td>{{ dm.name }}</td>
+                <td>{{ dm.mail }}</td>
               </tr>
             </table>
           </span>
@@ -207,6 +198,22 @@ export default {
       outerConfs: [],
       innerConfs: [],
       createParams: [],
+      domesticMembers: [
+        {
+          isInvite: false,
+          deptId: 1,
+          deptName: "営業部",
+          name: "松本",
+          mail: "mail@mmmmmm.jp",
+        },
+        {
+          isInvite: true,
+          deptId: 0,
+          deptName: "営業部",
+          name: "大矢部",
+          mail: "yabeeee@mmmmmm.jp",
+        },
+      ],
     };
   },
   props: {},
@@ -214,6 +221,7 @@ export default {
     console.log("Component mounted.");
     this.getInnerConfs();
     this.getOuterConfs();
+    this.getDomesticMembers();
     this.user_name = document.getElementById("login_user_name").value;
   },
   methods: {
@@ -281,6 +289,7 @@ export default {
             schedule: this.$moment(this.newConfDate).format(
               "YYYY-MM-DD hh:mm:ss"
             ),
+            inviteMembers: this.domesticMembers,
           },
         })
         .then((response) => {
@@ -297,220 +306,6 @@ export default {
           this.getInnerConfs();
           this.getOuterConfs();
         });
-    },
-
-    createConf_old: function (param) {
-      Swal.fire({
-        title: "会議情報の登録",
-        html: `<input id="input_name" class="swal2-input" placeholder="会議名">`,
-        confirmButtonText: "次へ",
-        focusConfirm: false,
-        showCancelButton: true,
-        canselButtonText: "とじる",
-        allowOutsideClick: false,
-        preConfirm: () => {
-          if (document.getElementById("input_name").value == "") {
-            Swal.showValidationMessage(`会議名を入力してください`);
-          } else {
-            this.createParams[0] = document.getElementById("input_name").value;
-          }
-        },
-      }).then((result) => {
-        if (!result.isConfirmed) {
-          return false;
-        }
-        Swal.fire({
-          title: "開催日時の登録",
-          html:
-            `<style>
-            select{padding: 10px; width: 90px;}
-            </style>
-            <select id="input_year">
-              <option value="2022">2022</option>
-              <option value="2022">2023</option>
-            </select>年　` +
-            `<select id="input_month">
-              <option value="01">1</option>
-              <option value="02">2</option>
-              <option value="03">3</option>
-              <option value="04">4</option>
-              <option value="05">5</option>
-              <option value="06" selected>6</option>
-              <option value="07">7</option>
-              <option value="08">8</option>
-              <option value="09">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>月　` +
-            `<select id="input_date">
-              <option value="01">1</option>
-              <option value="02">2</option>
-              <option value="03">3</option>
-              <option value="04">4</option>
-              <option value="05">5</option>
-              <option value="06">6</option>
-              <option value="07">7</option>
-              <option value="08">8</option>
-              <option value="09">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15" selected>15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-              <option value="24">24</option>
-              <option value="25">25</option>
-              <option value="26">26</option>
-              <option value="27">27</option>
-              <option value="28">28</option>
-              <option value="29">29</option>
-              <option value="30">30</option>
-              <option value="31">31</option>
-            </select>日<br><br>` +
-            `<select id="input_hour">
-              <option value="0">0</option>
-              <option value="01">1</option>
-              <option value="02">2</option>
-              <option value="03">3</option>
-              <option value="04">4</option>
-              <option value="05">5</option>
-              <option value="06">6</option>
-              <option value="07">7</option>
-              <option value="08">8</option>
-              <option value="09">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12" selected>12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-              <option value="19">19</option>
-              <option value="20">20</option>
-              <option value="21">21</option>
-              <option value="22">22</option>
-              <option value="23">23</option>
-            </select>時　` +
-            `<select id="input_minut">
-              <option value="00" selected>00</option>
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="30">30</option>
-              <option value="40">40</option>
-              <option value="50">50</option>
-            </select>分`,
-          confirmButtonText: "次へ",
-          showCancelButton: true,
-          canselButtonText: "とじる",
-          allowOutsideClick: false,
-          focusConfirm: false,
-          preConfirm: () => {
-            var yy = document.getElementById("input_year").value;
-            var MM = document.getElementById("input_month").value;
-            var dd = document.getElementById("input_date").value;
-            var hh = document.getElementById("input_hour").value;
-            var mm = document.getElementById("input_minut").value;
-            console.log(yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":00");
-            if (yy == "" || MM == "" || dd == "" || hh == "" || mm == "") {
-              Swal.showValidationMessage(`日程を入力してください`);
-            } else {
-              this.createParams[1] =
-                yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":00";
-            }
-          },
-        }).then((result) => {
-          if (!result.isConfirmed) {
-            return false;
-          }
-          if (this.createParams[0] !== "" || this.createParams[1] !== "") {
-            var scrt = "defaultsecret";
-            axios
-              .post("https://conference.aice.cloud/apicreate", {
-                user_name: this.user_name,
-                room_name: this.createParams[0],
-              })
-              .then((res) => {
-                scrt = res.data.secret;
-
-                axios
-                  .get("/createConf", {
-                    params: {
-                      name: this.createParams[0],
-                      username: this.user_name,
-                      secret: scrt,
-                      password: "pw",
-                      innerflg: param,
-                      status: 0,
-                      schedule: this.createParams[1],
-                    },
-                  })
-                  .then((response) => {
-                    if (response.data.length == 0) {
-                      return Swal.fire({
-                        html: `<p>会社に入っていない状態では、会議を作成することはできません。</p>`,
-                        confirmButtonText: "とじる",
-                        confirmButtonAriaLabel: "とじる",
-                        allowOutsideClick: true,
-                      });
-                    }
-                    this.getInnerConfs();
-                    this.getOuterConfs();
-                    const url =
-                      "https://conference.aice.cloud/?secret=" +
-                      response.data.secret;
-                    Swal.fire({
-                      title: "会議室のURLはこちら",
-                      html:
-                        `<input id="copyTarget" class="linkinputtext" value="` +
-                        url +
-                        `"/>` +
-                        `<style>
-                          h2, p{color: #ffffff; font-size: 14px;}
-                          .linkinputtext {
-                            width: 90%;
-                            font-size: 16px;
-                            padding: 10px 10px;
-                          }
-                        </style>`,
-                      focusConfirm: false,
-                      confirmButtonText: "コピー",
-                      confirmButtonAriaLabel: "Close",
-                      allowOutsideClick: true,
-                      preConfirm: () => {
-                        navigator.clipboard.writeText(url);
-                      },
-                    }).then((result) => {
-                      if (result.isConfirmed) {
-                        Swal.fire({
-                          icon: "success",
-                          title: "クリップボードにコピーしました",
-                          toast: true,
-                          timer: 2500,
-                          timerProgressBar: true,
-                          showConfirmButton: false,
-                        });
-                      }
-                    });
-                  })
-                  .catch((err) => {
-                    Swal.fire(JSON.stringify(err));
-                  })
-                  .finally();
-              });
-          }
-        });
-      });
     },
     showDetail: function (innerflg, id) {
       var targetConf;
@@ -595,14 +390,26 @@ export default {
         })
         .finally();
     },
+
+    getDomesticMembers: function () {
+      // メンバー一覧を取得する処理x
+      // this.domesticMembers = xxx
+    },
+    /**
+     * *************************************************
+     * ツール類
+     * *************************************************
+     */
     getJPcalendar(timestamp) {
+      var youbi = ["日", "月", "火", "水", "木", "金", "土"];
       var dt = new Date(timestamp);
-      var yy = dt.getFullYear();
+      // var yy = dt.getFullYear();
       var MM = dt.getMonth() + 1;
       var dd = dt.getDate();
       var hh = dt.getHours();
       var mm = dt.getMinutes();
-      return /*yy + "年" +*/ MM + "月" + dd + "日" + hh + "時" + mm + "分";
+      var yb = youbi[dt.getDay()];
+      return MM + "月" + dd + "日（" + yb + "）" + hh + "時" + mm + "分";
     },
     getNowDates() {
       var dt = new Date();
