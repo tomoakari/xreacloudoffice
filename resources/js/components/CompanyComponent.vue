@@ -374,12 +374,12 @@ export default {
       });
     },
     addInviteMails() {
-      if (this.inviteMails[this.inviteMails.length] !== "") {
+      if (this.inviteMails[this.inviteMails.length + 1] !== "") {
         this.inviteMails.push("");
       }
     },
     removeInviteMails(index) {
-      this.inviteMails.splice(index);
+      this.inviteMails.splice(index, 1);
     },
     showInviteUrl(secret) {
       const url = "https://kaigishitsu.aice.cloud/register/?secret=" + secret;
