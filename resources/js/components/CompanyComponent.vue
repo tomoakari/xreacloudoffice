@@ -207,6 +207,7 @@ export default {
       this.isShowInviteWindow = true;
     },
     closeInviteWindow() {
+      this.inviteMails = [""];
       this.isShowInviteWindow = false;
     },
     sendInvite() {
@@ -244,12 +245,15 @@ export default {
               html: `招待メールを送信しました`,
               confirmButtonText: "とじる",
             });
+            this.inviteMails = [""];
+            this.isShowInviteWindow = false;
           } else {
             Swal.fire({
               icon: `error`,
               html: `招待メールの送信に失敗しました`,
               confirmButtonText: "とじる",
             });
+            this.inviteMails = [""];
           }
         });
     },
