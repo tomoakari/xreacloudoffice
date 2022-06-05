@@ -1,5 +1,52 @@
 <template>
   <div>
+    <!-- 招待ウィンドウ -->
+    <div
+      class="modal_background"
+      v-show="isShowCreateWindow"
+      @click.self="closeCreateWindow()"
+    >
+      <div class="modal_window card">
+        <div class="card-header">
+          招待を送る
+          <span class="closebutton" @click="closeCreateWindow()">×</span>
+        </div>
+        <div class="card-body">
+          <p>会議名</p>
+          <input type="text" v-model="newConfName" />
+          <p>開催日時</p>
+          <datetime
+            v-model="newConfDate"
+            type="datetime"
+            format="yyyy-MM-dd HH:mm"
+            :minute-step="5"
+            value-zone="Asia/Tokyo"
+            zone="Asia/Tokyo"
+          ></datetime>
+          <span v-show="isCreateInner">
+            <p>招待メンバー</p>
+            <table class="newConfInvitelist">
+              <tr v-for="dm in domesticMembers" v-bind:key="dm.deptId">
+                <td><input type="checkbox" v-model="dm.isInvite" /></td>
+                <td>{{ dm.deptName }}</td>
+                <td>{{ dm.name }}</td>
+                <td>{{ dm.mail }}</td>
+              </tr>
+            </table>
+          </span>
+          <span class="centerbutton" @click="sendCreateConf()">作成</span>
+          <span v-show="newURL !== ''">
+            <p>会議室のURLはこちら</p>
+            <input type="text" v-model="newURL" />
+            <a v-bind:href="newURL" target="_blank">
+              <span class="centerbutton">いますぐ入室</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- カード -->
     <div class="card mb-20">
       <div class="heroImageArea">
         <img src="/image/kanri.jpg" />

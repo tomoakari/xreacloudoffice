@@ -516,19 +516,4 @@ export default {
 };
 </script>
 <style scoped>
-.modal_background {
-  background: rgba(0, 0, 0, 0.6);
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-}
-.modal_window {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 50px;
-  width: 80%;
-}
 </style>
