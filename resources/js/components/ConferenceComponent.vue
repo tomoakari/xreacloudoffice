@@ -160,7 +160,7 @@
     <div class="card">
       <div class="card-header">
         外部会議一覧　<span class="syncbutton" @click="getOuterConfs"
-          ><i class="fas fa-sync-alt"></i
+          ><i class="fas fa-sync-alt" :class="{ 'fa-spin': isOuterloading }"></i
         ></span>
         <span class="createbutton" @click="showCreateWindow(0)">新規登録</span>
       </div>
@@ -248,6 +248,7 @@ export default {
       isShowCreateWindow: false,
       isShowDetailWindow: false,
       isInnerloading: false,
+      isOuterloading: false,
       newConfName: "",
       newConfDate: "",
       isCreateInner: "",
@@ -438,6 +439,7 @@ export default {
       });
     },
     getOuterConfs: function () {
+      this.isOuterloading = true;
       axios
         .get("/getOuterConfs", {
           params: {
@@ -450,7 +452,11 @@ export default {
         .catch((err) => {
           this.outerConfs = {};
         })
-        .finally();
+        .finally(() => {
+          setTimeout(() => {
+            this.isOuterloading = false;
+          }, 1500);
+        });
     },
     getInnerConfs: function () {
       this.isInnerloading = true;
@@ -467,7 +473,9 @@ export default {
           this.innerConfs = {};
         })
         .finally(() => {
-          this.isInnerloading = false;
+          setTimeout(() => {
+            this.isInnerloading = false;
+          }, 1500);
         });
     },
 
