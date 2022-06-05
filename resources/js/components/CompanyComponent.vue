@@ -3,8 +3,8 @@
     <!-- 招待ウィンドウ -->
     <div
       class="modal_background"
-      v-show="isShowCreateWindow"
-      @click.self="closeCreateWindow()"
+      v-show="isShowInviteWindow"
+      @click.self="closeInviteWindow()"
     >
       <div class="modal_window card">
         <div class="card-header">
@@ -12,28 +12,22 @@
           <span class="closebutton" @click="closeCreateWindow()">×</span>
         </div>
         <div class="card-body">
-          <p>会議名</p>
-          <input type="text" v-model="newConfName" />
-          <p>開催日時</p>
-          <datetime
-            v-model="newConfDate"
-            type="datetime"
-            format="yyyy-MM-dd HH:mm"
-            :minute-step="5"
-            value-zone="Asia/Tokyo"
-            zone="Asia/Tokyo"
-          ></datetime>
-          <span v-show="isCreateInner">
-            <p>招待メンバー</p>
-            <table class="newConfInvitelist">
-              <tr v-for="dm in domesticMembers" v-bind:key="dm.deptId">
-                <td><input type="checkbox" v-model="dm.isInvite" /></td>
-                <td>{{ dm.deptName }}</td>
-                <td>{{ dm.name }}</td>
-                <td>{{ dm.mail }}</td>
-              </tr>
-            </table>
-          </span>
+          <p>
+            招待する社員のメールアドレスを入力してください。改行することで複数への招待も可能です。
+          </p>
+          <ul
+            v-for="n in inviteMails.length"
+            v-bind:key="n.index"
+            class="invitelist"
+          >
+            <li>
+              <input type="text" v-model="inviteMails[n]" />
+              <span v-show="n == inviteMails.length" @click="addInviteMails()"
+                >＋</span
+              >
+            </li>
+          </ul>
+
           <span class="centerbutton" @click="sendCreateConf()">作成</span>
           <span v-show="newURL !== ''">
             <p>会議室のURLはこちら</p>
@@ -60,7 +54,7 @@
         <h4>{{ company.name }}</h4>
         <ul>
           <li>
-            <span class="linkbutton" @click="inviteMember"
+            <span class="linkbutton" @click="showInviteWindow()"
               >従業員を招待する</span
             >
           </li>
@@ -183,6 +177,7 @@
 export default {
   data: function () {
     return {
+      isShowInviteWindow: false,
       show_mode: "create",
       company_secret: "",
       user_id: "temp_user_id",
@@ -197,6 +192,7 @@ export default {
           email: "loading...",
         },
       ],
+      inviteMails: [""],
       inviteList: [
         {
           secret: "",
@@ -212,6 +208,12 @@ export default {
     this.getCompanyInfo();
   },
   methods: {
+    showInviteWindow() {
+      this.isShowInviteWindow = true;
+    },
+    closeInviteWindow() {
+      this.isShowInviteWindow = false;
+    },
     createCompany: function () {
       axios
         .get("/createCompany", {
@@ -359,6 +361,9 @@ export default {
           });
       });
     },
+    addInviteMails() {
+      this.inviteMails = this.inviteMails.push("");
+    },
     showInviteUrl(secret) {
       const url = "https://kaigishitsu.aice.cloud/register/?secret=" + secret;
       Swal.fire({
@@ -380,3 +385,22 @@ export default {
   },
 };
 </script>
+<style scoped>
+ul.invitelist > li > input {
+  border: 0px;
+  border-bottom: solid 1px #808080;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+ul.invitelist > li > span {
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 50%;
+  background: #eeeeee;
+  cursor: pointer;
+}
+ul.invitelist > li > span:hover {
+  color: #808080;
+  background: #cccccc;
+}
+</style>
