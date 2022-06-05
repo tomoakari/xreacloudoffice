@@ -358,6 +358,7 @@ export default {
         });
     },
     createNewConf: function (secret) {
+      console.log("this.newConfDate" + this.newConfDate);
       axios
         .get("/createConf", {
           params: {
