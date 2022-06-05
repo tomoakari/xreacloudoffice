@@ -30,7 +30,7 @@
               >
             </li>
           </ul>
-          <span class="centerbutton" @click="sendCreateConf()">送信する</span>
+          <span class="centerbutton" @click="sendInvite()">送信する</span>
         </div>
       </div>
     </div>
@@ -210,8 +210,12 @@ export default {
       this.isShowInviteWindow = false;
     },
     sendInvite() {
+      var mails = this.inviteMails.filter((mail) => {
+        return mail !== "";
+      });
+
       var errFlg = 0;
-      this.inviteMails.forEach((mail) => {
+      mails.forEach((mail) => {
         if (!this.isEmail(mail)) {
           errFlg++;
         }
@@ -224,7 +228,30 @@ export default {
           `,
           confirmButtonText: "とじる",
         });
+        return false;
       }
+
+      axios
+        .get("/inviteMember", {
+          params: {
+            mails: mails,
+          },
+        })
+        .then((response) => {
+          if (response.data.result) {
+            Swal.fire({
+              icon: `success`,
+              html: `招待メールを送信しました`,
+              confirmButtonText: "とじる",
+            });
+          } else {
+            Swal.fire({
+              icon: `error`,
+              html: `招待メールの送信に失敗しました`,
+              confirmButtonText: "とじる",
+            });
+          }
+        });
     },
     createCompany: function () {
       axios
