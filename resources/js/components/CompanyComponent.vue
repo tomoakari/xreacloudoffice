@@ -9,12 +9,10 @@
       <div class="modal_window card">
         <div class="card-header">
           招待を送る
-          <span class="closebutton" @click="closeCreateWindow()">×</span>
+          <span class="closebutton" @click="closeInviteWindow()">×</span>
         </div>
         <div class="card-body">
-          <p>
-            招待する社員のメールアドレスを入力してください。改行することで複数への招待も可能です。
-          </p>
+          <p>招待する社員のメールアドレスを入力してください。</p>
           <ul
             v-for="n in inviteMails.length"
             v-bind:key="n.index"
@@ -22,20 +20,17 @@
           >
             <li>
               <input type="text" v-model="inviteMails[n]" />
+              <span
+                v-show="n > 1 && n !== inviteMails.length"
+                @click="removeInviteMails(n)"
+                >ー</span
+              >
               <span v-show="n == inviteMails.length" @click="addInviteMails()"
                 >＋</span
               >
             </li>
           </ul>
-
-          <span class="centerbutton" @click="sendCreateConf()">作成</span>
-          <span v-show="newURL !== ''">
-            <p>会議室のURLはこちら</p>
-            <input type="text" v-model="newURL" />
-            <a v-bind:href="newURL" target="_blank">
-              <span class="centerbutton">いますぐ入室</span>
-            </a>
-          </span>
+          <span class="centerbutton" @click="sendCreateConf()">送信する</span>
         </div>
       </div>
     </div>
@@ -214,6 +209,23 @@ export default {
     closeInviteWindow() {
       this.isShowInviteWindow = false;
     },
+    sendInvite() {
+      var errFlg = 0;
+      this.inviteMails.forEach((mail) => {
+        if (!this.isEmail(mail)) {
+          errFlg++;
+        }
+      });
+      if (errFlg > 0) {
+        Swal.fire({
+          icon: `error`,
+          html: `
+          <p>メールアドレスの形式が間違っています</p>
+          `,
+          confirmButtonText: "とじる",
+        });
+      }
+    },
     createCompany: function () {
       axios
         .get("/createCompany", {
@@ -362,7 +374,12 @@ export default {
       });
     },
     addInviteMails() {
-      this.inviteMails = this.inviteMails.push("");
+      if (this.inviteMails[this.inviteMails.length - 1] !== "") {
+        this.inviteMails.push("");
+      }
+    },
+    removeInviteMails(index) {
+      this.inviteMails.splice(index - 1);
     },
     showInviteUrl(secret) {
       const url = "https://kaigishitsu.aice.cloud/register/?secret=" + secret;
@@ -386,21 +403,21 @@ export default {
 };
 </script>
 <style scoped>
+ul.invitelist {
+  list-style: none;
+}
 ul.invitelist > li > input {
   border: 0px;
   border-bottom: solid 1px #808080;
-  padding: 5px 10px;
-  font-size: 20px;
 }
 ul.invitelist > li > span {
   font-size: 20px;
-  padding: 5px;
+  padding: 2px 5px;
   border-radius: 50%;
-  background: #eeeeee;
   cursor: pointer;
 }
 ul.invitelist > li > span:hover {
+  border: #808080 solid 1px;
   color: #808080;
-  background: #cccccc;
 }
 </style>
