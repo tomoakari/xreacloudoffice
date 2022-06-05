@@ -81,7 +81,7 @@
     <div class="card mb-20">
       <div class="card-header">
         内部会議一覧　<span class="syncbutton" @click="getInnerConfs"
-          ><i class="fas fa-sync-alt"></i
+          ><i class="fas fa-sync-alt" :class="{ 'fa-spin': isInnerloading }"></i
         ></span>
         <span class="createbutton" @click="showCreateWindow(1)">新規登録</span>
       </div>
@@ -247,6 +247,7 @@ export default {
       isMobileMode: false,
       isShowCreateWindow: false,
       isShowDetailWindow: false,
+      isInnerloading: false,
       newConfName: "",
       newConfDate: "",
       isCreateInner: "",
@@ -452,6 +453,7 @@ export default {
         .finally();
     },
     getInnerConfs: function () {
+      this.isInnerloading = true;
       axios
         .get("/getInnerConfs", {
           params: {
@@ -464,7 +466,9 @@ export default {
         .catch((err) => {
           this.innerConfs = {};
         })
-        .finally();
+        .finally(() => {
+          this.isInnerloading = false;
+        });
     },
 
     getDomesticMembers: function () {
@@ -480,12 +484,12 @@ export default {
       var youbi = ["日", "月", "火", "水", "木", "金", "土"];
       var dt = new Date(timestamp);
       // var yy = dt.getFullYear();
-      var MM = dt.getMonth() + 1;
-      var dd = dt.getDate();
-      var hh = dt.getHours();
-      var mm = dt.getMinutes();
+      var MM = (" " + (dt.getMonth() + 1)).slice(-2);
+      var dd = (" " + dt.getDate()).slice(-2);
+      var hh = (" " + dt.getHours()).slice(-2);
+      var mm = ("0" + dt.getMinutes()).slice(-2);
       var yb = youbi[dt.getDay()];
-      return MM + "月" + dd + "日（" + yb + "）" + hh + "時" + mm + "分";
+      return MM + "月" + dd + "日(" + yb + ") " + hh + "時" + mm + "分";
     },
     getNowDates() {
       var dt = new Date();
