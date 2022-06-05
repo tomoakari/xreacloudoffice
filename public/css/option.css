@@ -49,8 +49,9 @@ footer {
 .closebutton {
     position: absolute;
     right: 10px;
-    top: 10px;
+    top: 0px;
     cursor: pointer;
+    font-size: 24px;
 }
 .closebutton:hover {
     color: tomato;
