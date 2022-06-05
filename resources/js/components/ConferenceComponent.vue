@@ -358,7 +358,6 @@ export default {
         });
     },
     createNewConf: function (secret) {
-      console.log("this.newConfDate" + this.newConfDate);
       axios
         .get("/createConf", {
           params: {
@@ -369,7 +368,7 @@ export default {
             innerflg: this.isCreateInner,
             status: 0,
             schedule: this.$moment(this.newConfDate).format(
-              "YYYY-MM-DD hh:mm:ss"
+              "YYYY-MM-DD HH:mm:ss"
             ),
             inviteMembers: this.domesticMembers,
           },
