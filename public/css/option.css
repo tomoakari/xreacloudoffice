@@ -52,6 +52,12 @@ footer {
 .meetinglist {
     width: 100%;
 }
+.datecell{
+    max-width: 180px;
+}
+.confnamecell{
+    width: 250px;
+}
 .roominbutton {
     border: royalblue 1px solid;
     border-radius: 3px;

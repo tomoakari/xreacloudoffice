@@ -87,11 +87,11 @@
       </div>
 
       <div class="card-body">
-        <table class="meetinglist">
+        <table class="meetinglist" v-show="!isMobileMode">
           <tr>
             <th>状況</th>
-            <th>日時</th>
-            <th>会議名</th>
+            <th class="datecell">日時</th>
+            <th class="confnamecell">会議名</th>
             <th>作成者</th>
             <th></th>
             <th></th>
@@ -122,6 +122,38 @@
             </td>
           </tr>
         </table>
+        <table class="meetinglist" v-show="isMobileMode">
+          <tr>
+            <th>状況</th>
+            <th>日時</th>
+            <th>会議名</th>
+            <th></th>
+          </tr>
+          <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.id">
+            <td>{{ innerConf.status == "0" ? "未開催" : "開催済" }}</td>
+            <td>{{ getJPcalendar(innerConf.schedule) }}</td>
+            <td>
+              <a
+                v-bind:href="
+                  'https://conference.aice.cloud/?secret=' +
+                  innerConf.secret +
+                  '&user_name=' +
+                  user_name
+                "
+                target="_blank"
+              >
+                {{ innerConf.name }}
+              </a>
+            </td>
+            <td>
+              <span
+                class="infobutton"
+                @click="showDetailWindow(1, innerConf.id)"
+                ><i class="far fa-edit"></i
+              ></span>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
 
@@ -134,11 +166,11 @@
       </div>
 
       <div class="card-body">
-        <table class="meetinglist">
+        <table class="meetinglist" v-show="!isMobileMode">
           <tr>
             <th>状況</th>
-            <th>日時</th>
-            <th>会議名</th>
+            <th class="datecell">日時</th>
+            <th class="confnamecell">会議名</th>
             <th>作成者</th>
             <th></th>
             <th></th>
@@ -169,6 +201,37 @@
             </td>
           </tr>
         </table>
+        <table class="meetinglist" v-show="isMobileMode">
+          <tr>
+            <th>状況</th>
+            <th>日時</th>
+            <th>会議名</th>
+            <th></th>
+          </tr>
+          <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
+            <td>{{ outerConf.status == "0" ? "未開催" : "開催済" }}</td>
+            <td>{{ getJPcalendar(outerConf.schedule) }}</td>
+            <td>
+              <a
+                v-bind:href="
+                  'https://conference.aice.cloud/?secret=' +
+                  outerConf.secret +
+                  '&user_name=' +
+                  user_name
+                "
+                target="_blank"
+                >{{ outerConf.name }}</a
+              >
+            </td>
+            <td>
+              <span
+                class="infobutton"
+                @click="showDetailWindow(0, outerConf.id)"
+                ><i class="far fa-edit"></i
+              ></span>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
@@ -181,6 +244,7 @@ import "vue-datetime/dist/vue-datetime.css";
 export default {
   data: function () {
     return {
+      isMobileMode: false,
       isShowCreateWindow: false,
       isShowDetailWindow: false,
       newConfName: "",
@@ -223,8 +287,22 @@ export default {
     this.getOuterConfs();
     this.getDomesticMembers();
     this.user_name = document.getElementById("login_user_name").value;
+    this.isMobileMode = this.isMobile();
   },
   methods: {
+    isMobile: function () {
+      var userAgent = window.navigator.userAgent.toLowerCase();
+      if (
+        userAgent.indexOf("iphone") != -1 ||
+        userAgent.indexOf("ipad") != -1 ||
+        userAgent.indexOf("android") != -1 ||
+        userAgent.indexOf("mobile") != -1
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     showCreateWindow: function (innerflg) {
       this.isCreateInner = innerflg;
       this.isShowCreateWindow = true;
@@ -252,9 +330,7 @@ export default {
     closeDetailWindow: function () {
       this.isShowDetailWindow = false;
     },
-    deleteConf: function () {
-      alert("さくじょ");
-    },
+    deleteConf: function () {},
     sendCreateConf: function () {
       this.generateNewConf();
     },
