@@ -46,6 +46,15 @@ footer {
 .linkbutton:hover {
     text-decoration: underline;
 }
+.closebutton {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.closebutton:hover {
+    color: tomato;
+}
 .disabletext {
     color: #808080;
 }

@@ -7,7 +7,10 @@
       @click.self="closeCreateWindow()"
     >
       <div class="modal_window card">
-        <div class="card-header">会議の新規作成</div>
+        <div class="card-header">
+          会議の新規作成
+          <span class="closebutton" @click="closeCreateWindow()">×</span>
+        </div>
         <div class="card-body">
           <p>会議名</p>
           <input type="text" v-model="newConfName" />
@@ -31,7 +34,7 @@
               </tr>
             </table>
           </span>
-          <span class="centerbutton" @click="sendCreateConf()">送信</span>
+          <span class="centerbutton" @click="sendCreateConf()">作成</span>
           <span v-show="newURL !== ''">
             <p>会議室のURLはこちら</p>
             <input type="text" v-model="newURL" />
