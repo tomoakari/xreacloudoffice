@@ -15,6 +15,11 @@
         <table class="menu_table">
           <tr>
             <td>
+              <h3>一般ユーザ向け</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <a href="#help1">組織内会議の登録方法について</a>
             </td>
           </tr>
@@ -55,7 +60,12 @@
           </tr>
           <tr>
             <td>
-              <a href="#help9">メンバー（社員等）の招待方法について＊管理者</a>
+              <h3>管理者ユーザ向け</h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="#help9">メンバー（社員等）の招待方法について</a>
             </td>
           </tr>
         </table>
@@ -288,9 +298,7 @@
     </div>
 
     <div class="card mb-20" id="help9">
-      <div class="card-header">
-        メンバー（社員等）の招待方法について＊管理者用
-      </div>
+      <div class="card-header">メンバー（社員等）の招待方法について</div>
       <div class="card-body row">
         <div class="col-md-6 mb-10">
           <img src="/image/help/9-1.jpg" class="helpimage" />
