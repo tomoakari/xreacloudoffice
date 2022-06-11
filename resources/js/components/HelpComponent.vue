@@ -204,13 +204,13 @@
       <div class="card-header">ログインパスワードを忘れてしまった</div>
       <div class="card-body row">
         <div class="col-md-6 mb-10">
-          <img src="/image/help/5-1.jpg" class="helpimage" />
+          <img src="/image/help/7-1.jpg" class="helpimage" />
         </div>
         <div class="col-md-6 mb-10">
           ログイン画面を開き、ログインボタン右側にある、パスワードを忘れた方はこちらをクリックします。
         </div>
         <div class="col-md-6 mb-10">
-          <img src="/image/help/5-2.jpg" class="helpimage" />
+          <img src="/image/help/7-2.jpg" class="helpimage" />
         </div>
         <div class="col-md-6 mb-10">
           ご登録のメールアドレスを入力し、パスワードリセットのリンクを送信するボタンを押します。<br />
@@ -223,7 +223,7 @@
       <div class="card-header">会議内の各機能について</div>
       <div class="card-body row">
         <div class="col-md-6 mb-10">
-          <img src="/image/help/6-1.jpg" class="helpimage" />
+          <img src="/image/help/8-1.jpg" class="helpimage" />
         </div>
         <div class="col-md-6 mb-10">
           <table>
