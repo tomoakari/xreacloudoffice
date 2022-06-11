@@ -18,12 +18,12 @@
         <table class="menu_table mb-20">
           <tr>
             <td>
-              <a href="#help1">組織内会議の登録方法について</a>
+              <a href="#help1">組織内会議の登録・招待方法について</a>
             </td>
           </tr>
           <tr>
             <td>
-              <a href="#help2">組織外会議の登録方法について</a>
+              <a href="#help2">組織外会議の登録・招待方法について</a>
             </td>
           </tr>
           <tr>
