@@ -39,6 +39,9 @@ Auth::routes();
 // ダッシュボード
 Route::get('/home', 'HomeController@index')->name('home');
 
+// ヘルプ
+Route::get('/help', 'HomeController@help')->name('help');
+
 // マイページ
 Route::get('/mypage', 'HomeController@mypage')->name('mypage');
 

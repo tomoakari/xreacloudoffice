@@ -379,6 +379,15 @@ class HomeController extends Controller
     }
 
     /**
+     * ヘルプ画面
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function help()
+    {   
+        return view('help', );
+    }
+
+    /**
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function mypage()
