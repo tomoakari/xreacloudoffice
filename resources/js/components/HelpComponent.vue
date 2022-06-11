@@ -1,7 +1,15 @@
 <template>
   <div>
+    <!-- フロートボタン -->
+    <div class="right_bottom">
+      <a href="#index">
+        <div class="fab darkgray">
+          <i class="fa-solid fa-angles-up"></i>
+        </div>
+      </a>
+    </div>
     <!-- カード -->
-    <div class="card mb-20">
+    <div class="card mb-20" id="#index">
       <div class="card-header">ヘルプ</div>
       <div class="card-body">
         <table class="menu_table">
