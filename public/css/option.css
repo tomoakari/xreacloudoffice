@@ -98,6 +98,9 @@ footer {
     color: #ffffff;
     text-decoration: none;
 }
+.mb-10 {
+    margin-bottom: 10px;
+}
 .mb-20 {
     margin-bottom: 20px;
 }
