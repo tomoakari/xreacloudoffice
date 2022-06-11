@@ -12,6 +12,7 @@
     <div class="card mb-20" id="topindex">
       <div class="card-header">ヘルプ</div>
       <div class="card-body">
+        <p>各項目の使い方を画像と共に説明します。</p>
         <p class="helptitle">一般ユーザ向け</p>
         <table class="menu_table mb-20">
           <tr>
