@@ -70,7 +70,7 @@
     </div>
 
     <div class="card mb-20" id="help1">
-      <div class="card-header">組織内会議の登録方法について</div>
+      <div class="card-header">組織内会議の登録・招待方法について</div>
       <div class="card-body row">
         <div class="col-md-6 mb-10">
           <img src="/image/help/1-1.jpg" class="helpimage" />
@@ -92,7 +92,7 @@
     </div>
 
     <div class="card mb-20" id="help2">
-      <div class="card-header">組織外会議の登録方法について</div>
+      <div class="card-header">組織外会議の登録・招待方法について</div>
       <div class="card-body row">
         <div class="col-md-6 mb-10">
           <img src="/image/help/2-1.jpg" class="helpimage" />
