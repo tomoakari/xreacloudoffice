@@ -12,7 +12,7 @@
     <div class="card mb-20" id="topindex">
       <div class="card-header">ヘルプ</div>
       <div class="card-body">
-        <p>一般ユーザ向け</p>
+        <p class="helptitle">一般ユーザ向け</p>
         <table class="menu_table mb-20">
           <tr>
             <td>
@@ -56,7 +56,7 @@
           </tr>
         </table>
 
-        <p>管理者ユーザ向け</p>
+        <p class="helptitle">管理者ユーザ向け</p>
         <table class="menu_table mb-20">
           <tr>
             <td>
@@ -335,5 +335,9 @@ export default {
 .helpimage {
   width: 100%;
   box-shadow: 0 0 5px #808080;
+}
+.helptitle {
+  margin-bottom: 0px;
+  font-weight: 600;
 }
 </style>
