@@ -12,12 +12,8 @@
     <div class="card mb-20" id="topindex">
       <div class="card-header">ヘルプ</div>
       <div class="card-body">
-        <table class="menu_table">
-          <tr>
-            <td>
-              <h5>一般ユーザ向け</h5>
-            </td>
-          </tr>
+        <p>一般ユーザ向け</p>
+        <table class="menu_table mb-20">
           <tr>
             <td>
               <a href="#help1">組織内会議の登録方法について</a>
@@ -58,11 +54,10 @@
               <a href="#help8">会議内の各機能について</a>
             </td>
           </tr>
-          <tr>
-            <td>
-              <h5>管理者ユーザ向け</h5>
-            </td>
-          </tr>
+        </table>
+
+        <p>管理者ユーザ向け</p>
+        <table class="menu_table mb-20">
           <tr>
             <td>
               <a href="#help9">メンバー（社員等）の招待方法について</a>
