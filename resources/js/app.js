@@ -26,6 +26,7 @@ Vue.component('conference-component', require('./components/ConferenceComponent.
 Vue.component('home-component', require('./components/HomeComponent.vue').default);
 Vue.component('mypage-component', require('./components/MypageComponent.vue').default);
 Vue.component('company-component', require('./components/CompanyComponent.vue').default);
+Vue.component('help-component', require('./components/HelpComponent.vue').default);
 
 // カレンダー
 import { Datetime } from 'vue-datetime';
