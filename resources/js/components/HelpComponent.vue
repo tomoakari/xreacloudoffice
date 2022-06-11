@@ -2,14 +2,14 @@
   <div>
     <!-- フロートボタン -->
     <div class="right_bottom">
-      <a href="#index">
+      <a href="#topindex">
         <div class="fab darkgray">
-          <i class="fa-solid fa-angles-up"></i>
+          <i class="fa-solid fa-chevron-up"></i>
         </div>
       </a>
     </div>
     <!-- カード -->
-    <div class="card mb-20" id="#index">
+    <div class="card mb-20" id="topindex">
       <div class="card-header">ヘルプ</div>
       <div class="card-body">
         <table class="menu_table">
