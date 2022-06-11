@@ -14,9 +14,11 @@ footer {
     position: fixed;
     right: 50px;
     bottom: 50px;
+    z-index: 200;
 }
 .fab{
     padding: 10px;
+    border-radius: 50%;
     font-size: 20px;
     background: #3490dc;
     color: #ffffff;
