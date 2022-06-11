@@ -42,7 +42,7 @@
       </div>
 
       <div class="card-body">
-        <table class="meetinglist">
+        <table class="meetinglist" v-show="innerConfs.length > 0">
           <tr>
             <th>状況</th>
             <th>日時</th>
@@ -75,6 +75,9 @@
             </td>
           </tr>
         </table>
+        <p v-show="innerConfs.length == 0">
+          本日、予定されている会議はありません。
+        </p>
       </div>
     </div>
 
@@ -86,7 +89,7 @@
       </div>
 
       <div class="card-body">
-        <table class="meetinglist">
+        <table class="meetinglist" v-show="outerConfs.length > 0">
           <tr>
             <th>状況</th>
             <th>日時</th>
@@ -119,6 +122,9 @@
             </td>
           </tr>
         </table>
+        <p v-show="outerConfs.length == 0">
+          本日、予定されている会議はありません。
+        </p>
       </div>
     </div>
   </div>
