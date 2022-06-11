@@ -11,29 +11,26 @@
       <div class="card-header">メニュー</div>
 
       <div class="card-body">
-        <table class="menu_table">
-          <tr>
-            <td>
-              <a href="/conference">会議情報</a>
-            </td>
-            <td>参加する会議の確認や、新たな会議の作成が出来ます。</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/company">管理ルーム</a>
-            </td>
-            <td>
-              新たな社員の登録や、ご利用プランの変更等、管理者用の設定が出来ます。
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <a href="/help">ヘルプ</a>
-            </td>
-            <td>各項目の使い方を画像と共に説明します。</td>
-          </tr>
-        </table>
+        <div class="row">
+          <div class="col-md-6 mb-10">
+            <a href="/conference">会議情報</a>
+          </div>
+          <div class="col-md-6 mb-10">
+            参加する会議の確認や、新たな会議の作成が出来ます。
+          </div>
+          <div class="col-md-6 mb-10">
+            <a href="/company">管理ルーム</a>
+          </div>
+          <div class="col-md-6 mb-10">
+            新たな社員の登録や、ご利用プランの変更等、管理者用の設定が出来ます。
+          </div>
+          <div class="col-md-6 mb-10">
+            <a href="/help">ヘルプ</a>
+          </div>
+          <div class="col-md-6 mb-10">
+            各項目の使い方を画像と共に説明します。
+          </div>
+        </div>
       </div>
     </div>
 
