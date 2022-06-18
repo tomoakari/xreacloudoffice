@@ -236,14 +236,16 @@ export default {
       return /*yy + "年" +*/ MM + "月" + dd + "日" + hh + "時" + mm + "分";
     },
     getStatusViewFlg(timestamp, status) {
-      var start = new Date(timestamp);
-      var end = start.setHours(start.getHours + 1);
-      var end2 = start.setHours(start.getHours + 2);
+      var st = new Date(timestamp);
+      var end = st;
+      var end2 = st;
+      end = end.setHours(end.getHours + 1);
+      end2 = end2.setHours(end2.getHours + 2);
       var now = new Date();
 
       console.log("■■■■");
       console.log("timestamp: " + timestamp);
-      console.log("start: " + start);
+      console.log("start: " + st);
       console.log("end: " + end);
       console.log("end2: " + end2);
       console.log("now: " + now);
