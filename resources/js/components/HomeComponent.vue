@@ -52,7 +52,6 @@
             <th>会議名</th>
             <th>作成者</th>
             <th></th>
-            <th></th>
           </tr>
           <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.id">
             <td>
@@ -96,11 +95,6 @@
                 target="_blank"
                 ><span class="roominbutton">入室する</span></a
               >
-            </td>
-            <td>
-              <span class="infobutton" @click="showDetail('id')"
-                ><i class="far fa-edit"></i
-              ></span>
             </td>
           </tr>
         </table>
@@ -196,7 +190,6 @@
             <th>会議名</th>
             <th>作成者</th>
             <th></th>
-            <th></th>
           </tr>
           <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
             <td>
@@ -240,11 +233,6 @@
                 target="_blank"
                 ><span class="roominbutton">入室する</span></a
               >
-            </td>
-            <td>
-              <span class="infobutton" @click="showDetail('id')"
-                ><i class="far fa-edit"></i
-              ></span>
             </td>
           </tr>
         </table>
