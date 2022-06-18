@@ -145,9 +145,7 @@ class HomeController extends Controller
         try{
             $conf = Conference::
                 where('id', $request['id'])
-                ->get();
-            $conf->status = -1;
-            $conf->save();
+                ->update(['status' => -1]);
             return true;
         }catch(Exception $err){
             return $err;
