@@ -254,10 +254,10 @@ export default {
       if (status == -1) {
         return -1;
       }
-      if (now < start) {
+      if (now < st) {
         return 0;
       }
-      if (start < now && now < end) {
+      if (st < now && now < end) {
         return 1;
       }
       if (end < now && now < end2) {
