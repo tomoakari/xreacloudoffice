@@ -46,7 +46,9 @@
           </tr>
           <tr>
             <td>所属部署</td>
-            <td>{{ enrollInfo.dept_name_1 }}</td>
+            <td>
+              {{ enrollInfo.dept_name_1 ? "設定なし" : enrollInfo.dept_name_1 }}
+            </td>
           </tr>
           <tr>
             <td>会社権限</td>
@@ -63,8 +65,6 @@
 </template>
 
 <script>
-//import Swal from "sweetalert2/dist/sweetalert2.js";
-//import "sweetalert2/src/sweetalert2.scss";
 export default {
   data: function () {
     return {
