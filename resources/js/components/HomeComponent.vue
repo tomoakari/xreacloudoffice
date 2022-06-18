@@ -223,16 +223,14 @@ export default {
       var mm = dt.getMinutes();
       return /*yy + "年" +*/ MM + "月" + dd + "日" + hh + "時" + mm + "分";
     },
-    getStatusViewFlg(conf) {
-      var timestamp = conf.schedule;
+    getStatusViewFlg(timestamp, status) {
       var start = new Date(timestamp);
       var end = start.setHours(start.getHours + 1);
       var end2 = start.setHours(start.getHours + 2);
       var now = new Date();
-      var status = conf.status;
 
-      console.log("■■■■" + conf.name);
-      console.log("conf.schedule: " + conf.schedule);
+      console.log("■■■■");
+      console.log("timestamp: " + timestamp);
       console.log("start: " + start);
       console.log("end: " + end);
       console.log("end2: " + end2);
