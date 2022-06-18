@@ -544,6 +544,7 @@ export default {
             "https://conference.aice.cloud/?secret=" + response.data.secret;
           this.getInnerConfs();
           this.getOuterConfs();
+          this.isShowCreateWindow = false;
         });
     },
     /*
@@ -643,8 +644,16 @@ export default {
     },
 
     getDomesticMembers: function () {
-      // メンバー一覧を取得する処理x
-      // this.domesticMembers = xxx
+      axios
+        .get("/getMembers", {
+          params: {},
+        })
+        .then((response) => {
+          this.domesticMembers = response.data;
+        })
+        .catch((err) => {
+          this.domesticMembers = [];
+        });
     },
     /**
      * *************************************************

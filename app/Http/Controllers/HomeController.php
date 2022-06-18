@@ -152,6 +152,28 @@ class HomeController extends Controller
         }
         
     }
+    public function getMembers()
+    {
+        try{
+            $company_id = $this->getMyCompanyId();
+            $enrList = Enrolled::where('company_id', $company_id)->get();
+            $uidList = array();
+            foreach($enrList as $item){
+                array_push($uidList, $item->user_id);
+            }
+            $userList = User::whereIn('id', $uidList)->
+                select('id','name','email')->get();
+            
+            return [
+                'data' => $userList,
+            ];
+            
+        }catch(Exception $err){
+            return [
+                'data' => []
+            ];
+        }
+    }
 
     
     public function createCompany(Request $request)
@@ -248,6 +270,8 @@ class HomeController extends Controller
             ];
         } 
     }
+
+
 
     /**
      * 
