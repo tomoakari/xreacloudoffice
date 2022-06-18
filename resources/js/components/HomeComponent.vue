@@ -101,23 +101,27 @@
           <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
             <td>
               <span
-                v-show="getStatusView(outerConf) == -1"
+                v-show="getStatusViewFlg(outerConf) == -1"
                 style="color: lightgray"
                 >中止</span
               >
-              <span v-show="getStatusView(outerConf) == 0" style="color: gray"
+              <span
+                v-show="getStatusViewFlg(outerConf) == 0"
+                style="color: gray"
                 >未開催</span
               >
               <span
-                v-show="getStatusView(outerConf) == 1"
+                v-show="getStatusViewFlg(outerConf) == 1"
                 style="color: cornflowerblue"
                 >開催中</span
               >
-              <span v-show="getStatusView(outerConf) == 2" style="color: orange"
+              <span
+                v-show="getStatusViewFlg(outerConf) == 2"
+                style="color: orange"
                 >開催中</span
               >
               <span
-                v-show="getStatusView(outerConf) == 999"
+                v-show="getStatusViewFlg(outerConf) == 999"
                 style="color: lightgray"
                 >終了</span
               >
