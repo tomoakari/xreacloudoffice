@@ -131,16 +131,23 @@
             <td>{{ innerConf.name }}</td>
             <td>{{ innerConf.username }}</td>
             <td>
-              <a
-                v-bind:href="
-                  'https://conference.aice.cloud/?secret=' +
-                  innerConf.secret +
-                  '&user_name=' +
-                  user_name
+              <span
+                v-show="
+                  getStatusViewFlg(innerConf) !== -1 &&
+                  getStatusViewFlg(innerConf) !== 999
                 "
-                target="_blank"
-                ><span class="roominbutton">入室する</span></a
               >
+                <a
+                  v-bind:href="
+                    'https://conference.aice.cloud/?secret=' +
+                    innerConf.secret +
+                    '&user_name=' +
+                    user_name
+                  "
+                  target="_blank"
+                  ><span class="roominbutton">入室する</span></a
+                >
+              </span>
             </td>
             <td>
               <span
@@ -188,17 +195,24 @@
             </td>
             <td>{{ getJPcalendar(innerConf.schedule) }}</td>
             <td>
-              <a
-                v-bind:href="
-                  'https://conference.aice.cloud/?secret=' +
-                  innerConf.secret +
-                  '&user_name=' +
-                  user_name
+              <span
+                v-show="
+                  getStatusViewFlg(innerConf) !== -1 &&
+                  getStatusViewFlg(innerConf) !== 999
                 "
-                target="_blank"
               >
-                {{ innerConf.name }}
-              </a>
+                <a
+                  v-bind:href="
+                    'https://conference.aice.cloud/?secret=' +
+                    innerConf.secret +
+                    '&user_name=' +
+                    user_name
+                  "
+                  target="_blank"
+                >
+                  {{ innerConf.name }}
+                </a>
+              </span>
             </td>
             <td>
               <span
@@ -326,16 +340,23 @@
             </td>
             <td>{{ getJPcalendar(outerConf.schedule) }}</td>
             <td>
-              <a
-                v-bind:href="
-                  'https://conference.aice.cloud/?secret=' +
-                  outerConf.secret +
-                  '&user_name=' +
-                  user_name
+              <span
+                v-show="
+                  getStatusViewFlg(outerConf) !== -1 &&
+                  getStatusViewFlg(outerConf) !== 999
                 "
-                target="_blank"
-                >{{ outerConf.name }}</a
               >
+                <a
+                  v-bind:href="
+                    'https://conference.aice.cloud/?secret=' +
+                    outerConf.secret +
+                    '&user_name=' +
+                    user_name
+                  "
+                  target="_blank"
+                  >{{ outerConf.name }}</a
+                >
+              </span>
             </td>
             <td>
               <span
