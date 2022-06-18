@@ -133,7 +133,33 @@
             <th></th>
           </tr>
           <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.id">
-            <td>{{ innerConf.status == "0" ? "未開催" : "開催済" }}</td>
+            <td>
+              <span
+                v-show="getStatusViewFlg(innerConf) == -1"
+                style="color: lightgray"
+                >中止</span
+              >
+              <span
+                v-show="getStatusViewFlg(innerConf) == 0"
+                style="color: gray"
+                >未開催</span
+              >
+              <span
+                v-show="getStatusViewFlg(innerConf) == 1"
+                style="color: cornflowerblue"
+                >開催中</span
+              >
+              <span
+                v-show="getStatusViewFlg(innerConf) == 2"
+                style="color: orange"
+                >開催中</span
+              >
+              <span
+                v-show="getStatusViewFlg(innerConf) == 999"
+                style="color: lightgray"
+                >終了</span
+              >
+            </td>
             <td>{{ getJPcalendar(innerConf.schedule) }}</td>
             <td>
               <a
@@ -179,7 +205,33 @@
             <th></th>
           </tr>
           <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
-            <td>{{ outerConf.status == "0" ? "未開催" : "開催済" }}</td>
+            <td>
+              <span
+                v-show="getStatusViewFlg(outerConf) == -1"
+                style="color: lightgray"
+                >中止</span
+              >
+              <span
+                v-show="getStatusViewFlg(outerConf) == 0"
+                style="color: gray"
+                >未開催</span
+              >
+              <span
+                v-show="getStatusViewFlg(outerConf) == 1"
+                style="color: cornflowerblue"
+                >開催中</span
+              >
+              <span
+                v-show="getStatusViewFlg(outerConf) == 2"
+                style="color: orange"
+                >開催中</span
+              >
+              <span
+                v-show="getStatusViewFlg(outerConf) == 999"
+                style="color: lightgray"
+                >終了</span
+              >
+            </td>
             <td>{{ getJPcalendar(outerConf.schedule) }}</td>
             <td>{{ outerConf.name }}</td>
             <td>{{ outerConf.username }}</td>
@@ -511,6 +563,32 @@ export default {
         hh: dt.getHours(),
         mm: dt.getMinutes(),
       };
+    },
+    getStatusViewFlg(conf) {
+      var st = new Date(conf.schedule);
+      var end = new Date(conf.schedule);
+      var end2 = new Date(conf.schedule);
+      end.setHours(end.getHours() + 1);
+      end2.setHours(end2.getHours() + 2);
+      var now = new Date();
+      var status = conf.status;
+
+      if (status == -1) {
+        return -1;
+      }
+      if (now < st) {
+        return 0;
+      }
+      if (st < now && now < end) {
+        return 1;
+      }
+      if (end < now && now < end2) {
+        return 2;
+      }
+      if (end2 < now) {
+        return 999;
+      }
+      console.log("no hit");
     },
   },
 };

@@ -52,7 +52,33 @@
             <th></th>
           </tr>
           <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.id">
-            <td>{{ innerConf.status == "0" ? "未開催" : "開催済" }}</td>
+            <td>
+              <span
+                v-show="getStatusViewFlg(innerConf) == -1"
+                style="color: lightgray"
+                >中止</span
+              >
+              <span
+                v-show="getStatusViewFlg(innerConf) == 0"
+                style="color: gray"
+                >未開催</span
+              >
+              <span
+                v-show="getStatusViewFlg(innerConf) == 1"
+                style="color: cornflowerblue"
+                >開催中</span
+              >
+              <span
+                v-show="getStatusViewFlg(innerConf) == 2"
+                style="color: orange"
+                >開催中</span
+              >
+              <span
+                v-show="getStatusViewFlg(innerConf) == 999"
+                style="color: lightgray"
+                >終了</span
+              >
+            </td>
             <td>{{ getJPcalendar(innerConf.schedule) }}</td>
             <td>{{ innerConf.name }}</td>
             <td>{{ innerConf.username }}</td>
