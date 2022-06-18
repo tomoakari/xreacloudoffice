@@ -239,15 +239,15 @@ export default {
     },
     getStatusViewFlg(timestamp, status) {
       var st = new Date(timestamp);
-      var end = st;
-      var end2 = st;
+      var end = new Date(timestamp);
+      var end2 = new Date(timestamp);
       end = end.setHours(end.getHours + 1);
       end2 = end2.setHours(end2.getHours + 2);
       var now = new Date();
 
       console.log("■■■■");
       console.log("timestamp: " + timestamp);
-      console.log("start: " + st);
+      console.log("st: " + st);
       console.log("end: " + end);
       console.log("end2: " + end2);
       console.log("now: " + now);
