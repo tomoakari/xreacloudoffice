@@ -143,8 +143,8 @@ class HomeController extends Controller
     public function deleteConf(Request $request)
     {
         try{
-            $conf = Conference::
-                where('id', $request['id'])
+            Conference::
+                find($request['id'])
                 ->update(['status' => -1]);
             return true;
         }catch(Exception $err){
