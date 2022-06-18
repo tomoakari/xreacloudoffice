@@ -149,8 +149,8 @@ class HomeController extends Controller
             $conf->status = -1;
             $conf->save();
             return true;
-        }catch{
-            false false;
+        }catch(Exception $err){
+            return $err;
         }
         
     }
