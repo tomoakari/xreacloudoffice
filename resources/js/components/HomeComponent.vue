@@ -241,8 +241,8 @@ export default {
       var st = new Date(timestamp);
       var end = new Date(timestamp);
       var end2 = new Date(timestamp);
-      end.setHours(end.getHours + 1);
-      end2.setHours(end2.getHours + 2);
+      end.setHours(end.getHours() + 1);
+      end2.setHours(end2.getHours() + 2);
       var now = new Date();
 
       console.log("■■■■");
