@@ -101,37 +101,27 @@
           <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
             <td>
               <span
-                v-show="
-                  getStatusViewFlg(outerConf.schedule, outerConf.status) == -1
-                "
+                v-show="getStatusViewFlg(outerConf) == -1"
                 style="color: lightgray"
                 >中止</span
               >
               <span
-                v-show="
-                  getStatusViewFlg(outerConf.schedule, outerConf.status) == 0
-                "
+                v-show="getStatusViewFlg(outerConf) == 0"
                 style="color: gray"
                 >未開催</span
               >
               <span
-                v-show="
-                  getStatusViewFlg(outerConf.schedule, outerConf.status) == 1
-                "
+                v-show="getStatusViewFlg(outerConf) == 1"
                 style="color: cornflowerblue"
                 >開催中</span
               >
               <span
-                v-show="
-                  getStatusViewFlg(outerConf.schedule, outerConf.status) == 2
-                "
+                v-show="getStatusViewFlg(outerConf) == 2"
                 style="color: orange"
                 >開催中</span
               >
               <span
-                v-show="
-                  getStatusViewFlg(outerConf.schedule, outerConf.status) == 999
-                "
+                v-show="getStatusViewFlg(outerConf) == 999"
                 style="color: lightgray"
                 >終了</span
               >
@@ -237,13 +227,14 @@ export default {
       var mm = ("00" + dt.getMinutes()).slice(-2);
       return /*yy + "年" +*/ MM + "月" + dd + "日" + hh + "時" + mm + "分";
     },
-    getStatusViewFlg(timestamp, status) {
-      var st = new Date(timestamp);
-      var end = new Date(timestamp);
-      var end2 = new Date(timestamp);
+    getStatusViewFlg(conf) {
+      var st = new Date(conf.schedule);
+      var end = new Date(conf.schedule);
+      var end2 = new Date(conf.schedule);
       end.setHours(end.getHours() + 1);
       end2.setHours(end2.getHours() + 2);
       var now = new Date();
+      var status = conf.status;
 
       if (status == -1) {
         return -1;
