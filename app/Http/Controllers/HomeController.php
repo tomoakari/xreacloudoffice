@@ -146,7 +146,7 @@ class HomeController extends Controller
             Conference::
                 find($request['id'])
                 ->update(['status' => -1]);
-            return true;
+            return "true";
         }catch(Exception $err){
             return $err;
         }
