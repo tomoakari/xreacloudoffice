@@ -226,7 +226,7 @@ export default {
       var now = new Date();
       var status = conf.status;
 
-      if ((status = -1)) {
+      if (status == -1) {
         return "-1";
       }
       if (now < start) {
