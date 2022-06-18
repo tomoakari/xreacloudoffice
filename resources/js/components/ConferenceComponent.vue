@@ -134,6 +134,7 @@
           </tr>
           <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.id">
             <td>
+              てすと
               <span
                 v-show="getStatusViewFlg(innerConf) == -1"
                 style="color: lightgray"
