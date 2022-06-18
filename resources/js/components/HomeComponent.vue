@@ -61,17 +61,17 @@
               <span
                 v-show="getStatusViewFlg(innerConf) == 0"
                 style="color: gray"
-                >未開催</span
+                >予定</span
               >
               <span
                 v-show="getStatusViewFlg(innerConf) == 1"
                 style="color: cornflowerblue"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(innerConf) == 2"
                 style="color: orange"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(innerConf) == 999"
@@ -134,17 +134,17 @@
               <span
                 v-show="getStatusViewFlg(outerConf) == 0"
                 style="color: gray"
-                >未開催</span
+                >予定</span
               >
               <span
                 v-show="getStatusViewFlg(outerConf) == 1"
                 style="color: cornflowerblue"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(outerConf) == 2"
                 style="color: orange"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(outerConf) == 999"
@@ -251,7 +251,8 @@ export default {
       var dd = dt.getDate();
       var hh = ("00" + dt.getHours()).slice(-2);
       var mm = ("00" + dt.getMinutes()).slice(-2);
-      return /*yy + "年" +*/ MM + "月" + dd + "日" + hh + "時" + mm + "分";
+      // return /*yy + "年" +*/ MM + "月" + dd + "日" + hh + "時" + mm + "分";
+      return MM + "/" + dd + " " + hh + ":" + mm;
     },
     getStatusViewFlg(conf) {
       var st = new Date(conf.schedule);

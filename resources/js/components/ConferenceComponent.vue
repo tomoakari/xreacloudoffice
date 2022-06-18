@@ -109,17 +109,17 @@
               <span
                 v-show="getStatusViewFlg(innerConf) == 0"
                 style="color: gray"
-                >未開催</span
+                >予定</span
               >
               <span
                 v-show="getStatusViewFlg(innerConf) == 1"
                 style="color: cornflowerblue"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(innerConf) == 2"
                 style="color: orange"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(innerConf) == 999"
@@ -175,17 +175,17 @@
               <span
                 v-show="getStatusViewFlg(innerConf) == 0"
                 style="color: gray"
-                >未開催</span
+                >予定</span
               >
               <span
                 v-show="getStatusViewFlg(innerConf) == 1"
                 style="color: cornflowerblue"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(innerConf) == 2"
                 style="color: orange"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(innerConf) == 999"
@@ -262,17 +262,17 @@
               <span
                 v-show="getStatusViewFlg(outerConf) == 0"
                 style="color: gray"
-                >未開催</span
+                >予定</span
               >
               <span
                 v-show="getStatusViewFlg(outerConf) == 1"
                 style="color: cornflowerblue"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(outerConf) == 2"
                 style="color: orange"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(outerConf) == 999"
@@ -328,17 +328,17 @@
               <span
                 v-show="getStatusViewFlg(outerConf) == 0"
                 style="color: gray"
-                >未開催</span
+                >予定</span
               >
               <span
                 v-show="getStatusViewFlg(outerConf) == 1"
                 style="color: cornflowerblue"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(outerConf) == 2"
                 style="color: orange"
-                >開催中</span
+                >開催</span
               >
               <span
                 v-show="getStatusViewFlg(outerConf) == 999"
@@ -640,7 +640,8 @@ export default {
       var hh = (" " + dt.getHours()).slice(-2);
       var mm = ("0" + dt.getMinutes()).slice(-2);
       var yb = youbi[dt.getDay()];
-      return MM + "月" + dd + "日(" + yb + ") " + hh + "時" + mm + "分";
+      // return MM + "月" + dd + "日(" + yb + ") " + hh + "時" + mm + "分";
+      return MM + "/" + dd + " " + hh + ":" + mm;
     },
     getNowDates() {
       var dt = new Date();
