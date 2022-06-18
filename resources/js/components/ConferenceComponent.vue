@@ -236,16 +236,23 @@
             <td>{{ outerConf.name }}</td>
             <td>{{ outerConf.username }}</td>
             <td>
-              <a
-                v-bind:href="
-                  'https://conference.aice.cloud/?secret=' +
-                  outerConf.secret +
-                  '&user_name=' +
-                  user_name
+              <span
+                v-show="
+                  getStatusViewFlg(outerConf) !== -1 &&
+                  getStatusViewFlg(outerConf) !== 999
                 "
-                target="_blank"
-                ><span class="roominbutton">入室する</span></a
               >
+                <a
+                  v-bind:href="
+                    'https://conference.aice.cloud/?secret=' +
+                    outerConf.secret +
+                    '&user_name=' +
+                    user_name
+                  "
+                  target="_blank"
+                  ><span class="roominbutton">入室する</span></a
+                >
+              </span>
             </td>
             <td>
               <span
@@ -387,7 +394,33 @@ export default {
     closeDetailWindow: function () {
       this.isShowDetailWindow = false;
     },
-    deleteConf: function () {},
+    deleteConf: function () {
+      axios
+        .get("/deleteConf", {
+          params: {
+            id: this.detailInfo.id,
+          },
+        })
+        .then((res) => {
+          if (res) {
+            Swal.fire({
+              html: `<p>会議を削除しました</p>`,
+              confirmButtonText: "とじる",
+              confirmButtonAriaLabel: "とじる",
+              allowOutsideClick: true,
+            });
+            this.getInnerConfs();
+            this.getOuterConfs();
+          } else {
+            Swal.fire({
+              html: `<p>削除に失敗しました</p>`,
+              confirmButtonText: "とじる",
+              confirmButtonAriaLabel: "とじる",
+              allowOutsideClick: true,
+            });
+          }
+        });
+    },
     sendCreateConf: function () {
       this.generateNewConf();
     },
@@ -440,6 +473,7 @@ export default {
           this.getOuterConfs();
         });
     },
+    /*
     showDetail: function (innerflg, id) {
       var targetConf;
       var confarr;
@@ -493,6 +527,7 @@ export default {
         }
       });
     },
+    */
     getOuterConfs: function () {
       this.isOuterloading = true;
       axios

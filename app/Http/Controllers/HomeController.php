@@ -140,6 +140,20 @@ class HomeController extends Controller
         $result = Conference::create($data);
         return $result;   
     }
+    public function deleteConf(Request $request)
+    {
+        try{
+            $conf = Conference::
+                where('id', $request['id'])
+                ->get();
+            $conf->status = -1;
+            $conf->save();
+            return true;
+        }catch{
+            false false;
+        }
+        
+    }
 
     
     public function createCompany(Request $request)

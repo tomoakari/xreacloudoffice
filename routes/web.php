@@ -69,6 +69,7 @@ Route::get('/getInnerConfs', 'HomeController@getInnerConfs')->name('getInnerConf
 Route::get('/getTodayOuterConfs', 'HomeController@getTodayOuterConfs')->name('getTodayOuterConfs');
 Route::get('/getTodayInnerConfs', 'HomeController@getTodayInnerConfs')->name('getTodayInnerConfs');
 Route::get('/createConf', 'HomeController@createConf')->name('createConf');
+Route::get('/deleteConf', 'HomeController@deleteConf')->name('deleteConf');
 
 // マイページ
 Route::get('/getUserInfo', 'HomeController@getUserInfo')->name('getUserInfo');
