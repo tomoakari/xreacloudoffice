@@ -112,7 +112,6 @@
             <th>状況</th>
             <th>日時</th>
             <th>会議名</th>
-            <th></th>
           </tr>
           <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.id">
             <td>
@@ -170,13 +169,6 @@
                   {{ innerConf.name }}
                 </a>
               </span>
-            </td>
-            <td>
-              <span
-                class="infobutton"
-                @click="showDetailWindow(1, innerConf.id)"
-                ><i class="far fa-edit"></i
-              ></span>
             </td>
           </tr>
         </table>
@@ -264,7 +256,6 @@
             <th>状況</th>
             <th>日時</th>
             <th>会議名</th>
-            <th></th>
           </tr>
           <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
             <td>
@@ -320,13 +311,6 @@
                   >{{ outerConf.name }}</a
                 >
               </span>
-            </td>
-            <td>
-              <span
-                class="infobutton"
-                @click="showDetailWindow(0, outerConf.id)"
-                ><i class="far fa-edit"></i
-              ></span>
             </td>
           </tr>
         </table>
