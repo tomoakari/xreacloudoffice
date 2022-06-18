@@ -47,7 +47,11 @@
           <tr>
             <td>所属部署</td>
             <td>
-              {{ enrollInfo.dept_name_1 ? "設定なし" : enrollInfo.dept_name_1 }}
+              {{
+                enrollInfo.dept_name_1 == "設定なし"
+                  ? ""
+                  : enrollInfo.dept_name_1
+              }}
             </td>
           </tr>
           <tr>
