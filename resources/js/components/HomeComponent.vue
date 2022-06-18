@@ -231,6 +231,7 @@ export default {
       var status = conf.status;
 
       console.log("■■■■" + conf.name);
+      console.log("conf.schedule: " + conf.schedule);
       console.log("start: " + start);
       console.log("end: " + end);
       console.log("end2: " + end2);
