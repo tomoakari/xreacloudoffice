@@ -165,7 +165,9 @@ class HomeController extends Controller
                 select('id','name','email')->get();
             
             return [
-                'data' => $userList,
+                'data' => [
+                    "enrollList" => $enrList,
+                    "userList" => $userList
             ];
             
         }catch(Exception $err){

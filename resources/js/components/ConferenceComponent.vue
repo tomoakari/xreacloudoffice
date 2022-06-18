@@ -197,6 +197,14 @@
             <td>
               <span
                 v-show="
+                  getStatusViewFlg(innerConf) == -1 ||
+                  getStatusViewFlg(innerConf) == 999
+                "
+              >
+                {{ innerConf.name }}
+              </span>
+              <span
+                v-show="
                   getStatusViewFlg(innerConf) !== -1 &&
                   getStatusViewFlg(innerConf) !== 999
                 "
@@ -340,6 +348,13 @@
             </td>
             <td>{{ getJPcalendar(outerConf.schedule) }}</td>
             <td>
+              <span
+                v-show="
+                  getStatusViewFlg(outerConf) == -1 ||
+                  getStatusViewFlg(outerConf) == 999
+                "
+                >{{ outerConf.name }}
+              </span>
               <span
                 v-show="
                   getStatusViewFlg(outerConf) !== -1 &&
@@ -547,61 +562,7 @@ export default {
           this.isShowCreateWindow = false;
         });
     },
-    /*
-    showDetail: function (innerflg, id) {
-      var targetConf;
-      var confarr;
-      if (innerflg) {
-        confarr = this.innerConfs;
-      } else {
-        confarr = this.outerConfs;
-      }
-      confarr.forEach((elm) => {
-        if (elm.id == id) {
-          targetConf = elm;
-        }
-      });
 
-      axios
-        .get("/getConferenceInfo", {
-          params: {
-            id: targetConf,
-          },
-        })
-        .then((response) => {
-          if (response.data.result) {
-            this.company = response.data.data;
-          } else {
-            // 会社未登録
-            this.show_mode = "create";
-          }
-        });
-
-      console.log("mmm" + targetConf);
-      Swal.fire({
-        title: "詳細情報",
-        html:
-          `
-        <table>
-          <tr><td>会議名</td><td>` +
-          targetConf.name +
-          `</td></tr>
-          <tr><td>参加者</td><td>` +
-          "xxxx, xxxx, xxxx" +
-          `</td></tr>
-        </table>
-        `,
-        text: JSON.stringify(targetConf),
-        confirmButtonText: "削除する",
-        showCancelButton: true,
-        cancelButtonText: "とじる",
-      }).then((res) => {
-        if (res.isConfirmed) {
-          alert("削除処理");
-        }
-      });
-    },
-    */
     getOuterConfs: function () {
       this.isOuterloading = true;
       axios
@@ -649,7 +610,17 @@ export default {
           params: {},
         })
         .then((response) => {
-          this.domesticMembers = response.data;
+          // var enrollList = response.data.enrollList;
+          // var userList = response.data.userList;
+          this.domesticMembers = response;
+
+          /*
+          isInvite: false,
+          deptId: 1,
+          deptName: "営業部",
+          name: "松本",
+          mail: "mail@mmmmmm.jp",
+          */
         })
         .catch((err) => {
           this.domesticMembers = [];
