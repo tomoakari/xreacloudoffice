@@ -67,7 +67,7 @@
               </tr>
             </table>
           </span>
-          <span class="createbutton" @click="deleteConf()">削除する</span>
+          <span class="createbutton" @click="deleteConf()">中止する</span>
         </div>
       </div>
     </div>
@@ -492,7 +492,7 @@ export default {
         .then((res) => {
           if (res) {
             Swal.fire({
-              html: `<p>会議を削除しました</p>`,
+              html: `<p>会議を中止しました</p>`,
               confirmButtonText: "とじる",
               confirmButtonAriaLabel: "とじる",
               allowOutsideClick: true,
@@ -501,7 +501,7 @@ export default {
             this.getOuterConfs();
           } else {
             Swal.fire({
-              html: `<p>削除に失敗しました</p>`,
+              html: `<p>処理に失敗しました</p>`,
               confirmButtonText: "とじる",
               confirmButtonAriaLabel: "とじる",
               allowOutsideClick: true,
