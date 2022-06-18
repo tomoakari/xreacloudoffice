@@ -168,6 +168,7 @@ class HomeController extends Controller
                 'data' => [
                     "enrollList" => $enrList,
                     "userList" => $userList
+                ]
             ];
             
         }catch(Exception $err){
