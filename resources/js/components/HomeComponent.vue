@@ -230,21 +230,29 @@ export default {
       var now = new Date();
       var status = conf.status;
 
+      console.log("■■■■" + conf.name);
+      console.log("start: " + start);
+      console.log("end: " + end);
+      console.log("end2: " + end2);
+      console.log("now: " + now);
+      console.log("status: " + status);
+
       if (status == -1) {
-        return "-1";
+        return -1;
       }
       if (now < start) {
-        return "0";
+        return 0;
       }
       if (start < now && now < end) {
-        return "1";
+        return 1;
       }
       if (end < now && now < end2) {
-        return "2";
+        return 2;
       }
       if (end2 < now) {
-        return "999";
+        return 999;
       }
+      console.log("no hit");
     },
     getNowDates() {
       var dt = new Date();
