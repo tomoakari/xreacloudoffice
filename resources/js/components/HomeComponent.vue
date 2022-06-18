@@ -233,8 +233,8 @@ export default {
       // var yy = dt.getFullYear();
       var MM = dt.getMonth() + 1;
       var dd = dt.getDate();
-      var hh = dt.getHours();
-      var mm = dt.getMinutes();
+      var hh = ("00" + dt.getHours()).slice(-2);
+      var mm = ("00" + dt.getMinutes()).slice(-2);
       return /*yy + "年" +*/ MM + "月" + dd + "日" + hh + "時" + mm + "分";
     },
     getStatusViewFlg(timestamp, status) {
@@ -244,14 +244,6 @@ export default {
       end.setHours(end.getHours() + 1);
       end2.setHours(end2.getHours() + 2);
       var now = new Date();
-
-      console.log("■■■■");
-      console.log("timestamp: " + timestamp);
-      console.log("st: " + st);
-      console.log("end: " + end);
-      console.log("end2: " + end2);
-      console.log("now: " + now);
-      console.log("status: " + status);
 
       if (status == -1) {
         return -1;
