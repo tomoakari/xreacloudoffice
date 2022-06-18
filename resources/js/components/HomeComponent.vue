@@ -55,7 +55,7 @@
             <td>
               <span
                 v-show="getStatusViewFlg(innerConf) == -1"
-                style="color: lightgray"
+                style="color: #f08080"
                 >中止</span
               >
               <span
@@ -128,7 +128,7 @@
             <td>
               <span
                 v-show="getStatusViewFlg(outerConf) == -1"
-                style="color: lightgray"
+                style="color: #f08080"
                 >中止</span
               >
               <span

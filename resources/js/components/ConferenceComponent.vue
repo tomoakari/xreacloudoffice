@@ -103,7 +103,7 @@
             <td>
               <span
                 v-show="getStatusViewFlg(innerConf) == -1"
-                style="color: lightgray"
+                style="color: #f08080"
                 >中止</span
               >
               <span
@@ -169,7 +169,7 @@
             <td>
               <span
                 v-show="getStatusViewFlg(innerConf) == -1"
-                style="color: lightgray"
+                style="color: #f08080"
                 >中止</span
               >
               <span
@@ -256,7 +256,7 @@
             <td>
               <span
                 v-show="getStatusViewFlg(outerConf) == -1"
-                style="color: lightgray"
+                style="color: #f08080"
                 >中止</span
               >
               <span
@@ -322,7 +322,7 @@
             <td>
               <span
                 v-show="getStatusViewFlg(outerConf) == -1"
-                style="color: lightgray"
+                style="color: #f08080"
                 >中止</span
               >
               <span
@@ -640,8 +640,12 @@ export default {
       var hh = (" " + dt.getHours()).slice(-2);
       var mm = ("0" + dt.getMinutes()).slice(-2);
       var yb = youbi[dt.getDay()];
-      // return MM + "月" + dd + "日(" + yb + ") " + hh + "時" + mm + "分";
-      return MM + "/" + dd + " " + hh + ":" + mm;
+
+      if (this.isMobileMode) {
+        return MM + "/" + dd + " " + hh + ":" + mm;
+      } else {
+        return MM + "月" + dd + "日(" + yb + ") " + hh + "時" + mm + "分";
+      }
     },
     getNowDates() {
       var dt = new Date();
