@@ -99,7 +99,29 @@
             <th></th>
           </tr>
           <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
-            <td>{{ outerConf.status == "0" ? "未開催" : "開催済" }}</td>
+            <td>
+              <span
+                v-show="getStatusView(outerConf) == -1"
+                style="color: lightgray"
+                >中止</span
+              >
+              <span v-show="getStatusView(outerConf) == 0" style="color: gray"
+                >未開催</span
+              >
+              <span
+                v-show="getStatusView(outerConf) == 1"
+                style="color: cornflowerblue"
+                >開催中</span
+              >
+              <span v-show="getStatusView(outerConf) == 2" style="color: orange"
+                >開催中</span
+              >
+              <span
+                v-show="getStatusView(outerConf) == 999"
+                style="color: lightgray"
+                >終了</span
+              >
+            </td>
             <td>{{ getJPcalendar(outerConf.schedule) }}</td>
             <td>{{ outerConf.name }}</td>
             <td>{{ outerConf.username }}</td>
@@ -190,12 +212,35 @@ export default {
     },
     getJPcalendar(timestamp) {
       var dt = new Date(timestamp);
-      var yy = dt.getFullYear();
+      // var yy = dt.getFullYear();
       var MM = dt.getMonth() + 1;
       var dd = dt.getDate();
       var hh = dt.getHours();
       var mm = dt.getMinutes();
       return /*yy + "年" +*/ MM + "月" + dd + "日" + hh + "時" + mm + "分";
+    },
+    getStatusViewFlg(conf) {
+      var start = new Date(conf.schedule);
+      var end = start.setHours(start.getHours + 1);
+      var end2 = start.setHours(start.getHours + 2);
+      var now = new Date();
+      var status = conf.status;
+
+      if ((status = -1)) {
+        return "-1";
+      }
+      if (now < start) {
+        return "0";
+      }
+      if (start < now && now < end) {
+        return "1";
+      }
+      if (end < now && now < end2) {
+        return "2";
+      }
+      if (end2 < now) {
+        return "999";
+      }
     },
     getNowDates() {
       var dt = new Date();
