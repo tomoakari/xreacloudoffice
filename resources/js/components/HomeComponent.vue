@@ -226,6 +226,8 @@ export default {
     },
     getJPcalendar(timestamp) {
       var dt = new Date(timestamp);
+      console.log("dt: " + dt);
+
       // var yy = dt.getFullYear();
       var MM = dt.getMonth() + 1;
       var dd = dt.getDate();
