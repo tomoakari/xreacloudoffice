@@ -224,7 +224,8 @@ export default {
       return /*yy + "年" +*/ MM + "月" + dd + "日" + hh + "時" + mm + "分";
     },
     getStatusViewFlg(conf) {
-      var start = new Date(conf.schedule);
+      var timestamp = conf.schedule;
+      var start = new Date(timestamp);
       var end = start.setHours(start.getHours + 1);
       var end2 = start.setHours(start.getHours + 2);
       var now = new Date();
