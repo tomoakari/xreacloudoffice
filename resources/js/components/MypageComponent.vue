@@ -10,7 +10,7 @@
     </div>
     <div class="card mb-20">
       <div class="card-header">
-        <i class="fa-solid fa-user"></i>ユーザ情報
+        <i class="fa-solid fa-user"></i> ユーザ情報
         <span class="createbutton" @click="isUserEditMode = true">編集する</span>
       </div>
 
@@ -32,13 +32,13 @@
             </td>
           </tr>
         </table>
-        <span class="createbutton" v-show="isUserEditMode" @click="updateUser()">更新する</span>
+        <span class="centerbutton" v-show="isUserEditMode" @click="updateUser()">更新する</span>
       </div>
     </div>
 
     <div class="card mb-20">
       <div class="card-header">
-        <i class="fa-solid fa-id-card"></i>所属情報
+        <i class="fa-solid fa-id-card"></i> 所属情報
         <span class="createbutton" @click="isShowEnrollWindow = true">編集する</span>
       </div>
 
@@ -154,19 +154,24 @@ export default {
           },
         })
         .then((res) => {
-          if (res.data.result) {
+          if (res == "true") {
             Swal.fire({
               icon: `success`,
               html: `ユーザ情報を更新しました`,
               confirmButtonText: "とじる",
               toast: true,
+              timer: 1500,
+              showConfirmButton: false,
+              timerProgressBar: true,
             });
-            this.getCompanyInfo();
           } else {
             Swal.fire({
               icon: `error`,
               html: `ユーザ情報の更新に失敗しました`,
               toast: true,
+              timer: 1500,
+              showConfirmButton: false,
+              timerProgressBar: true,
             });
           }
         })
@@ -175,6 +180,9 @@ export default {
             icon: `error`,
             html: `ユーザ情報の更新に失敗しました`,
             toast: true,
+            timer: 1500,
+            showConfirmButton: false,
+            timerProgressBar: true,
           });
         });
     },
