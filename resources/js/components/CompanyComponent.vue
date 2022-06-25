@@ -35,6 +35,46 @@
       </div>
     </div>
 
+    <!-- 会社編集ウィンドウ -->
+    <div
+      class="modal_background"
+      v-show="isShowCompanyWindow"
+      @click.self="isShowCompanyWindow = false"
+    >
+      <div class="modal_window card">
+        <div class="card-header">会社情報の編集</div>
+        <div class="card-body">
+          <span class="createbutton">更新する</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 支払い編集ウィンドウ -->
+    <div
+      class="modal_background"
+      v-show="isShowPaymentWindow"
+      @click.self="isShowPaymentWindow = false"
+    >
+      <div class="modal_window card">
+        <div class="card-header">支払い情報の編集</div>
+        <div class="card-body">
+          <div class="planCard" @click="selectedPlan = 'basic'">
+            <p>ベーシック</p>
+            〇〇名〜〇〇名<span class="planAmount">◯◯◯◯円/月</span>
+          </div>
+          <div class="planCard" @click="selectedPlan = 'premium'">
+            <p>プレミアム</p>
+            〇〇名〜〇〇名<span class="planAmount">◯◯◯◯円/月</span>
+          </div>
+          <div class="planCard" @click="selectedPlan = 'enterprise'">
+            <p>エンタープライズ</p>
+            〇〇名〜〇〇名<span class="planAmount">◯◯◯◯円/月</span>
+          </div>
+          <span class="createbutton">更新する</span>
+        </div>
+      </div>
+    </div>
+
     <!-- カード -->
     <div class="card mb-20">
       <div class="heroImageArea">
@@ -60,8 +100,12 @@
             >
           </li>
           -->
-          <li class="disabletext">会社情報を編集する</li>
-          <li class="disabletext">支払い情報を管理する</li>
+          <li class="linkbutton" @click="isShowCompanyWindow = true">
+            会社情報を編集する
+          </li>
+          <li class="linkbutton" @click="isShowPaymentWindow = true">
+            支払い情報を管理する
+          </li>
         </ul>
       </div>
     </div>
@@ -173,6 +217,8 @@ export default {
   data: function () {
     return {
       isShowInviteWindow: false,
+      isShowCompanyWindow: false,
+      isShowPaymentWindow: false,
       show_mode: "create",
       company_secret: "",
       user_id: "temp_user_id",
@@ -450,5 +496,15 @@ ul.invitelist > li > span {
 ul.invitelist > li > span:hover {
   border: #808080 solid 1px;
   color: #808080;
+}
+.planCard {
+  width: 100%;
+  margin: 5px 0px;
+  padding: 5px;
+  background: lightseagreen;
+}
+.planAmount {
+  position: relative;
+  right: 0px;
 }
 </style>

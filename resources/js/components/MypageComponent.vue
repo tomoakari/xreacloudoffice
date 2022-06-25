@@ -11,7 +11,9 @@
     <div class="card mb-20">
       <div class="card-header">
         <i class="fa-solid fa-user"></i> ユーザ情報
-        <span class="createbutton" @click="isUserEditMode = true">編集する</span>
+        <span class="createbutton" @click="isUserEditMode = true"
+          >編集する</span
+        >
       </div>
 
       <div class="card-body">
@@ -28,18 +30,24 @@
             <td>名前</td>
             <td>
               <span v-show="!isUserEditMode">{{ userInfo.name }}</span>
-              <span v-show="isUserEditMode"><input type="text" v-model="userInfo.name"></span>
+              <span v-show="isUserEditMode"
+                ><input type="text" v-model="userInfo.name"
+              /></span>
             </td>
           </tr>
         </table>
-        <span class="centerbutton" v-show="isUserEditMode" @click="updateUser()">更新する</span>
+        <span class="centerbutton" v-show="isUserEditMode" @click="updateUser()"
+          >更新する</span
+        >
       </div>
     </div>
 
     <div class="card mb-20">
       <div class="card-header">
         <i class="fa-solid fa-id-card"></i> 所属情報
-        <span class="createbutton" @click="isShowEnrollWindow = true">編集する</span>
+        <span class="createbutton" @click="isShowEnrollWindow = true"
+          >編集する</span
+        >
       </div>
 
       <div class="card-body">
@@ -81,7 +89,6 @@
         <div class="card-body">
           <span class="createbutton">更新する</span>
         </div>
-      </div>
       </div>
     </div>
   </div>
