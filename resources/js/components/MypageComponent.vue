@@ -36,9 +36,9 @@
             </td>
           </tr>
         </table>
-        <span class="centerbutton" v-show="isUserEditMode" @click="updateUser()"
-          >更新する</span
-        >
+        <div class="centerbutton" v-show="isUserEditMode" @click="updateUser()">
+          更新する
+        </div>
       </div>
     </div>
 
