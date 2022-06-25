@@ -407,6 +407,19 @@ class HomeController extends Controller
         ];
     }
 
+    public function updateUser(Request $request)
+    {
+        try{
+            User::
+                find($request['id'])
+                ->update(['name' => $request['name']]);
+            return "true";
+        }catch(Exception $err){
+            return $err;
+        }
+        
+    }
+
     
     /**
      * Show the application dashboard.

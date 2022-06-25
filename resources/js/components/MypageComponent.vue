@@ -10,8 +10,8 @@
     </div>
     <div class="card mb-20">
       <div class="card-header">
-        ユーザ情報
-        <span class="createbutton" @click="()=>isShowUserWindow = true">編集する</span>
+        <i class="fa-solid fa-user"></i>ユーザ情報
+        <span class="createbutton" @click="isUserEditMode = true">編集する</span>
       </div>
 
       <div class="card-body">
@@ -26,16 +26,20 @@
           </tr>
           <tr>
             <td>名前</td>
-            <td>{{ userInfo.name }}</td>
+            <td>
+              <span v-show="!isUserEditMode">{{ userInfo.name }}</span>
+              <span v-show="isUserEditMode"><input type="text" v-model="userInfo.name"></span>
+            </td>
           </tr>
         </table>
+        <span class="createbutton" v-show="isUserEditMode" @click="updateUser()">更新する</span>
       </div>
     </div>
 
     <div class="card mb-20">
       <div class="card-header">
-        所属情報
-        <span class="createbutton" @click="()=>isShowEnrollWindow = true">編集する</span>
+        <i class="fa-solid fa-id-card"></i>所属情報
+        <span class="createbutton" @click="isShowEnrollWindow = true">編集する</span>
       </div>
 
       <div class="card-body">
@@ -66,20 +70,6 @@
       </div>
     </div>
 
-    <!-- ユーザ編集ウィンドウ -->
-    <div
-      class="modal_background"
-      v-show="isShowUserWindow"
-      @click.self="closeUserWindow()"
-    >
-      <div class="modal_window card">
-        <div class="card-header">ユーザ情報の編集</div>
-        <div class="card-body">
-          <span class="createbutton">更新する</span>
-        </div>
-      </div>
-    </div>
-
     <!-- 所属編集ウィンドウ -->
     <div
       class="modal_background"
@@ -101,8 +91,8 @@
 export default {
   data: function () {
     return {
+      isUserEditMode: false,
       isShowEnrollWindow: false,
-      isShowUserWindow: false,
       userInfo: {
         id: 0,
         name: "",
@@ -154,9 +144,39 @@ export default {
         })
         .finally();
     },
-    editUser() {},
-    editEnroll() {
-      this.isShowEnrollWindow = true;
+    updateUser() {
+      axios
+        .get("/updateUser", {
+          params: {
+            id: this.userInfo.id,
+            name: this.userInfo.name,
+            email: this.userInfo.email,
+          },
+        })
+        .then((res) => {
+          if (res.data.result) {
+            Swal.fire({
+              icon: `success`,
+              html: `ユーザ情報を更新しました`,
+              confirmButtonText: "とじる",
+              toast: true,
+            });
+            this.getCompanyInfo();
+          } else {
+            Swal.fire({
+              icon: `error`,
+              html: `ユーザ情報の更新に失敗しました`,
+              toast: true,
+            });
+          }
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: `error`,
+            html: `ユーザ情報の更新に失敗しました`,
+            toast: true,
+          });
+        });
     },
   },
 };

@@ -44,6 +44,7 @@ Route::get('/help', 'HomeController@help')->name('help');
 
 // マイページ
 Route::get('/mypage', 'HomeController@mypage')->name('mypage');
+Route::get('/updateUser', 'HomeController@updateUser')->name('updateUser');
 
 // 会議室管理画面
 Route::get('/conference', 'HomeController@conference')->name('conference');
