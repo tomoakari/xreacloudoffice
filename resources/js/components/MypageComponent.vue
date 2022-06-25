@@ -11,7 +11,7 @@
     <div class="card mb-20">
       <div class="card-header">
         ユーザ情報
-        <span class="createbutton disabletext">編集する</span>
+        <span class="createbutton" @click="()=>isShowUserWindow = true">編集する</span>
       </div>
 
       <div class="card-body">
@@ -35,7 +35,7 @@
     <div class="card mb-20">
       <div class="card-header">
         所属情報
-        <span class="createbutton disabletext">編集する</span>
+        <span class="createbutton" @click="()=>isShowEnrollWindow = true">編集する</span>
       </div>
 
       <div class="card-body">
@@ -65,6 +65,35 @@
         </table>
       </div>
     </div>
+
+    <!-- ユーザ編集ウィンドウ -->
+    <div
+      class="modal_background"
+      v-show="isShowUserWindow"
+      @click.self="closeUserWindow()"
+    >
+      <div class="modal_window card">
+        <div class="card-header">ユーザ情報の編集</div>
+        <div class="card-body">
+          <span class="createbutton">更新する</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 所属編集ウィンドウ -->
+    <div
+      class="modal_background"
+      v-show="isShowEnrollWindow"
+      @click.self="isShowEnrollWindow = false"
+    >
+      <div class="modal_window card">
+        <div class="card-header">所属情報の編集</div>
+        <div class="card-body">
+          <span class="createbutton">更新する</span>
+        </div>
+      </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -72,6 +101,8 @@
 export default {
   data: function () {
     return {
+      isShowEnrollWindow: false,
+      isShowUserWindow: false,
       userInfo: {
         id: 0,
         name: "",
@@ -122,6 +153,10 @@ export default {
           this.enrollInfo = {};
         })
         .finally();
+    },
+    editUser() {},
+    editEnroll() {
+      this.isShowEnrollWindow = true;
     },
   },
 };
