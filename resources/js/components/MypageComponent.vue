@@ -11,7 +11,7 @@
     <div class="card mb-20">
       <div class="card-header">
         <i class="fa-solid fa-user"></i> ユーザ情報
-        <span class="createbutton" @click="isUserEditMode = true"
+        <span class="createbutton" @click="isUserEditMode = !isUserEditMode"
           >編集する</span
         >
       </div>
@@ -161,28 +161,17 @@ export default {
           },
         })
         .then((res) => {
-          if (res.data.data == "true") {
-            Swal.fire({
-              icon: `success`,
-              html: `ユーザ情報を更新しました`,
-              confirmButtonText: "とじる",
-              toast: true,
-              timer: 1500,
-              showConfirmButton: false,
-              timerProgressBar: true,
-            });
-          } else {
-            Swal.fire({
-              icon: `error`,
-              html: `ユーザ情報の更新に失敗しました`,
-              toast: true,
-              timer: 1500,
-              showConfirmButton: false,
-              timerProgressBar: true,
-            });
-          }
+          Swal.fire({
+            icon: `success`,
+            html: `ユーザ情報を更新しました`,
+            confirmButtonText: "とじる",
+            toast: true,
+            timer: 1500,
+            showConfirmButton: false,
+            timerProgressBar: true,
+          });
         })
-        .catch((err) => {
+        .catch(() => {
           Swal.fire({
             icon: `error`,
             html: `ユーザ情報の更新に失敗しました`,
