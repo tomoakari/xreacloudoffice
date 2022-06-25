@@ -499,6 +499,7 @@ export default {
             });
             this.getInnerConfs();
             this.getOuterConfs();
+            this.isShowDetailWindow = false;
           } else {
             Swal.fire({
               html: `<p>処理に失敗しました</p>`,

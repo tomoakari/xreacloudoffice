@@ -58,6 +58,8 @@
       <div class="modal_window card">
         <div class="card-header">支払い情報の編集</div>
         <div class="card-body">
+          <h4>現在のプランは{{ "◯◯プラン" }}</h4>
+
           <div class="planCard" @click="selectedPlan = 'basic'">
             <h4>ベーシック</h4>
             〇〇名〜〇〇名<span class="planAmount">◯◯◯◯円/月</span>
@@ -505,7 +507,7 @@ ul.invitelist > li > span:hover {
   border-radius: 5px;
 }
 .planAmount {
-  position: relative;
+  position: absolute;
   right: 30px;
 }
 </style>
