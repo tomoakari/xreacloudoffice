@@ -161,7 +161,7 @@ export default {
           },
         })
         .then((res) => {
-          if (res == "true") {
+          if (res.data.data == "true") {
             Swal.fire({
               icon: `success`,
               html: `ユーザ情報を更新しました`,

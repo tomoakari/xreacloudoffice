@@ -59,18 +59,18 @@
         <div class="card-header">支払い情報の編集</div>
         <div class="card-body">
           <div class="planCard" @click="selectedPlan = 'basic'">
-            <p>ベーシック</p>
+            <h4>ベーシック</h4>
             〇〇名〜〇〇名<span class="planAmount">◯◯◯◯円/月</span>
           </div>
           <div class="planCard" @click="selectedPlan = 'premium'">
-            <p>プレミアム</p>
+            <h4>プレミアム</h4>
             〇〇名〜〇〇名<span class="planAmount">◯◯◯◯円/月</span>
           </div>
           <div class="planCard" @click="selectedPlan = 'enterprise'">
-            <p>エンタープライズ</p>
+            <h4>エンタープライズ</h4>
             〇〇名〜〇〇名<span class="planAmount">◯◯◯◯円/月</span>
           </div>
-          <span class="createbutton">更新する</span>
+          <span class="centerbutton">更新する</span>
         </div>
       </div>
     </div>
@@ -501,10 +501,11 @@ ul.invitelist > li > span:hover {
   width: 100%;
   margin: 5px 0px;
   padding: 5px;
-  background: lightseagreen;
+  background: #b2d8ff;
+  border-radius: 5px;
 }
 .planAmount {
   position: relative;
-  right: 0px;
+  right: 30px;
 }
 </style>
