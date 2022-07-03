@@ -660,6 +660,7 @@ export default {
           params: {},
         })
         .then((response) => {
+          console.log(JSON.stringify(response));
           var enrollList = response.data.enrollList;
           var userList = response.data.userList;
           var deptList = response.data.deptList;
