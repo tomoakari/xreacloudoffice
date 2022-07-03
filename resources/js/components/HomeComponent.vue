@@ -388,7 +388,7 @@ export default {
       console.log(ts);
       var youbi = ["日", "月", "火", "水", "木", "金", "土"];
       var dt = new Date(ts.replace(/-/g, "/"));
-      console.log(ts);
+      console.log(ds);
 
       // var yy = dt.getFullYear();
       var MM = (" " + (dt.getMonth() + 1)).slice(-2);
