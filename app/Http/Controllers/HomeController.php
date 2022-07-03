@@ -144,9 +144,9 @@ class HomeController extends Controller
         $invitedUser = $request['invitedUser'];
         foreach($invitedUser as $item){
             $invitedData = [
-                'conference_id' = $result['id'],
-                'user_id' = $item['id'],
-                'user_name' = $item['name'],
+                'conference_id' => $result['id'],
+                'user_id' => $item['id'],
+                'user_name' => $item['name'],
             ];
             Confmember::create($invitedData);
         }
