@@ -488,6 +488,7 @@ export default {
       confarr.forEach((elm) => {
         if (elm.id == id) {
           this.detailInfo = elm;
+          this.detailInfo.schedule = this.getTs2Ud(this.detailInfo.schedule);
         }
       });
     },
@@ -691,6 +692,21 @@ export default {
       } else {
         return MM + "月" + dd + "日(" + yb + ") " + hh + "時" + mm + "分";
       }
+    },
+
+    getTs2Ud(ts) {
+      "0123456789012345678";
+      "YYYY-MM-DD HH:mm:ss";
+      var y = ts.substr(0, 4);
+      var M = ts.substr(5, 2);
+      var d = ts.substr(8, 2);
+      var h = ts.substr(11, 2);
+      var m = ts.substr(14, 2);
+      var s = ts.substr(17, 2);
+
+      var date = new Date(y, M, d, h, m, s);
+      var dt = date.getTime();
+      return Math.floor(dt / 1000);
     },
     getNowDates() {
       var dt = new Date();
