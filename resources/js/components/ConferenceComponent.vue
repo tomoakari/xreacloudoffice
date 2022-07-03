@@ -660,7 +660,6 @@ export default {
           params: {},
         })
         .then((response) => {
-          console.log(JSON.stringify(response));
           var enrollList = response.data.data.enrollList;
           var userList = response.data.data.userList;
           var deptList = response.data.data.deptList;
@@ -668,10 +667,10 @@ export default {
           var tempList = [];
           enrollList.forEach((enr) => {
             var targetUser = userList.filter((user) => {
-              user.id == enr.user_id;
+              return user.id == enr.user_id;
             });
             var targetDept = deptList.filter((dept) => {
-              dept.id == enr.department_id;
+              return dept.id == enr.department_id;
             });
             var tempUser = {
               id: targetUser.id,
