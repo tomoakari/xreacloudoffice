@@ -661,9 +661,9 @@ export default {
         })
         .then((response) => {
           console.log(JSON.stringify(response));
-          var enrollList = response.data.enrollList;
-          var userList = response.data.userList;
-          var deptList = response.data.deptList;
+          var enrollList = response.data.data.enrollList;
+          var userList = response.data.data.userList;
+          var deptList = response.data.data.deptList;
 
           var tempList = [];
           enrollList.forEach((enr) => {
