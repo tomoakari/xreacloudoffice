@@ -58,7 +58,8 @@
           <p>会議名： <input type="text" v-model="detailInfo.name" /></p>
 
           <p>
-            開催日時：
+            開催日時： {{ detailInfo.schedule }}
+            <i class="fa-solid fa-calendar-day"></i>
             <datetime
               v-model="detailInfo.schedule"
               type="datetime"
@@ -705,19 +706,21 @@ export default {
     getTs2Gmt(ts) {
       "0123456789012345678";
       "YYYY-MM-DD HH:mm:ss";
+      /*
       var y = ts.substr(0, 4);
       var M = Number(ts.substr(5, 2)) - 1;
       var d = ts.substr(8, 2);
       var h = ts.substr(11, 2);
       var m = ts.substr(14, 2);
       var s = ts.substr(17, 2);
-      /*
       var date = new Date(y, M, d, h, m, s);
       var dt = date.getTime();
       console.log("getTs2Ud : " + ts + " -> " + Math.floor(dt / 1000));
       return Math.floor(dt / 1000);
       */
-      return new Date(y, M, d, h, m, s);
+      var ymd = ts.substr(0, 10);
+      var hms = ts.substr(11, 8);
+      return ymd + "T" + hms + ".000+09:00";
     },
     getNowDates() {
       var dt = new Date();
