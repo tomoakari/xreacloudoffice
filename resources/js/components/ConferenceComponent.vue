@@ -488,6 +488,7 @@ export default {
       confarr.forEach((elm) => {
         if (elm.id == id) {
           this.detailInfo = elm;
+          console.log(this.getTs2Ud(this.detailInfo.schedule));
           this.detailInfo.schedule = this.getTs2Ud(this.detailInfo.schedule);
         }
       });
@@ -577,6 +578,12 @@ export default {
         });
     },
     updateConf: function () {
+      console.log("this.detailInfo.schedule" + this.detailInfo.schedule);
+      console.log(
+        "this.$moment" +
+          this.$moment(this.detailInfo.schedule).format("YYYY-MM-DD HH:mm:ss")
+      );
+
       axios
         .get("/updateConf", {
           params: {
