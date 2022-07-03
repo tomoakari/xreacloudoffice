@@ -195,7 +195,7 @@ class HomeController extends Controller
                 select('id','name','email')->get();
 
             $deptList = Department::
-                where('company_id', $company_id)->
+                where('company_id', $company_id)
                 ->get();
             
             return [
