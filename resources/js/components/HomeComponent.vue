@@ -7,7 +7,8 @@
 
       <div class="card-body">
         ようこそ、{{ user_name }}さん<br />
-        各機能の使用方法については、ヘルプページをご参照ください。
+        各機能の使用方法については、<a href="/help">ヘルプ</a
+        >ページをご参照ください。
       </div>
     </div>
     <div class="card mb-20">
