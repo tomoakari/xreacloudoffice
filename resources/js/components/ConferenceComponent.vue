@@ -58,8 +58,7 @@
           <p>会議名</p>
           <input type="text" v-model="detailInfo.name" />
           <p>
-            開催日時 {{ detailInfo.schedule }}
-            <i class="fa-solid fa-calendar-day"></i>
+            開催日時
             <datetime
               v-model="detailInfo.schedule"
               type="datetime"
@@ -681,7 +680,10 @@ export default {
               deptName: targetDept.depname1,
               isInvite: false,
             };
-            console.log(JSON.stringify(tempUser));
+            console.log(targetUser);
+            console.log(targetDept);
+            console.log(enr);
+
             tempList.push(tempUser);
           });
 
