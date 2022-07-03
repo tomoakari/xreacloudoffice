@@ -667,14 +667,35 @@ export default {
 
           var tempList = [];
           var tempUser = {};
+
+          enrollList.forEach((enr) => {
+            targetUser = userList.filter((user) => {
+              user.id == enr.user_id;
+            });
+            targetDept = deptList.filter((dept) => {
+              dept.id == enr.department_id;
+            });
+            tempUser = {
+              id: targetUser.id,
+              name: targetUser.name,
+              mail: targetUser.email,
+              deptId: enr.department_id,
+              deptName: targetDpt.depname1,
+              isInvite: false,
+            };
+            tempList.push(tempUser);
+          });
+
+          /*
+          var tempList = [];
+          var tempUser = {};
           var targetEnr = {};
           var targetDpt = {};
-
           userList.forEach((user) => {
             targetEnr = enrollList.filter((enr) => {
               return enr.user_id == user.id;
             });
-            targetDptr = deptList.filter((dpt) => {
+            targetDpt = deptList.filter((dpt) => {
               return dpt.id == enr.department_id;
             });
             tempUser = {
@@ -687,6 +708,7 @@ export default {
             };
             tempList.push(tempUser);
           });
+          */
 
           this.domesticMembers = tempList;
         })
