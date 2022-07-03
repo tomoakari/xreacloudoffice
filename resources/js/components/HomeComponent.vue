@@ -384,8 +384,11 @@ export default {
         .finally();
     },
     getJPcalendar(timestamp) {
+      var ts = timestamp;
+      console.log(ts);
       var youbi = ["日", "月", "火", "水", "木", "金", "土"];
-      var dt = new Date(timestamp.replace(/-/g, "/"));
+      var dt = new Date(ts.replace(/-/g, "/"));
+      console.log(ts);
 
       // var yy = dt.getFullYear();
       var MM = (" " + (dt.getMonth() + 1)).slice(-2);
