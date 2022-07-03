@@ -11,6 +11,8 @@ use App\Company;
 use App\Department;
 use App\Enrolled;
 use App\Secretcode;
+use App\Confmember;
+
 use Mail;
 
 /**
@@ -138,6 +140,17 @@ class HomeController extends Controller
             'schedule' => $request['schedule'],
         ];
         $result = Conference::create($data);
+
+        $invitedUser = $request['invitedUser'];
+        foreach($invitedUser as $item){
+            $invitedData = [
+                'conference_id' = $result['id'],
+                'user_id' = $item['id'],
+                'user_name' = $item['name'],
+            ];
+            Confmember::create($invitedData);
+        }
+        
         return $result;   
     }
     public function updateConf(Request $request)
@@ -169,8 +182,11 @@ class HomeController extends Controller
     public function getMembers()
     {
         try{
+            // 会社IDから所属リスト一覧を取得
             $company_id = $this->getMyCompanyId();
             $enrList = Enrolled::where('company_id', $company_id)->get();
+
+            // ユーザ
             $uidList = array();
             foreach($enrList as $item){
                 array_push($uidList, $item->user_id);

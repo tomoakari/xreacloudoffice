@@ -55,10 +55,10 @@
       <div class="modal_window card">
         <div class="card-header">会議の詳細</div>
         <div class="card-body">
-          <p>会議名： <input type="text" v-model="detailInfo.name" /></p>
-
+          <p>会議名</p>
+          <input type="text" v-model="detailInfo.name" />
           <p>
-            開催日時： {{ detailInfo.schedule }}
+            開催日時 {{ detailInfo.schedule }}
             <i class="fa-solid fa-calendar-day"></i>
             <datetime
               v-model="detailInfo.schedule"
@@ -489,7 +489,6 @@ export default {
       confarr.forEach((elm) => {
         if (elm.id == id) {
           this.detailInfo = elm;
-          console.log(this.getTs2Gmt(this.detailInfo.schedule));
           this.detailInfo.schedule = this.getTs2Gmt(this.detailInfo.schedule);
         }
       });
@@ -547,7 +546,10 @@ export default {
         });
     },
     createNewConf: function (secret) {
-      console.log("createNewConf  this.newConfDate: " + this.newConfDate);
+      var invitedUser = this.domesticMembers.filter((user) => {
+        return user.isInvite;
+      });
+
       axios
         .get("/createConf", {
           params: {
@@ -560,7 +562,7 @@ export default {
             schedule: this.$moment(this.newConfDate).format(
               "YYYY-MM-DD HH:mm:ss"
             ),
-            inviteMembers: this.domesticMembers,
+            invitedUser: invitedUser,
           },
         })
         .then((response) => {
@@ -580,12 +582,6 @@ export default {
         });
     },
     updateConf: function () {
-      console.log("this.detailInfo.schedule" + this.detailInfo.schedule);
-      console.log(
-        "this.$moment" +
-          this.$moment(this.detailInfo.schedule).format("YYYY-MM-DD HH:mm:ss")
-      );
-
       axios
         .get("/updateConf", {
           params: {
@@ -665,17 +661,32 @@ export default {
           params: {},
         })
         .then((response) => {
-          // var enrollList = response.data.enrollList;
-          // var userList = response.data.userList;
-          this.domesticMembers = response;
+          var enrollList = response.data.enrollList;
+          var userList = response.data.userList;
+          var deptList = response.data.deptList;
+          var tempList = [];
+          var tempUser = {};
+          var targetEnr = {};
+          var targetDpt = {};
+          userList.forEach((user) => {
+            targetEnr = enrollList.filter((enr) => {
+              return enr.user_id == user.id;
+            });
+            targetDptr = deptList.filter((dpt) => {
+              return dpt.id == enr.department_id;
+            });
+            tempUser = {
+              id: user.id,
+              name: user.name,
+              mail: user.email,
+              deptId: targetEnr.department_id,
+              deptName: targetDpt.depname1,
+              isInvite: false,
+            };
+            tempList.push(tempUser);
+          });
 
-          /*
-          isInvite: false,
-          deptId: 1,
-          deptName: "営業部",
-          name: "松本",
-          mail: "mail@mmmmmm.jp",
-          */
+          this.domesticMembers = tempList;
         })
         .catch((err) => {
           this.domesticMembers = [];
@@ -706,18 +717,6 @@ export default {
     getTs2Gmt(ts) {
       "0123456789012345678";
       "YYYY-MM-DD HH:mm:ss";
-      /*
-      var y = ts.substr(0, 4);
-      var M = Number(ts.substr(5, 2)) - 1;
-      var d = ts.substr(8, 2);
-      var h = ts.substr(11, 2);
-      var m = ts.substr(14, 2);
-      var s = ts.substr(17, 2);
-      var date = new Date(y, M, d, h, m, s);
-      var dt = date.getTime();
-      console.log("getTs2Ud : " + ts + " -> " + Math.floor(dt / 1000));
-      return Math.floor(dt / 1000);
-      */
       var ymd = ts.substr(0, 10);
       var hms = ts.substr(11, 8);
       return ymd + "T" + hms + ".000+09:00";
