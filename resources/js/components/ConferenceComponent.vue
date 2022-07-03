@@ -488,8 +488,8 @@ export default {
       confarr.forEach((elm) => {
         if (elm.id == id) {
           this.detailInfo = elm;
-          console.log(this.getTs2Ud(this.detailInfo.schedule));
-          this.detailInfo.schedule = this.getTs2Ud(this.detailInfo.schedule);
+          console.log(this.getTs2Gmt(this.detailInfo.schedule));
+          this.detailInfo.schedule = this.getTs2Gmt(this.detailInfo.schedule);
         }
       });
     },
@@ -701,7 +701,7 @@ export default {
       }
     },
 
-    getTs2Ud(ts) {
+    getTs2Gmt(ts) {
       "0123456789012345678";
       "YYYY-MM-DD HH:mm:ss";
       var y = ts.substr(0, 4);
@@ -710,11 +710,13 @@ export default {
       var h = ts.substr(11, 2);
       var m = ts.substr(14, 2);
       var s = ts.substr(17, 2);
-
+      /*
       var date = new Date(y, M, d, h, m, s);
       var dt = date.getTime();
       console.log("getTs2Ud : " + ts + " -> " + Math.floor(dt / 1000));
       return Math.floor(dt / 1000);
+      */
+      return new Date(y, M, d, h, m, s);
     },
     getNowDates() {
       var dt = new Date();
