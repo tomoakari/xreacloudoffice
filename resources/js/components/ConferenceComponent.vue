@@ -690,6 +690,7 @@ export default {
           this.domesticMembers = tempList;
         })
         .catch((err) => {
+          console.log(err);
           this.domesticMembers = [];
         });
     },

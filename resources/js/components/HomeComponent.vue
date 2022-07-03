@@ -5,7 +5,10 @@
         <img src="/image/company_lobby.jpg" />
       </div>
 
-      <div class="card-body">ようこそ、{{ user_name }}さん</div>
+      <div class="card-body">
+        ようこそ、{{ user_name }}さん<br />
+        各機能の使用方法については、ヘルプページをご参照ください。
+      </div>
     </div>
     <div class="card mb-20">
       <div class="card-header">メニュー</div>
