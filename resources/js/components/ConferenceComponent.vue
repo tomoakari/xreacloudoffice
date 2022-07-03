@@ -700,7 +700,7 @@ export default {
      */
     getJPcalendar(timestamp) {
       var youbi = ["日", "月", "火", "水", "木", "金", "土"];
-      var dt = new Date(timestamp);
+      var dt = new Date(timestamp.replace(/-/g, "/"));
       // var yy = dt.getFullYear();
       var MM = (" " + (dt.getMonth() + 1)).slice(-2);
       var dd = (" " + dt.getDate()).slice(-2);
@@ -733,9 +733,9 @@ export default {
       };
     },
     getStatusViewFlg(conf) {
-      var st = new Date(conf.schedule);
-      var end = new Date(conf.schedule);
-      var end2 = new Date(conf.schedule);
+      var st = new Date(conf.schedule.replace(/-/g, "/"));
+      var end = new Date(conf.schedule.replace(/-/g, "/"));
+      var end2 = new Date(conf.schedule.replace(/-/g, "/"));
       end.setHours(end.getHours() + 1);
       end2.setHours(end2.getHours() + 2);
       var now = new Date();
