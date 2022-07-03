@@ -55,10 +55,20 @@
       <div class="modal_window card">
         <div class="card-header">会議の詳細</div>
         <div class="card-body">
-          <p>会議名</p>
-          {{ detailInfo.name }}
-          <p>開催日時</p>
-          {{ getJPcalendar(detailInfo.schedule) }}
+          <p>会議名： <input type="text" v-model="detailInfo.name" /></p>
+
+          <p>
+            開催日時：
+            <datetime
+              v-model="detailInfo.schedule"
+              type="datetime"
+              format="yyyy-MM-dd HH:mm"
+              :minute-step="5"
+              value-zone="Asia/Tokyo"
+              zone="Asia/Tokyo"
+            ></datetime>
+          </p>
+
           <span v-show="isCreateInner">
             <p>招待メンバー</p>
             <table class="newConfInvitelist">
@@ -68,6 +78,7 @@
             </table>
           </span>
           <span class="createbutton" @click="deleteConf()">中止する</span>
+          <span class="centerbutton" @click="updateConf()">更新する</span>
         </div>
       </div>
     </div>
@@ -405,6 +416,7 @@ export default {
       newURL: "",
       user_name: "temp_user_name",
       detailInfo: {
+        id: "",
         name: "",
         username: "",
         schedule: "",
@@ -561,6 +573,38 @@ export default {
           this.getInnerConfs();
           this.getOuterConfs();
           this.isShowCreateWindow = false;
+        });
+    },
+    updateConf: function () {
+      axios
+        .get("/updateConf", {
+          params: {
+            id: this.detailInfo.id,
+            name: this.detailInfo.name,
+            schedule: this.$moment(this.detailInfo.schedule).format(
+              "YYYY-MM-DD HH:mm:ss"
+            ),
+          },
+        })
+        .then((res) => {
+          if (res) {
+            Swal.fire({
+              html: `<p>会議情報を変更しました</p>`,
+              confirmButtonText: "とじる",
+              confirmButtonAriaLabel: "とじる",
+              allowOutsideClick: true,
+            });
+            this.getInnerConfs();
+            this.getOuterConfs();
+            this.isShowDetailWindow = false;
+          } else {
+            Swal.fire({
+              html: `<p>会議情報の変更に失敗しました</p>`,
+              confirmButtonText: "とじる",
+              confirmButtonAriaLabel: "とじる",
+              allowOutsideClick: true,
+            });
+          }
         });
     },
 

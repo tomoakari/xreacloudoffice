@@ -140,6 +140,20 @@ class HomeController extends Controller
         $result = Conference::create($data);
         return $result;   
     }
+    public function updateConf(Request $request)
+    {
+        try{
+            Conference::
+                find($request['id'])
+                ->update([
+                    'name' => $request['name'],
+                    'schedule' => $request['schedule']
+                ]);
+            return "true";
+        }catch(Exception $err){
+            return $err;
+        }   
+    }
     public function deleteConf(Request $request)
     {
         try{
