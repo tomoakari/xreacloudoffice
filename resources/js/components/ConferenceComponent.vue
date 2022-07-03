@@ -673,11 +673,11 @@ export default {
               return dept.id == enr.department_id;
             });
             var tempUser = {
-              id: targetUser.id,
-              name: targetUser.name,
-              mail: targetUser.email,
+              id: targetUser[0].id,
+              name: targetUser[0].name,
+              mail: targetUser[0].email,
               deptId: enr.department_id,
-              deptName: targetDept.depname1,
+              deptName: targetDept[0].depname1,
               isInvite: false,
             };
             console.log(targetUser);
