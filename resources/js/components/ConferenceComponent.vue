@@ -664,10 +664,12 @@ export default {
           var enrollList = response.data.enrollList;
           var userList = response.data.userList;
           var deptList = response.data.deptList;
+
           var tempList = [];
           var tempUser = {};
           var targetEnr = {};
           var targetDpt = {};
+
           userList.forEach((user) => {
             targetEnr = enrollList.filter((enr) => {
               return enr.user_id == user.id;

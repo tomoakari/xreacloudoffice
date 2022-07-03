@@ -193,11 +193,16 @@ class HomeController extends Controller
             }
             $userList = User::whereIn('id', $uidList)->
                 select('id','name','email')->get();
+
+            $deptList = Department::
+                where('company_id', $company_id)->
+                ->get();
             
             return [
                 'data' => [
                     "enrollList" => $enrList,
-                    "userList" => $userList
+                    "userList" => $userList,
+                    "deptList" => $deptList
                 ]
             ];
             
