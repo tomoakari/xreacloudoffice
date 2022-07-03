@@ -666,49 +666,24 @@ export default {
           var deptList = response.data.deptList;
 
           var tempList = [];
-          var tempUser = {};
-
           enrollList.forEach((enr) => {
-            targetUser = userList.filter((user) => {
+            var targetUser = userList.filter((user) => {
               user.id == enr.user_id;
             });
-            targetDept = deptList.filter((dept) => {
+            var targetDept = deptList.filter((dept) => {
               dept.id == enr.department_id;
             });
-            tempUser = {
+            var tempUser = {
               id: targetUser.id,
               name: targetUser.name,
               mail: targetUser.email,
               deptId: enr.department_id,
-              deptName: targetDpt.depname1,
+              deptName: targetDept.depname1,
               isInvite: false,
             };
+            console.log(JSON.stringify(tempUser));
             tempList.push(tempUser);
           });
-
-          /*
-          var tempList = [];
-          var tempUser = {};
-          var targetEnr = {};
-          var targetDpt = {};
-          userList.forEach((user) => {
-            targetEnr = enrollList.filter((enr) => {
-              return enr.user_id == user.id;
-            });
-            targetDpt = deptList.filter((dpt) => {
-              return dpt.id == enr.department_id;
-            });
-            tempUser = {
-              id: user.id,
-              name: user.name,
-              mail: user.email,
-              deptId: targetEnr.department_id,
-              deptName: targetDpt.depname1,
-              isInvite: false,
-            };
-            tempList.push(tempUser);
-          });
-          */
 
           this.domesticMembers = tempList;
         })
