@@ -705,7 +705,7 @@ export default {
       "0123456789012345678";
       "YYYY-MM-DD HH:mm:ss";
       var y = ts.substr(0, 4);
-      var M = ts.substr(5, 2);
+      var M = Number(ts.substr(5, 2)) - 1;
       var d = ts.substr(8, 2);
       var h = ts.substr(11, 2);
       var m = ts.substr(14, 2);
@@ -713,6 +713,7 @@ export default {
 
       var date = new Date(y, M, d, h, m, s);
       var dt = date.getTime();
+      console.log("getTs2Ud : " + ts + " -> " + Math.floor(dt / 1000));
       return Math.floor(dt / 1000);
     },
     getNowDates() {
