@@ -112,6 +112,7 @@
         <table class="meetinglist" v-show="!isMobileMode">
           <tr>
             <th>状況</th>
+            <th></th>
             <th class="datecell">日時</th>
             <th class="confnamecell">会議名</th>
             <th>作成者</th>
@@ -144,6 +145,11 @@
                 v-show="getStatusViewFlg(innerConf) == 999"
                 style="color: lightgray"
                 >終了</span
+              >
+            </td>
+            <td>
+              <span v-show="innerConf.created_at !== innerConf.updated_at"
+                >*</span
               >
             </td>
             <td>{{ getJPcalendar(innerConf.schedule) }}</td>
@@ -265,6 +271,7 @@
         <table class="meetinglist" v-show="!isMobileMode">
           <tr>
             <th>状況</th>
+            <th></th>
             <th class="datecell">日時</th>
             <th class="confnamecell">会議名</th>
             <th>作成者</th>
@@ -297,6 +304,11 @@
                 v-show="getStatusViewFlg(outerConf) == 999"
                 style="color: lightgray"
                 >終了</span
+              >
+            </td>
+            <td>
+              <span v-show="outerConf.created_at !== outerConf.updated_at"
+                >*</span
               >
             </td>
             <td>{{ getJPcalendar(outerConf.schedule) }}</td>
