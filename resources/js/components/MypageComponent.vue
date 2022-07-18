@@ -1,10 +1,7 @@
 <template>
   <div>
     <div class="card mb-20">
-      <div class="card-header">
-        ユーザ管理
-        <span class="createbutton" @click="logout()">ログアウト</span>
-      </div>
+      <div class="card-header">ユーザ管理</div>
 
       <div class="card-body">ユーザー登録情報の編集や確認を行います。</div>
     </div>
@@ -91,6 +88,12 @@
           <span class="createbutton">更新する</span>
         </div>
       </div>
+    </div>
+
+    <!-- ログアウト -->
+    <div class="card-header">
+      ログイン管理
+      <span class="createbutton" @click="logout()">ログアウト</span>
     </div>
   </div>
 </template>

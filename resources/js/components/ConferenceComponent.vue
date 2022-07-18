@@ -463,16 +463,9 @@ export default {
         {
           isInvite: false,
           deptId: 1,
-          deptName: "営業部",
-          name: "松本",
-          mail: "mail@mmmmmm.jp",
-        },
-        {
-          isInvite: true,
-          deptId: 0,
-          deptName: "営業部",
-          name: "大矢部",
-          mail: "yabeeee@mmmmmm.jp",
+          deptName: "",
+          name: "",
+          mail: "",
         },
       ],
     };

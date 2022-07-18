@@ -23,6 +23,12 @@
             参加する会議の確認や、新たな会議の作成が出来ます。
           </div>
           <div class="col-md-2">
+            <a href="/mypage">ユーザ管理</a>
+          </div>
+          <div class="col-md-10 mb-10">
+            ユーザー登録情報の編集や確認を行います。
+          </div>
+          <div class="col-md-2">
             <a href="/company">管理ルーム</a>
           </div>
           <div class="col-md-10 mb-10">
