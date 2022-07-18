@@ -93,7 +93,7 @@
     <!-- ログアウト -->
     <div class="card-header">
       ログイン管理
-      <span class="createbutton" @click="logout()">ログアウト</span>
+      <div class="centerbutton" @click="logout()">ログアウト</div>
     </div>
   </div>
 </template>
