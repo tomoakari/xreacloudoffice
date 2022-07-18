@@ -34,7 +34,13 @@
               </tr>
             </table>
           </span>
-          <div class="centerbutton" @click="sendCreateConf()">作成</div>
+          <div
+            v-show="newURL == ''"
+            class="centerbutton"
+            @click="sendCreateConf()"
+          >
+            作成
+          </div>
           <span v-show="newURL !== ''">
             <p>会議室のURLはこちら</p>
             <input type="text" v-model="newURL" />
@@ -579,7 +585,7 @@ export default {
             "https://conference.aice.cloud/?secret=" + response.data.secret;
           this.getInnerConfs();
           this.getOuterConfs();
-          this.isShowCreateWindow = false;
+          // this.isShowCreateWindow = false;
         });
     },
     updateConf: function () {
@@ -765,4 +771,7 @@ export default {
 };
 </script>
 <style scoped>
+.newConfInvitelist {
+  width: 100%;
+}
 </style>
