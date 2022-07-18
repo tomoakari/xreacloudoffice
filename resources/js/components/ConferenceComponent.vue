@@ -57,6 +57,8 @@
         <div class="card-body">
           <p>会議名</p>
           <input type="text" v-model="detailInfo.name" />
+          <p>会議URL</p>
+          {{ "https://conference.aice.cloud/?secret=" + detailInfo.secret }}
           <p>
             開催日時
             <datetime

@@ -234,7 +234,7 @@ class HomeController extends Controller
             $dept->name = 'いらないかも';
             $dept->company_id = $comp->id;
             $dept->depid1 = 0;
-            $dept->depname1 = '設定なし';
+            $dept->depname1 = '所属設定なし';
             $dept->depid2 = 0;
             $dept->depname2 = '';
             $dept->depid3 = 0;
