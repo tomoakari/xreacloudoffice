@@ -1,10 +1,14 @@
 <template>
   <div>
     <div class="card mb-20">
-      <div class="card-header">ユーザ管理</div>
-
-      <div class="card-body">ユーザー登録情報の編集や確認を行います。</div>
+      <div class="heroImageArea">
+        <img src="/image/mypage.jpg" />
+      </div>
+      <div class="card-body">
+        ユーザ管理　ユーザー登録情報の編集や確認を行います。
+      </div>
     </div>
+
     <div class="card mb-20">
       <div class="card-header">
         <i class="fa-solid fa-user"></i> ユーザ情報
