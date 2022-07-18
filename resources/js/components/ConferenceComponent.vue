@@ -28,7 +28,13 @@
             <table class="newConfInvitelist">
               <tr v-for="dm in domesticMembers" v-bind:key="dm.deptId">
                 <td><input type="checkbox" v-model="dm.isInvite" /></td>
-                <td>{{ dm.deptName }}</td>
+                <td>
+                  {{
+                    dm.deptName == "所属設定なし" || dm.deptName == "設定なし"
+                      ? ""
+                      : dm.deptName
+                  }}
+                </td>
                 <td>{{ dm.name }}</td>
                 <td>{{ dm.mail }}</td>
               </tr>
@@ -357,11 +363,6 @@
             <th></th>
           </tr>
           <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
-            <td>
-              <span v-show="outerConf.created_at !== outerConf.updated_at"
-                >*</span
-              >
-            </td>
             <td>
               <span
                 v-show="getStatusViewFlg(outerConf) == -1"

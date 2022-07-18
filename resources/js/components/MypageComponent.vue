@@ -6,7 +6,7 @@
         <span class="createbutton" @click="logout()">ログアウト</span>
       </div>
 
-      <div class="card-body">自分の登録情報を確認・編集できます</div>
+      <div class="card-body">ユーザー登録情報の編集や確認を行います。</div>
     </div>
     <div class="card mb-20">
       <div class="card-header">
