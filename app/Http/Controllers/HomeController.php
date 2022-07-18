@@ -142,7 +142,7 @@ class HomeController extends Controller
         $result = Conference::create($data);
 
         if($request->has('invitedUser')){
-            $invitedUser = $request['invitedUser'];
+            $invitedUser = json_decode($request['invitedUser']);
             foreach($invitedUser as $item){
                 $invitedData = [
                     'conference_id' => $result['id'],
