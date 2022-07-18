@@ -111,8 +111,8 @@
       <div class="card-body">
         <table class="meetinglist" v-show="!isMobileMode">
           <tr>
-            <th>状況</th>
             <th></th>
+            <th>状況</th>
             <th class="datecell">日時</th>
             <th class="confnamecell">会議名</th>
             <th>作成者</th>
@@ -120,6 +120,11 @@
             <th></th>
           </tr>
           <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.id">
+            <td>
+              <span v-show="innerConf.created_at !== innerConf.updated_at"
+                >*</span
+              >
+            </td>
             <td>
               <span
                 v-show="getStatusViewFlg(innerConf) == -1"
@@ -145,11 +150,6 @@
                 v-show="getStatusViewFlg(innerConf) == 999"
                 style="color: lightgray"
                 >終了</span
-              >
-            </td>
-            <td>
-              <span v-show="innerConf.created_at !== innerConf.updated_at"
-                >*</span
               >
             </td>
             <td>{{ getJPcalendar(innerConf.schedule) }}</td>
@@ -185,12 +185,18 @@
         </table>
         <table class="meetinglist" v-show="isMobileMode">
           <tr>
+            <th></th>
             <th>状況</th>
             <th>日時</th>
             <th>会議名</th>
             <th></th>
           </tr>
           <tr v-for="innerConf in innerConfs" v-bind:key="innerConf.id">
+            <td>
+              <span v-show="innerConf.created_at !== innerConf.updated_at"
+                >*</span
+              >
+            </td>
             <td>
               <span
                 v-show="getStatusViewFlg(innerConf) == -1"
@@ -270,8 +276,8 @@
       <div class="card-body">
         <table class="meetinglist" v-show="!isMobileMode">
           <tr>
-            <th>状況</th>
             <th></th>
+            <th>状況</th>
             <th class="datecell">日時</th>
             <th class="confnamecell">会議名</th>
             <th>作成者</th>
@@ -279,6 +285,11 @@
             <th></th>
           </tr>
           <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
+            <td>
+              <span v-show="outerConf.created_at !== outerConf.updated_at"
+                >*</span
+              >
+            </td>
             <td>
               <span
                 v-show="getStatusViewFlg(outerConf) == -1"
@@ -304,11 +315,6 @@
                 v-show="getStatusViewFlg(outerConf) == 999"
                 style="color: lightgray"
                 >終了</span
-              >
-            </td>
-            <td>
-              <span v-show="outerConf.created_at !== outerConf.updated_at"
-                >*</span
               >
             </td>
             <td>{{ getJPcalendar(outerConf.schedule) }}</td>
@@ -344,12 +350,18 @@
         </table>
         <table class="meetinglist" v-show="isMobileMode">
           <tr>
+            <th></th>
             <th>状況</th>
             <th>日時</th>
             <th>会議名</th>
             <th></th>
           </tr>
           <tr v-for="outerConf in outerConfs" v-bind:key="outerConf.id">
+            <td>
+              <span v-show="outerConf.created_at !== outerConf.updated_at"
+                >*</span
+              >
+            </td>
             <td>
               <span
                 v-show="getStatusViewFlg(outerConf) == -1"
