@@ -20,7 +20,7 @@
       <div class="card-body">
         <table class="menu_table">
           <tr>
-            <td>ユーザID</td>
+            <td class="item_header">ユーザID</td>
             <td>{{ userInfo.id }}</td>
           </tr>
           <tr>
@@ -54,7 +54,7 @@
       <div class="card-body">
         <table class="menu_table">
           <tr>
-            <td>企業名</td>
+            <td class="item_header">企業名</td>
             <td>{{ enrollInfo.company_name }}</td>
           </tr>
           <tr>
@@ -193,3 +193,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.item_header {
+  max-width: 150px;
+}
+</style>
