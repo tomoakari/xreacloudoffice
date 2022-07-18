@@ -34,7 +34,7 @@
               </tr>
             </table>
           </span>
-          <span class="centerbutton" @click="sendCreateConf()">作成</span>
+          <div class="centerbutton" @click="sendCreateConf()">作成</div>
           <span v-show="newURL !== ''">
             <p>会議室のURLはこちら</p>
             <input type="text" v-model="newURL" />
